@@ -1,0 +1,126 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+
+const services = [
+  {
+    title: "Social Media Marketing",
+    desc: "Strategii personalizate, optimizare de campanii și creștere organică.",
+    media: {
+      type: "video",
+      src: "/0215.mp4",
+      mimeType: "video/mp4",
+      label: "Video preview",
+    },
+  },
+  {
+    title: "Reels & Content Creation",
+    desc: "Producție video verticală, scenarii și editare pentru reach maxim.",
+    media: {
+      type: "video",
+      src: "/Reels%20%26%20Content%20Creation.mp4",
+      mimeType: "video/mp4",
+      label: "Video preview",
+      gradient: "from-[#1a1440] via-[#173061] to-[#114b7a]",
+    },
+  },
+  {
+    title: "Dezvoltare Aplicații",
+    desc: "Aplicații mobile native sau cross-platform, cu focus pe UX.",
+    media: {
+      type: "video",
+      src: "/AppDEV.mp4",
+      mimeType: "video/mp4",
+      label: "Video preview",
+      gradient: "from-[#101b3f] via-[#1b2f64] to-[#0b5d7a]",
+    },
+  },
+  {
+    title: "Website Development",
+    desc: "Site-uri rapide, scalabile, optimizate pentru conversii.",
+    media: {
+      type: "video",
+      src: "/WebsiteDEV.mp4",
+      mimeType: "video/mp4",
+      label: "Video preview",
+      gradient: "from-[#0d1d38] via-[#1a376f] to-[#155a83]",
+    },
+  },
+];
+
+function ServiceMedia({ media }) {
+  const [hasVideoError, setHasVideoError] = useState(false);
+  const showVideo = media.type === "video" && !hasVideoError;
+  const fallbackGradient = useMemo(
+    () => media.gradient ?? "from-[#0b1d3a] via-[#12346b] to-[#0f6a8a]",
+    [media.gradient]
+  );
+
+  return (
+    <div className="relative mb-5 aspect-video overflow-hidden rounded-xl">
+      <div className={`absolute inset-0 bg-gradient-to-br ${fallbackGradient}`}>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.2),transparent_35%),radial-gradient(circle_at_80%_25%,rgba(255,255,255,0.14),transparent_40%),radial-gradient(circle_at_55%_78%,rgba(255,255,255,0.12),transparent_35%)]" />
+      </div>
+
+      {showVideo ? (
+        <video
+          className="relative z-10 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onError={() => setHasVideoError(true)}
+        >
+          <source src={media.src} type={media.mimeType} />
+        </video>
+      ) : null}
+
+      <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#020617]/55 via-[#020617]/20 to-transparent" />
+      <span className="absolute bottom-3 left-3 z-30 rounded-md border border-white/25 bg-black/20 px-2 py-1 text-[11px] uppercase tracking-[0.16em] text-white/80">
+        {media.label}
+      </span>
+    </div>
+  );
+}
+
+export default function Services() {
+  return (
+    <section id="servicii" className="mx-auto w-full max-w-6xl px-6 py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6 }}
+        className="mb-10 flex flex-col gap-3"
+      >
+        <p className="text-sm uppercase tracking-[0.3em] text-muted">
+          Servicii Digitale
+        </p>
+        <h2 className="text-3xl font-semibold text-text md:text-4xl">
+          Tot ce ai nevoie pentru creștere digitală
+        </h2>
+      </motion.div>
+      <div className="grid gap-6 md:grid-cols-2">
+        {services.map((service, index) => (
+          <motion.div
+            key={service.title}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6, boxShadow: "0 0 30px rgba(200, 169, 106, 0.28)" }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            className="rounded-2xl border border-border/70 bg-surface-1/70 p-6"
+          >
+            <ServiceMedia media={service.media} />
+            <h3 className="mb-3 text-xl font-semibold text-text">
+              {service.title}
+            </h3>
+            <p className="text-sm text-muted">{service.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
