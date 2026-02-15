@@ -3,7 +3,27 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
-const services = [
+type ServiceMediaData =
+  | {
+      type: "video";
+      src: string;
+      mimeType: "video/mp4" | "video/webm" | "video/quicktime";
+      label: string;
+      gradient?: string;
+    }
+  | {
+      type: "placeholder";
+      label: string;
+      gradient?: string;
+    };
+
+type ServiceItem = {
+  title: string;
+  desc: string;
+  media: ServiceMediaData;
+};
+
+const services: ServiceItem[] = [
   {
     title: "Social Media Marketing",
     desc: "Strategii personalizate, optimizare de campanii și creștere organică.",
@@ -49,7 +69,7 @@ const services = [
   },
 ];
 
-function ServiceMedia({ media }) {
+function ServiceMedia({ media }: { media: ServiceMediaData }) {
   const [hasVideoError, setHasVideoError] = useState(false);
   const showVideo = media.type === "video" && !hasVideoError;
   const fallbackGradient = useMemo(
