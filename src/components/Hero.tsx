@@ -53,7 +53,7 @@ export default function Hero() {
                   boxShadow: "0 0 30px rgba(255, 0, 170, 0.4)",
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="rounded-2xl bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:opacity-90"
+                className="rounded-2xl bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan px-5 py-2.5 text-[0.95rem] font-semibold text-white shadow-glow transition hover:opacity-90 sm:px-6 sm:py-3 sm:text-sm"
                 href="#contact"
               >
                 Programează un call
@@ -66,7 +66,7 @@ export default function Hero() {
                   borderColor: "rgba(255, 0, 170, 0.8)",
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="rounded-2xl border border-border/80 px-6 py-3 text-sm font-semibold text-text transition hover:border-brand-magenta/60"
+                className="rounded-2xl border border-border/80 px-5 py-2.5 text-[0.95rem] font-semibold text-text transition hover:border-brand-magenta/60 sm:px-6 sm:py-3 sm:text-sm"
                 href="#portofoliu"
               >
                 Vezi portofoliul
