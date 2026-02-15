@@ -44,7 +44,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="mt-7 flex flex-row flex-wrap gap-4 md:mt-8"
+            className="mt-7 flex flex-row flex-wrap items-start gap-x-4 gap-y-6 md:mt-8"
           >
             <Magnetic>
               <motion.a
