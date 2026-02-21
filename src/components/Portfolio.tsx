@@ -32,7 +32,7 @@ const projects: {
       "/p4.png",
       "/p3.png",
       "/p2.png",
-      "/p1.png",
+      "/P1.png",
     ],
     details: [
       "Speakeri: Alexandru Bordea — Business Mentor · Caraush Alina — Stylist · Emilia Ceaglic — Moderator · Maria Baciu — Tricoterapeut",
@@ -64,7 +64,7 @@ const projects: {
     details: [
       "Livrare: Design curat · Structură pas cu pas · CTA pentru acces gratuit",
     ],
-    link: "#contact",
+    link: "https://valeria-smm.vercel.app/",
     featuredGrid: true,
   },
   {
