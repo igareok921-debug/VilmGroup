@@ -22,12 +22,20 @@ type ServiceItem = {
   title: string;
   desc: string;
   media: ServiceMediaData;
+  points?: string[];
 };
 
 const services: ServiceItem[] = [
   {
     title: "Social Media Marketing",
     desc: "Strategii personalizate, optimizare de campanii și creștere organică.",
+    points: [
+      "Strategii personalizate, optimizare de campanii și creștere organică.",
+      "Creare și administrare de conținut atractiv pentru branduri în creștere.",
+      "Gestionare campanii plătite și optimizare continuă pentru conversii.",
+      "Dezvoltare strategie de brand și poziționare pe piața digitală.",
+      "Analiză de performanță și raportare bazată pe date reale.",
+    ],
     media: {
       type: "video",
       src: "/0215.mp4",
@@ -38,6 +46,13 @@ const services: ServiceItem[] = [
   {
     title: "Reels & Content Creation",
     desc: "Producție video verticală, scenarii și editare pentru reach maxim.",
+    points: [
+      "Producție video verticală pentru Reels, Instagram și alte platforme sociale.",
+      "Concept creativ și dezvoltare scenarii orientate spre captarea rapidă a atenției.",
+      "Filmări dinamice și editare optimizată pentru engagement și retenție ridicată.",
+      "Creare de conținut strategic adaptat identității și obiectivelor brandului.",
+      "Optimizare pentru algoritmi și maximizarea reach-ului organic și plătit.",
+    ],
     media: {
       type: "video",
       src: "/Reels%20%26%20Content%20Creation.mp4",
@@ -49,6 +64,13 @@ const services: ServiceItem[] = [
   {
     title: "Dezvoltare Aplicații",
     desc: "Aplicații mobile native sau cross-platform, cu focus pe UX.",
+    points: [
+      "Dezvoltare aplicații mobile native și cross-platform pentru iOS și Android.",
+      "Design UI/UX modern, intuitiv și orientat pe experiența utilizatorului.",
+      "Arhitectură scalabilă și integrare cu API-uri și servicii externe.",
+      "Optimizare performanță, securitate și stabilitate pe termen lung.",
+      "Mentenanță, actualizări și suport tehnic continuu post-lansare.",
+    ],
     media: {
       type: "video",
       src: "/AppDEV.mp4",
@@ -60,6 +82,13 @@ const services: ServiceItem[] = [
   {
     title: "Website Development",
     desc: "Site-uri rapide, scalabile, optimizate pentru conversii.",
+    points: [
+      "Dezvoltare website-uri rapide, scalabile și optimizate pentru performanță ridicată.",
+      "Design modern și structură UX orientată pe conversii și experiență intuitivă.",
+      "Implementare funcționalități personalizate și integrare cu platforme externe.",
+      "Optimizare SEO tehnică pentru vizibilitate și indexare eficientă.",
+      "Mentenanță, actualizări și suport tehnic pentru stabilitate pe termen lung.",
+    ],
     media: {
       type: "video",
       src: "/WebsiteDEV.mp4",
@@ -71,6 +100,13 @@ const services: ServiceItem[] = [
   {
     title: "Inteligență Artificială",
     desc: "Automatizări, asistenți AI și fluxuri inteligente pentru procese mai rapide.",
+    points: [
+      "Automatizări inteligente pentru optimizarea proceselor interne și externe.",
+      "Implementare asistenți virtuali și chatboți personalizați pentru suport rapid.",
+      "Integrare AI în marketing, analiză date și generare conținut strategic.",
+      "Dezvoltare fluxuri inteligente pentru eficiență operațională crescută.",
+      "Optimizare continuă bazată pe date și algoritmi de învățare automată.",
+    ],
     media: {
       type: "video",
       src: "/0221.mp4",
@@ -82,6 +118,13 @@ const services: ServiceItem[] = [
   {
     title: "Graphic Design",
     desc: "Identitate vizuală, materiale de brand și design creativ pentru campanii.",
+    points: [
+      "Creare identitate vizuală completă și ghid de brand profesional.",
+      "Design logo, materiale de brand și elemente vizuale coerente.",
+      "Concepte creative pentru campanii online și offline.",
+      "Design grafic optimizat pentru social media și advertising digital.",
+      "Adaptare vizuală pentru materiale print și suporturi digitale.",
+    ],
     media: {
       type: "video",
       src: "/0223.mp4",
@@ -161,7 +204,18 @@ export default function Services() {
             <h3 className="mb-3 text-xl font-semibold text-text">
               {service.title}
             </h3>
-            <p className="text-sm text-muted">{service.desc}</p>
+            <p className="text-sm text-muted">
+              {service.points ? null : service.desc}
+            </p>
+            {service.points ? (
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted marker:text-white">
+                {service.points.map((point) => (
+                  <li key={point} className="leading-relaxed">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             <Magnetic>
               <motion.a
                 whileHover={{
