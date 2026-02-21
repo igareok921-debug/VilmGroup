@@ -166,11 +166,11 @@ export default function Services() {
               <motion.a
                 whileHover={{
                   scale: 1.03,
-                  boxShadow: "0 0 30px rgba(255, 0, 170, 0.4)",
+                  boxShadow: "0 0 24px rgba(88, 207, 255, 0.28)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 href="#contact"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan px-6 py-2.5 text-base font-semibold text-white shadow-glow transition hover:opacity-90"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-2.5 text-base font-semibold text-brand-navy shadow-glow transition hover:opacity-95"
               >
                 Solicită ofertă
               </motion.a>
