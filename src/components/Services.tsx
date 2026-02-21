@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import Magnetic from "./Magnetic";
 
 type ServiceMediaData =
   | {
@@ -67,6 +68,28 @@ const services: ServiceItem[] = [
       gradient: "from-[#0d1d38] via-[#1a376f] to-[#155a83]",
     },
   },
+  {
+    title: "Inteligență Artificială",
+    desc: "Automatizări, asistenți AI și fluxuri inteligente pentru procese mai rapide.",
+    media: {
+      type: "video",
+      src: "/0221.mp4",
+      mimeType: "video/mp4",
+      label: "Video preview",
+      gradient: "from-[#1a1436] via-[#23336d] to-[#1f6b8f]",
+    },
+  },
+  {
+    title: "Graphic Design",
+    desc: "Identitate vizuală, materiale de brand și design creativ pentru campanii.",
+    media: {
+      type: "video",
+      src: "/0223.mp4",
+      mimeType: "video/mp4",
+      label: "Video preview",
+      gradient: "from-[#2a1738] via-[#3b2f72] to-[#2b6f99]",
+    },
+  },
 ];
 
 function ServiceMedia({ media }: { media: ServiceMediaData }) {
@@ -80,12 +103,12 @@ function ServiceMedia({ media }: { media: ServiceMediaData }) {
   return (
     <div className="relative mb-5 aspect-video overflow-hidden rounded-xl">
       <div className={`absolute inset-0 bg-gradient-to-br ${fallbackGradient}`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.2),transparent_35%),radial-gradient(circle_at_80%_25%,rgba(255,255,255,0.14),transparent_40%),radial-gradient(circle_at_55%_78%,rgba(255,255,255,0.12),transparent_35%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.2),transparent_35%),radial-gradient(circle_at_80%_25%,rgba(255,255,255,0.14),transparent_40%),radial-gradient(circle_at_55%_78%,rgba(255,255,255,0.12),transparent_35%)] transition-transform duration-500 ease-out group-hover:scale-105" />
       </div>
 
       {showVideo ? (
         <video
-          className="relative z-10 h-full w-full object-cover"
+          className="relative z-10 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           autoPlay
           muted
           loop
@@ -98,9 +121,6 @@ function ServiceMedia({ media }: { media: ServiceMediaData }) {
       ) : null}
 
       <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#020617]/55 via-[#020617]/20 to-transparent" />
-      <span className="absolute bottom-3 left-3 z-30 rounded-md border border-white/25 bg-black/20 px-2 py-1 text-[11px] uppercase tracking-[0.16em] text-white/80">
-        {media.label}
-      </span>
     </div>
   );
 }
@@ -122,22 +142,39 @@ export default function Services() {
           Tot ce ai nevoie pentru creștere digitală
         </h2>
       </motion.div>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -6, boxShadow: "0 0 30px rgba(200, 169, 106, 0.28)" }}
+            whileHover={{
+              y: -6,
+              scale: 1.02,
+              boxShadow: "0 0 30px rgba(200, 169, 106, 0.28)",
+            }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="rounded-2xl border border-border/70 bg-surface-1/70 p-6"
+            className="group rounded-2xl border border-border/70 bg-surface-1/70 p-6"
           >
             <ServiceMedia media={service.media} />
             <h3 className="mb-3 text-xl font-semibold text-text">
               {service.title}
             </h3>
             <p className="text-sm text-muted">{service.desc}</p>
+            <Magnetic>
+              <motion.a
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: "0 0 30px rgba(255, 0, 170, 0.4)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                href="#contact"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan px-6 py-2.5 text-base font-semibold text-white shadow-glow transition hover:opacity-90"
+              >
+                Solicită ofertă
+              </motion.a>
+            </Magnetic>
           </motion.div>
         ))}
       </div>

@@ -20,7 +20,7 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
             className="text-sm uppercase tracking-[0.3em] text-muted"
           >
-            Agenție digitală premium
+            Agenție digitală
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
@@ -37,8 +37,9 @@ export default function Hero() {
             transition={{ delay: 0.25 }}
             className="mt-5 text-lg text-muted md:mt-6 md:text-xl"
           >
-            Social media, content video, website-uri, magazine online și
-            aplicații mobile dezvoltate pentru o prezență digitală solidă
+            Construim prezențe digitale complete prin social media, content
+            video, website-uri, magazine online, aplicații mobile și soluții
+            inteligente bazate pe inteligență artificială.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}

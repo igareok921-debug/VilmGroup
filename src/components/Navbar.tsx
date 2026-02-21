@@ -12,15 +12,15 @@ export default function Navbar() {
     <header className="fixed top-4 left-0 right-0 z-50">
       <div className="relative mx-auto w-[calc(100%-2rem)] max-w-6xl">
         <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-bg-0/85 px-6 py-3 backdrop-blur-md">
-          <div className="h-12 w-12 overflow-visible">
+          <div className="h-12 w-28 overflow-visible">
             <Image
-              src="/logo-v5.svg"
+              src="/LogoV5.svg"
               alt="Vilm Group"
-              width={48}
-              height={48}
+              width={220}
+              height={88}
               unoptimized
               priority
-              className="h-12 w-12 origin-left scale-[1.0] rounded-md object-cover"
+              className="h-12 w-full origin-left object-contain"
             />
           </div>
           <nav className="hidden items-center gap-8 text-sm text-white md:flex">
