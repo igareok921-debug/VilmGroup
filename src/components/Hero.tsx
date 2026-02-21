@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-accent-pink/10 via-bg-0/10 to-bg-0/25" />
-      <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-6xl flex-col justify-center px-6 py-24">
+      <div className="relative z-10 mx-auto flex min-h-[72vh] w-full max-w-6xl flex-col justify-center px-6 py-14 md:min-h-[90vh] md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,7 +79,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.6 }}
-          className="mt-8 grid gap-4 text-[0.85rem] text-muted sm:grid-cols-3 md:mt-10 md:text-sm"
+          className="mt-6 grid gap-4 text-[0.85rem] text-muted sm:grid-cols-3 md:mt-10 md:text-sm"
         >
           <div className="flex items-center rounded-2xl border border-border/70 bg-surface-1/70 px-4 py-2.5">
             Strategie & creștere pe social media
@@ -89,6 +89,15 @@ export default function Hero() {
           </div>
           <div className="flex items-center rounded-2xl border border-border/70 bg-surface-1/70 px-4 py-2.5">
             Produse digitale scalabile end-to-end
+          </div>
+          <div className="flex items-center rounded-2xl border border-border/70 bg-surface-1/70 px-4 py-2.5">
+            Website-uri rapide, optimizate și orientate pe conversii
+          </div>
+          <div className="flex items-center rounded-2xl border border-border/70 bg-surface-1/70 px-4 py-2.5">
+            Aplicații mobile native și cross-platform scalabile
+          </div>
+          <div className="flex items-center rounded-2xl border border-border/70 bg-surface-1/70 px-4 py-2.5">
+            Automatizări și soluții bazate pe inteligență artificială
           </div>
         </motion.div>
       </div>

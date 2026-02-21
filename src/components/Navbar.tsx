@@ -28,10 +28,10 @@ export default function Navbar() {
               Servicii digitale
             </a>
             <a className="transition hover:text-accent-pink" href="#portofoliu">
-              Studii de caz
+              Portofoliu
             </a>
-            <a className="transition hover:text-accent-pink" href="#proces">
-              Metodologia noastră
+            <a className="transition hover:text-accent-pink" href="#testimoniale">
+              Testimoniale
             </a>
             <a className="transition hover:text-accent-pink" href="#contact">
               Contact
@@ -91,14 +91,14 @@ export default function Navbar() {
                 href="#portofoliu"
                 onClick={closeMenu}
               >
-                Studii de caz
+                Portofoliu
               </a>
               <a
                 className="rounded-xl px-3 py-2 transition hover:bg-white/5 hover:text-accent-pink"
-                href="#proces"
+                href="#testimoniale"
                 onClick={closeMenu}
               >
-                Metodologia noastră
+                Testimoniale
               </a>
               <a
                 className="rounded-xl px-3 py-2 transition hover:bg-white/5 hover:text-accent-pink"

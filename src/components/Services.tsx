@@ -170,7 +170,7 @@ function ServiceMedia({ media }: { media: ServiceMediaData }) {
 
 export default function Services() {
   return (
-    <section id="servicii" className="mx-auto w-full max-w-6xl px-6 py-20">
+    <section id="servicii" className="mx-auto w-full max-w-6xl px-6 py-10 md:py-20">
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
