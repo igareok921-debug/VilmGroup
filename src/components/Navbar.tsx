@@ -45,7 +45,7 @@ export default function Navbar() {
           </a>
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan p-2 text-white shadow-glow transition hover:opacity-90 md:hidden"
+            className="inline-flex items-center justify-center p-2 transition hover:opacity-90 md:hidden"
             aria-label="Deschide meniul"
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
@@ -53,17 +53,17 @@ export default function Navbar() {
           >
             <span className="relative block h-5 w-5">
               <span
-                className={`absolute left-0 top-1 block h-0.5 w-5 bg-current transition ${
+                className={`absolute left-0 top-1 block h-0.5 w-5 bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan transition ${
                   isOpen ? "translate-y-1.5 rotate-45" : ""
                 }`}
               />
               <span
-                className={`absolute left-0 top-2.5 block h-0.5 w-5 bg-current transition ${
+                className={`absolute left-0 top-2.5 block h-0.5 w-5 bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan transition ${
                   isOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`absolute left-0 top-4 block h-0.5 w-5 bg-current transition ${
+                className={`absolute left-0 top-4 block h-0.5 w-5 bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan transition ${
                   isOpen ? "-translate-y-1.5 -rotate-45" : ""
                 }`}
               />
