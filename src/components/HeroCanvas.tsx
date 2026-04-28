@@ -5,11 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 function ParticleField({
-  count = 1800,
+  count = 800,
   pointerRef,
 }: {
   count?: number;
-  pointerRef: React.MutableRefObject<{ x: number; y: number }>;
+  pointerRef: React.RefObject<{ x: number; y: number }>;
 }) {
   const points = useRef<THREE.Points>(null!);
 
@@ -17,8 +17,8 @@ function ParticleField({
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
-    const pink = new THREE.Color("#FF00AA");
-    const cyan = new THREE.Color("#58CFFF");
+    const gold = new THREE.Color("#c8a96a");
+    const cyan = new THREE.Color("#58cfff");
     const rand = (n: number) => {
       const x = Math.sin(n * 12.9898) * 43758.5453;
       return x - Math.floor(x);
@@ -34,7 +34,7 @@ function ParticleField({
       positions[i3 + 1] = (ry - 0.5) * 8;
       positions[i3 + 2] = (rz - 0.5) * 8;
 
-      const c = rc < 0.22 ? cyan : pink;
+      const c = rc < 0.5 ? cyan : gold;
       colors[i3 + 0] = c.r;
       colors[i3 + 1] = c.g;
       colors[i3 + 2] = c.b;
@@ -72,11 +72,13 @@ function ParticleField({
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.03}
+        size={0.025}
         vertexColors
         transparent
-        opacity={0.85}
+        opacity={0.5}
         depthWrite={false}
+        sizeAttenuation
+        blending={THREE.AdditiveBlending}
       />
     </points>
   );
@@ -85,7 +87,7 @@ function ParticleField({
 function LightSweep({
   pointerRef,
 }: {
-  pointerRef: React.MutableRefObject<{ x: number; y: number }>;
+  pointerRef: React.RefObject<{ x: number; y: number }>;
 }) {
   const lightA = useRef<THREE.PointLight>(null!);
   const lightB = useRef<THREE.PointLight>(null!);
@@ -112,9 +114,9 @@ function LightSweep({
 
   return (
     <>
-      <pointLight ref={lightA} color="#FF00AA" intensity={1.15} distance={20} />
-      <pointLight ref={lightB} color="#58CFFF" intensity={0.95} distance={18} />
-      <pointLight ref={lightC} color="#D17CFF" intensity={0.75} distance={16} />
+      <pointLight ref={lightA} color="#c8a96a" intensity={0.9} distance={20} />
+      <pointLight ref={lightB} color="#58CFFF" intensity={0.7} distance={18} />
+      <pointLight ref={lightC} color="#8fb4d8" intensity={0.55} distance={16} />
     </>
   );
 }

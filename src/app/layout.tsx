@@ -1,16 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Vilm Group | Agenție Digitală Premium",
+  title: "Vilm Group — Studio Digital Premium",
   description:
-    "Vilm Group crește branduri prin marketing digital, conținut și tehnologie.",
+    "Construim infrastructura digitală și imaginea online a brandurilor prin SMM, websites, branding, logo și graphic design.",
 };
 
 export default function RootLayout({
@@ -20,7 +36,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body
+        className={`${syne.variable} ${manrope.variable} ${jetbrains.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

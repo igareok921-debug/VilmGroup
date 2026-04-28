@@ -1,123 +1,158 @@
- "use client";
+"use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
+
+const navItems = [
+  { href: "#servicii", label: "Servicii" },
+  { href: "#portofoliu", label: "Portofoliu" },
+  { href: "#testimoniale", label: "Recenzii" },
+  { href: "#contact", label: "Contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, "0");
+      const mm = String(now.getMinutes()).padStart(2, "0");
+      setTime(`${hh}:${mm} EET`);
+    };
+    update();
+    const id = setInterval(update, 30000);
+    return () => clearInterval(id);
+  }, []);
 
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50">
-      <div className="relative mx-auto w-[calc(100%-2rem)] max-w-6xl">
-        <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-bg-0/85 px-6 py-3 backdrop-blur-md">
-          <div className="h-12 w-28 overflow-visible">
-            <Image
-              src="/LogoV5.svg"
-              alt="Vilm Group"
-              width={220}
-              height={88}
-              unoptimized
-              priority
-              className="h-12 w-full origin-left object-contain"
-            />
-          </div>
-          <nav className="hidden items-center gap-8 text-sm text-white md:flex">
-            <a className="transition hover:text-accent-pink" href="#servicii">
-              Servicii digitale
-            </a>
-            <a className="transition hover:text-accent-pink" href="#portofoliu">
-              Portofoliu
-            </a>
-            <a className="transition hover:text-accent-pink" href="#testimoniale">
-              Testimoniale
-            </a>
-            <a className="transition hover:text-accent-pink" href="#contact">
-              Contact
-            </a>
-          </nav>
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "border-b border-border/60 bg-bg-0/85 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
           <a
-            className="hidden rounded-2xl border border-border/80 px-4 py-2 text-sm font-medium text-white transition hover:border-accent-pink/80 hover:text-accent-pink md:inline-flex"
-            href="#contact"
+            href="#"
+            className="inline-flex items-center gap-3 transition-opacity duration-300 hover:opacity-80"
           >
-            Cere ofertă
+            <Logo variant="gold" className="h-7 w-auto md:h-8" />
           </a>
+
+          <nav className="hidden items-center gap-10 md:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group flex items-baseline"
+              >
+                <span className="link-underline font-display text-[15px] font-medium text-text">
+                  {item.label}
+                </span>
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-6 md:flex">
+            <span
+              aria-hidden
+              className="font-mono text-[10px] tracking-[0.2em] text-muted"
+            >
+              {time}
+            </span>
+            <a href="#contact" className="btn-primary text-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-bg-0" aria-hidden />
+              Cere ofertă
+            </a>
+          </div>
+
           <button
             type="button"
-            className="inline-flex items-center justify-center p-2 transition hover:opacity-90 md:hidden"
-            aria-label="Deschide meniul"
+            className="relative inline-flex h-10 w-10 items-center justify-center md:hidden"
+            aria-label={isOpen ? "Închide meniul" : "Deschide meniul"}
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={() => setIsOpen((p) => !p)}
           >
-            <span className="relative block h-5 w-5">
+            <span className="relative block h-3.5 w-6">
               <span
-                className={`absolute left-0 top-1 block h-0.5 w-5 bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan transition ${
-                  isOpen ? "translate-y-1.5 rotate-45" : ""
+                className={`absolute left-0 h-px w-6 bg-text transition-all duration-300 ${
+                  isOpen ? "top-1/2 rotate-45" : "top-0"
                 }`}
               />
               <span
-                className={`absolute left-0 top-2.5 block h-0.5 w-5 bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan transition ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute left-0 top-4 block h-0.5 w-5 bg-gradient-to-r from-brand-magenta via-accent-pink to-glow-cyan transition ${
-                  isOpen ? "-translate-y-1.5 -rotate-45" : ""
+                className={`absolute left-0 h-px w-6 bg-text transition-all duration-300 ${
+                  isOpen ? "top-1/2 -rotate-45" : "top-full"
                 }`}
               />
             </span>
           </button>
         </div>
-
-        <div
-          id="mobile-nav"
-          className={`overflow-hidden transition-all duration-300 md:hidden ${
-            isOpen ? "mt-3 max-h-80 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="rounded-2xl border border-border/60 bg-bg-0/90 p-4 backdrop-blur-md">
-            <nav className="flex flex-col gap-2 text-sm text-white">
-              <a
-                className="rounded-xl px-3 py-2 transition hover:bg-white/5 hover:text-accent-pink"
-                href="#servicii"
-                onClick={closeMenu}
-              >
-                Servicii digitale
-              </a>
-              <a
-                className="rounded-xl px-3 py-2 transition hover:bg-white/5 hover:text-accent-pink"
-                href="#portofoliu"
-                onClick={closeMenu}
-              >
-                Portofoliu
-              </a>
-              <a
-                className="rounded-xl px-3 py-2 transition hover:bg-white/5 hover:text-accent-pink"
-                href="#testimoniale"
-                onClick={closeMenu}
-              >
-                Testimoniale
-              </a>
-              <a
-                className="rounded-xl px-3 py-2 transition hover:bg-white/5 hover:text-accent-pink"
-                href="#contact"
-                onClick={closeMenu}
-              >
-                Contact
-              </a>
-            </nav>
-            <a
-              className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-border/80 px-4 py-2 text-sm font-medium text-white transition hover:border-accent-pink/80 hover:text-accent-pink"
-              href="#contact"
-              onClick={closeMenu}
-            >
-              Cere ofertă
-            </a>
-          </div>
-        </div>
       </div>
+
+      <AnimatePresence>
+        {isOpen ? (
+          <motion.div
+            id="mobile-nav"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden"
+          >
+            <motion.div
+              initial={{ y: -12 }}
+              animate={{ y: 0 }}
+              exit={{ y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="border-b border-border bg-bg-0/95 backdrop-blur-xl"
+            >
+              <nav className="flex flex-col px-6 py-6">
+                {navItems.map((item, i) => (
+                  <motion.a
+                    key={item.href}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.05 }}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="flex items-baseline border-b border-border py-4"
+                  >
+                    <span className="font-display text-2xl font-semibold text-text">
+                      {item.label}
+                    </span>
+                  </motion.a>
+                ))}
+                <motion.a
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  href="#contact"
+                  onClick={closeMenu}
+                  className="btn-primary mt-6 justify-center"
+                >
+                  Cere ofertă
+                </motion.a>
+              </nav>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
