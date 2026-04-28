@@ -133,7 +133,7 @@ export default function ScrollPathLine() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-x-0 top-0 z-0 block"
+      className="pointer-events-none absolute inset-x-0 top-0 z-[1] block"
       style={{ height: pageHeight }}
     >
       <svg

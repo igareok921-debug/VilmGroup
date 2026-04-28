@@ -271,6 +271,7 @@ body {
   display: flex;
   width: max-content;
   animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 .marquee-slow {
   animation-duration: 60s;
@@ -304,10 +305,6 @@ body {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .marquee,
-  .marquee-slow {
-    animation: none;
-  }
   *,
   *::before,
   *::after {

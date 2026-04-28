@@ -146,7 +146,7 @@ export default function AssistantRobot() {
   return (
     <>
       <nav
-        className="pointer-events-auto fixed top-32 right-4 z-50 flex flex-col gap-2 sm:right-6 md:top-36 md:right-10"
+        className="pointer-events-auto fixed top-24 right-3 z-50 hidden flex-col gap-2 sm:right-6 md:top-36 md:right-10 md:flex"
         aria-label="Social media"
       >
         {socialLinks.map((item) => (
