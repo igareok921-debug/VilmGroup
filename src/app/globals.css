@@ -314,6 +314,19 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation-name: marquee !important;
+    animation-duration: 40s !important;
+    animation-timing-function: linear !important;
+    animation-iteration-count: infinite !important;
+  }
+
+  .marquee-slow {
+    animation-duration: 60s !important;
+  }
+}
+
 /* Scrollbar refinement */
 ::-webkit-scrollbar {
   width: 10px;
