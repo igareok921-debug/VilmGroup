@@ -1,13 +1,16 @@
+"use client";
+
 import Logo from "./Logo";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const navLinks = [
-  { href: "/#servicii", label: "Servicii" },
-  { href: "/#portofoliu", label: "Portofoliu" },
-  { href: "/#colaborari", label: "Colaborări" },
-  { href: "/#testimoniale", label: "Recenzii" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact" },
-];
+  { href: "/#servicii", key: "services" },
+  { href: "/#portofoliu", key: "portfolio" },
+  { href: "/#colaborari", key: "collaborations" },
+  { href: "/#testimoniale", key: "testimonials" },
+  { href: "/#faq", key: "faq" },
+  { href: "/#contact", key: "contact" },
+] as const;
 
 const socialLinks = [
   {
@@ -25,6 +28,8 @@ const socialLinks = [
 const marqueeWords = ["LET'S MAKE", "SOMETHING", "GREAT.", "✦"];
 
 export default function Footer() {
+  const { dictionary, locale } = useI18n();
+  const localePrefix = locale === "ro" ? "" : `/${locale}`;
   const loop = [...marqueeWords, ...marqueeWords, ...marqueeWords];
 
   return (
@@ -51,14 +56,12 @@ export default function Footer() {
           <div className="flex flex-col gap-6 md:col-span-5">
             <Logo variant="gold" className="h-9 w-auto self-start" />
             <p className="max-w-md text-[15px] font-normal leading-relaxed text-text-soft">
-              Studio digital independent. Construim infrastructura digitală și
-              imaginea online a brandurilor prin marketing, conținut și
-              tehnologie.
+              {dictionary.footer.about}
             </p>
             <div className="mt-2 flex items-center gap-3">
               <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
               <span className="font-mono text-[10px] tracking-[0.25em] text-muted">
-                ACCEPTĂM PROIECTE NOI
+                {dictionary.footer.accepting}
               </span>
             </div>
           </div>
@@ -66,16 +69,16 @@ export default function Footer() {
           {/* Nav */}
           <div className="md:col-span-3">
             <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
-              NAVIGARE
+              {dictionary.footer.navigation}
             </p>
             <ul className="mt-5 flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
-                    href={link.href}
+                    href={`${localePrefix}${link.href}`}
                     className="link-underline font-display text-base font-medium text-text"
                   >
-                    {link.label}
+                    {dictionary.nav[link.key]}
                   </a>
                 </li>
               ))}
@@ -85,7 +88,7 @@ export default function Footer() {
           {/* Social */}
           <div className="md:col-span-2">
             <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
-              SOCIAL
+              {dictionary.footer.social}
             </p>
             <ul className="mt-5 flex flex-col gap-3">
               {socialLinks.map((link) => (
@@ -104,7 +107,7 @@ export default function Footer() {
           {/* Contact */}
           <div className="md:col-span-2">
             <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
-              CONTACT
+              {dictionary.footer.contact}
             </p>
             <ul className="mt-5 flex flex-col gap-3">
               <li>
@@ -116,7 +119,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="font-mono text-[10px] tracking-[0.2em] text-muted">
-                CHIȘINĂU · MD
+                {dictionary.footer.city}
               </li>
             </ul>
           </div>
@@ -124,14 +127,14 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
-            © 2026 VILM GROUP — TOATE DREPTURILE REZERVATE
+            {dictionary.footer.rights}
           </p>
           <div className="flex gap-6 font-mono text-[10px] tracking-[0.25em] text-muted">
             <a href="#" className="transition hover:text-accent">
-              CONFIDENȚIALITATE
+              {dictionary.footer.privacy}
             </a>
             <a href="#" className="transition hover:text-accent">
-              TERMENI
+              {dictionary.footer.terms}
             </a>
           </div>
         </div>

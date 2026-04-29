@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const videoTestimonials = [
   {
@@ -25,6 +26,7 @@ const videoTestimonials = [
 ];
 
 export default function Testimonials() {
+  const { dictionary } = useI18n();
   const [activeVideo, setActiveVideo] = useState<
     (typeof videoTestimonials)[number] | null
   >(null);
@@ -44,16 +46,21 @@ export default function Testimonials() {
         <div className="flex items-center gap-3">
           <span className="h-px w-10 bg-accent" />
           <span className="font-mono text-[10px] tracking-[0.3em] text-accent">
-            CE SPUN CLIENȚII
+            {dictionary.testimonials.eyebrow}
           </span>
         </div>
         <h2 className="mt-6 font-display text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-7xl">
-          Vorbesc <span className="italic text-accent">rezultatele</span> și{" "}
-          <span className="italic text-accent">oamenii</span>.
+          {dictionary.testimonials.titleBefore}{" "}
+          <span className="italic text-accent">
+            {dictionary.testimonials.titleAccent1}
+          </span>{" "}
+          {dictionary.testimonials.titleMiddle}{" "}
+          <span className="italic text-accent">
+            {dictionary.testimonials.titleAccent2}
+          </span>.
         </h2>
         <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-text-soft">
-          Recenzii video de la clienți care au lucrat cu Vilmgroup pentru
-          imagine, conținut și prezență digitală.
+          {dictionary.testimonials.text}
         </p>
       </motion.div>
 
@@ -67,10 +74,10 @@ export default function Testimonials() {
         <div className="border-t border-border pt-8">
           <div className="mb-5 flex items-center justify-between gap-4">
             <p className="font-mono text-[10px] tracking-[0.25em] text-accent">
-              RECENZII VIDEO
+              {dictionary.testimonials.videoReviews}
             </p>
             <p className="hidden font-mono text-[10px] tracking-[0.2em] text-muted sm:block">
-              CLICK PENTRU PLAY
+              {dictionary.testimonials.clickPlay}
             </p>
           </div>
 
@@ -89,12 +96,13 @@ export default function Testimonials() {
                   type="button"
                   onClick={() => setActiveVideo(video)}
                   className="absolute inset-0 z-10 cursor-pointer"
-                  aria-label={`Redă ${video.title} ${i + 1}`}
+                  aria-label={`${dictionary.testimonials.play} ${video.title} ${i + 1}`}
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-4 p-5">
                   <div>
                     <p className="font-mono text-[10px] tracking-[0.2em] text-accent">
-                      {String(i + 1).padStart(2, "0")} / VIDEO
+                      {String(i + 1).padStart(2, "0")} /{" "}
+                      {dictionary.testimonials.video}
                     </p>
                     <h3 className="mt-1 font-display text-xl font-semibold text-text">
                       {video.title}
@@ -110,7 +118,7 @@ export default function Testimonials() {
                       setActiveVideo(video);
                     }}
                     className="pointer-events-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-bg-0 transition hover:bg-accent-soft"
-                    aria-label={`Redă ${video.title} ${i + 1}`}
+                    aria-label={`${dictionary.testimonials.play} ${video.title} ${i + 1}`}
                   >
                     ▶
                   </button>
@@ -146,7 +154,7 @@ export default function Testimonials() {
                 onClick={() => setActiveVideo(null)}
                 className="absolute -top-12 right-0 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2 font-mono text-[10px] tracking-[0.2em] text-text transition hover:border-accent hover:text-accent"
               >
-                ÎNCHIDE
+                {dictionary.testimonials.close}
               </button>
               <video
                 className="max-h-[82svh] w-full rounded-2xl border border-white/15 bg-bg-0 shadow-[0_30px_90px_rgba(0,0,0,0.75)]"

@@ -3,68 +3,53 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useI18n } from "@/i18n/I18nProvider";
 
 type CategoryKey = "all" | "social" | "webapp";
 
-const categories: { key: CategoryKey; label: string }[] = [
-  { key: "all", label: "Toate" },
-  { key: "social", label: "Social & Content" },
-  { key: "webapp", label: "Web & App" },
+const categories: { key: CategoryKey }[] = [
+  { key: "all" },
+  { key: "social" },
+  { key: "webapp" },
 ];
 
 const projects: {
   title: string;
-  desc: string;
   category: Exclude<CategoryKey, "all">;
   previewGradient: string;
   previewImages?: string[];
-  details?: string[];
   link?: string;
   featuredGrid?: boolean;
   year?: string;
 }[] = [
   {
     title: "Femeia în Roșu",
-    desc: "Landing pentru eveniment feminin premium. Platformă dedicată promovării unui eveniment inspirațional, construită pentru impact vizual și conversii.",
     category: "webapp",
     previewGradient: "from-[#1a0d18] via-[#2a1a26] to-[#3a1a2a]",
     previewImages: ["/p4.png", "/p3.png", "/p2.png", "/P1.png"],
-    details: [
-      "Speakeri: Alexandru Bordea — Business Mentor · Caraush Alina — Stylist · Emilia Ceaglic — Moderator · Maria Baciu — Tricoterapeut",
-      "Livrare: Design elegant · UX orientat pe înscrieri · Evidențiere autoritate · CTA strategic",
-    ],
     featuredGrid: true,
     year: "2025",
   },
   {
     title: "Curs SMM",
-    desc: "Platformă educațională pentru Social Media Marketing. Landing dedicat promovării unui curs practic de SMM, structurat pentru claritate, autoritate și conversii.",
     category: "webapp",
     previewGradient: "from-[#0d1424] via-[#1a2540] to-[#2a3560]",
     previewImages: ["/p1.1.png", "/p1.2.png", "/p1.3.png", "/p1.4.png"],
-    details: [
-      "Obiectiv: Prezentarea modulelor și facilitarea înscrierii rapide.",
-      "Livrare: Design modern · Structură UX intuitivă · CTA strategic · Optimizare pentru conversii",
-      "Impact: Platformă pregătită pentru campanii ads și scalare digitală.",
-    ],
     featuredGrid: true,
     year: "2025",
   },
   {
     title: "Valeria SMM",
-    desc: "Landing pentru Ghid Simplu CapCut. Pagină creată pentru promovarea unui ghid gratuit despre realizarea reel-urilor direct de pe telefon.",
     category: "social",
     previewGradient: "from-[#1a1a26] via-[#2a2a3a] to-[#3a3340]",
     previewImages: ["/v1.png", "/v2.png", "/v3.png"],
-    details: [
-      "Livrare: Design curat · Structură pas cu pas · CTA pentru acces gratuit",
-    ],
     featuredGrid: true,
     year: "2025",
   },
 ];
 
 export default function Portfolio() {
+  const { dictionary } = useI18n();
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("all");
 
   const filteredProjects = useMemo(() => {
@@ -89,7 +74,7 @@ export default function Portfolio() {
           <div className="flex items-center gap-3">
             <span className="h-px w-10 bg-accent" />
             <span className="font-mono text-[10px] tracking-[0.3em] text-accent">
-              SELECȚIE / 2025 — 2026
+              {dictionary.portfolio.eyebrow}
             </span>
           </div>
         </motion.div>
@@ -101,9 +86,12 @@ export default function Portfolio() {
           className="md:col-span-8"
         >
           <h2 className="font-display text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-7xl">
-            Cazuri reale,
+            {dictionary.portfolio.titleLine1}
             <br />
-            <span className="italic text-accent">rezultate</span> care vorbesc.
+            <span className="italic text-accent">
+              {dictionary.portfolio.titleAccent}
+            </span>{" "}
+            {dictionary.portfolio.titleRest}
           </h2>
         </motion.div>
       </div>
@@ -111,7 +99,7 @@ export default function Portfolio() {
       {/* Filters */}
       <div className="mb-10 flex flex-wrap items-center gap-2 border-b border-border pb-6 md:gap-4">
         <span className="mr-2 font-mono text-[10px] tracking-[0.25em] text-muted">
-          FILTREAZĂ:
+          {dictionary.portfolio.filter}
         </span>
         {categories.map((category) => {
           const isActive = activeCategory === category.key;
@@ -129,7 +117,9 @@ export default function Portfolio() {
                   isActive ? "bg-accent" : "bg-border-strong"
                 }`}
               />
-              <span className="font-display font-medium">{category.label}</span>
+              <span className="font-display font-medium">
+                {dictionary.portfolio.categories[category.key]}
+              </span>
             </button>
           );
         })}
@@ -138,7 +128,11 @@ export default function Portfolio() {
       {/* Projects */}
       <motion.div layout className="grid gap-x-8 gap-y-16 md:grid-cols-2 md:gap-y-24">
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => {
+            const projectIndex = projects.findIndex((item) => item.title === project.title);
+            const localizedProject = dictionary.portfolio.projects[projectIndex];
+
+            return (
             <motion.article
               key={project.title}
               layout
@@ -223,11 +217,11 @@ export default function Portfolio() {
                         {project.title}
                       </h3>
                       <p className="text-[15px] font-normal leading-relaxed text-text-soft">
-                        {project.desc}
+                        {localizedProject.desc}
                       </p>
-                      {project.details ? (
+                      {localizedProject.details ? (
                         <ul className="space-y-2.5 text-[14px] font-normal leading-relaxed text-text-soft">
-                          {project.details.map((item) => (
+                          {localizedProject.details.map((item) => (
                             <li key={item} className="flex gap-2.5">
                               <span className="mt-2 h-px w-2.5 shrink-0 bg-accent" />
                               <span>{item}</span>
@@ -236,7 +230,7 @@ export default function Portfolio() {
                         </ul>
                       ) : null}
                       <span className="cta-underline mt-2 text-sm">
-                        {project.link ? "Vezi proiectul" : "Vreau ceva similar"}
+                        {project.link ? "Vezi proiectul" : dictionary.common.similar}
                         <span aria-hidden className="cta-arrow">
                           →
                         </span>
@@ -264,7 +258,7 @@ export default function Portfolio() {
                           {project.title}
                         </h3>
                         <p className="mt-2 max-w-md text-[15px] font-normal leading-relaxed text-text-soft">
-                          {project.desc}
+                          {localizedProject.desc}
                         </p>
                       </div>
                       <span
@@ -278,7 +272,8 @@ export default function Portfolio() {
                 )}
               </a>
             </motion.article>
-          ))}
+            );
+          })}
         </AnimatePresence>
       </motion.div>
     </section>

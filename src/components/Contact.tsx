@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const CONTACT_EMAIL = "info@vilmgroup.md";
 
@@ -18,6 +19,13 @@ const interests = [
 ];
 
 export default function Contact() {
+  const { dictionary, locale } = useI18n();
+  const localizedInterests =
+    locale === "ru"
+      ? ["SMM", "Брендинг", "Логотип", "Графический дизайн", "Сайт", "Приложение", "AI"]
+      : locale === "en"
+      ? ["SMM", "Branding", "Logo", "Graphic Design", "Website", "App", "AI"]
+      : interests;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -37,7 +45,7 @@ export default function Contact() {
     setErrorMessage("");
 
     const composedMessage = selected.length
-      ? `Interes: ${selected.join(", ")}\n\n${message}`
+      ? `${dictionary.contactSection.interests}: ${selected.join(", ")}\n\n${message}`
       : message;
 
     try {
@@ -50,7 +58,7 @@ export default function Contact() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error ?? "A apărut o eroare.");
+        throw new Error(data.error ?? dictionary.contactSection.error);
       }
 
       setStatus("sent");
@@ -61,7 +69,7 @@ export default function Contact() {
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error ? error.message : "A apărut o eroare."
+        error instanceof Error ? error.message : dictionary.contactSection.error
       );
     }
   };
@@ -83,25 +91,27 @@ export default function Contact() {
           <div className="flex items-center gap-3">
             <span className="h-px w-10 bg-accent" />
             <span className="font-mono text-[10px] tracking-[0.3em] text-accent">
-              CONTACT
+              {dictionary.contactSection.eyebrow}
             </span>
           </div>
 
           <h2 className="mt-6 font-display text-5xl font-bold leading-[0.92] tracking-[-0.04em] text-text md:text-7xl">
-            Hai să facem
+            {dictionary.contactSection.titleLine1}
             <br />
-            ceva <span className="italic text-accent">memorabil</span>.
+            {dictionary.contactSection.titleBeforeAccent}{" "}
+            <span className="italic text-accent">
+              {dictionary.contactSection.titleAccent}
+            </span>.
           </h2>
 
           <p className="mt-6 max-w-md text-[17px] font-normal leading-relaxed text-text-soft">
-            Răspundem în maxim 24h cu o propunere personalizată. Niciun
-            template, niciun copy-paste.
+            {dictionary.contactSection.text}
           </p>
 
           <div className="mt-12 space-y-6 border-t border-border pt-8">
             <div>
               <p className="font-mono text-[11px] tracking-[0.25em] text-muted">
-                EMAIL
+                {dictionary.contactSection.email}
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -112,10 +122,10 @@ export default function Contact() {
             </div>
             <div>
               <p className="font-mono text-[11px] tracking-[0.25em] text-muted">
-                STUDIO
+                {dictionary.contactSection.studio}
               </p>
               <span className="mt-1 inline-block font-display text-lg font-medium text-text">
-                Chișinău, Moldova
+                {dictionary.contactSection.city}
               </span>
             </div>
           </div>
@@ -136,10 +146,10 @@ export default function Contact() {
             {/* Interests */}
             <div className="space-y-4">
               <label className="block font-mono text-[11px] tracking-[0.25em] text-muted">
-                MĂ INTERESEAZĂ
+                {dictionary.contactSection.interests}
               </label>
               <div className="flex flex-wrap gap-2">
-                {interests.map((item) => {
+                {localizedInterests.map((item) => {
                   const isOn = selected.includes(item);
                   return (
                     <button
@@ -166,7 +176,7 @@ export default function Contact() {
                   htmlFor="contact-name"
                   className="block font-mono text-[11px] tracking-[0.25em] text-muted"
                 >
-                  NUME
+                  {dictionary.contactSection.name}
                 </label>
                 <input
                   id="contact-name"
@@ -177,7 +187,7 @@ export default function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-2 w-full rounded-lg border border-white/25 bg-white/[0.08] px-4 py-3.5 font-display text-lg text-text outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:text-text-soft hover:border-white/40 hover:bg-white/[0.12] focus:border-accent focus:bg-white/[0.14]"
-                  placeholder="Numele tău"
+                  placeholder={dictionary.contactSection.namePlaceholder}
                 />
               </div>
               <div className="group relative">
@@ -185,7 +195,7 @@ export default function Contact() {
                   htmlFor="contact-email"
                   className="block font-mono text-[11px] tracking-[0.25em] text-muted"
                 >
-                  EMAIL
+                  {dictionary.contactSection.email}
                 </label>
                 <input
                   id="contact-email"
@@ -207,7 +217,7 @@ export default function Contact() {
                 htmlFor="contact-message"
                 className="block font-mono text-[11px] tracking-[0.25em] text-muted"
               >
-                MESAJ
+                  {dictionary.contactSection.message}
               </label>
               <textarea
                 id="contact-message"
@@ -217,20 +227,22 @@ export default function Contact() {
                 onChange={(e) => setMessage(e.target.value)}
                 rows={5}
                 className="mt-2 w-full resize-none rounded-lg border border-white/25 bg-white/[0.08] px-4 py-3.5 font-display text-lg leading-relaxed text-text outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:text-text-soft hover:border-white/40 hover:bg-white/[0.12] focus:border-accent focus:bg-white/[0.14]"
-                placeholder="Spune-ne despre obiectivele tale…"
+                placeholder={dictionary.contactSection.messagePlaceholder}
               />
             </div>
 
             <div className="flex flex-col gap-6 border-t border-border pt-6 md:flex-row md:items-center md:justify-between">
               <p className="font-mono text-[11px] tracking-[0.25em] text-muted">
-                RĂSPUNDEM ÎN MAX 24H
+                {dictionary.contactSection.reply}
               </p>
               <button
                 type="submit"
                 disabled={status === "sending"}
                 className="btn-primary justify-center disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {status === "sending" ? "Se trimite..." : "Trimite mesajul"}
+                {status === "sending"
+                  ? dictionary.contactSection.sending
+                  : dictionary.contactSection.submit}
                 <span aria-hidden>→</span>
               </button>
             </div>
@@ -240,7 +252,7 @@ export default function Contact() {
                 role="status"
                 className="font-mono text-xs tracking-[0.2em] text-accent"
               >
-                ✓ MESAJ TRIMIS — REVENIM ÎN CURÂND
+                ✓ {dictionary.contactSection.sent}
               </p>
             ) : null}
             {status === "error" ? (

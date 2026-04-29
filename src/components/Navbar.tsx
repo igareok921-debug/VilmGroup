@@ -4,17 +4,21 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const navItems = [
-  { href: "/#servicii", label: "Servicii" },
-  { href: "/#portofoliu", label: "Portofoliu" },
-  { href: "/#colaborari", label: "Colaborări" },
-  { href: "/#testimoniale", label: "Recenzii" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact" },
-];
+  { href: "/#servicii", key: "services" },
+  { href: "/#portofoliu", key: "portfolio" },
+  { href: "/#colaborari", key: "collaborations" },
+  { href: "/#testimoniale", key: "testimonials" },
+  { href: "/#faq", key: "faq" },
+  { href: "/#contact", key: "contact" },
+] as const;
 
 export default function Navbar() {
+  const { dictionary, locale } = useI18n();
+  const localePrefix = locale === "ro" ? "" : `/${locale}`;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [time, setTime] = useState("");
@@ -61,11 +65,11 @@ export default function Navbar() {
             {navItems.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={`${localePrefix}${item.href}`}
                 className="group flex items-baseline"
               >
                 <span className="link-underline font-display text-[15px] font-medium text-text">
-                  {item.label}
+                  {dictionary.nav[item.key]}
                 </span>
               </a>
             ))}
@@ -78,16 +82,17 @@ export default function Navbar() {
             >
               {time}
             </span>
-            <Link href="/#contact" className="btn-primary text-sm">
+            <LanguageSwitcher />
+            <Link href={`${localePrefix}/#contact`} className="btn-primary text-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-bg-0" aria-hidden />
-              Cere ofertă
+              {dictionary.nav.cta}
             </Link>
           </div>
 
           <button
             type="button"
             className="relative inline-flex h-10 w-10 items-center justify-center md:hidden"
-            aria-label={isOpen ? "Închide meniul" : "Deschide meniul"}
+            aria-label={isOpen ? dictionary.nav.close : dictionary.nav.open}
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
             onClick={() => setIsOpen((p) => !p)}
@@ -132,24 +137,32 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 + i * 0.05 }}
-                    href={item.href}
+                    href={`${localePrefix}${item.href}`}
                     onClick={closeMenu}
                     className="flex items-baseline border-b border-border py-4"
                   >
                     <span className="font-display text-2xl font-semibold text-text">
-                      {item.label}
+                      {dictionary.nav[item.key]}
                     </span>
                   </motion.a>
                 ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.28 }}
+                  className="mt-6"
+                >
+                  <LanguageSwitcher />
+                </motion.div>
                 <motion.a
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  href="/#contact"
+                  href={`${localePrefix}/#contact`}
                   onClick={closeMenu}
                   className="btn-primary mt-6 justify-center"
                 >
-                  Cere ofertă
+                  {dictionary.nav.cta}
                 </motion.a>
               </nav>
             </motion.div>

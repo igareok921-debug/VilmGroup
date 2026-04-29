@@ -3,13 +3,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { motion, animate, useMotionValue, useTransform } from "framer-motion";
 import Magnetic from "./Magnetic";
-
-const TITLE_LINES = [
-  ["Construim", "infrastructura"],
-  ["digitală", "a", "brandului", "tău."],
-];
-
-const TITLE_ACCENT_INDEX = { line: 1, word: 0 }; // "digitală"
+import { useI18n } from "@/i18n/I18nProvider";
 
 function CountUp({
   to,
@@ -41,6 +35,10 @@ function CountUp({
 }
 
 export default function Hero() {
+  const { dictionary } = useI18n();
+  const titleLines = dictionary.hero.titleLines;
+  const titleAccent = dictionary.hero.accent;
+
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20">
       {/* Editorial top labels */}
@@ -52,10 +50,10 @@ export default function Hero() {
           className="hidden flex-col gap-1 md:flex"
         >
           <span className="font-mono text-[10px] tracking-[0.25em] text-muted">
-            ◆ STUDIO DIGITAL
+            {dictionary.hero.studio}
           </span>
           <span className="font-mono text-[10px] tracking-[0.25em] text-muted">
-            CHIȘINĂU — MD · EST. 2025
+            {dictionary.hero.location}
           </span>
         </motion.div>
         <motion.div
@@ -65,10 +63,10 @@ export default function Hero() {
           className="hidden flex-col items-end gap-1 text-right md:flex"
         >
           <span className="font-mono text-[10px] tracking-[0.25em] text-muted">
-            ↓ SCROLL
+            {dictionary.hero.scroll}
           </span>
           <span className="font-mono text-[10px] tracking-[0.25em] text-muted">
-            EXPLORĂ UNIVERSUL
+            {dictionary.hero.explore}
           </span>
         </motion.div>
       </div>
@@ -95,14 +93,14 @@ export default function Hero() {
           {/* Headline column */}
           <div className="md:col-span-9">
             <h1 className="font-display text-balance text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-7xl lg:text-[6rem]">
-              {TITLE_LINES.map((line, lineIdx) => (
+              {titleLines.map((line, lineIdx) => (
                 <Fragment key={lineIdx}>
                   <span className="block">
                     {line.map((word, wIdx) => {
                       const delay = 0.25 + (lineIdx * 4 + wIdx) * 0.07;
                       const isAccent =
-                        lineIdx === TITLE_ACCENT_INDEX.line &&
-                        wIdx === TITLE_ACCENT_INDEX.word;
+                        lineIdx === titleAccent.line &&
+                        wIdx === titleAccent.word;
                       return (
                         <Fragment key={wIdx}>
                           <motion.span
@@ -137,10 +135,10 @@ export default function Hero() {
             className="md:col-span-3 md:pb-2"
           >
             <p className="text-base font-medium leading-relaxed text-text md:text-[16px]">
-              SMM · Branding · Logo · Graphic Design · Websites · Aplicații · AI.
+              {dictionary.hero.services}
             </p>
             <p className="mt-3 text-[15px] font-light leading-relaxed text-text-soft">
-              Tot ce are nevoie un brand care vrea să fie remarcat.
+              {dictionary.hero.subtitle}
             </p>
           </motion.div>
         </div>
@@ -155,13 +153,13 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-4">
             <Magnetic>
               <a className="btn-primary" href="#contact">
-                Hai să discutăm
+                {dictionary.hero.primaryCta}
                 <span aria-hidden>→</span>
               </a>
             </Magnetic>
             <Magnetic>
               <a className="btn-ghost" href="#portofoliu">
-                Vezi portofoliul
+                {dictionary.hero.secondaryCta}
               </a>
             </Magnetic>
           </div>
@@ -169,7 +167,7 @@ export default function Hero() {
           <dl className="flex gap-10 md:gap-14">
             <div>
               <dt className="font-mono text-[10px] tracking-[0.25em] text-muted">
-                PROIECTE
+                {dictionary.hero.stats.projects}
               </dt>
               <dd className="mt-1.5 font-display text-3xl font-bold leading-none tracking-[-0.03em] text-text md:text-4xl">
                 <CountUp to={30} delay={1.3} />
@@ -178,7 +176,7 @@ export default function Hero() {
             </div>
             <div>
               <dt className="font-mono text-[10px] tracking-[0.25em] text-muted">
-                BRANDURI
+                {dictionary.hero.stats.brands}
               </dt>
               <dd className="mt-1.5 font-display text-3xl font-bold leading-none tracking-[-0.03em] text-text md:text-4xl">
                 <CountUp to={15} delay={1.45} />
@@ -187,7 +185,7 @@ export default function Hero() {
             </div>
             <div>
               <dt className="font-mono text-[10px] tracking-[0.25em] text-muted">
-                ANI EXP
+                {dictionary.hero.stats.years}
               </dt>
               <dd className="mt-1.5 font-display text-3xl font-bold leading-none tracking-[-0.03em] text-text md:text-4xl">
                 <CountUp to={4} delay={1.6} duration={1.2} />

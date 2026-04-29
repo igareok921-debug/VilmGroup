@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ServiceLandingPage from "@/components/seo/ServiceLandingPage";
+import ServicePageWithLocale from "@/components/seo/ServicePageWithLocale";
 import { getServicePage } from "@/data/servicePages";
 
 const page = getServicePage("chatbots-ai");
@@ -22,5 +22,5 @@ export const metadata: Metadata = {
 
 export default function ChatbotsAiPage() {
   if (!page) return null;
-  return <ServiceLandingPage page={page} />;
+  return <ServicePageWithLocale locale="ro" page={page} />;
 }

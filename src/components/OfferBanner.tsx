@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useI18n } from "@/i18n/I18nProvider";
 
 export default function OfferBanner() {
+  const { dictionary } = useI18n();
+
   return (
     <section className="relative mx-auto w-full max-w-7xl px-6 py-12 md:px-10 md:py-16">
       <motion.div
@@ -38,27 +41,26 @@ export default function OfferBanner() {
             >
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="font-mono text-[10px] tracking-[0.25em] text-accent">
-                START DIGITAL
+                {dictionary.offer.eyebrow}
               </span>
             </motion.div>
 
             <h2 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[0.98] tracking-[-0.04em] text-text md:text-6xl">
-              Website de prezentare + SEO basic + chatbot AI opțional.
+              {dictionary.offer.title}
             </h2>
           </div>
 
           <div className="md:justify-self-end">
             <p className="max-w-md text-[16px] leading-relaxed text-text-soft md:text-lg">
-              O ofertă pentru branduri care vor să intre online rapid, clar și
-              profesionist, cu o bază digitală pregătită pentru creștere.
+              {dictionary.offer.text}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a href="#contact" className="btn-primary justify-center">
-                Cere oferta
+                {dictionary.offer.primary}
                 <span aria-hidden>→</span>
               </a>
               <a href="#servicii" className="btn-ghost justify-center">
-                Vezi ce include
+                {dictionary.offer.secondary}
               </a>
             </div>
           </div>

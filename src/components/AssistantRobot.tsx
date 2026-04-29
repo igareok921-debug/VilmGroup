@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 
 const socialLinks = [
   {
@@ -73,17 +74,15 @@ type ChatMessage = {
   content: string;
 };
 
-const initialMessages: ChatMessage[] = [
-  {
-    role: "assistant",
-    content:
-      "Bună! Mă numesc Vilm și sunt aici să te ajut. Spune-mi ce proiect ai în minte.",
-  },
-];
-
 export default function AssistantRobot() {
+  const { dictionary } = useI18n();
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      role: "assistant",
+      content: dictionary.assistant.greeting,
+    },
+  ]);
   const [inputValue, setInputValue] = useState("");
   const [isSending, setIsSending] = useState(false);
 
@@ -120,7 +119,7 @@ export default function AssistantRobot() {
       };
 
       if (!response.ok || !data.reply) {
-        throw new Error(data.error ?? "Vilm nu poate răspunde acum.");
+        throw new Error(data.error ?? dictionary.assistant.fallback);
       }
 
       setMessages((current) => [
@@ -135,7 +134,7 @@ export default function AssistantRobot() {
           content:
             error instanceof Error
               ? error.message
-              : "A apărut o eroare. Încearcă din nou.",
+              : dictionary.assistant.fallback,
         },
       ]);
     } finally {
@@ -176,7 +175,7 @@ export default function AssistantRobot() {
               VILM AI ASSISTANT
             </p>
             <p className="mt-1 font-display text-base font-semibold text-text">
-              Mă numesc Vilm și sunt aici să te ajut.
+              {dictionary.assistant.bubble}
             </p>
           </div>
 
@@ -207,7 +206,7 @@ export default function AssistantRobot() {
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
                 maxLength={1200}
-                placeholder="Scrie întrebarea..."
+                placeholder={dictionary.assistant.placeholder}
                 className="min-w-0 flex-1 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2.5 text-sm text-text outline-none transition placeholder:text-muted hover:border-white/35 focus:border-accent"
               />
               <button
@@ -215,7 +214,7 @@ export default function AssistantRobot() {
                 disabled={!inputValue.trim() || isSending}
                 className="rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-bg-0 transition hover:bg-accent-soft disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Trimite
+                {dictionary.assistant.send}
               </button>
             </form>
           </div>
@@ -227,7 +226,7 @@ export default function AssistantRobot() {
             onClick={() => setIsChatOpen(true)}
             className="pointer-events-auto mb-2 max-w-[13rem] rounded-2xl rounded-br-md border border-white/15 bg-white/[0.05] px-4 py-3 text-left text-sm leading-snug text-text shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl transition hover:border-accent"
           >
-            Bună! Mă numesc Vilm și sunt aici să te ajut.
+            {dictionary.assistant.bubble}
           </button>
         ) : null}
 
