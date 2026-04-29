@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 
 const navItems = [
-  { href: "#servicii", label: "Servicii" },
-  { href: "#portofoliu", label: "Portofoliu" },
-  { href: "#colaborari", label: "Colaborări" },
-  { href: "#testimoniale", label: "Recenzii" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#servicii", label: "Servicii" },
+  { href: "/#portofoliu", label: "Portofoliu" },
+  { href: "/#colaborari", label: "Colaborări" },
+  { href: "/#testimoniale", label: "Recenzii" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -49,12 +50,12 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="inline-flex items-center gap-3 transition-opacity duration-300 hover:opacity-80"
           >
             <Logo variant="gold" className="h-7 w-auto md:h-8" />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
@@ -77,10 +78,10 @@ export default function Navbar() {
             >
               {time}
             </span>
-            <a href="#contact" className="btn-primary text-sm">
+            <Link href="/#contact" className="btn-primary text-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-bg-0" aria-hidden />
               Cere ofertă
-            </a>
+            </Link>
           </div>
 
           <button
@@ -144,7 +145,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  href="#contact"
+                  href="/#contact"
                   onClick={closeMenu}
                   className="btn-primary mt-6 justify-center"
                 >

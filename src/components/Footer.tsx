@@ -1,12 +1,12 @@
 import Logo from "./Logo";
 
 const navLinks = [
-  { href: "#servicii", label: "Servicii" },
-  { href: "#portofoliu", label: "Portofoliu" },
-  { href: "#colaborari", label: "Colaborări" },
-  { href: "#testimoniale", label: "Recenzii" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#servicii", label: "Servicii" },
+  { href: "/#portofoliu", label: "Portofoliu" },
+  { href: "/#colaborari", label: "Colaborări" },
+  { href: "/#testimoniale", label: "Recenzii" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const socialLinks = [
@@ -14,7 +14,7 @@ const socialLinks = [
     href: "https://www.instagram.com/valeria_sirghii93/",
     label: "Instagram",
   },
-  { href: "#contact", label: "LinkedIn" },
+  { href: "/#contact", label: "LinkedIn" },
   {
     href: "https://www.facebook.com/rusnac.valeria?mibextid=wwXIfr&rdid=R9QlNIKZvhVc0a1f&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CFmXFSwx2%2F%3Fmibextid%3DwwXIfr%26ref%3D1#",
     label: "Facebook",

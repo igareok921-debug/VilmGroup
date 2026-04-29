@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 type ServiceMediaData = {
@@ -14,6 +15,7 @@ type ServiceMediaData = {
 type ServiceItem = {
   title: string;
   tagline: string;
+  href?: string;
   media: ServiceMediaData;
   points: string[];
 };
@@ -22,6 +24,7 @@ const services: ServiceItem[] = [
   {
     title: "Social Media Marketing",
     tagline: "Strategie · Conținut · Performanță",
+    href: "/smm-chisinau",
     points: [
       "Strategii personalizate, optimizare de campanii și creștere organică.",
       "Creare și administrare de conținut atractiv pentru branduri în creștere.",
@@ -39,6 +42,7 @@ const services: ServiceItem[] = [
   {
     title: "Branding & Logo",
     tagline: "Identitate · Sistem vizual · Guideline",
+    href: "/branding-logo-design",
     points: [
       "Creare identitate vizuală completă și ghid de brand profesional.",
       "Design logo, materiale de brand și elemente vizuale coerente.",
@@ -90,6 +94,7 @@ const services: ServiceItem[] = [
   {
     title: "Website Development",
     tagline: "Web Design · Performance · Conversie",
+    href: "/creare-website-uri",
     points: [
       "Website-uri rapide, scalabile și optimizate pentru performanță ridicată.",
       "Design modern și UX orientat pe conversii și experiență intuitivă.",
@@ -107,6 +112,7 @@ const services: ServiceItem[] = [
   {
     title: "AI & Automatizări",
     tagline: "Asistenți AI · Workflow · Conținut",
+    href: "/chatbots-ai",
     points: [
       "Implementare AI în workflow-ul de creație: text, imagini, video, brand.",
       "Asistenți și chatboți personalizați pentru suport clienți și vânzări.",
@@ -260,6 +266,15 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
+
+                {service.href ? (
+                  <Link
+                    href={service.href}
+                    className="mt-5 inline-flex font-display text-sm font-semibold text-accent transition hover:translate-x-1 hover:text-accent-soft"
+                  >
+                    Vezi detalii →
+                  </Link>
+                ) : null}
 
                 <a
                   href="#contact"
