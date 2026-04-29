@@ -1,22 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
+import { defaultLocale, isLocale } from "@/i18n/config";
 
 const PUBLIC_FILE = /\.(.*)$/;
-
-function detectLocale(request: NextRequest): Locale {
-  const acceptLanguage = request.headers.get("accept-language")?.toLowerCase() ?? "";
-
-  if (acceptLanguage.includes("ru")) return "ru";
-  if (
-    acceptLanguage.includes("ro") ||
-    acceptLanguage.includes("mo") ||
-    acceptLanguage.includes("md")
-  ) {
-    return "ro";
-  }
-
-  return "en";
-}
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -43,9 +28,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const locale = pathname === "/" ? detectLocale(request) : defaultLocale;
   const url = request.nextUrl.clone();
-  url.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+  url.pathname =
+    pathname === "/" ? `/${defaultLocale}` : `/${defaultLocale}${pathname}`;
 
   return NextResponse.redirect(url);
 }
