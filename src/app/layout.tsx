@@ -3,7 +3,7 @@ import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const siteUrl = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://vilmgroup.md"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
 );
 
 const title = "Vilm Group — Website-uri, SMM, Branding & AI în Chișinău";

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { servicePages } from "@/data/servicePages";
 
 const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://vilmgroup.md"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
 ).replace(/\/$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
