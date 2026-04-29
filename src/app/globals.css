@@ -267,6 +267,14 @@ body {
     transform: translateX(-50%);
   }
 }
+@keyframes offerSweep {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(400%);
+  }
+}
 .marquee {
   display: flex;
   width: max-content;

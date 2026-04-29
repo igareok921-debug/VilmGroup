@@ -5,7 +5,7 @@ import { useState } from "react";
 const socialLinks = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/valeria_sirghii93?igsh=MW0xem1nNWlrNjNoMQ%3D%3D&utm_source=qr",
+    href: "https://www.instagram.com/valeria_sirghii93/",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
         <rect

@@ -3,13 +3,15 @@ import Logo from "./Logo";
 const navLinks = [
   { href: "#servicii", label: "Servicii" },
   { href: "#portofoliu", label: "Portofoliu" },
+  { href: "#colaborari", label: "Colaborări" },
   { href: "#testimoniale", label: "Recenzii" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ];
 
 const socialLinks = [
   {
-    href: "https://www.instagram.com/valeria_sirghii93?igsh=MW0xem1nNWlrNjNoMQ%3D%3D&utm_source=qr",
+    href: "https://www.instagram.com/valeria_sirghii93/",
     label: "Instagram",
   },
   { href: "#contact", label: "LinkedIn" },

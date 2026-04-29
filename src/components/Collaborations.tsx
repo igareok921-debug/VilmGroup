@@ -28,6 +28,7 @@ export default function Collaborations() {
 
   return (
     <section className="relative w-full py-20 md:py-28">
+      <span id="colaborari" className="absolute -top-24" aria-hidden />
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}

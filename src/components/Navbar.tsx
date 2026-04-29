@@ -7,7 +7,9 @@ import Logo from "./Logo";
 const navItems = [
   { href: "#servicii", label: "Servicii" },
   { href: "#portofoliu", label: "Portofoliu" },
+  { href: "#colaborari", label: "Colaborări" },
   { href: "#testimoniale", label: "Recenzii" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -54,7 +56,7 @@ export default function Navbar() {
             <Logo variant="gold" className="h-7 w-auto md:h-8" />
           </a>
 
-          <nav className="hidden items-center gap-10 md:flex">
+          <nav className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}

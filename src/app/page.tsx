@@ -5,9 +5,11 @@ import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Collaborations from "@/components/Collaborations";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MarqueeStrip from "@/components/MarqueeStrip";
+import OfferBanner from "@/components/OfferBanner";
 import ScrollPathLine from "@/components/ScrollPathLine";
 import AssistantRobot from "@/components/AssistantRobot";
 
@@ -25,6 +27,7 @@ export default function Home() {
         <main className="flex-1">
           <Hero />
           <MarqueeStrip />
+          <OfferBanner />
           <Services />
           <MarqueeStrip
             reverse
@@ -41,6 +44,7 @@ export default function Home() {
           <Portfolio />
           <Collaborations />
           <Testimonials />
+          <FAQ />
           <Contact />
         </main>
         <Footer />
