@@ -81,18 +81,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-#google_translate_element,
-.goog-te-banner-frame,
-.goog-te-gadget,
-.goog-te-balloon-frame,
-.skiptranslate iframe {
-  display: none !important;
-}
-
-body {
-  top: 0 !important;
-}
-
 ::selection {
   background: var(--accent);
   color: var(--bg-0);
