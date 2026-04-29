@@ -33,7 +33,6 @@ const projects: {
       "Speakeri: Alexandru Bordea — Business Mentor · Caraush Alina — Stylist · Emilia Ceaglic — Moderator · Maria Baciu — Tricoterapeut",
       "Livrare: Design elegant · UX orientat pe înscrieri · Evidențiere autoritate · CTA strategic",
     ],
-    link: "https://femeia-in-rosu.vercel.app/",
     featuredGrid: true,
     year: "2025",
   },
@@ -48,7 +47,6 @@ const projects: {
       "Livrare: Design modern · Structură UX intuitivă · CTA strategic · Optimizare pentru conversii",
       "Impact: Platformă pregătită pentru campanii ads și scalare digitală.",
     ],
-    link: "https://curs-smm.vercel.app/",
     featuredGrid: true,
     year: "2025",
   },
@@ -61,7 +59,6 @@ const projects: {
     details: [
       "Livrare: Design curat · Structură pas cu pas · CTA pentru acces gratuit",
     ],
-    link: "https://valeria-smm.vercel.app/",
     featuredGrid: true,
     year: "2025",
   },
@@ -239,7 +236,7 @@ export default function Portfolio() {
                         </ul>
                       ) : null}
                       <span className="cta-underline mt-2 text-sm">
-                        Vezi proiectul
+                        {project.link ? "Vezi proiectul" : "Vreau ceva similar"}
                         <span aria-hidden className="cta-arrow">
                           →
                         </span>
