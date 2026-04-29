@@ -220,6 +220,9 @@ export const dictionaries = {
       fallback: "Vilm nu poate răspunde acum. Încearcă din nou puțin mai târziu.",
       placeholder: "Scrie întrebarea...",
       send: "Trimite",
+      typing: "Vilm scrie...",
+      openChat: "Deschide chatul",
+      closeChat: "Închide chatul",
     },
   },
   en: {
@@ -373,6 +376,9 @@ export const dictionaries = {
       fallback: "Vilm can’t respond right now. Please try again a little later.",
       placeholder: "Write your question...",
       send: "Send",
+      typing: "Vilm is typing...",
+      openChat: "Open chat",
+      closeChat: "Close chat",
     },
   },
   ru: {
@@ -526,6 +532,9 @@ export const dictionaries = {
       fallback: "Vilm сейчас не может ответить. Попробуйте немного позже.",
       placeholder: "Напишите вопрос...",
       send: "Отправить",
+      typing: "Vilm пишет...",
+      openChat: "Открыть чат",
+      closeChat: "Закрыть чат",
     },
   },
 } as const;

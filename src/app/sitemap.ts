@@ -7,11 +7,20 @@ const siteUrl = (
 ).replace(/\/$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const languageAlternates = (path = "/") => ({
+    languages: {
+      ro: `${siteUrl}/ro${path === "/" ? "" : path}`,
+      en: `${siteUrl}/en${path === "/" ? "" : path}`,
+      ru: `${siteUrl}/ru${path === "/" ? "" : path}`,
+      "x-default": `${siteUrl}/ro${path === "/" ? "" : path}`,
+    },
+  });
   const localizedHomePages = locales.map((locale) => ({
     url: `${siteUrl}/${locale}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: locale === "ro" ? 0.95 : 0.8,
+    alternates: languageAlternates("/"),
   }));
   const localizedServicePages = locales.flatMap((locale) =>
     servicePages.map((page) => ({
@@ -19,23 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.75,
+      alternates: languageAlternates(`/${page.slug}`),
     }))
   );
 
   return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
     ...localizedHomePages,
-    ...servicePages.map((page) => ({
-      url: `${siteUrl}/${page.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.85,
-    })),
     ...localizedServicePages,
   ];
 }

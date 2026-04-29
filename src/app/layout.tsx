@@ -124,7 +124,13 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "/",
+    canonical: "/ro",
+    languages: {
+      ro: "/ro",
+      en: "/en",
+      ru: "/ru",
+      "x-default": "/ro",
+    },
   },
   openGraph: {
     title,

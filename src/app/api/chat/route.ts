@@ -2,9 +2,21 @@ import { NextResponse } from "next/server";
 
 const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 
-const SYSTEM_PROMPT = `
+const LANGUAGE_NAMES = {
+  ro: "română",
+  en: "English",
+  ru: "русский",
+} as const;
+
+type Locale = keyof typeof LANGUAGE_NAMES;
+
+function getSystemPrompt(locale: Locale) {
+  const language = LANGUAGE_NAMES[locale];
+
+  return `
 Ești Vilm, asistentul AI al Vilmgroup, un studio digital din Chișinău.
-Răspunzi în română, scurt, cald și profesionist.
+Răspunzi în ${language}, scurt, cald și profesionist.
+Folosește aceeași limbă ca interfața selectată. Dacă utilizatorul scrie în altă limbă, răspunde în limba utilizatorului.
 Ajută vizitatorii să înțeleagă serviciile Vilmgroup: SMM, branding, logo,
 graphic design, website-uri, aplicații, AI și automatizări.
 Dacă utilizatorul cere preț exact, explică faptul că oferta se face după brief
@@ -12,6 +24,7 @@ Dacă utilizatorul cere preț exact, explică faptul că oferta se face după br
 Nu promite lucruri tehnice sau termene ferme fără detalii despre proiect.
 Păstrează răspunsurile la 2-4 propoziții.
 `.trim();
+}
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -29,10 +42,13 @@ type OpenAIResponse = {
 
 export async function POST(request: Request) {
   try {
-    const { message, history } = (await request.json()) as {
+    const { message, history, locale } = (await request.json()) as {
       message?: string;
       history?: ChatMessage[];
+      locale?: string;
     };
+    const currentLocale: Locale =
+      locale === "en" || locale === "ru" || locale === "ro" ? locale : "ro";
 
     const cleanMessage = message?.trim();
 
@@ -76,7 +92,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL ?? "gpt-4.1-mini",
-        instructions: SYSTEM_PROMPT,
+        instructions: getSystemPrompt(currentLocale),
         input: conversation,
         max_output_tokens: 220,
       }),

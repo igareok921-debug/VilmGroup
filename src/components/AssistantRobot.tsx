@@ -75,7 +75,7 @@ type ChatMessage = {
 };
 
 export default function AssistantRobot() {
-  const { dictionary } = useI18n();
+  const { dictionary, locale } = useI18n();
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -110,6 +110,7 @@ export default function AssistantRobot() {
         body: JSON.stringify({
           message,
           history: messages,
+          locale,
         }),
       });
 
@@ -119,7 +120,7 @@ export default function AssistantRobot() {
       };
 
       if (!response.ok || !data.reply) {
-        throw new Error(data.error ?? dictionary.assistant.fallback);
+        throw new Error(dictionary.assistant.fallback);
       }
 
       setMessages((current) => [
@@ -195,7 +196,7 @@ export default function AssistantRobot() {
               ))}
               {isSending ? (
                 <div className="inline-flex rounded-2xl rounded-bl-md border border-white/10 bg-white/[0.08] px-4 py-3 text-sm text-text-soft">
-                  Vilm scrie...
+                  {dictionary.assistant.typing}
                 </div>
               ) : null}
             </div>
@@ -242,7 +243,11 @@ export default function AssistantRobot() {
             type="button"
             onClick={() => setIsChatOpen((value) => !value)}
             className="pointer-events-auto absolute right-8 bottom-2 h-28 w-20 rounded-full sm:right-10 sm:bottom-3 sm:h-36 sm:w-28 md:right-12 md:bottom-4 md:h-44 md:w-36"
-            aria-label={isChatOpen ? "Închide chatul" : "Deschide chatul"}
+            aria-label={
+              isChatOpen
+                ? dictionary.assistant.closeChat
+                : dictionary.assistant.openChat
+            }
             aria-expanded={isChatOpen}
           />
         </div>
