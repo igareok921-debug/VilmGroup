@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
 
 const navItems = [
@@ -78,6 +79,7 @@ export default function Navbar() {
             >
               {time}
             </span>
+            <LanguageSwitcher />
             <Link href="/#contact" className="btn-primary text-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-bg-0" aria-hidden />
               Cere ofertă
@@ -141,6 +143,14 @@ export default function Navbar() {
                     </span>
                   </motion.a>
                 ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.28 }}
+                  className="mt-6"
+                >
+                  <LanguageSwitcher />
+                </motion.div>
                 <motion.a
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
