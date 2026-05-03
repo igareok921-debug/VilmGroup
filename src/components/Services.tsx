@@ -131,7 +131,8 @@ function ServiceMedia({ media }: { media: ServiceMediaData }) {
 }
 
 export default function Services() {
-  const { dictionary } = useI18n();
+  const { dictionary, locale } = useI18n();
+  const localePrefix = `/${locale}`;
 
   return (
     <section
@@ -222,7 +223,7 @@ export default function Services() {
 
                 {service.href ? (
                   <Link
-                    href={service.href}
+                    href={`${localePrefix}${service.href}`}
                     className="mt-5 inline-flex font-display text-sm font-semibold text-accent transition hover:translate-x-1 hover:text-accent-soft"
                   >
                     {dictionary.common.seeDetails} →
@@ -230,7 +231,7 @@ export default function Services() {
                 ) : null}
 
                 <a
-                  href="#contact"
+                  href={`${localePrefix}/#contact`}
                   className="cta-underline mt-4 text-sm"
                   aria-label={`${dictionary.common.requestOffer} ${content.title}`}
                 >

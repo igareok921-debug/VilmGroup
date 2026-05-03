@@ -22,6 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: locale === "ro" ? 0.95 : 0.8,
     alternates: languageAlternates("/"),
   }));
+  const localizedServiceIndexPages = locales.map((locale) => ({
+    url: `${siteUrl}/${locale}/servicii`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+    alternates: languageAlternates("/servicii"),
+  }));
   const localizedServicePages = locales.flatMap((locale) =>
     servicePages.map((page) => ({
       url: `${siteUrl}/${locale}/${page.slug}`,
@@ -34,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...localizedHomePages,
+    ...localizedServiceIndexPages,
     ...localizedServicePages,
   ];
 }

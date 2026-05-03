@@ -54,6 +54,44 @@ export const serviceSeo: Record<
   string,
   Record<Locale, { title: string; description: string; keywords: string[] }>
 > = {
+  servicii: {
+    ro: {
+      title: "Servicii digitale în Chișinău",
+      description:
+        "Servicii digitale Vilm Group în Chișinău: creare website-uri, SMM, branding, logo design, chatbots AI, automatizări și conținut.",
+      keywords: [
+        "servicii digitale Chișinău",
+        "agenție digitală Chișinău",
+        "creare website Chișinău",
+        "SMM Chișinău",
+        "branding Moldova",
+      ],
+    },
+    en: {
+      title: "Digital Services in Chișinău",
+      description:
+        "Vilm Group digital services in Chișinău: website creation, SMM, branding, logo design, AI chatbots, automation and content.",
+      keywords: [
+        "digital agency Chișinău",
+        "digital services Moldova",
+        "website creation Chișinău",
+        "SMM Chișinău",
+        "branding Moldova",
+      ],
+    },
+    ru: {
+      title: "Digital-услуги в Кишинёве",
+      description:
+        "Digital-услуги Vilm Group в Кишинёве: создание сайтов, SMM, брендинг, дизайн логотипа, AI-чатботы, автоматизация и контент.",
+      keywords: [
+        "digital агентство Кишинёв",
+        "digital услуги Молдова",
+        "создание сайтов Кишинёв",
+        "SMM Кишинёв",
+        "брендинг Молдова",
+      ],
+    },
+  },
   "creare-website-uri": {
     ro: {
       title: "Creare Website-uri în Chișinău",

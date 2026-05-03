@@ -110,11 +110,11 @@ localizedServices.ru = {
 export default function ServiceLandingPage({ page }: { page: ServicePage }) {
   const { dictionary, locale } = useI18n();
   const localizedPage = localizedServices[locale]?.[page.slug] ?? page;
-  const localePrefix = locale === "ro" ? "" : `/${locale}`;
+  const localePrefix = `/${locale}`;
   const relatedPages = page.related
     .map((slug) => getServicePage(slug))
     .filter((item): item is ServicePage => Boolean(item));
-  const pageUrl = `${siteUrl}/${page.slug}`;
+  const pageUrl = `${siteUrl}${localePrefix}/${page.slug}`;
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -208,7 +208,7 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
                     {dictionary.servicePageUi.quote}
                     <span aria-hidden>→</span>
                   </Link>
-                  <Link href={`${localePrefix}/#servicii`} className="btn-ghost justify-center">
+                  <Link href={`${localePrefix}/servicii`} className="btn-ghost justify-center">
                     {dictionary.servicePageUi.services}
                   </Link>
                 </div>
@@ -339,10 +339,10 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
                   className="group border border-border bg-bg-1/50 p-6 transition hover:border-accent hover:bg-bg-1/80"
                 >
                   <p className="font-display text-2xl font-bold text-text">
-                    {related.shortTitle}
+                    {(localizedServices[locale]?.[related.slug] ?? related).shortTitle}
                   </p>
                   <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-text-soft">
-                    {related.description}
+                    {(localizedServices[locale]?.[related.slug] ?? related).description}
                   </p>
                   <span className="mt-6 inline-flex font-display text-sm font-semibold text-accent transition group-hover:translate-x-1">
                     {dictionary.servicePageUi.seePage} →
