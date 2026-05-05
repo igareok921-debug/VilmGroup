@@ -221,25 +221,25 @@ export default function Services() {
                   ))}
                 </ul>
 
-                {service.href ? (
+                <div className="mt-6 flex flex-wrap gap-2">
                   <Link
-                    href={`${localePrefix}${service.href}`}
-                    className="mt-5 inline-flex font-display text-sm font-semibold text-accent transition hover:translate-x-1 hover:text-accent-soft"
+                    href={`${localePrefix}/#contact`}
+                    className="inline-flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 font-display text-xs font-semibold text-bg-0 transition hover:bg-accent-soft"
+                    aria-label={`${dictionary.common.requestOffer} ${content.title}`}
                   >
-                    {dictionary.common.seeDetails} →
+                    {dictionary.common.requestOffer}
+                    <span aria-hidden>→</span>
                   </Link>
-                ) : null}
 
-                <a
-                  href={`${localePrefix}/#contact`}
-                  className="cta-underline mt-4 text-sm"
-                  aria-label={`${dictionary.common.requestOffer} ${content.title}`}
-                >
-                  {dictionary.common.requestOffer}
-                  <span aria-hidden className="cta-arrow">
-                    →
-                  </span>
-                </a>
+                  {service.href ? (
+                    <Link
+                      href={`${localePrefix}${service.href}`}
+                      className="inline-flex items-center rounded-full border border-border-strong px-3.5 py-1.5 font-display text-xs font-semibold text-text transition hover:border-accent hover:bg-accent/[0.06]"
+                    >
+                      {dictionary.common.seeDetails}
+                    </Link>
+                  ) : null}
+                </div>
               </div>
             </motion.article>
           );

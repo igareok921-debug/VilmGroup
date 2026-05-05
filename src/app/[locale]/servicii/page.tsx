@@ -240,13 +240,19 @@ export default async function LocalizedServicesPage({
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-7 flex flex-wrap gap-3">
-                        <Link href={`${localePrefix}/${page.slug}`} className="btn-primary">
-                          {copy.details}
+                      <div className="mt-7 flex flex-wrap gap-2">
+                        <Link
+                          href={`${localePrefix}/#contact`}
+                          className="inline-flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 font-display text-xs font-semibold text-bg-0 transition hover:bg-accent-soft"
+                        >
+                          {copy.cta}
                           <span aria-hidden>→</span>
                         </Link>
-                        <Link href={`${localePrefix}/#contact`} className="btn-ghost">
-                          {copy.cta}
+                        <Link
+                          href={`${localePrefix}/${page.slug}`}
+                          className="inline-flex items-center rounded-full border border-border-strong px-3.5 py-1.5 font-display text-xs font-semibold text-text transition hover:border-accent hover:bg-accent/[0.06]"
+                        >
+                          {copy.details}
                         </Link>
                       </div>
                     </article>
