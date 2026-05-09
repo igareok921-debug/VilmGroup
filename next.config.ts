@@ -11,17 +11,6 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: "host",
-            value: "vilmgroup.vercel.app",
-          },
-        ],
-        destination: "https://www.vilmgroup.md/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
             value: "vilmgroup.md",
           },
         ],

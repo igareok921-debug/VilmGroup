@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hostname = request.nextUrl.hostname;
 
-  if (hostname === "vilmgroup.vercel.app" || hostname === "vilmgroup.md") {
+  if (hostname === "vilmgroup.md") {
     const url = request.nextUrl.clone();
     url.hostname = "www.vilmgroup.md";
     url.protocol = "https:";
