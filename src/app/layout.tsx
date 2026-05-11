@@ -14,38 +14,6 @@ const socialLinks = [
   "https://www.facebook.com/rusnac.valeria",
   "https://t.me/VALERIA_VILMGROUP",
 ];
-const faqItems = [
-  {
-    question: "Cu ce se ocupă Vilm Group?",
-    answer:
-      "Vilm Group este un studio digital din Chișinău care oferă servicii de SMM, branding, logo design, creare website-uri, graphic design, content creation și automatizări AI.",
-  },
-  {
-    question: "Faceți website-uri pentru afaceri?",
-    answer:
-      "Da. Creăm website-uri rapide, moderne și optimizate pentru conversii, potrivite pentru branduri, servicii, portofolii și afaceri locale sau internaționale.",
-  },
-  {
-    question: "Puteți crea un logo și o identitate vizuală completă?",
-    answer:
-      "Da. Dezvoltăm logo, paletă de culori, direcție vizuală, materiale de brand și guideline pentru o imagine coerentă.",
-  },
-  {
-    question: "Oferiți servicii SMM și administrare social media?",
-    answer:
-      "Da. Creăm strategie, content plan, vizualuri, texte, reels și campanii pentru Instagram, Facebook și alte platforme relevante.",
-  },
-  {
-    question: "Puteți integra AI sau chatbot pe website?",
-    answer:
-      "Da. Putem crea chatboți AI, asistenți personalizați și automatizări pentru suport clienți, vânzări, conținut sau workflow intern.",
-  },
-  {
-    question: "Cum pot primi o ofertă?",
-    answer:
-      "Ne trimiți câteva detalii despre proiect prin formularul de contact sau Telegram, iar noi revenim cu o propunere personalizată.",
-  },
-];
 
 const syne = Syne({
   subsets: ["latin"],
@@ -297,18 +265,6 @@ export default function RootLayout({
         publisher: {
           "@id": `${siteUrl}#organization`,
         },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${siteUrl}#faq`,
-        mainEntity: faqItems.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
-          },
-        })),
       },
     ],
   };
