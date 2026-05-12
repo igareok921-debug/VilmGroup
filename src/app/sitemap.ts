@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/data/blogPosts";
 import { servicePages } from "@/data/servicePages";
 import { locales } from "@/i18n/config";
 
@@ -39,9 +40,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const localizedBlogIndexPages = locales.map((locale) => ({
+    url: `${siteUrl}/${locale}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+    alternates: languageAlternates("/blog"),
+  }));
+  const localizedBlogPostPages = locales.flatMap((locale) =>
+    blogPosts.map((post) => ({
+      url: `${siteUrl}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+      alternates: languageAlternates(`/blog/${post.slug}`),
+    }))
+  );
+
   return [
     ...localizedHomePages,
     ...localizedServiceIndexPages,
     ...localizedServicePages,
+    ...localizedBlogIndexPages,
+    ...localizedBlogPostPages,
   ];
 }

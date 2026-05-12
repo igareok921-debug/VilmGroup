@@ -12,6 +12,7 @@ const navItems = [
   { href: "/#portofoliu", key: "portfolio" },
   { href: "/#colaborari", key: "collaborations" },
   { href: "/#testimoniale", key: "testimonials" },
+  { href: "/blog", key: "blog" },
   { href: "/#faq", key: "faq" },
   { href: "/#contact", key: "contact" },
 ] as const;
@@ -62,17 +63,19 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={`${localePrefix}${item.href}`}
-                className="group flex items-baseline"
-              >
-                <span className="link-underline font-display text-[15px] font-medium text-text">
-                  {dictionary.nav[item.key]}
-                </span>
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isAnchor = item.href.startsWith("/#");
+              const href = isAnchor
+                ? `${localePrefix}${item.href}`
+                : `/${locale}${item.href}`;
+              return (
+                <a key={item.href} href={href} className="group flex items-baseline">
+                  <span className="link-underline font-display text-[15px] font-medium text-text">
+                    {dictionary.nav[item.key]}
+                  </span>
+                </a>
+              );
+            })}
           </nav>
 
           <div className="hidden items-center gap-6 lg:flex">
@@ -131,21 +134,27 @@ export default function Navbar() {
               className="border-b border-border bg-bg-0/95 backdrop-blur-xl"
             >
               <nav className="flex flex-col px-6 py-6">
-                {navItems.map((item, i) => (
-                  <motion.a
-                    key={item.href}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 + i * 0.05 }}
-                    href={`${localePrefix}${item.href}`}
-                    onClick={closeMenu}
-                    className="flex items-baseline border-b border-border py-4"
-                  >
-                    <span className="font-display text-2xl font-semibold text-text">
-                      {dictionary.nav[item.key]}
-                    </span>
-                  </motion.a>
-                ))}
+                {navItems.map((item, i) => {
+                  const isAnchor = item.href.startsWith("/#");
+                  const href = isAnchor
+                    ? `${localePrefix}${item.href}`
+                    : `/${locale}${item.href}`;
+                  return (
+                    <motion.a
+                      key={item.href}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 + i * 0.05 }}
+                      href={href}
+                      onClick={closeMenu}
+                      className="flex items-baseline border-b border-border py-4"
+                    >
+                      <span className="font-display text-2xl font-semibold text-text">
+                        {dictionary.nav[item.key]}
+                      </span>
+                    </motion.a>
+                  );
+                })}
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}

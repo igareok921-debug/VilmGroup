@@ -22,47 +22,87 @@ export const servicePages: ServicePage[] = [
     title: "Creare website-uri pentru branduri care vor să fie găsite și alese.",
     shortTitle: "Creare website-uri",
     description:
-      "Creăm website-uri rapide, moderne și optimizate SEO pentru afaceri din Chișinău, Moldova și România: prezentare, landing page, portofoliu sau website de servicii.",
+      "Creăm website-uri rapide, moderne și optimizate SEO pentru afaceri din Chișinău, Bălți, Cahul, Orhei și toată Moldova, plus clienți din România și diaspora. Site-uri de prezentare, landing page-uri, portofolii premium și website-uri de servicii cu performanță reală în Google.",
     keywords: [
       "creare website Chișinău",
+      "creare website Moldova",
       "creare site Moldova",
+      "creare website România",
       "web design Chișinău",
+      "web design Moldova",
       "website pentru afaceri",
       "landing page Moldova",
+      "landing page România",
       "dezvoltare website Moldova",
+      "creare website Bălți",
+      "creare website Cahul",
+      "site de prezentare Chișinău",
+      "preț website Moldova",
+      "website rapid SEO",
     ],
     heroPoints: [
-      "Structură clară pentru servicii, portofoliu, oferte și contact.",
-      "Design premium adaptat identității brandului tău.",
-      "SEO tehnic de bază: metadata, sitemap, performanță și indexare corectă.",
+      "Structură clară pentru servicii, portofoliu, oferte și contact, gândită pentru conversie.",
+      "Design premium unic, adaptat identității brandului tău — niciun template.",
+      "SEO tehnic complet: metadata, sitemap, schema, performanță și indexare corectă în Google.",
     ],
     benefits: [
-      "Website rapid, responsive și ușor de folosit pe telefon.",
+      "Website rapid, responsive și ușor de folosit pe telefon, optimizat pentru Core Web Vitals.",
       "Copy și structură orientate spre cereri de ofertă, nu doar aspect vizual.",
       "Integrare formular, social media, tracking și chatbot AI la nevoie.",
-      "Pregătire pentru Google Search Console și indexare corectă.",
+      "Pregătire completă pentru Google Search Console și indexare corectă.",
+      "Design unic adaptat brandului tău — fiecare website e construit de la zero, fără template-uri.",
+      "SEO local optimizat pentru Moldova: Chișinău, Bălți, Cahul, Orhei și restul țării.",
+      "Hosting rapid pe infrastructură modernă — încărcare sub 2 secunde garantată.",
+      "Manual de utilizare în limba română și 30 de zile de suport tehnic incluse.",
     ],
     process: [
-      "Clarificăm obiectivul, serviciile și publicul țintă.",
-      "Construim structura paginilor și mesajele principale.",
-      "Designăm interfața în stilul brandului și o dezvoltăm responsive.",
-      "Optimizăm SEO tehnic, testăm performanța și pregătim lansarea.",
+      "Clarificăm obiectivul, serviciile și publicul țintă al website-ului tău.",
+      "Cercetăm cuvintele cheie relevante și competiția locală din Moldova și România.",
+      "Construim structura paginilor, mesajele principale și call-to-action-urile.",
+      "Designăm interfața în stilul brandului și o adaptăm pentru toate dispozitivele.",
+      "Implementăm conținutul, formularele, integrările sociale și chatbot AI dacă e cazul.",
+      "Optimizăm SEO tehnic, testăm performanța pe Lighthouse și pregătim lansarea.",
     ],
     faqs: [
       {
         question: "Cât durează crearea unui website?",
         answer:
-          "Un website de prezentare poate fi gata în câteva săptămâni, în funcție de conținut, numărul de secțiuni și funcționalitățile necesare.",
+          "Un website de prezentare poate fi gata în 2-4 săptămâni. Un site mai complex, cu animații custom, multilingv sau integrări (chatbot AI, plăți online, CMS), poate dura 4-8 săptămâni, în funcție de scope și viteza de feedback.",
+      },
+      {
+        question: "Cât costă un website la Vilm Group?",
+        answer:
+          "Prețurile încep de la 200€ pentru un landing page de prezentare. Un site de servicii cu 5-7 secțiuni este între 400-500€, iar un proiect premium cu animații complexe, multilingv și integrări custom începe de la 500€. Toate prețurile includ design, dezvoltare, SEO de bază și 30 de zile de suport.",
       },
       {
         question: "Website-ul va fi optimizat pentru Google?",
         answer:
-          "Da. Implementăm metadata, sitemap, structură semantică, performanță bună și conținut orientat pe căutările relevante pentru serviciul tău.",
+          "Da. Implementăm metadata, sitemap.xml, robots.txt, structured data (JSON-LD), structură semantică, performanță bună (Lighthouse 90+) și conținut orientat pe căutările relevante pentru serviciul tău. Te configurăm și în Google Search Console.",
+      },
+      {
+        question: "Lucrați și cu clienți din afara Chișinăului?",
+        answer:
+          "Da. Lucrăm cu afaceri din toată Moldova (Bălți, Cahul, Orhei, Comrat, Hâncești, Ungheni), România (București, Iași, Cluj), Rusia și diaspora europeană. Comunicarea se face complet online prin Telegram, WhatsApp sau Zoom — geografia nu e o limită.",
+      },
+      {
+        question: "Ce primesc după lansarea website-ului?",
+        answer:
+          "Primești site-ul live pe domeniul tău, acces la panoul de administrare (dacă e cazul), Google Search Console configurată, sitemap.xml, manual de utilizare în română și 30 zile de suport tehnic gratuit pentru ajustări minore.",
+      },
+      {
+        question: "Pot să-mi actualizez singur conținutul după lansare?",
+        answer:
+          "Da. Pentru site-urile statice oferim un editor simplu sau update-uri manuale la cerere. Pentru site-urile cu CMS (WordPress, Sanity, Strapi) primești training video și acces complet la administrare, ca să poți modifica texte și imagini singur.",
+      },
+      {
+        question: "Câte modificări sau revizii sunt incluse în preț?",
+        answer:
+          "În toate pachetele includem 2 runde majore de revizii pe design și 30 de zile de ajustări minore după lansare. Modificările suplimentare se facturează la oră sau pe baza unei oferte clare, în funcție de complexitate.",
       },
       {
         question: "Puteți adăuga chatbot AI pe website?",
         answer:
-          "Da. Putem integra un asistent AI care răspunde vizitatorilor, colectează cereri și direcționează utilizatorii către ofertă sau contact.",
+          "Da. Putem integra un asistent AI care răspunde vizitatorilor 24/7, colectează cereri de ofertă și direcționează utilizatorii către contact, Telegram sau WhatsApp. Chatbot-ul vorbește în tonul brandului tău.",
       },
     ],
     related: ["smm-chisinau", "branding-logo-design", "chatbots-ai"],
@@ -73,47 +113,87 @@ export const servicePages: ServicePage[] = [
     title: "SMM în Chișinău pentru branduri care vor prezență constantă și conținut bun.",
     shortTitle: "SMM Chișinău",
     description:
-      "Servicii SMM în Chișinău: strategie, administrare Instagram și Facebook, content plan, texte, vizualuri, reels și campanii pentru branduri locale.",
+      "Servicii SMM în Chișinău și toată Moldova: strategie, administrare Instagram, Facebook și TikTok, content plan, texte, vizualuri, reels și campanii pentru branduri locale și internaționale. Specializare pe restaurante, saloane, clinici, magazine și branduri personale.",
     keywords: [
       "SMM Chișinău",
+      "SMM Moldova",
       "servicii SMM Moldova",
       "administrare Instagram Chișinău",
+      "administrare Instagram Moldova",
       "social media marketing Moldova",
       "content creation Moldova",
       "reels pentru business",
+      "reels Moldova",
+      "SMM pentru restaurante",
+      "SMM pentru saloane",
+      "SMM pentru clinici",
+      "preț SMM Chișinău",
+      "agenție SMM Moldova",
+      "TikTok pentru business",
     ],
     heroPoints: [
-      "Strategie social media adaptată nișei și obiectivelor brandului.",
-      "Content plan, texte, vizualuri și idei pentru reels.",
-      "Prezență coerentă pe Instagram, Facebook și alte canale relevante.",
+      "Strategie social media adaptată nișei și obiectivelor brandului tău.",
+      "Content plan, texte, vizualuri și idei pentru reels — gata de publicat.",
+      "Prezență coerentă pe Instagram, Facebook, TikTok și alte canale relevante.",
     ],
     benefits: [
       "Comunicare constantă și profesionistă cu publicul tău.",
       "Conținut vizual conectat cu identitatea brandului.",
       "Mesaje clare pentru servicii, produse, oferte și campanii.",
       "Analiză periodică și ajustări pe baza performanței.",
+      "Reels și content video vertical optimizate pentru Instagram și TikTok.",
+      "Strategie adaptată nișei: restaurante, saloane, clinici, magazine, branduri personale.",
+      "Rapoarte lunare cu metrici reale (reach, engagement, leads, urmăritori).",
+      "Comunicare directă cu clienții prin Telegram sau WhatsApp pentru aprobări rapide.",
     ],
     process: [
-      "Analizăm brandul, concurența și publicul țintă.",
-      "Stabilim pilonii de conținut și direcția vizuală.",
+      "Analizăm brandul, concurența locală și publicul țintă din Moldova/România.",
+      "Stabilim pilonii de conținut, direcția vizuală și obiectivele lunare.",
       "Creăm calendarul editorial, textele și materialele vizuale.",
-      "Publicăm, monitorizăm și optimizăm comunicarea.",
+      "Producem reels, stories, fotografii și content video la nevoie.",
+      "Publicăm, monitorizăm și interacționăm cu comunitatea.",
+      "Raportăm rezultatele și optimizăm strategia luna următoare.",
     ],
     faqs: [
       {
         question: "Ce include administrarea SMM?",
         answer:
-          "Poate include strategie, calendar editorial, design postări, texte, reels, stories, campanii și raportare, în funcție de pachetul ales.",
+          "În funcție de pachet, include: strategie, calendar editorial lunar, design postări, texte, reels, stories, gestionarea comentariilor și mesajelor, campanii plătite și raport lunar cu metrici.",
+      },
+      {
+        question: "Cât costă serviciile SMM la Vilm Group?",
+        answer:
+          "Pachetele de SMM încep de la 200€/lună pentru un brand mic (postări săptămânale + stories). Pachetul mediu este 400€/lună (postări regulate + reels + campanii basic). Pachetul premium începe de la 500€/lună (content full, reels, campanii avansate, raportare detaliată).",
       },
       {
         question: "Lucrați doar cu branduri din Chișinău?",
         answer:
-          "Nu. Lucrăm cu branduri din Chișinău, Moldova, România și diaspora, atât timp cât putem construi o comunicare clară și eficientă.",
+          "Nu. Lucrăm cu branduri din Chișinău, Bălți, Cahul, Orhei și toată Moldova, plus România și diaspora. Comunicarea se face online prin Telegram, WhatsApp sau Zoom.",
       },
       {
         question: "Faceți și conținut video pentru reels?",
         answer:
-          "Da. Putem crea concepte, scripturi, editare și direcție pentru reels și conținut video vertical.",
+          "Da. Putem crea concepte, scripturi, filmare ghidată, editare și direcție pentru reels, TikTok și conținut video vertical. Reels-urile sunt cheia 2026 pentru creșterea organică.",
+      },
+      {
+        question: "Ce niche-uri ați gestionat?",
+        answer:
+          "Avem experiență cu restaurante și cafenele, saloane de înfrumusețare și estetică, clinici dentare și medicale, magazine online, branduri personale (coach, antrenori, consultanți) și branduri lifestyle.",
+      },
+      {
+        question: "Pot vedea exemple de muncă?",
+        answer:
+          "Da. Avem portofoliu pe website la secțiunea Portofoliu și pe Instagram-ul nostru @vilm_group. Putem trimite și studii de caz mai detaliate la cerere.",
+      },
+      {
+        question: "Cât durează să văd rezultate?",
+        answer:
+          "Primele rezultate vizibile (engagement, urmăritori noi) apar în 4-6 săptămâni de comunicare constantă. Rezultate de business (cereri, vânzări) depind de produs/serviciu și de bugetul de campanii — de obicei 2-3 luni.",
+      },
+      {
+        question: "Putem combina SMM cu reclame plătite?",
+        answer:
+          "Da. Configurăm și administrăm campanii Meta Ads (Instagram + Facebook) și TikTok Ads. Bugetul de reclame e separat de fee-ul de administrare, iar noi recomandăm un minim de 100-200€/lună pentru reclame eficiente.",
       },
     ],
     related: ["branding-logo-design", "creare-website-uri", "chatbots-ai"],
@@ -124,47 +204,86 @@ export const servicePages: ServicePage[] = [
     title: "Branding și logo design pentru afaceri care vor o imagine memorabilă.",
     shortTitle: "Branding & Logo",
     description:
-      "Creăm logo, identitate vizuală, paletă de culori, tipografie, materiale de brand și direcție vizuală pentru afaceri din Moldova și România.",
+      "Creăm logo profesional, identitate vizuală completă, paletă de culori, tipografie, materiale de brand și direcție vizuală pentru afaceri din Chișinău, Moldova, România și diaspora. Branding strategic pentru startup-uri, rebranding pentru companii existente și identități premium pentru branduri personale.",
     keywords: [
       "logo design Chișinău",
+      "logo design Moldova",
       "branding Moldova",
+      "branding Chișinău",
+      "branding România",
       "identitate vizuală Chișinău",
+      "identitate vizuală Moldova",
       "creare logo Moldova",
+      "creare logo profesional",
       "brand design Moldova",
       "graphic design Chișinău",
+      "rebranding companie Chișinău",
+      "preț logo Moldova",
+      "agenție branding Moldova",
     ],
     heroPoints: [
       "Logo și identitate vizuală construite strategic, nu doar decorativ.",
       "Sistem coerent pentru social media, website, print și campanii.",
-      "Direcție vizuală care face brandul recognoscibil.",
+      "Direcție vizuală care face brandul recognoscibil pe orice canal.",
     ],
     benefits: [
-      "Brand mai ușor de recunoscut și memorat.",
-      "Vizualuri coerente pe toate canalele digitale.",
+      "Brand mai ușor de recunoscut și memorat de publicul tău.",
+      "Vizualuri coerente pe toate canalele digitale și print.",
       "Materiale pregătite pentru social media, website și prezentări.",
-      "Bază solidă pentru campanii, conținut și creștere.",
+      "Bază solidă pentru campanii, conținut și creștere pe termen lung.",
+      "Brand book complet (PDF guideline) cu reguli clare de utilizare.",
+      "Logo în multiple formate: vector (SVG, AI, EPS) + raster (PNG, JPG) pentru orice scenariu.",
+      "Paletă de culori, tipografie și mockup-uri gata de implementat.",
+      "Reviziune și ajustări incluse până la varianta finală aprobată.",
     ],
     process: [
-      "Înțelegem poziționarea, publicul și personalitatea brandului.",
-      "Explorăm direcții vizuale și alegem ruta potrivită.",
-      "Construim logo-ul, culorile, fonturile și elementele grafice.",
-      "Pregătim aplicații vizuale și recomandări de folosire.",
+      "Înțelegem poziționarea, publicul și personalitatea brandului tău.",
+      "Analizăm competiția locală și internațională din nișa ta.",
+      "Explorăm 2-3 direcții vizuale și alegem ruta potrivită împreună.",
+      "Construim logo-ul, culorile, fonturile și elementele grafice principale.",
+      "Pregătim mockup-uri pe carte de vizită, social media, website și produse.",
+      "Livrăm brand book PDF, fișierele finale și recomandări de folosire.",
     ],
     faqs: [
       {
         question: "Primesc doar logo sau identitate completă?",
         answer:
-          "Putem lucra doar pe logo, dar recomandăm identitate completă atunci când brandul are nevoie de consistență pe website, social media și materiale.",
+          "Putem lucra doar pe logo, dar recomandăm identitate completă (logo + paletă + tipografie + brand book) atunci când brandul are nevoie de consistență pe website, social media și materiale.",
+      },
+      {
+        question: "Cât costă un logo sau un brand complet la Vilm Group?",
+        answer:
+          "Un logo singur începe de la 200€. Un pachet de identitate vizuală (logo + paletă + tipografie + mockup-uri) este între 400-500€. Un proiect de branding complet (cu strategie, brand book extins, materiale colaterale) începe de la 500€.",
       },
       {
         question: "Faceți redesign pentru logo existent?",
         answer:
-          "Da. Putem moderniza un logo existent sau reconstrui identitatea vizuală fără să pierdem recunoașterea brandului.",
+          "Da. Putem moderniza un logo existent păstrând elementele recognoscibile sau reconstrui complet identitatea vizuală, în funcție de obiectivele de rebranding.",
+      },
+      {
+        question: "Ce primesc în fișierele finale de logo?",
+        answer:
+          "Primești logo-ul în formate vectoriale (AI, EPS, SVG, PDF) și raster (PNG transparent, JPG, WEBP) la multiple rezoluții, plus varianta monocrom, varianta inversată și versiunea simplificată pentru favicon/app icon.",
+      },
+      {
+        question: "Cât durează procesul de creare brand?",
+        answer:
+          "Un logo simplu poate fi gata în 1-2 săptămâni. Un proiect complet de identitate vizuală cu brand book durează 3-5 săptămâni, în funcție de complexitate și viteza de feedback.",
+      },
+      {
+        question: "Câte variante de logo primesc inițial?",
+        answer:
+          "Prezentăm 2-3 direcții vizuale diferite la prima iterație. Alegi una preferată, iar pe baza ei facem rafinări până la varianta finală.",
       },
       {
         question: "Brandingul poate fi folosit și pentru SMM?",
         answer:
-          "Da. Construim sistemul vizual astfel încât să poată fi aplicat ușor în postări, stories, reels, bannere și materiale de campanie.",
+          "Da. Construim sistemul vizual astfel încât să poată fi aplicat ușor în postări, stories, reels, bannere și materiale de campanie. Putem oferi și template-uri editabile pentru echipa ta.",
+      },
+      {
+        question: "Lucrați cu antreprenori individuali sau doar companii?",
+        answer:
+          "Lucrăm cu ambele. Branduri personale (coach, consultanți, antrenori, freelanceri), startup-uri, IMM-uri și companii consacrate care vor rebranding.",
       },
     ],
     related: ["smm-chisinau", "creare-website-uri", "chatbots-ai"],
@@ -175,47 +294,76 @@ export const servicePages: ServicePage[] = [
     title: "Chatbots AI și automatizări pentru website-uri și workflow-uri de business.",
     shortTitle: "Chatbots AI",
     description:
-      "Implementăm chatbots AI, asistenți personalizați și automatizări pentru suport clienți, vânzări, conținut și procese interne.",
+      "Implementăm chatbots AI și asistenți personalizați pentru suport clienți, colectare cereri de ofertă și automatizare conversații pentru afaceri din Chișinău, Moldova și România. Soluții pentru clinici, magazine online, restaurante și branduri de servicii.",
     keywords: [
       "chatbot AI Moldova",
+      "chatbot AI Chișinău",
       "chatbot pentru website",
       "asistent AI pentru business",
-      "automatizări AI Moldova",
       "AI pentru suport clienți",
       "chatbots vânzări",
+      "chatbot AI clinică",
+      "chatbot magazin online",
+      "preț chatbot AI Moldova",
+      "asistent AI Chișinău",
     ],
     heroPoints: [
       "Asistent AI conectat la întrebările reale ale clienților tăi.",
       "Răspunsuri rapide pentru servicii, oferte, programări și contact.",
-      "Automatizări pentru conținut, suport, lead-uri și workflow intern.",
+      "Disponibilitate 24/7 — niciun client pierdut peste noapte sau în weekend.",
     ],
     benefits: [
       "Vizitatorii primesc răspuns imediat, fără să aștepte mesaj manual.",
       "Poți colecta cereri de ofertă și întrebări direct din website.",
       "Chatbotul poate vorbi în tonul brandului și poate direcționa către contact.",
-      "AI-ul poate susține echipa în copy, idei, scripturi și procese repetitive.",
+      "AI-ul poate susține echipa în copy, idei și răspunsuri repetitive.",
+      "Disponibilitate 24/7 — răspunde și în afara programului de lucru.",
+      "Răspunsuri în limba română, engleză sau rusă, în funcție de vizitator.",
+      "Integrare cu Telegram, WhatsApp sau formular pentru lead-uri calificate.",
     ],
     process: [
       "Stabilim ce trebuie să știe și ce trebuie să facă asistentul AI.",
-      "Pregătim promptul, regulile, mesajele și fluxurile principale.",
+      "Cartografiem fluxurile de conversație și răspunsurile cheie.",
+      "Pregătim promptul, regulile, mesajele și fallback-urile.",
       "Integrăm chatbotul în website și îl conectăm la interfața potrivită.",
-      "Testăm răspunsurile, ajustăm tonul și lansăm controlat.",
+      "Testăm răspunsurile cu scenarii reale și ajustăm tonul.",
+      "Lansăm controlat și monitorizăm primele conversații pentru optimizare.",
     ],
     faqs: [
       {
         question: "Chatbotul poate răspunde despre serviciile mele?",
         answer:
-          "Da. Îl configurăm cu informațiile brandului, serviciile, tonul de voce și regulile de răspuns potrivite.",
+          "Da. Îl configurăm cu informațiile brandului, serviciile, prețurile, tonul de voce și regulile de răspuns potrivite. Cu cât oferi mai multă documentație, cu atât e mai precis.",
+      },
+      {
+        question: "Cât costă un chatbot AI la Vilm Group?",
+        answer:
+          "Un chatbot basic (răspunsuri pe baza unei documentații simple, integrat pe website) începe de la 200€. Un chatbot mediu (cu fluxuri de conversație, integrare cu CRM/email, multilingv) este între 400-500€. Un asistent AI complex (cu logică custom, integrări multiple, training continuu) începe de la 500€.",
       },
       {
         question: "Am nevoie de cont OpenAI?",
         answer:
-          "Pentru un chatbot bazat pe OpenAI este nevoie de o cheie API configurată pe server, nu expusă public în browser.",
+          "Pentru un chatbot bazat pe OpenAI sau Anthropic este nevoie de o cheie API configurată sigur pe server, nu expusă public în browser. Te ajutăm cu configurarea contului dacă e cazul.",
       },
       {
         question: "Poate chatbotul să trimită utilizatorul către Telegram sau formular?",
         answer:
-          "Da. Poate ghida utilizatorul către ofertă, formular, Telegram, WhatsApp sau alte canale relevante.",
+          "Da. Poate ghida utilizatorul către ofertă, formular, Telegram, WhatsApp sau alte canale relevante, în funcție de intenția vizitatorului.",
+      },
+      {
+        question: "În câte limbi poate vorbi chatbotul?",
+        answer:
+          "Chatbotul poate fi configurat să răspundă în română, engleză, rusă, ucraineană sau orice alte limbi relevante pentru piața ta. Detectează automat limba vizitatorului.",
+      },
+      {
+        question: "Pentru ce tipuri de afaceri merge cel mai bine?",
+        answer:
+          "Cel mai des implementăm chatbots pentru: clinici și cabinete (programări, întrebări despre tratamente), magazine online (stoc, prețuri, livrare), restaurante (meniu, rezervări), agenții și consultanți (calificare lead-uri), companii cu volum mare de cereri repetitive.",
+      },
+      {
+        question: "Cât durează implementarea unui chatbot?",
+        answer:
+          "Un chatbot basic poate fi gata în 1-2 săptămâni. Unul mediu, cu fluxuri custom și integrări, durează 2-4 săptămâni. Un proiect complex poate ajunge la 4-6 săptămâni, cu testare extinsă.",
       },
     ],
     related: ["creare-website-uri", "smm-chisinau", "branding-logo-design"],
