@@ -40,7 +40,7 @@ export default function Hero() {
   const titleAccent = dictionary.hero.accent;
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20">
+    <section className="relative flex min-h-0 items-start overflow-hidden pt-20 pb-2 md:min-h-[100svh] md:items-center md:pt-28 md:pb-20">
       {/* Editorial top labels */}
       <div className="pointer-events-none absolute inset-x-0 top-24 z-[6] mx-auto flex max-w-7xl items-start justify-between px-6 md:px-10">
         <motion.div
@@ -89,7 +89,7 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative z-[5] mx-auto w-full max-w-7xl px-6 md:px-10">
-        <div className="grid items-end gap-12 md:grid-cols-12">
+        <div className="grid items-end gap-8 md:grid-cols-12 md:gap-12">
           {/* Headline column */}
           <div className="md:col-span-9">
             <h1 className="font-display text-balance text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-7xl lg:text-[6rem]">
@@ -148,7 +148,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.1 }}
-          className="mt-16 flex flex-col gap-8 border-t border-border pt-8 md:mt-24 md:flex-row md:items-end md:justify-between"
+          className="mt-10 flex flex-col gap-6 border-t border-border pt-6 md:mt-24 md:flex-row md:items-end md:justify-between md:gap-8 md:pt-8"
         >
           <div className="flex flex-wrap items-center gap-4">
             <Magnetic>

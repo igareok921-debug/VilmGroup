@@ -77,9 +77,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative mx-auto w-full max-w-7xl px-6 py-24 md:px-10 md:py-32"
+      className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-32"
     >
-      <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+      <div className="grid gap-10 md:grid-cols-12 md:gap-16">
         {/* Left — pitch */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}

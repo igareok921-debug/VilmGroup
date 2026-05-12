@@ -60,7 +60,7 @@ export default function Portfolio() {
   return (
     <section
       id="portofoliu"
-      className="relative mx-auto w-full max-w-7xl px-6 py-24 md:px-10 md:py-32"
+      className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-32"
     >
       {/* Header */}
       <div className="mb-12 grid gap-8 md:mb-16 md:grid-cols-12">

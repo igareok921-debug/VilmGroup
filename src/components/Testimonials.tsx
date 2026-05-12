@@ -34,7 +34,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimoniale"
-      className="relative mx-auto w-full max-w-7xl px-6 py-24 md:px-10 md:py-32"
+      className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-32"
     >
       <motion.div
         initial={{ opacity: 0, y: 18 }}

@@ -137,10 +137,10 @@ export default function Services() {
   return (
     <section
       id="servicii"
-      className="relative mx-auto w-full max-w-7xl px-6 py-24 md:px-10 md:py-32"
+      className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-32"
     >
       {/* Section header */}
-      <div className="mb-16 grid gap-8 md:mb-20 md:grid-cols-12">
+      <div className="mb-12 grid gap-8 md:mb-20 md:grid-cols-12">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
