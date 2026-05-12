@@ -102,10 +102,10 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
-      { url: "/vilm-favicon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/vilm-favicon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
       { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/vilm-favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/vilm-favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
     ],
     shortcut: "/favicon.ico",
     apple: "/vilm-favicon-192.png",
