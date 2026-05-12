@@ -1,13 +1,113 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import AssistantRobot from "@/components/AssistantRobot";
 import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
-import { blogCategoryLabels, blogPosts, getLocalizedBlogPost } from "@/data/blogPosts";
+import { blogCategoryLabels, blogPosts, getLocalizedBlogPost, type BlogCategory, type BlogPost } from "@/data/blogPosts";
 import { useI18n } from "@/i18n/I18nProvider";
+
+function CategoryIcon({ name, className }: { name: BlogCategory; className?: string }) {
+  const cls = className ?? "h-16 w-16";
+  if (name === "website") {
+    return (
+      <svg viewBox="0 0 32 32" className={cls} fill="none" aria-hidden>
+        <rect x="4" y="7" width="24" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" />
+        <path d="M8 12h20M13 27h6M16 23v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M8 10h.1M11 10h.1M14 10h.1" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (name === "smm") {
+    return (
+      <svg viewBox="0 0 32 32" className={cls} fill="none" aria-hidden>
+        <path d="M7 17h4l11-6v14l-11-6H7v-2Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+        <path d="M11 19l2 6M25 13l3-2M26 18h3M25 23l3 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (name === "branding") {
+    return (
+      <svg viewBox="0 0 32 32" className={cls} fill="none" aria-hidden>
+        <path d="M7 25l4.5-1 13-13-3.5-3.5-13 13L7 25Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+        <path d="M19 9l4 4M11.5 24l-3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <circle cx="21.5" cy="8.5" r="2.5" stroke="currentColor" strokeWidth="1.4" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 32 32" className={cls} fill="none" aria-hidden>
+      <rect x="5" y="8" width="22" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M12 14l-3 2 3 2M20 14l3 2-3 2M17 13l-2 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 8V5M23 8V5M13 27h6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function BlogCardCover({
+  post,
+  variant = "small",
+  index,
+  alt,
+  topLabel,
+  bottomLabel,
+}: {
+  post: BlogPost;
+  variant?: "small" | "featured";
+  index?: number;
+  alt: string;
+  topLabel?: string;
+  bottomLabel?: string;
+}) {
+  const isFeatured = variant === "featured";
+  const aspectClass = isFeatured ? "aspect-[4/5]" : "aspect-[16/10]";
+  const iconClass = isFeatured ? "h-32 w-32" : "h-20 w-20";
+
+  return (
+    <div
+      className={`relative overflow-hidden border border-border bg-gradient-to-br ${post.gradient} ${aspectClass}`}
+    >
+      {post.coverImage ? (
+        <Image
+          src={post.coverImage}
+          alt={alt}
+          fill
+          sizes={isFeatured ? "(min-width: 768px) 33vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
+          className="object-cover transition duration-700 group-hover:scale-105"
+        />
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(200,169,106,0.4),transparent_50%)]" />
+          <div className="absolute right-5 top-5 text-accent/30">
+            <CategoryIcon name={post.category} className={iconClass} />
+          </div>
+          {typeof index === "number" ? (
+            <div className="absolute -left-2 bottom-2 select-none font-display text-[10rem] font-bold leading-none tracking-[-0.08em] text-accent/10 md:text-[14rem]">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+          ) : null}
+        </>
+      )}
+      {(topLabel || bottomLabel) && !post.coverImage ? (
+        <div className="absolute bottom-6 left-6 right-6">
+          {topLabel ? (
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-accent">
+              {topLabel}
+            </span>
+          ) : null}
+          {bottomLabel ? (
+            <p className="mt-2 font-display text-xl font-bold leading-tight text-text">
+              {bottomLabel}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
@@ -121,18 +221,14 @@ export default function BlogIndexPage() {
                 className="group block border border-border bg-bg-1/45 transition hover:border-accent"
               >
                 <div className="grid gap-10 p-8 md:grid-cols-12 md:gap-12 md:p-12">
-                  <div
-                    className={`relative hidden aspect-[4/5] overflow-hidden border border-border bg-gradient-to-br ${featured.gradient} md:col-span-4 md:block`}
-                  >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(200,169,106,0.35),transparent_45%)]" />
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-accent">
-                        {labels.featured}
-                      </span>
-                      <p className="mt-2 font-display text-xl font-bold leading-tight text-text">
-                        {labels.latest}
-                      </p>
-                    </div>
+                  <div className="hidden md:col-span-4 md:block">
+                    <BlogCardCover
+                      post={featured}
+                      variant="featured"
+                      alt={featuredT.title}
+                      topLabel={labels.featured}
+                      bottomLabel={labels.latest}
+                    />
                   </div>
                   <div className="md:col-span-8">
                     <div className="flex items-center gap-3">
@@ -162,7 +258,7 @@ export default function BlogIndexPage() {
           {rest.length > 0 ? (
             <section className="mx-auto w-full max-w-7xl px-6 pb-24 md:px-10 md:pb-32">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {rest.map((post) => {
+                {rest.map((post, idx) => {
                   const postT = getLocalizedBlogPost(post, locale);
                   return (
                     <Link
@@ -170,10 +266,8 @@ export default function BlogIndexPage() {
                       href={`${localePrefix}/blog/${post.slug}`}
                       className="group flex flex-col border border-border bg-bg-1/45 p-6 transition hover:border-accent hover:bg-bg-1/80"
                     >
-                      <div
-                        className={`relative mb-6 aspect-[16/10] overflow-hidden bg-gradient-to-br ${post.gradient}`}
-                      >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(200,169,106,0.4),transparent_50%)]" />
+                      <div className="mb-6 overflow-hidden">
+                        <BlogCardCover post={post} variant="small" index={idx + 1} alt={postT.title} />
                       </div>
                       <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
                         {categoryLabels[post.category]}

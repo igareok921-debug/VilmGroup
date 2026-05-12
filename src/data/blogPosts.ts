@@ -25,6 +25,7 @@ export type BlogPost = {
   category: BlogCategory;
   relatedService?: string;
   gradient: string;
+  coverImage?: string;
   translations: Record<Locale, LocalizedBlogContent>;
 };
 
@@ -57,6 +58,7 @@ export const blogPosts: BlogPost[] = [
     category: "website",
     relatedService: "creare-website-uri",
     gradient: "from-[#1a0d18] via-[#2a1a26] to-[#3a1a2a]",
+    coverImage: "/blog/cat-costa-website-moldova.webp",
     translations: {
       ro: {
         title: "Cât costă un website în Moldova în 2026? Ghid complet de prețuri",
@@ -244,6 +246,7 @@ export const blogPosts: BlogPost[] = [
     category: "smm",
     relatedService: "smm-chisinau",
     gradient: "from-[#1a1a26] via-[#2a2a3a] to-[#3a3340]",
+    coverImage: "/blog/10-greseli-instagram.webp",
     translations: {
       ro: {
         title: "10 greșeli pe care le fac afacerile din Chișinău cu Instagram",
@@ -383,6 +386,7 @@ export const blogPosts: BlogPost[] = [
     category: "branding",
     relatedService: "branding-logo-design",
     gradient: "from-[#0d1424] via-[#1a2540] to-[#2a3560]",
+    coverImage: "/blog/cum-aleg-nume-brand.webp",
     translations: {
       ro: {
         title: "Cum să-ți alegi numele de brand: ghid pentru antreprenorii moldoveni",
@@ -522,6 +526,7 @@ export const blogPosts: BlogPost[] = [
     category: "ai",
     relatedService: "chatbots-ai",
     gradient: "from-[#1a1a26] via-[#2a2a3a] to-[#3a3340]",
+    coverImage: "/blog/ai-chatbot-cind-merita.webp",
     translations: {
       ro: {
         title: "AI chatbot pentru afacerea ta: când merită și când nu",
@@ -667,6 +672,7 @@ export const blogPosts: BlogPost[] = [
     category: "website",
     relatedService: "creare-website-uri",
     gradient: "from-[#1a0d18] via-[#2a1a26] to-[#3a1a2a]",
+    coverImage: "/blog/wordpress-vs-nextjs-vs-webflow.webp",
     translations: {
       ro: {
         title: "WordPress vs Next.js vs Webflow: ce alegi pentru website-ul tău în 2026?",

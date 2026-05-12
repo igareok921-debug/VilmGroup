@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
+import Image from "next/image";
 import { blogCategoryLabels, getLocalizedBlogPost, getRelatedPosts, type BlogPost } from "@/data/blogPosts";
 import { getServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -119,6 +120,19 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
             <p className="mt-10 border-l-2 border-accent pl-6 text-lg leading-relaxed text-text-soft md:text-xl">
               {t.excerpt}
             </p>
+
+            {post.coverImage ? (
+              <div className="relative mt-12 aspect-[16/9] overflow-hidden border border-border">
+                <Image
+                  src={post.coverImage}
+                  alt={t.title}
+                  fill
+                  sizes="(min-width: 768px) 768px, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            ) : null}
 
             <div className="mt-12 space-y-7">
               {t.content.map((block, idx) => {
