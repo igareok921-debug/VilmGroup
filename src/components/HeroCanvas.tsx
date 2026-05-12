@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -123,8 +123,18 @@ function LightSweep({
 
 export default function HeroCanvas() {
   const pointerRef = useRef({ x: 0, y: 0 });
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
+    const update = () => setShouldRender(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldRender) return;
     const handleMove = (event: MouseEvent) => {
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -((event.clientY / window.innerHeight) * 2 - 1);
@@ -134,18 +144,20 @@ export default function HeroCanvas() {
     return () => {
       window.removeEventListener("mousemove", handleMove);
     };
-  }, []);
+  }, [shouldRender]);
+
+  if (!shouldRender) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
       <Canvas
-        dpr={[1, 1.5]}
+        dpr={[1, 1.25]}
         camera={{ position: [0, 0, 5], fov: 50 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       >
         <ambientLight intensity={0.2} />
         <LightSweep pointerRef={pointerRef} />
-        <ParticleField pointerRef={pointerRef} />
+        <ParticleField count={650} pointerRef={pointerRef} />
       </Canvas>
     </div>
   );

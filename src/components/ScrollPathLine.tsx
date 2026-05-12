@@ -16,6 +16,7 @@ import {
  */
 export default function ScrollPathLine() {
   const [pageHeight, setPageHeight] = useState(0);
+  const [shouldRender, setShouldRender] = useState(false);
   const pathRef = useRef<SVGPathElement>(null);
   const cometRef = useRef<SVGGElement>(null);
   const trailRef = useRef<SVGCircleElement>(null);
@@ -32,9 +33,18 @@ export default function ScrollPathLine() {
 
   const pathLength = useTransform(smoothProgress, [0, 1], [0, 1]);
 
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
+    const update = () => setShouldRender(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
   // Build a richer, more dramatic curve
   // Start ~140px below page top so comet is visible (not under fixed navbar)
   const { d, viewW } = useMemo(() => {
+    if (!shouldRender) return { d: "", viewW: 400 };
     if (pageHeight < 100) return { d: "", viewW: 400 };
     const W = 400;
     const cx = W / 2;
@@ -49,17 +59,14 @@ export default function ScrollPathLine() {
       const yEnd = startY + (i + 1) * segH;
       const yMid = startY + i * segH + segH / 2;
       const baseOffset = i % 2 === 0 ? 1 : -1;
-      // Adapt amplitude to viewport width — smaller curves on mobile
-      const isMobile =
-        typeof window !== "undefined" && window.innerWidth < 768;
-      const baseAmp = isMobile ? 60 : 110;
-      const variance = isMobile ? 20 : 40;
+      const baseAmp = 110;
+      const variance = 40;
       const amplitude = baseAmp + Math.sin(i * 0.7) * variance;
       const cpx = cx + baseOffset * amplitude;
       path += ` Q ${cpx} ${yMid}, ${cx} ${yEnd}`;
     }
     return { d: path, viewW: W };
-  }, [pageHeight]);
+  }, [pageHeight, shouldRender]);
 
   // Helper to position the comet at a given progress value
   const positionComet = (v: number) => {
@@ -107,6 +114,7 @@ export default function ScrollPathLine() {
 
   // Track page height
   useEffect(() => {
+    if (!shouldRender) return;
     const update = () => {
       const content = document.querySelector<HTMLElement>(
         "[data-page-content]"
@@ -126,9 +134,9 @@ export default function ScrollPathLine() {
       window.removeEventListener("resize", update);
       clearTimeout(t);
     };
-  }, []);
+  }, [shouldRender]);
 
-  if (pageHeight < 100 || !d) return null;
+  if (!shouldRender || pageHeight < 100 || !d) return null;
 
   return (
     <div
