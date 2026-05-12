@@ -6,11 +6,28 @@ import { useI18n } from "@/i18n/I18nProvider";
 export default function FAQ() {
   const { dictionary } = useI18n();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: dictionary.faqSection.items.map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer,
+      },
+    })),
+  };
+
   return (
     <section
       id="faq"
       className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-32"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="grid gap-10 md:grid-cols-12 md:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 18 }}

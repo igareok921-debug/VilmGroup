@@ -61,7 +61,7 @@ export default function Navbar() {
             <Logo variant="gold" className="h-7 w-auto md:h-8" />
           </Link>
 
-          <nav className="hidden items-center gap-7 md:flex">
+          <nav className="hidden items-center gap-7 lg:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -75,7 +75,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             <span
               aria-hidden
               className="font-mono text-[10px] tracking-[0.2em] text-muted"
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="relative inline-flex h-10 w-10 items-center justify-center md:hidden"
+            className="relative inline-flex h-10 w-10 items-center justify-center lg:hidden"
             aria-label={isOpen ? dictionary.nav.close : dictionary.nav.open}
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
@@ -121,7 +121,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden"
+            className="lg:hidden"
           >
             <motion.div
               initial={{ y: -12 }}

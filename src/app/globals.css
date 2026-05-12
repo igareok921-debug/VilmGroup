@@ -275,6 +275,24 @@ body {
     transform: translateX(400%);
   }
 }
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+@keyframes heroFloatSlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
 .marquee {
   display: flex;
   width: max-content;
@@ -286,6 +304,14 @@ body {
 }
 .marquee-reverse {
   animation-direction: reverse;
+}
+.hero-float {
+  animation: heroFloat 8s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-float-slow {
+  animation: heroFloatSlow 9.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Noise texture overlay (atmospheric grain) */

@@ -235,7 +235,7 @@ export default function AssistantRobot() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="pointer-events-none h-32 w-32 object-contain drop-shadow-[0_22px_42px_rgba(0,0,0,0.45)] transition duration-300 group-hover:scale-[1.03] sm:h-52 sm:w-52 md:h-64 md:w-64"
-            src="/robot-ai-safari.png"
+            src="/robot-ai-safari.webp"
             alt=""
             aria-hidden="true"
           />

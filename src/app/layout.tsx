@@ -48,22 +48,39 @@ export const metadata: Metadata = {
     "Vilm Group",
     "Vilmgroup",
     "studio digital Chișinău",
+    "studio digital Moldova",
+    "agenție digitală Chișinău",
     "SMM Chișinău",
-    "servicii SMM Chișinău",
+    "SMM Moldova",
+    "servicii SMM",
     "social media marketing Moldova",
+    "social media marketing România",
     "branding Moldova",
     "branding Chișinău",
+    "branding România",
     "logo design Chișinău",
+    "logo design Moldova",
     "creare logo Moldova",
+    "creare logo profesional",
     "graphic design Moldova",
-    "creare website-uri Moldova",
+    "creare website Moldova",
     "creare website Chișinău",
+    "creare website România",
+    "creare website Rusia",
+    "creare website-uri",
+    "creare website Bălți",
+    "creare website Cahul",
+    "creare website Orhei",
     "dezvoltare website Moldova",
     "website development Moldova",
+    "web design Moldova",
     "web design Chișinău",
+    "web design România",
     "website pentru afaceri",
     "landing page Moldova",
+    "landing page România",
     "chatbot AI Moldova",
+    "chatbot AI România",
     "chatbots pentru business",
     "asistenți AI personalizați",
     "AI pentru suport clienți",
@@ -71,6 +88,11 @@ export const metadata: Metadata = {
     "AI automatizări business",
     "content creation Moldova",
     "producție reels Moldova",
+    "video reels Chișinău",
+    "разработка сайтов Молдова",
+    "создание сайтов Кишинев",
+    "website development Romania",
+    "branding agency Moldova",
   ],
   authors: [{ name: "Vilm Group", url: siteUrl.toString() }],
   creator: "Vilm Group",
@@ -155,21 +177,57 @@ export default function RootLayout({
         sameAs: socialLinks,
       },
       {
-        "@type": "ProfessionalService",
+        "@type": ["LocalBusiness", "ProfessionalService"],
         "@id": `${siteUrl}#business`,
         name: "Vilm Group",
         url: siteUrl.toString(),
         image: new URL("/opengraph-image", siteUrl).toString(),
         description,
         email: "info@vilmgroup.md",
+        priceRange: "$$",
+        currenciesAccepted: "EUR, USD, MDL, RON",
+        paymentAccepted: "Cash, Credit Card, Bank Transfer",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Chișinău",
+          addressRegion: "Sectorul Botanica",
           addressCountry: "MD",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 47.0105,
+          longitude: 28.8638,
+        },
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "08:00",
+          closes: "21:00",
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5.0",
+          reviewCount: "10",
+          bestRating: "5",
+          worstRating: "1",
         },
         areaServed: [
           { "@type": "Country", name: "Moldova" },
           { "@type": "Country", name: "Romania" },
+          { "@type": "Country", name: "Russia" },
+          { "@type": "City", name: "Chișinău" },
+          { "@type": "City", name: "Bălți" },
+          { "@type": "City", name: "Cahul" },
+          { "@type": "City", name: "Orhei" },
+          { "@type": "City", name: "București" },
           { "@type": "Place", name: "Europe" },
         ],
         serviceType: [
@@ -271,6 +329,14 @@ export default function RootLayout({
 
   return (
     <html lang="ro-MD">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="geo.region" content="MD-CU" />
+        <meta name="geo.placename" content="Chișinău" />
+        <meta name="geo.position" content="47.0105;28.8638" />
+        <meta name="ICBM" content="47.0105, 28.8638" />
+      </head>
       <body
         className={`${syne.variable} ${manrope.variable} ${jetbrains.variable} antialiased`}
       >

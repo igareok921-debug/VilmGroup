@@ -26,7 +26,7 @@ const projects: {
     title: "Femeia în Roșu",
     category: "webapp",
     previewGradient: "from-[#1a0d18] via-[#2a1a26] to-[#3a1a2a]",
-    previewImages: ["/p4.png", "/p3.png", "/p2.png", "/P1.png"],
+    previewImages: ["/p4.webp", "/p3.webp", "/p2.webp", "/P1.webp"],
     featuredGrid: true,
     year: "2025",
   },
@@ -34,7 +34,7 @@ const projects: {
     title: "Curs SMM",
     category: "webapp",
     previewGradient: "from-[#0d1424] via-[#1a2540] to-[#2a3560]",
-    previewImages: ["/p1.1.png", "/p1.2.png", "/p1.3.png", "/p1.4.png"],
+    previewImages: ["/p1.1.webp", "/p1.2.webp", "/p1.3.webp", "/p1.4.webp"],
     featuredGrid: true,
     year: "2025",
   },
@@ -198,7 +198,7 @@ export default function Portfolio() {
                           >
                             <Image
                               src={src}
-                              alt={`${project.title} preview ${i + 1}`}
+                              alt={`Vilm Group portfoliu — ${project.title}, creare website și design Chișinău Moldova (imagine ${i + 1})`}
                               fill
                               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                               className={`transition-transform duration-700 group-hover:scale-105 ${
