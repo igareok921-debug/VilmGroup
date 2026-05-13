@@ -172,7 +172,12 @@ export default function RootLayout({
         "@id": `${siteUrl}#organization`,
         name: "Vilm Group",
         url: siteUrl.toString(),
-        logo: new URL("/LogoV5.svg", siteUrl).toString(),
+        logo: {
+          "@type": "ImageObject",
+          url: new URL("/icon.svg", siteUrl).toString(),
+          width: 512,
+          height: 512,
+        },
         email: "info@vilmgroup.md",
         sameAs: socialLinks,
       },

@@ -34,18 +34,16 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         description: t.excerpt,
         datePublished: post.date,
         dateModified: post.date,
-        author: {
-          "@type": "Organization",
-          name: "Vilm Group",
-          url: siteUrl,
-        },
+        author: { "@id": `${siteUrl}#organization` },
         publisher: {
           "@type": "Organization",
+          "@id": `${siteUrl}#organization`,
           name: "Vilm Group",
-          url: siteUrl,
           logo: {
             "@type": "ImageObject",
             url: `${siteUrl}/icon.svg`,
+            width: 512,
+            height: 512,
           },
         },
         mainEntityOfPage: {
