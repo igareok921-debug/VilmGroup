@@ -123,11 +123,7 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
         "@id": `${pageUrl}#service`,
         name: localizedPage.shortTitle,
         description: localizedPage.description,
-        provider: {
-          "@type": "Organization",
-          name: "Vilm Group",
-          url: siteUrl,
-        },
+        provider: { "@id": `${siteUrl}/#organization` },
         areaServed: [
           { "@type": "Country", name: "Moldova" },
           { "@type": "Country", name: "Romania" },

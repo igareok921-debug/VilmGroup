@@ -34,10 +34,10 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         description: t.excerpt,
         datePublished: post.date,
         dateModified: post.date,
-        author: { "@id": `${siteUrl}#organization` },
+        author: { "@id": `${siteUrl}/#organization` },
         publisher: {
           "@type": "Organization",
-          "@id": `${siteUrl}#organization`,
+          "@id": `${siteUrl}/#organization`,
           name: "Vilm Group",
           logo: {
             "@type": "ImageObject",

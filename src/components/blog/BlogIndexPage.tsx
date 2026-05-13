@@ -170,11 +170,7 @@ export default function BlogIndexPage() {
     description: labels.description,
     url: pageUrl,
     inLanguage: locale === "ro" ? "ro-MD" : locale,
-    publisher: {
-      "@type": "Organization",
-      name: "Vilm Group",
-      url: siteUrl,
-    },
+    publisher: { "@id": `${siteUrl}/#organization` },
     blogPost: sortedPosts.map((post) => {
       const t = getLocalizedBlogPost(post, locale);
       return {
