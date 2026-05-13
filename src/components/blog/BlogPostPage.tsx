@@ -32,8 +32,9 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         "@id": `${pageUrl}#article`,
         headline: t.title,
         description: t.excerpt,
-        datePublished: post.date,
-        dateModified: post.date,
+        image: post.coverImage ? `${siteUrl}${post.coverImage}` : `${siteUrl}/opengraph-image`,
+        datePublished: `${post.date}T08:00:00+02:00`,
+        dateModified: `${post.date}T08:00:00+02:00`,
         author: { "@id": `${siteUrl}/#organization` },
         publisher: { "@id": `${siteUrl}/#organization` },
         mainEntityOfPage: {
