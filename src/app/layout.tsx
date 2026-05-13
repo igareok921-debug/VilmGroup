@@ -168,7 +168,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": "LocalBusiness",
         "@id": `${siteUrl}#organization`,
         name: "Vilm Group",
         url: siteUrl.toString(),
@@ -178,14 +178,6 @@ export default function RootLayout({
           width: 512,
           height: 512,
         },
-        email: "info@vilmgroup.md",
-        sameAs: socialLinks,
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${siteUrl}#business`,
-        name: "Vilm Group",
-        url: siteUrl.toString(),
         image: new URL("/opengraph-image", siteUrl).toString(),
         description,
         email: "info@vilmgroup.md",
@@ -316,7 +308,7 @@ export default function RootLayout({
           "@id": `${siteUrl}#website`,
         },
         about: {
-          "@id": `${siteUrl}#business`,
+          "@id": `${siteUrl}#organization`,
         },
       },
       {
