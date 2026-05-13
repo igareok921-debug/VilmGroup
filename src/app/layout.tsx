@@ -168,7 +168,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "Organization",
         "@id": `${siteUrl}#organization`,
         name: "Vilm Group",
         url: siteUrl.toString(),
@@ -181,41 +181,6 @@ export default function RootLayout({
         image: new URL("/opengraph-image", siteUrl).toString(),
         description,
         email: "info@vilmgroup.md",
-        priceRange: "$$",
-        currenciesAccepted: "EUR, USD, MDL, RON",
-        paymentAccepted: "Cash, Credit Card, Bank Transfer",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Chișinău",
-          addressRegion: "Sectorul Botanica",
-          addressCountry: "MD",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 47.0105,
-          longitude: 28.8638,
-        },
-        openingHoursSpecification: {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ],
-          opens: "08:00",
-          closes: "21:00",
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5.0",
-          reviewCount: "10",
-          bestRating: "5",
-          worstRating: "1",
-        },
         areaServed: [
           { "@type": "Country", name: "Moldova" },
           { "@type": "Country", name: "Romania" },
