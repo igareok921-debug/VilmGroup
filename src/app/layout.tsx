@@ -177,7 +177,7 @@ export default function RootLayout({
         sameAs: socialLinks,
       },
       {
-        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@type": "LocalBusiness",
         "@id": `${siteUrl}#business`,
         name: "Vilm Group",
         url: siteUrl.toString(),
