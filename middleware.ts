@@ -5,32 +5,6 @@ const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hostname = (
-    request.headers.get("x-forwarded-host") ??
-    request.headers.get("host") ??
-    request.nextUrl.hostname
-  )
-    .split(":")[0]
-    .toLowerCase();
-  const protocol =
-    request.headers.get("x-forwarded-proto") ?? request.nextUrl.protocol.replace(":", "");
-
-  if (
-    hostname === "www.vilmgroup.md" ||
-    (hostname === "vilmgroup.md" && protocol === "http")
-  ) {
-    const url = new URL(request.url);
-    url.hostname = "vilmgroup.md";
-    url.protocol = "https:";
-    url.port = "";
-    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
-      url.pathname = url.pathname.replace(/\/+$/, "");
-    }
-    return new NextResponse(null, {
-      status: 301,
-      headers: { Location: url.toString() },
-    });
-  }
 
   if (pathname !== "/" && pathname.endsWith("/")) {
     const url = new URL(request.url);
