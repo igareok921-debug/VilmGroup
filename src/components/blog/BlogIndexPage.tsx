@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
 import { blogCategoryLabels, blogPosts, getLocalizedBlogPost, type BlogCategory, type BlogPost } from "@/data/blogPosts";
 import { useI18n } from "@/i18n/I18nProvider";
+import { siteUrl } from "@/i18n/config";
 
 function CategoryIcon({ name, className }: { name: BlogCategory; className?: string }) {
   const cls = className ?? "h-16 w-16";
@@ -109,9 +110,6 @@ function BlogCardCover({
   );
 }
 
-const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-).replace(/\/$/, "");
 
 const indexLabels = {
   ro: {

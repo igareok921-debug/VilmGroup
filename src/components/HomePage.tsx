@@ -15,6 +15,7 @@ import OfferBanner from "@/components/OfferBanner";
 import ScrollPathLine from "@/components/ScrollPathLine";
 import AssistantRobot from "@/components/AssistantRobot";
 import { useI18n } from "@/i18n/I18nProvider";
+import { siteUrl } from "@/i18n/config";
 
 export default function HomePage() {
   const { locale } = useI18n();
@@ -50,10 +51,6 @@ export default function HomePage() {
           "Visual Production",
         ]
       : undefined;
-
-  const siteUrl = (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-  ).replace(/\/$/, "");
 
   const localBusinessSchema = {
     "@context": "https://schema.org",

@@ -5,13 +5,40 @@ const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hostname = request.nextUrl.hostname;
+  const hostname = (
+    request.headers.get("x-forwarded-host") ??
+    request.headers.get("host") ??
+    request.nextUrl.hostname
+  )
+    .split(":")[0]
+    .toLowerCase();
+  const protocol =
+    request.headers.get("x-forwarded-proto") ?? request.nextUrl.protocol.replace(":", "");
 
-  if (hostname === "vilmgroup.md") {
-    const url = request.nextUrl.clone();
-    url.hostname = "www.vilmgroup.md";
+  if (
+    hostname === "www.vilmgroup.md" ||
+    (hostname === "vilmgroup.md" && protocol === "http")
+  ) {
+    const url = new URL(request.url);
+    url.hostname = "vilmgroup.md";
     url.protocol = "https:";
-    return NextResponse.redirect(url, 308);
+    url.port = "";
+    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
+      url.pathname = url.pathname.replace(/\/+$/, "");
+    }
+    return new NextResponse(null, {
+      status: 301,
+      headers: { Location: url.toString() },
+    });
+  }
+
+  if (pathname !== "/" && pathname.endsWith("/")) {
+    const url = new URL(request.url);
+    url.pathname = pathname.replace(/\/+$/, "");
+    return new NextResponse(null, {
+      status: 301,
+      headers: { Location: url.toString() },
+    });
   }
 
   if (
@@ -32,9 +59,9 @@ export function middleware(request: NextRequest) {
   url.pathname =
     pathname === "/" ? `/${defaultLocale}` : `/${defaultLocale}${pathname}`;
 
-  return NextResponse.redirect(url);
+  return NextResponse.redirect(url, 301);
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  matcher: ["/((?!_next|api).*)"],
 };

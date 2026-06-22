@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
+import { siteUrl as canonicalSiteUrl } from "@/i18n/config";
 import "./globals.css";
 
-const siteUrl = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-);
+const siteUrl = new URL(canonicalSiteUrl);
 
 const title = "Vilm Group — Website-uri, SMM, Branding & AI în Chișinău";
 const description =
@@ -101,12 +100,7 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   manifest: "/manifest.webmanifest",
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/vilm-favicon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/vilm-favicon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
-    ],
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/vilm-favicon-192.png",
   },
@@ -264,8 +258,8 @@ export default function RootLayout({
       },
       {
         "@type": "WebPage",
-        "@id": `${siteUrl}#webpage`,
-        url: siteUrl.toString(),
+        "@id": `${siteUrl}ro#webpage`,
+        url: new URL("/ro", siteUrl).toString(),
         name: title,
         description,
         inLanguage: "ro-MD",

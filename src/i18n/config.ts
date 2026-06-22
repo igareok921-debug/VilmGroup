@@ -19,9 +19,7 @@ export const localeLabels: Record<Locale, string> = {
   ru: "ru",
 };
 
-export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-).replace(/\/$/, "");
+export const siteUrl = "https://vilmgroup.md";
 
 export function getLocalizedPath(locale: Locale, path = "/") {
   const cleanPath = path === "/" ? "" : path.replace(/^\/(ro|en|ru)(?=\/|$)/, "");

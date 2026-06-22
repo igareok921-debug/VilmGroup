@@ -16,6 +16,7 @@ export type LocalizedBlogContent = {
   excerpt: string;
   keywords: string[];
   content: BlogBlock[];
+  faqs?: { question: string; answer: string }[];
 };
 
 export type BlogPost = {
@@ -522,15 +523,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-chatbot-cind-merita",
     date: "2026-05-02",
-    readingTime: 7,
+    readingTime: 10,
     category: "ai",
     relatedService: "chatbots-ai",
     gradient: "from-[#1a1a26] via-[#2a2a3a] to-[#3a3340]",
     coverImage: "/blog/ai-chatbot-cind-merita.webp",
     translations: {
       ro: {
-        title: "AI chatbot pentru afacerea ta: când merită și când nu",
-        excerpt: "5 cazuri în care chatbot AI aduce bani și 5 cazuri în care e pierdere de timp. Plus cum să decizi onest pentru afacerea ta.",
+        title: "Chatbot AI pentru afaceri: când merită investiția în 2026",
+        excerpt: "Află când un chatbot AI aduce rezultate, cât costă, ce riscuri are și cum alegi soluția potrivită pentru afacerea ta din Moldova.",
         keywords: ["chatbot AI merită", "AI pentru business Moldova", "când AI chatbot", "asistent AI clinică magazin", "preț chatbot AI"],
         content: [
           { type: "p", text: '"Avem nevoie de un chatbot AI." Asta-i fraza pe care o aud zilnic în 2026. Toată lumea vorbește de AI. Toată lumea vrea un asistent. Stop.' },
@@ -567,10 +568,54 @@ export const blogPosts: BlogPost[] = [
           { type: "p", text: "Un chatbot prost configurat:" },
           { type: "ul", items: ["Răspunde GREȘIT la întrebări simple — clientul își pierde încrederea", "Nu detectează când să transfere la un om — clientul se enervează", "Promite lucruri pe care nu le poți respecta — legal problem", "Repetă același mesaj — clientul abandonează", "Nu detectează limbajul — clientul rusofon primește răspuns în engleză"] },
           { type: "p", text: "Mai bine FĂRĂ chatbot decât cu un chatbot prost. Asta zic și clienților mei. Dacă nu-l facem bine, nu-l facem deloc." },
+          { type: "h2", text: "Cât costă, de fapt, un chatbot AI în Moldova", id: "cost-chatbot-ai" },
+          { type: "p", text: "Costul nu depinde doar de modelul AI folosit. Cea mai mare parte a muncii este în pregătirea informației, definirea regulilor, proiectarea conversațiilor, integrarea cu site-ul și testarea răspunsurilor. Un widget simplu care răspunde dintr-un document poate porni de la aproximativ 200€. O soluție multilingvă, conectată la formular, email, Telegram sau CRM, ajunge de regulă la 400-500€. Un asistent cu logică personalizată, acces controlat la baze de date și fluxuri automate poate depăși 500€, în funcție de complexitate." },
+          { type: "p", text: "Mai există și costuri recurente: utilizarea API-ului, monitorizarea conversațiilor, actualizarea documentației și ajustarea regulilor atunci când apar servicii sau prețuri noi. Pentru o afacere mică, consumul lunar al modelului poate fi redus, dar mentenanța nu trebuie ignorată. Un chatbot lăsat luni întregi fără verificare va începe inevitabil să ofere informații vechi." },
+          { type: "h2", text: "Ce informații trebuie pregătite înainte de implementare", id: "informatii-necesare" },
+          { type: "p", text: "Un asistent bun nu se antrenează din câteva propoziții generale. Are nevoie de o bază clară de cunoștințe: descrierea serviciilor, prețuri sau intervale de preț, program, zone deservite, politici de livrare ori anulare, întrebări frecvente, condiții de eligibilitate și datele de contact. Informația trebuie să fie actuală, fără contradicții între website, social media și documentele interne." },
+          { type: "p", text: "Este la fel de important să stabilești ce NU are voie să facă. De exemplu, un chatbot pentru o clinică poate explica programul și pașii unei programări, dar nu trebuie să pună diagnostice. Un asistent pentru servicii financiare poate colecta date pentru o discuție, dar nu trebuie să promită aprobarea unui credit. Limitele clare protejează afacerea și cresc încrederea utilizatorului." },
+          { type: "h2", text: "Cum arată o implementare corectă, pas cu pas", id: "implementare-corecta" },
+          { type: "ol", items: ["Audităm întrebările reale primite pe site, telefon, Instagram, Facebook și email.", "Separăm întrebările repetitive de cazurile care necesită un specialist.", "Construim baza de cunoștințe și regulile de siguranță pentru răspunsuri.", "Definim traseele utile: răspuns, calificare, programare, formular sau transfer la om.", "Testăm în română, rusă și engleză cu formulări scurte, greșeli și întrebări ambigue.", "Lansăm gradual, analizăm conversațiile și corectăm răspunsurile slabe."] },
+          { type: "p", text: "Etapa de testare contează mai mult decât demo-ul inițial. Un bot poate părea impresionant în zece întrebări pregătite și totuși să eșueze când un client scrie fără diacritice, combină româna cu rusa sau întreabă două lucruri în același mesaj. De aceea folosim scenarii reale, nu doar exemple perfecte." },
+          { type: "h2", text: "Date personale, securitate și încredere", id: "securitate-date" },
+          { type: "p", text: "Dacă chatbot-ul colectează nume, telefon, email, informații medicale sau detalii despre comenzi, trebuie stabilit clar unde ajung datele, cât timp sunt păstrate și cine are acces la ele. Formularul sau conversația trebuie să ceară doar informația necesară pentru următorul pas. Nu are sens să colectezi date sensibile doar pentru că tehnic este posibil." },
+          { type: "p", text: "Cheile API trebuie păstrate pe server, niciodată în codul livrat browserului. Logurile cu conversații trebuie protejate, iar echipa trebuie să știe cum șterge o conversație la cererea clientului. Pentru domenii sensibile, mesajul trebuie să explice că utilizatorul discută cu un asistent automat și că răspunsurile importante vor fi confirmate de un specialist." },
+          { type: "p", text: "Încrederea crește când botul este transparent. Trebuie să se prezinte ca asistent AI, să ofere rapid opțiunea de contact uman și să recunoască atunci când nu are suficientă informație. Un răspuns sincer de tipul „nu pot confirma, trimit întrebarea colegului responsabil” este mai valoros decât o explicație inventată, chiar dacă sună convingător." },
+          { type: "h2", text: "Cum măsori dacă investiția produce rezultate", id: "masurare-roi" },
+          { type: "p", text: "Nu măsura succesul prin numărul de conversații. Urmărește procentul de întrebări rezolvate fără intervenție, timpul economisit de echipă, numărul de cereri calificate, programările finalizate și rata de transfer către un om. Pentru un magazin online contează și comenzile asistate; pentru o clinică, programările; pentru un business B2B, lead-urile care ajung la vânzări cu informațiile necesare deja colectate." },
+          { type: "p", text: "Stabilește valorile de bază înainte de lansare. Dacă recepția petrece 40 de ore lunar răspunzând la întrebări repetitive și chatbot-ul reduce timpul la 15 ore, economia este clară. Dacă botul doar mută conversația într-un widget nou, fără să reducă munca sau să crească numărul de cereri, investiția nu și-a atins scopul." },
+          { type: "h2", text: "Chatbot AI, website, SMM și brand: de ce trebuie să lucreze împreună", id: "ecosistem-digital" },
+          { type: "p", text: "Chatbot-ul nu poate repara un website confuz, o ofertă neclară sau un brand în care oamenii nu au încredere. El funcționează cel mai bine când pagina explică serviciul, conținutul din social media aduce publicul potrivit, iar identitatea vizuală transmite profesionalism. Automatizarea este ultimul strat al unui sistem digital coerent, nu înlocuitorul strategiei, al conținutului sau al experienței umane." },
           { type: "h2", text: "Cum decizi pentru afacerea ta", id: "decizie" },
           { type: "p", text: "Răspunde la aceste 4 întrebări:" },
           { type: "ol", items: ["Primești minim 30-50 de întrebări repetitive pe săptămână? (Da → poate merită)", "Răspunsurile sunt în mare parte standardizate? (Da → poate merită)", "Afacerea ta vinde prin emoție/conexiune umană, NU prin informație? (Da → NU merită)", "Ești dispus să investești minim 200-500€ și 2-3 săptămâni de muncă cu agenția? (Nu → așteaptă, nu-l face prost)"] },
           { type: "p", text: "Dacă răspunsurile arată că ai nevoie, scrie-mi pe Telegram cu detalii despre afacerea ta. Verific dacă chiar merită, fără să-ți vând nimic forțat. Câteodată îți spun direct: 'nu, nu-ți trebuie încă'. Asta și diferențiază o agenție onestă de una care vinde la kilogram." },
+        ],
+        faqs: [
+          {
+            question: "Cât costă un chatbot AI pentru o afacere din Moldova?",
+            answer: "Un chatbot simplu poate porni de la aproximativ 200€, o soluție multilingvă cu integrări costă frecvent 400-500€, iar un asistent cu logică și automatizări personalizate poate depăși 500€.",
+          },
+          {
+            question: "În cât timp poate fi implementat un chatbot AI?",
+            answer: "O implementare de bază durează de regulă 1-2 săptămâni. Soluțiile cu mai multe limbi, integrare CRM, programări sau fluxuri personalizate pot necesita 2-6 săptămâni.",
+          },
+          {
+            question: "Poate chatbot-ul răspunde în română, rusă și engleză?",
+            answer: "Da. Un asistent AI poate detecta limba vizitatorului și răspunde în română, rusă sau engleză, dacă baza de cunoștințe și testele sunt pregătite corect pentru fiecare limbă.",
+          },
+          {
+            question: "Chatbot-ul poate înlocui complet un angajat?",
+            answer: "Nu în majoritatea afacerilor. Rolul lui este să rezolve întrebările repetitive, să colecteze date și să transfere cazurile complexe către un om, nu să elimine complet intervenția umană.",
+          },
+          {
+            question: "Ce tipuri de afaceri obțin cel mai bun ROI?",
+            answer: "Clinicile, magazinele online, restaurantele cu rezervări, agențiile imobiliare și companiile cu volum mare de întrebări repetitive obțin de obicei cele mai clare economii și rezultate.",
+          },
+          {
+            question: "Cum evităm răspunsurile greșite sau inventate?",
+            answer: "Prin surse de informație controlate, reguli explicite, limitarea subiectelor, teste cu scenarii reale, transfer către un om și monitorizarea periodică a conversațiilor.",
+          },
         ],
       },
       en: {

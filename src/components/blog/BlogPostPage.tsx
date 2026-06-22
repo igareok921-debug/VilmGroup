@@ -10,10 +10,7 @@ import Image from "next/image";
 import { blogCategoryLabels, getLocalizedBlogPost, getRelatedPosts, type BlogPost } from "@/data/blogPosts";
 import { getServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
-
-const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-).replace(/\/$/, "");
+import { siteUrl } from "@/i18n/config";
 
 export default function BlogPostPage({ post }: { post: BlogPost }) {
   const { locale } = useI18n();
@@ -23,12 +20,30 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
   const relatedService = post.relatedService ? getServicePage(post.relatedService) : null;
   const t = getLocalizedBlogPost(post, locale);
   const labels = blogCategoryLabels[locale];
+  const serviceLinks = [
+    {
+      slug: "chatbots-ai",
+      label: locale === "ro" ? "Chatbots AI" : locale === "ru" ? "AI-чатботы" : "AI chatbots",
+    },
+    {
+      slug: "creare-website-uri",
+      label: locale === "ro" ? "Creare website-uri" : locale === "ru" ? "Создание сайтов" : "Website creation",
+    },
+    {
+      slug: "smm-chisinau",
+      label: locale === "ro" ? "SMM Chișinău" : locale === "ru" ? "SMM в Кишинёве" : "SMM Chișinău",
+    },
+    {
+      slug: "branding-logo-design",
+      label: locale === "ro" ? "Branding și logo design" : locale === "ru" ? "Брендинг и логотип" : "Branding and logo design",
+    },
+  ];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "BlogPosting",
+        "@type": ["Article", "BlogPosting"],
         "@id": `${pageUrl}#article`,
         headline: t.title,
         description: t.excerpt,
@@ -54,6 +69,22 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
           { "@type": "ListItem", position: 3, name: t.title, item: pageUrl },
         ],
       },
+      ...(t.faqs?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#faq`,
+              mainEntity: t.faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer,
+                },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -200,7 +231,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                       key={idx}
                       className="border-l-2 border-accent/60 pl-6 italic text-text md:text-lg"
                     >
-                      "{block.text}"
+                      “{block.text}”
                       {block.author ? (
                         <footer className="mt-3 not-italic text-sm text-muted">
                           — {block.author}
@@ -224,6 +255,67 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                 return null;
               })}
             </div>
+
+            {t.faqs?.length ? (
+              <section
+                aria-labelledby="article-faq-title"
+                className="mt-20 border-t border-border pt-12"
+              >
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                  FAQ
+                </p>
+                <h2
+                  id="article-faq-title"
+                  className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-4xl"
+                >
+                  {locale === "ro"
+                    ? "Întrebări frecvente despre chatbot-uri AI"
+                    : locale === "ru"
+                      ? "Частые вопросы об AI-чатботах"
+                      : "Frequently asked questions about AI chatbots"}
+                </h2>
+                <div className="mt-8 space-y-6">
+                  {t.faqs.map((faq) => (
+                    <article key={faq.question} className="border-t border-border pt-5">
+                      <h3 className="font-display text-xl font-semibold text-text">
+                        {faq.question}
+                      </h3>
+                      <p className="mt-3 leading-relaxed text-text-soft">
+                        {faq.answer}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            <aside className="mt-16 border border-border bg-bg-1/45 p-6 md:p-8">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                {locale === "ro"
+                  ? "Servicii conexe"
+                  : locale === "ru"
+                    ? "Связанные услуги"
+                    : "Related services"}
+              </p>
+              <h2 className="mt-4 font-display text-2xl font-bold text-text md:text-3xl">
+                {locale === "ro"
+                  ? "Construiește un sistem digital coerent"
+                  : locale === "ru"
+                    ? "Создайте целостную digital-систему"
+                    : "Build a coherent digital system"}
+              </h2>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {serviceLinks.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`${localePrefix}/${service.slug}`}
+                    className="border border-border px-4 py-3 font-display text-sm font-semibold text-text transition hover:border-accent hover:text-accent"
+                  >
+                    {service.label} →
+                  </Link>
+                ))}
+              </div>
+            </aside>
 
             {relatedService ? (
               <div className="mt-20 border-y border-border bg-bg-1/45 px-6 py-10 md:px-10 md:py-12">

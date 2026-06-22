@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
   turbopack: {
     root: __dirname,
   },
@@ -20,21 +22,6 @@ const nextConfig: NextConfig = {
             value: "public, max-age=31536000, immutable",
           },
         ],
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "vilmgroup.md",
-          },
-        ],
-        destination: "https://www.vilmgroup.md/:path*",
-        permanent: true,
       },
     ];
   },

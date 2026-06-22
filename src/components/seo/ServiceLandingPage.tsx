@@ -6,13 +6,10 @@ import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
+import { getBlogPost, getLocalizedBlogPost } from "@/data/blogPosts";
 import { getServicePage, type ServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
-import type { Locale } from "@/i18n/config";
-
-const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-).replace(/\/$/, "");
+import { siteUrl, type Locale } from "@/i18n/config";
 
 const localizedServices: Partial<
   Record<
@@ -62,6 +59,13 @@ const localizedServices: Partial<
       faqs: [["Can the chatbot answer about my services?", "Yes. We configure it with brand information, services, prices, tone of voice and response rules. The more documentation you provide, the more accurate it is."], ["How much does an AI chatbot cost at Vilm Group?", "A basic chatbot (answers based on simple documentation, integrated on website) starts at 200€. A mid-range chatbot (with conversation flows, CRM/email integration, multilingual) is between 400-500€. A complex AI assistant (with custom logic, multiple integrations, continuous training) starts from 500€."], ["Do I need an OpenAI account?", "For a chatbot based on OpenAI or Anthropic, an API key must be securely configured on the server, not exposed publicly in the browser. We help with account setup if needed."], ["Can the chatbot send users to Telegram or a form?", "Yes. It can guide users to offers, forms, Telegram, WhatsApp or other relevant channels, depending on visitor intent."], ["In how many languages can the chatbot speak?", "The chatbot can be configured to respond in Romanian, English, Russian, Ukrainian or any other languages relevant to your market. It automatically detects visitor language."], ["What types of businesses does it work best for?", "We most often implement chatbots for: clinics and offices (appointments, treatment questions), online stores (stock, prices, delivery), restaurants (menu, reservations), agencies and consultants (lead qualification), companies with high volume of repetitive requests."], ["How long does chatbot implementation take?", "A basic chatbot can be ready in 1-2 weeks. A mid-range one with custom flows and integrations takes 2-4 weeks. A complex project can reach 4-6 weeks with extended testing."]].map(([question, answer]) => ({ question, answer })),
     },
   },
+};
+
+const relevantArticleByService: Record<string, string> = {
+  "creare-website-uri": "cat-costa-un-website-in-moldova-2026",
+  "smm-chisinau": "10-greseli-instagram-afaceri-chisinau",
+  "branding-logo-design": "cum-sa-ti-alegi-numele-de-brand",
+  "chatbots-ai": "ai-chatbot-cind-merita",
 };
 
 localizedServices.ru = {
@@ -114,6 +118,10 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
   const relatedPages = page.related
     .map((slug) => getServicePage(slug))
     .filter((item): item is ServicePage => Boolean(item));
+  const relevantArticle = getBlogPost(relevantArticleByService[page.slug]);
+  const relevantArticleContent = relevantArticle
+    ? getLocalizedBlogPost(relevantArticle, locale)
+    : null;
   const pageUrl = `${siteUrl}${localePrefix}/${page.slug}`;
   const structuredData = {
     "@context": "https://schema.org",
@@ -347,6 +355,32 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
               ))}
             </div>
           </section>
+
+          {relevantArticle && relevantArticleContent ? (
+            <section className="border-t border-border bg-bg-1/35">
+              <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-16 md:grid-cols-12 md:px-10 md:py-20">
+                <div className="md:col-span-4">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                    {locale === "ro" ? "Ghid relevant" : locale === "ru" ? "Полезный гид" : "Relevant guide"}
+                  </p>
+                </div>
+                <Link
+                  href={`${localePrefix}/blog/${relevantArticle.slug}`}
+                  className="group border border-border bg-bg-0/60 p-6 transition hover:border-accent md:col-span-8 md:p-8"
+                >
+                  <h2 className="font-display text-2xl font-bold leading-tight text-text md:text-3xl">
+                    {relevantArticleContent.title}
+                  </h2>
+                  <p className="mt-4 leading-relaxed text-text-soft">
+                    {relevantArticleContent.excerpt}
+                  </p>
+                  <span className="mt-6 inline-flex font-display text-sm font-semibold text-accent transition group-hover:translate-x-1">
+                    {locale === "ro" ? "Citește articolul" : locale === "ru" ? "Читать статью" : "Read the article"} →
+                  </span>
+                </Link>
+              </div>
+            </section>
+          ) : null}
         </main>
         <Footer />
       </div>

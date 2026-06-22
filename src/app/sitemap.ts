@@ -1,11 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blogPosts";
 import { servicePages } from "@/data/servicePages";
-import { locales } from "@/i18n/config";
-
-const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.vilmgroup.md"
-).replace(/\/$/, "");
+import { locales, siteUrl } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const languageAlternates = (path = "/") => ({

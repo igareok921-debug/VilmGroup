@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Logo from "./Logo";
 import { useI18n } from "@/i18n/I18nProvider";
 
@@ -29,8 +30,26 @@ const marqueeWords = ["LET'S MAKE", "SOMETHING", "GREAT.", "✦"];
 
 export default function Footer() {
   const { dictionary, locale } = useI18n();
-  const localePrefix = locale === "ro" ? "" : `/${locale}`;
+  const localePrefix = `/${locale}`;
   const loop = [...marqueeWords, ...marqueeWords, ...marqueeWords];
+  const serviceLinks = [
+    {
+      href: "smm-chisinau",
+      label: locale === "ro" ? "SMM Chișinău" : locale === "ru" ? "SMM Кишинёв" : "SMM Chișinău",
+    },
+    {
+      href: "creare-website-uri",
+      label: locale === "ro" ? "Creare website-uri" : locale === "ru" ? "Создание сайтов" : "Website creation",
+    },
+    {
+      href: "chatbots-ai",
+      label: locale === "ro" ? "Chatbots AI" : locale === "ru" ? "AI-чатботы" : "AI chatbots",
+    },
+    {
+      href: "branding-logo-design",
+      label: locale === "ro" ? "Branding și logo" : locale === "ru" ? "Брендинг и логотип" : "Branding and logo",
+    },
+  ];
 
   return (
     <footer className="relative z-20 border-t border-border bg-bg-0">
@@ -67,7 +86,7 @@ export default function Footer() {
           </div>
 
           {/* Nav */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
               {dictionary.footer.navigation}
             </p>
@@ -80,6 +99,24 @@ export default function Footer() {
                   >
                     {dictionary.nav[link.key]}
                   </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
+              {locale === "ro" ? "SERVICII" : locale === "ru" ? "УСЛУГИ" : "SERVICES"}
+            </p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={`${localePrefix}/${link.href}`}
+                    className="link-underline font-display text-base font-medium text-text"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -105,7 +142,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1">
             <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
               {dictionary.footer.contact}
             </p>

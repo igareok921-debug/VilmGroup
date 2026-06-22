@@ -18,7 +18,7 @@ npm run build
 
 ## SEO
 
-Site-ul foloseste domeniul canonic `https://www.vilmgroup.md`, sitemap, metadata localizata si faviconuri dedicate Vilm Group.
+Site-ul folosește domeniul canonic `https://vilmgroup.md`, sitemap, metadata localizată și faviconuri dedicate Vilm Group.
 
 ## Environment
 
