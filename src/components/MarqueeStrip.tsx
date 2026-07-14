@@ -1,15 +1,10 @@
 "use client";
 
 const DEFAULT_ITEMS = [
+  "Website Development & SEO",
+  "Online Store Development",
   "Social Media Marketing",
-  "Branding & Identitate",
-  "Logo Design",
-  "Graphic Design",
-  "Website Development",
-  "App Development",
-  "Reels & Content",
-  "AI Integration",
-  "Visual Production",
+  "AI & Automation",
 ];
 
 type Props = {

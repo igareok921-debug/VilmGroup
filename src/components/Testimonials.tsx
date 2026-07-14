@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/i18n/I18nProvider";
 
@@ -30,6 +30,29 @@ export default function Testimonials() {
   const [activeVideo, setActiveVideo] = useState<
     (typeof videoTestimonials)[number] | null
   >(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+
+  const closeVideo = useCallback(() => {
+    setActiveVideo(null);
+    window.requestAnimationFrame(() => triggerRef.current?.focus());
+  }, []);
+
+  useEffect(() => {
+    if (!activeVideo) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeVideo();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeVideo, closeVideo]);
 
   return (
     <section
@@ -83,21 +106,21 @@ export default function Testimonials() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {videoTestimonials.map((video, i) => (
-              <div
+              <button
                 key={video.src}
-                className="group relative aspect-[9/16] overflow-hidden rounded-2xl border border-white/15 bg-white/[0.05] text-left shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] transition hover:border-accent"
+                type="button"
+                onClick={(event) => {
+                  triggerRef.current = event.currentTarget;
+                  setActiveVideo(video);
+                }}
+                className="group relative aspect-[9/16] w-full cursor-pointer overflow-hidden rounded-2xl border border-white/15 bg-white/[0.05] text-left shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] transition hover:border-accent"
+                aria-label={`${dictionary.testimonials.play} ${video.title} ${i + 1}`}
               >
                 <div
                   className="pointer-events-none absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
                   style={{ backgroundImage: `url(${video.poster})` }}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-0 via-bg-0/15 to-transparent" />
-                <button
-                  type="button"
-                  onClick={() => setActiveVideo(video)}
-                  className="absolute inset-0 z-10 cursor-pointer"
-                  aria-label={`${dictionary.testimonials.play} ${video.title} ${i + 1}`}
-                />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-4 p-5">
                   <div>
                     <p className="font-mono text-[10px] tracking-[0.2em] text-accent">
@@ -111,19 +134,13 @@ export default function Testimonials() {
                       {video.duration}
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      setActiveVideo(video);
-                    }}
-                    className="pointer-events-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-bg-0 transition hover:bg-accent-soft"
-                    aria-label={`${dictionary.testimonials.play} ${video.title} ${i + 1}`}
-                  >
-                    ▶
-                  </button>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-bg-0 transition group-hover:bg-accent-soft" aria-hidden>
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                      <path d="M8.25 5.25v13.5L18.75 12 8.25 5.25Z" />
+                    </svg>
+                  </span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -139,7 +156,7 @@ export default function Testimonials() {
             role="dialog"
             aria-modal="true"
             aria-label={activeVideo.title}
-            onClick={() => setActiveVideo(null)}
+            onClick={closeVideo}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 16 }}
@@ -151,8 +168,9 @@ export default function Testimonials() {
             >
               <button
                 type="button"
-                onClick={() => setActiveVideo(null)}
-                className="absolute -top-12 right-0 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2 font-mono text-[10px] tracking-[0.2em] text-text transition hover:border-accent hover:text-accent"
+                onClick={closeVideo}
+                autoFocus
+                className="absolute -top-12 right-0 min-h-11 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2 font-mono text-[10px] tracking-[0.2em] text-text transition hover:border-accent hover:text-accent"
               >
                 {dictionary.testimonials.close}
               </button>

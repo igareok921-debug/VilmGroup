@@ -72,7 +72,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Cât costă un website la Vilm Group?",
         answer:
-          "Prețurile încep de la 200€ pentru un landing page de prezentare. Un site de servicii cu 5-7 secțiuni este între 400-500€, iar un proiect premium cu animații complexe, multilingv și integrări custom începe de la 500€. Toate prețurile includ design, dezvoltare, SEO de bază și 30 de zile de suport.",
+          "Pachetul Landing Page începe de la 150€, Website Business de la 499€, iar Website Premium de la 999€. Oferta finală depinde de numărul de pagini, conținut, limbi și integrările necesare. Toate pachetele includ design, dezvoltare, SEO tehnic de bază și suport după lansare.",
       },
       {
         question: "Website-ul va fi optimizat pentru Google?",
@@ -90,11 +90,6 @@ export const servicePages: ServicePage[] = [
           "Primești site-ul live pe domeniul tău, acces la panoul de administrare (dacă e cazul), Google Search Console configurată, sitemap.xml, manual de utilizare în română și 30 zile de suport tehnic gratuit pentru ajustări minore.",
       },
       {
-        question: "Pot să-mi actualizez singur conținutul după lansare?",
-        answer:
-          "Da. Pentru site-urile statice oferim un editor simplu sau update-uri manuale la cerere. Pentru site-urile cu CMS (WordPress, Sanity, Strapi) primești training video și acces complet la administrare, ca să poți modifica texte și imagini singur.",
-      },
-      {
         question: "Câte modificări sau revizii sunt incluse în preț?",
         answer:
           "În toate pachetele includem 2 runde majore de revizii pe design și 30 de zile de ajustări minore după lansare. Modificările suplimentare se facturează la oră sau pe baza unei oferte clare, în funcție de complexitate.",
@@ -105,7 +100,7 @@ export const servicePages: ServicePage[] = [
           "Da. Putem integra un asistent AI care răspunde vizitatorilor 24/7, colectează cereri de ofertă și direcționează utilizatorii către contact, Telegram sau WhatsApp. Chatbot-ul vorbește în tonul brandului tău.",
       },
     ],
-    related: ["smm-chisinau", "branding-logo-design", "chatbots-ai"],
+    related: ["creare-magazin-online", "smm-chisinau", "chatbots-ai"],
   },
   {
     slug: "smm-chisinau",
@@ -370,6 +365,81 @@ export const servicePages: ServicePage[] = [
   },
 ];
 
+export const onlineStorePage: ServicePage = {
+  slug: "creare-magazin-online",
+  eyebrow: "ECOMMERCE · PLĂȚI · AUTOMATIZĂRI",
+  title: "Creare magazine online construite pentru vânzări și creștere.",
+  shortTitle: "Creare magazin online",
+  description:
+    "Construim magazine online rapide și scalabile pentru afaceri din Moldova și România, cu administrare produse, categorii, checkout, plăți online, automatizări și SEO pentru căutări comerciale.",
+  keywords: [
+    "creare magazin online Moldova",
+    "magazin online Chișinău",
+    "dezvoltare ecommerce Moldova",
+    "site ecommerce Moldova",
+    "magazin online cu plăți",
+    "preț magazin online",
+    "creare magazin online România",
+  ],
+  heroPoints: [
+    "Catalog și administrare simplă pentru produse, categorii, stocuri și comenzi.",
+    "Checkout clar, plăți online și experiență optimizată pentru conversii.",
+    "SEO tehnic pentru produse și categorii, analytics și automatizări de vânzări.",
+  ],
+  benefits: [
+    "Design premium, responsive și adaptat identității brandului.",
+    "Administrare produse, categorii, prețuri, stocuri și promoții.",
+    "Checkout simplificat și integrare cu metodele de plată potrivite.",
+    "Emailuri și notificări automate pentru comenzi și clienți.",
+    "Integrare livrare, facturare, CRM sau alte servicii la nevoie.",
+    "SEO pentru produse, categorii și căutări cu intenție de cumpărare.",
+    "Analytics pentru trafic, conversii, coș abandonat și performanța produselor.",
+    "Instruire și suport tehnic după lansare.",
+  ],
+  process: [
+    "Clarificăm modelul de business, catalogul, piața și obiectivele de vânzări.",
+    "Stabilim structura magazinului, categoriile, filtrele și traseul de cumpărare.",
+    "Proiectăm interfața și experiența de checkout pentru mobil și desktop.",
+    "Implementăm produsele, plățile, livrarea și automatizările necesare.",
+    "Optimizăm viteza, SEO-ul tehnic, analytics și securitatea.",
+    "Testăm comenzile cap-coadă și pregătim lansarea și instruirea echipei.",
+  ],
+  faqs: [
+    {
+      question: "Cât costă un magazin online?",
+      answer:
+        "Pachetul Start începe de la 800€, Business de la 1400€, iar un magazin Premium cu funcționalități și integrări personalizate începe de la 1900€. Oferta finală depinde de numărul de produse și complexitatea fluxurilor.",
+    },
+    {
+      question: "Pot administra singur produsele și comenzile?",
+      answer:
+        "Da. Primești acces la un panou de administrare pentru produse, categorii, prețuri, stocuri, promoții și comenzi, plus instruire pentru echipă.",
+    },
+    {
+      question: "Puteți integra plăți online?",
+      answer:
+        "Da. Integrăm soluția de plată potrivită pieței și procesatorului ales, cu flux securizat și confirmări automate pentru client și administrator.",
+    },
+    {
+      question: "Magazinul va fi optimizat pentru telefon?",
+      answer:
+        "Da. Interfața, filtrele, paginile de produs și checkout-ul sunt proiectate mobile-first, deoarece majoritatea cumpărătorilor accesează magazinele de pe telefon.",
+    },
+    {
+      question: "Include și SEO pentru produse?",
+      answer:
+        "Da. Pregătim structura tehnică, metadata, schema pentru produse, sitemap-ul și paginile de categorie pentru indexare corectă în Google.",
+    },
+    {
+      question: "Puteți conecta livrarea, CRM-ul sau facturarea?",
+      answer:
+        "Da. Putem integra servicii de curierat, facturare, CRM, email marketing, analytics și alte sisteme, în funcție de API-urile disponibile.",
+    },
+  ],
+  related: ["creare-website-uri", "smm-chisinau", "chatbots-ai"],
+};
+
 export function getServicePage(slug: string) {
+  if (slug === onlineStorePage.slug) return onlineStorePage;
   return servicePages.find((page) => page.slug === slug);
 }

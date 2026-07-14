@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Magnetic from "./Magnetic";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -16,8 +17,9 @@ type HeroCopy = {
   discount: string;
   discountLabel: string;
   discountText: string;
-  mockupTitle: string[];
-  mockupText: string;
+  formTitle: string;
+  formText: string;
+  formSubmit: string;
   limitedOffer: string;
   limitedOfferStrong: string;
   nextLevel: string;
@@ -40,8 +42,9 @@ const heroCopy: Record<Locale, HeroCopy> = {
     discount: "-20%",
     discountLabel: "Reducere",
     discountText: "la crearea website-urilor",
-    mockupTitle: ["Strategie.", "Design.", "Rezultate."],
-    mockupText: "Transformăm idei în experiențe digitale care aduc valoare brandului tău.",
+    formTitle: "Spune-ne despre proiect",
+    formText: "Completează formularul și revenim cu o recomandare potrivită afacerii tale.",
+    formSubmit: "Solicită oferta cu -20%",
     limitedOffer: "Ofertă valabilă pentru",
     limitedOfferStrong: "un număr limitat de proiecte.",
     nextLevel: "Contactează-ne acum și du-ți afacerea la",
@@ -52,11 +55,10 @@ const heroCopy: Record<Locale, HeroCopy> = {
       { strong: "Optimizare", text: "pentru performanță și viteză" },
     ],
     services: [
-      { label: "Website-uri moderne", icon: "website" },
-      { label: "Branding & Logo", icon: "brand" },
-      { label: "SMM & Marketing", icon: "marketing" },
-      { label: "Foto & Video", icon: "video" },
-      { label: "Aplicații & AI", icon: "ai" },
+      { label: "Website & SEO", icon: "website" },
+      { label: "Magazine Online", icon: "brand" },
+      { label: "SMM & Content", icon: "marketing" },
+      { label: "AI & Automatizări", icon: "ai" },
     ],
   },
   en: {
@@ -70,8 +72,9 @@ const heroCopy: Record<Locale, HeroCopy> = {
     discount: "-20%",
     discountLabel: "Discount",
     discountText: "for website creation",
-    mockupTitle: ["Strategy.", "Design.", "Results."],
-    mockupText: "We turn ideas into digital experiences that grow your brand.",
+    formTitle: "Tell us about your project",
+    formText: "Complete the form and we’ll return with a recommendation tailored to your business.",
+    formSubmit: "Claim the -20% offer",
     limitedOffer: "Offer available for",
     limitedOfferStrong: "a limited number of projects.",
     nextLevel: "Contact us now and take your business to the",
@@ -82,11 +85,10 @@ const heroCopy: Record<Locale, HeroCopy> = {
       { strong: "Optimization", text: "for performance and speed" },
     ],
     services: [
-      { label: "Modern websites", icon: "website" },
-      { label: "Branding & Logo", icon: "brand" },
-      { label: "SMM & Marketing", icon: "marketing" },
-      { label: "Photo & Video", icon: "video" },
-      { label: "Apps & AI", icon: "ai" },
+      { label: "Website & SEO", icon: "website" },
+      { label: "Online Stores", icon: "brand" },
+      { label: "SMM & Content", icon: "marketing" },
+      { label: "AI & Automation", icon: "ai" },
     ],
   },
   ru: {
@@ -100,8 +102,9 @@ const heroCopy: Record<Locale, HeroCopy> = {
     discount: "-20%",
     discountLabel: "Скидка",
     discountText: "на создание сайтов",
-    mockupTitle: ["Стратегия.", "Дизайн.", "Результат."],
-    mockupText: "Превращаем идеи в digital-опыт, который усиливает ваш бренд.",
+    formTitle: "Расскажите о проекте",
+    formText: "Заполните форму, и мы предложим решение, подходящее вашему бизнесу.",
+    formSubmit: "Получить предложение со скидкой -20%",
     limitedOffer: "Предложение доступно для",
     limitedOfferStrong: "ограниченного числа проектов.",
     nextLevel: "Свяжитесь с нами и выведите бизнес на",
@@ -112,11 +115,10 @@ const heroCopy: Record<Locale, HeroCopy> = {
       { strong: "Оптимизация", text: "скорости и производительности" },
     ],
     services: [
-      { label: "Современные сайты", icon: "website" },
-      { label: "Брендинг & Logo", icon: "brand" },
-      { label: "SMM & Маркетинг", icon: "marketing" },
-      { label: "Фото & Видео", icon: "video" },
-      { label: "Приложения & AI", icon: "ai" },
+      { label: "Сайты & SEO", icon: "website" },
+      { label: "Интернет-магазины", icon: "brand" },
+      { label: "SMM & Контент", icon: "marketing" },
+      { label: "AI & Автоматизация", icon: "ai" },
     ],
   },
 };
@@ -191,73 +193,159 @@ function HeroBrand() {
   );
 }
 
-function DeviceMockups({ copy }: { copy: HeroCopy }) {
+type FormStatus = "idle" | "sending" | "sent" | "error";
+
+function HeroLeadForm({ copy }: { copy: HeroCopy }) {
+  const { dictionary } = useI18n();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          message: `${copy.formSubmit}\n\n${message}`,
+        }),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error ?? dictionary.contactSection.error);
+      }
+
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : dictionary.contactSection.error
+      );
+    }
+  };
+
   return (
-    <div className="relative hidden min-h-[32rem] lg:block lg:min-h-[34rem] xl:min-h-[37rem]">
-      <motion.div
-        initial={{ opacity: 0, y: 22, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.85, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute right-0 top-0 w-[min(15rem,22vw)] rounded-[1.85rem] border border-accent/45 bg-bg-0/55 px-5 pt-8 pb-32 text-center shadow-[0_0_90px_rgba(200,169,106,0.18)] backdrop-blur-md xl:w-[min(20rem,29vw)] xl:px-7 xl:pt-10 xl:pb-44"
-      >
-        <p className="font-mono text-xs uppercase tracking-[0.28em] text-text">
-          {copy.offerEyebrow}
-        </p>
-        <p className="mt-3 bg-[linear-gradient(135deg,#fff4c2,#d8b15c_50%,#8f6a24)] bg-clip-text font-display text-6xl font-extrabold leading-none tracking-[-0.07em] text-transparent xl:text-7xl">
-          {copy.discount}
-        </p>
-        <p className="mt-1 font-display text-3xl font-bold uppercase tracking-[-0.03em] text-text xl:text-4xl">
-          {copy.discountLabel}
-        </p>
-        <p className="mt-1 text-base text-text-soft">{copy.discountText}</p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="hero-float absolute right-6 bottom-0 w-[min(22rem,32vw)] rounded-[1.25rem] border border-white/15 bg-[#08080b] p-3 shadow-[0_38px_90px_rgba(0,0,0,0.72)] xl:right-10 xl:w-[min(31rem,42vw)]"
-      >
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-bg-0 px-8 py-8">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_76%,rgba(200,169,106,0.42),transparent_18%),radial-gradient(circle_at_80%_85%,rgba(255,255,255,0.18),transparent_21%)]" />
-          <div className="absolute -right-14 bottom-[-7rem] h-60 w-60 rounded-full border border-accent/25 bg-[radial-gradient(circle_at_35%_30%,rgba(225,200,150,0.2),rgba(20,18,26,0.95)_55%,rgba(0,0,0,0)_70%)]" />
-          <p className="relative font-mono text-[10px] text-accent">vilmgroup</p>
-          <h3 className="relative mt-10 max-w-[15rem] font-display text-4xl font-bold leading-[0.92] tracking-[-0.04em] text-text">
-            {copy.mockupTitle[0]}
-            <br />
-            {copy.mockupTitle[1]}
-            <br />
-            <span className="text-accent">{copy.mockupTitle[2]}</span>
-          </h3>
-          <p className="relative mt-4 max-w-[15rem] text-xs leading-relaxed text-text-soft">
-            {copy.mockupText}
+    <motion.form
+      id="hero-form"
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      className="relative overflow-hidden rounded-[1.75rem] border border-accent/40 bg-[#0c0a10]/92 p-5 shadow-[0_32px_100px_rgba(0,0,0,0.58),0_0_80px_rgba(200,169,106,0.12)] backdrop-blur-xl sm:p-7 lg:p-8"
+    >
+      <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(200,169,106,0.95),transparent)]" aria-hidden />
+      <div className="flex items-start justify-between gap-5 border-b border-white/[0.09] pb-6">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+            {copy.offerEyebrow}
           </p>
-          <span className="relative mt-5 inline-flex rounded-full bg-accent px-4 py-2 font-display text-xs font-semibold text-bg-0">
-            {copy.primaryCta} →
-          </span>
+          <h2 className="mt-3 font-display text-2xl font-bold leading-tight text-text sm:text-3xl">
+            {copy.formTitle}
+          </h2>
         </div>
-        <div className="mx-auto mt-2 h-2 w-28 rounded-full bg-white/10" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 35 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
-        className="hero-float-slow absolute right-0 bottom-6 w-24 rounded-[1.65rem] border border-white/20 bg-[#07070a] p-2 shadow-[0_30px_70px_rgba(0,0,0,0.78)] xl:w-36"
-      >
-        <div className="aspect-[9/18] rounded-[1.25rem] border border-white/10 bg-[radial-gradient(circle_at_80%_80%,rgba(200,169,106,0.38),transparent_23%),#08070a] p-4">
-          <p className="font-mono text-[8px] text-accent">vilmgroup</p>
-          <p className="mt-9 font-display text-lg font-bold leading-[0.98] text-text lg:text-xl">
-            {copy.mockupTitle[0]}
-            <br />
-            {copy.mockupTitle[1]}
-            <br />
-            <span className="text-accent">{copy.mockupTitle[2]}</span>
+        <div className="shrink-0 text-right">
+          <p className="font-display text-5xl font-extrabold leading-none tracking-[-0.07em] text-accent sm:text-6xl">
+            {copy.discount}
           </p>
-          <div className="mt-8 h-1 w-12 rounded-full bg-white/70" />
+          <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-text-soft">
+            {copy.discountLabel}
+          </p>
         </div>
-      </motion.div>
-    </div>
+      </div>
+
+      <p className="mt-5 text-sm leading-relaxed text-text-soft sm:text-[15px]">
+        {copy.formText} <strong className="font-semibold text-accent">{copy.discountText}</strong>
+      </p>
+
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="hero-name" className="font-mono text-[10px] tracking-[0.2em] text-muted">
+            {dictionary.contactSection.name} <span aria-hidden>*</span>
+          </label>
+          <input
+            id="hero-name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            disabled={status === "sending"}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            placeholder={dictionary.contactSection.namePlaceholder}
+            className="mt-2 min-h-12 w-full rounded-xl border border-white/20 bg-white/[0.07] px-4 text-base text-text outline-none transition placeholder:text-muted hover:border-white/35 focus:border-accent disabled:cursor-not-allowed disabled:opacity-50"
+          />
+        </div>
+        <div>
+          <label htmlFor="hero-email" className="font-mono text-[10px] tracking-[0.2em] text-muted">
+            {dictionary.contactSection.email} <span aria-hidden>*</span>
+          </label>
+          <input
+            id="hero-email"
+            name="email"
+            type="email"
+            inputMode="email"
+            required
+            autoComplete="email"
+            disabled={status === "sending"}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="email@companie.md"
+            className="mt-2 min-h-12 w-full rounded-xl border border-white/20 bg-white/[0.07] px-4 text-base text-text outline-none transition placeholder:text-muted hover:border-white/35 focus:border-accent disabled:cursor-not-allowed disabled:opacity-50"
+          />
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="hero-message" className="font-mono text-[10px] tracking-[0.2em] text-muted">
+          {dictionary.contactSection.message} <span aria-hidden>*</span>
+        </label>
+        <textarea
+          id="hero-message"
+          name="message"
+          required
+          rows={3}
+          disabled={status === "sending"}
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
+          placeholder={dictionary.contactSection.messagePlaceholder}
+          className="mt-2 w-full resize-none rounded-xl border border-white/20 bg-white/[0.07] px-4 py-3 text-base leading-relaxed text-text outline-none transition placeholder:text-muted hover:border-white/35 focus:border-accent disabled:cursor-not-allowed disabled:opacity-50"
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="btn-primary mt-5 w-full cursor-pointer justify-center disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {status === "sending" ? dictionary.contactSection.sending : copy.formSubmit}
+        <span aria-hidden>→</span>
+      </button>
+
+      <div className="mt-4 min-h-5" aria-live="polite">
+        {status === "sent" ? (
+          <p role="status" className="text-sm font-medium text-accent">
+            {dictionary.contactSection.sent}
+          </p>
+        ) : null}
+        {status === "error" ? (
+          <p role="alert" className="text-sm font-medium text-red-400">
+            {errorMessage}
+          </p>
+        ) : null}
+      </div>
+    </motion.form>
   );
 }
 
@@ -274,37 +362,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-80 [background-image:radial-gradient(circle_at_18%_18%,rgba(225,200,150,0.9)_0_1.5px,transparent_2px),radial-gradient(circle_at_55%_7%,rgba(225,200,150,0.7)_0_1px,transparent_1.5px),radial-gradient(circle_at_92%_12%,rgba(225,200,150,0.85)_0_1.5px,transparent_2px),radial-gradient(circle_at_74%_46%,rgba(225,200,150,0.55)_0_1px,transparent_1.5px)]" />
 
       <div className="mx-auto w-full max-w-[1500px]">
-        <div className="md:flex md:items-start md:justify-between md:gap-8">
-          <HeroBrand />
-
-          {/* Compact discount card — centered top on phones, right-aligned at tablet */}
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto mt-7 w-full max-w-[640px] rounded-[1.6rem] border border-accent/40 bg-[#0c0a10]/90 px-4 py-6 shadow-[0_0_80px_rgba(200,169,106,0.22)] backdrop-blur-md md:mx-0 md:mt-0 md:max-w-[420px] md:px-5 md:py-5 lg:hidden"
-          >
-            <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(200,169,106,0.9),transparent)]" aria-hidden />
-
-            <div className="flex items-center gap-3">
-              <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-accent">
-                {copy.offerEyebrow}
-              </p>
-              <span className="h-px flex-1 bg-accent/30" aria-hidden />
-            </div>
-
-            <p
-              style={{ fontSize: "clamp(60px, 16vw, 100px)" }}
-              className="mt-3 font-display font-extrabold leading-[0.85] tracking-[-0.07em] text-accent"
-            >
-              {copy.discount}
-            </p>
-
-            <p className="mt-3 border-t border-white/[0.08] pt-3 text-[0.8rem] leading-snug text-text-soft">
-              {copy.discountText}
-            </p>
-          </motion.div>
-        </div>
+        <HeroBrand />
 
         <div className="relative mt-7 grid gap-8 lg:grid-cols-[0.55fr_0.45fr] lg:items-start xl:mt-8">
         <div className="relative z-10">
@@ -346,7 +404,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="mt-8 hidden gap-y-5 md:grid md:grid-cols-5 md:divide-x md:divide-white/15 xl:mt-9"
+            className="mt-8 hidden gap-y-5 md:grid md:grid-cols-4 md:divide-x md:divide-white/15 xl:mt-9"
           >
             {copy.services.map((service) => (
               <div key={service.label} className="flex flex-col items-start gap-3.5 pr-4 sm:items-center sm:px-4 sm:text-center">
@@ -392,7 +450,7 @@ export default function Hero() {
             className="mt-6 flex flex-wrap items-center gap-3"
           >
             <Magnetic>
-              <a className="btn-primary" href="#contact">
+              <a className="btn-primary" href="#hero-form">
                 {copy.primaryCta}
                 <span aria-hidden>→</span>
               </a>
@@ -406,8 +464,8 @@ export default function Hero() {
 
         </div>
 
-        <div className="relative z-10 lg:-mt-8 xl:-ml-6">
-          <DeviceMockups copy={copy} />
+        <div className="relative z-10 lg:-mt-6 xl:ml-4">
+          <HeroLeadForm copy={copy} />
         </div>
         </div>
 

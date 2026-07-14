@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
-import { blogCategoryLabels, blogPosts, getLocalizedBlogPost, type BlogCategory, type BlogPost } from "@/data/blogPosts";
+import { blogCategoryLabels, blogImageBlurDataURL, blogPosts, getLocalizedBlogPost, type BlogCategory, type BlogPost } from "@/data/blogPosts";
 import { useI18n } from "@/i18n/I18nProvider";
 import { siteUrl } from "@/i18n/config";
 
@@ -76,8 +76,10 @@ function BlogCardCover({
           src={post.coverImage}
           alt={alt}
           fill
+          placeholder="blur"
+          blurDataURL={blogImageBlurDataURL}
           sizes={isFeatured ? "(min-width: 768px) 33vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
-          className="object-cover transition duration-700 group-hover:scale-105"
+          className="scale-[1.001] transform-gpu object-cover transition-transform duration-500 ease-out will-change-transform [backface-visibility:hidden] group-hover:scale-105"
         />
       ) : (
         <>

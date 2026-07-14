@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
-import { servicePages } from "@/data/servicePages";
+import { onlineStorePage, servicePages } from "@/data/servicePages";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { dictionaries } from "@/i18n/dictionaries";
 import { isLocale, locales, siteUrl, type Locale } from "@/i18n/config";
@@ -69,6 +69,11 @@ const localizedNames: Record<Locale, Record<string, { title: string; description
       description:
         "Asistenți AI pentru website, suport clienți, vânzări, lead-uri și workflow-uri repetitive.",
     },
+    "creare-magazin-online": {
+      title: "Creare magazine online",
+      description:
+        "Magazine online cu produse, checkout, plăți, automatizări și SEO pentru vânzări.",
+    },
   },
   en: {
     "creare-website-uri": {
@@ -91,6 +96,11 @@ const localizedNames: Record<Locale, Record<string, { title: string; description
       description:
         "AI assistants for websites, customer support, sales, leads and repetitive workflows.",
     },
+    "creare-magazin-online": {
+      title: "Online store development",
+      description:
+        "Online stores with products, checkout, payments, automation and ecommerce SEO.",
+    },
   },
   ru: {
     "creare-website-uri": {
@@ -112,6 +122,11 @@ const localizedNames: Record<Locale, Record<string, { title: string; description
       title: "AI-чатботы и автоматизация",
       description:
         "AI-ассистенты для сайта, поддержки клиентов, продаж, лидов и повторяющихся процессов.",
+    },
+    "creare-magazin-online": {
+      title: "Создание интернет-магазинов",
+      description:
+        "Интернет-магазины с товарами, checkout, оплатой, автоматизацией и ecommerce SEO.",
     },
   },
 };
@@ -144,7 +159,7 @@ export default async function LocalizedServicesPage({
   if (!isLocale(locale)) notFound();
 
   const copy = pageCopy[locale];
-  const serviceList = servicePages.map((page) => ({
+  const serviceList = [...servicePages, onlineStorePage].map((page) => ({
     ...page,
     localized: localizedNames[locale as Locale][page.slug],
   }));
@@ -233,12 +248,14 @@ export default async function LocalizedServicesPage({
                         {page.localized.description}
                       </p>
                       <ul className="mt-6 space-y-3 text-sm leading-relaxed text-text-soft">
-                        {serviceSeo[page.slug][locale].keywords.slice(0, 3).map((keyword) => (
+                        {(serviceSeo[page.slug]?.[locale]?.keywords ?? page.keywords)
+                          .slice(0, 3)
+                          .map((keyword) => (
                           <li key={keyword} className="flex gap-3">
                             <span aria-hidden className="mt-2 h-px w-4 shrink-0 bg-accent" />
                             <span>{keyword}</span>
                           </li>
-                        ))}
+                          ))}
                       </ul>
                       <div className="mt-7 flex flex-wrap gap-2">
                         <Link

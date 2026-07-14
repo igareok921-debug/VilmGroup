@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
+import PricingPackages, {
+  type PricingPackage,
+} from "@/components/seo/PricingPackages";
 import { getBlogPost, getLocalizedBlogPost } from "@/data/blogPosts";
 import { getServicePage, type ServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -26,7 +29,7 @@ const localizedServices: Partial<
       heroPoints: ["Clear structure for services, portfolio, offers and contact, built for conversion.", "Premium unique design adapted to your brand identity — no templates.", "Complete technical SEO: metadata, sitemap, schema, performance and correct Google indexing."],
       benefits: ["Fast, responsive website that works well on mobile, optimized for Core Web Vitals.", "Copy and structure focused on quote requests, not only visuals.", "Form, social media, tracking and optional AI chatbot integration.", "Ready for Google Search Console and correct indexing.", "Unique design adapted to your brand — every website is built from scratch, no templates.", "Local SEO optimized for Moldova: Chișinău, Bălți, Cahul, Orhei and the rest of the country.", "Fast hosting on modern infrastructure — loading under 2 seconds guaranteed.", "User manual and 30 days of technical support included."],
       process: ["We clarify the goal, services and target audience of your website.", "We research relevant keywords and local competition in Moldova and Romania.", "We build the page structure, main messages and call-to-actions.", "We design the interface in your brand style and adapt it for all devices.", "We implement content, forms, social integrations and AI chatbot if needed.", "We optimize technical SEO, test performance on Lighthouse and prepare launch."],
-      faqs: [["How long does website creation take?", "A presentation website can be ready in 2-4 weeks. A more complex site with custom animations, multilingual or integrations (AI chatbot, online payments, CMS) can take 4-8 weeks, depending on scope and feedback speed."], ["How much does a website cost at Vilm Group?", "Prices start at 200€ for a presentation landing page. A service site with 5-7 sections is between 400-500€, and a premium project with complex animations, multilingual and custom integrations starts from 500€. All prices include design, development, basic SEO and 30 days of support."], ["Will the website be optimized for Google?", "Yes. We implement metadata, sitemap.xml, robots.txt, structured data (JSON-LD), semantic structure, good performance (Lighthouse 90+) and content aligned with relevant searches. We also configure Google Search Console for you."], ["Do you work with clients outside Chișinău?", "Yes. We work with businesses across Moldova (Bălți, Cahul, Orhei, Comrat, Hâncești, Ungheni), Romania (Bucharest, Iași, Cluj), Russia and the European diaspora. Communication happens entirely online via Telegram, WhatsApp or Zoom."], ["What do I receive after website launch?", "You receive the live site on your domain, access to the admin panel (if applicable), Google Search Console configured, sitemap.xml, user manual in your language and 30 days of free technical support for minor adjustments."], ["Can I update content myself after launch?", "Yes. For static sites we offer a simple editor or manual updates on request. For sites with CMS (WordPress, Sanity, Strapi) you get video training and full admin access to modify texts and images yourself."], ["How many revisions are included in the price?", "All packages include 2 major rounds of design revisions and 30 days of minor adjustments after launch. Additional changes are billed hourly or based on a clear offer, depending on complexity."], ["Can you add an AI chatbot?", "Yes. We can integrate an AI assistant that answers visitors 24/7, collects quote requests and guides users to contact, Telegram or WhatsApp. The chatbot speaks in your brand's tone."]].map(([question, answer]) => ({ question, answer })),
+      faqs: [["How long does website creation take?", "A landing page can be delivered in 3-5 days, Website Business in 1-3 weeks and Website Premium in 3-6 weeks, depending on content and feedback."], ["How much does a website cost at Vilm Group?", "Landing Page starts at €150, Website Business at €499 and Website Premium at €999. The final quote depends on page count, languages and integrations."], ["Will the website be optimized for Google?", "Yes. We implement metadata, sitemap.xml, robots.txt, structured data, semantic structure, performance optimization and relevant SEO foundations."], ["Do you work with clients outside Chișinău?", "Yes. We work with businesses across Moldova, Romania and Europe. Communication is handled online through Telegram, WhatsApp or Zoom."], ["What do I receive after website launch?", "You receive the live website on your domain, analytics and Search Console where included, plus post-launch technical support according to your package."], ["How many revisions are included in the price?", "All packages include two major design revision rounds. Additional changes are quoted separately depending on complexity."], ["Can you add an AI chatbot?", "Yes. Website Premium can include an AI assistant for 24/7 answers, lead collection and routing users to contact, Telegram or WhatsApp."]].map(([question, answer]) => ({ question, answer })),
     },
     "smm-chisinau": {
       eyebrow: "SMM · Content · Campaigns",
@@ -68,6 +71,375 @@ const relevantArticleByService: Record<string, string> = {
   "chatbots-ai": "ai-chatbot-cind-merita",
 };
 
+type PricingSection = {
+  title: string;
+  eyebrow: string;
+  description: string;
+  packages: PricingPackage[];
+  trustText?: string;
+  additionalServices?: string[];
+  popularLabel: string;
+  additionalServicesTitle: string;
+  ctaLabel: string;
+};
+
+const pricingByLocale: Record<Locale, Partial<Record<string, PricingSection>>> = {
+  ro: {
+    "creare-website-uri": {
+    eyebrow: "Investiție clară",
+    title: "Pachete Website",
+    description:
+      "Alege nivelul potrivit pentru obiectivul, complexitatea și etapa actuală a afacerii tale.",
+    trustText: "Peste 80% dintre clienții noștri aleg Website Business.",
+    popularLabel: "Cel mai popular",
+    additionalServicesTitle: "Servicii suplimentare disponibile",
+    ctaLabel: "Solicită ofertă",
+    additionalServices: [
+      "Creare Magazin Online",
+      "Campanii Google Ads",
+      "Campanii Meta Ads",
+      "Automatizări AI personalizate",
+      "Integrare CRM",
+      "Copywriting",
+      "Mentenanță lunară",
+    ],
+    packages: [
+      {
+        name: "Landing Page",
+        price: "de la 150€",
+        delivery: "🚀 Livrare: 3-5 zile",
+        description: "Perfect pentru lansări, servicii și campanii.",
+        features: [
+          "UI/UX Design",
+          "1 pagină",
+          "Responsive Mobile & Desktop",
+          "Formular contact",
+          "WhatsApp & Telegram",
+          "SEO Basic",
+          "SSL Security",
+          "Publicare pe domeniu",
+          "Optimizare viteză",
+        ],
+      },
+      {
+        name: "Website Business",
+        price: "de la 499€",
+        delivery: "⭐ Livrare: 1-3 săptămâni",
+        description: "Recomandat pentru majoritatea afacerilor.",
+        features: [
+          "Tot din Landing Page",
+          "Până la 7 pagini",
+          "Branding Basic inclus",
+          "Google Business Profile",
+          "Google Analytics",
+          "Google Search Console",
+          "SEO Local",
+          "Formulare avansate",
+        ],
+        popular: true,
+      },
+      {
+        name: "Website Premium",
+        price: "de la 999€",
+        delivery: "👑 Livrare: 3-6 săptămâni",
+        description: "Pentru companii care vor performanță și scalare.",
+        features: [
+          "Tot din Business",
+          "Design personalizat",
+          "Multilingv",
+          "AI Chatbot",
+          "Automatizări",
+          "SEO Avansat",
+          "Suport prioritar",
+        ],
+      },
+    ],
+    },
+    "creare-magazin-online": {
+    eyebrow: "Ecommerce scalabil",
+    title: "Pachete Magazin Online",
+    description:
+      "Trei niveluri de implementare, de la primul catalog cu plăți până la un ecosistem ecommerce personalizat.",
+    popularLabel: "Cel mai popular",
+    additionalServicesTitle: "Servicii suplimentare disponibile",
+    ctaLabel: "Solicită ofertă",
+    packages: [
+      {
+        name: "Magazin Online Start",
+        price: "de la 800€",
+        description:
+          "Pentru afaceri care lansează primul magazin și au nevoie de un flux de cumpărare simplu.",
+        features: [
+          "Catalog și categorii de produse",
+          "Checkout și plăți online",
+          "Administrare comenzi și stocuri",
+          "SEO ecommerce de bază",
+        ],
+      },
+      {
+        name: "Magazin Online Business",
+        price: "de la 1400€",
+        description:
+          "Pentru magazine cu mai multe produse, campanii active și nevoi de automatizare.",
+        features: [
+          "Filtre, promoții și variante produse",
+          "Automatizări email și notificări",
+          "Analytics și optimizare conversii",
+          "Integrări livrare și facturare",
+        ],
+        popular: true,
+      },
+      {
+        name: "Magazin Online Premium",
+        price: "de la 1900€",
+        description:
+          "Pentru proiecte ecommerce complexe, cu design și funcționalități dezvoltate personalizat.",
+        features: [
+          "Experiență și design complet custom",
+          "Integrări CRM, ERP sau API",
+          "Automatizări și logică avansată",
+          "Scalare, securitate și suport extins",
+        ],
+      },
+    ],
+    },
+  },
+  en: {
+    "creare-website-uri": {
+      eyebrow: "Clear investment",
+      title: "Website Packages",
+      description:
+        "Choose the right level for your goals, project complexity and current business stage.",
+      trustText: "Over 80% of our clients choose Website Business.",
+      popularLabel: "Most popular",
+      additionalServicesTitle: "Additional services available",
+      ctaLabel: "Request a quote",
+      additionalServices: [
+        "Online Store Development",
+        "Google Ads Campaigns",
+        "Meta Ads Campaigns",
+        "Custom AI Automation",
+        "CRM Integration",
+        "Copywriting",
+        "Monthly Maintenance",
+      ],
+      packages: [
+        {
+          name: "Landing Page",
+          price: "from €150",
+          delivery: "🚀 Delivery: 3-5 days",
+          description: "Perfect for launches, services and campaigns.",
+          features: [
+            "UI/UX Design",
+            "1 page",
+            "Responsive Mobile & Desktop",
+            "Contact Form",
+            "WhatsApp & Telegram",
+            "Basic SEO",
+            "SSL Security",
+            "Domain Publishing",
+            "Speed Optimization",
+          ],
+        },
+        {
+          name: "Website Business",
+          price: "from €499",
+          delivery: "⭐ Delivery: 1-3 weeks",
+          description: "Recommended for most businesses.",
+          features: [
+            "Everything in Landing Page",
+            "Up to 7 pages",
+            "Basic Branding included",
+            "Google Business Profile",
+            "Google Analytics",
+            "Google Search Console",
+            "Local SEO",
+            "Advanced Forms",
+          ],
+          popular: true,
+        },
+        {
+          name: "Website Premium",
+          price: "from €999",
+          delivery: "👑 Delivery: 3-6 weeks",
+          description: "For companies focused on performance and scale.",
+          features: [
+            "Everything in Business",
+            "Custom Design",
+            "Multilingual",
+            "AI Chatbot",
+            "Automation",
+            "Advanced SEO",
+            "Priority Support",
+          ],
+        },
+      ],
+    },
+    "creare-magazin-online": {
+      eyebrow: "Scalable ecommerce",
+      title: "Online Store Packages",
+      description:
+        "Three implementation levels, from your first store with payments to a custom ecommerce ecosystem.",
+      popularLabel: "Most popular",
+      additionalServicesTitle: "Additional services available",
+      ctaLabel: "Request a quote",
+      packages: [
+        {
+          name: "Online Store Start",
+          price: "from €800",
+          description: "For businesses launching their first online store.",
+          features: [
+            "Product catalog and categories",
+            "Checkout and online payments",
+            "Order and inventory management",
+            "Basic ecommerce SEO",
+          ],
+        },
+        {
+          name: "Online Store Business",
+          price: "from €1,400",
+          description: "For stores with active campaigns and automation needs.",
+          features: [
+            "Filters, promotions and product variants",
+            "Email automation and notifications",
+            "Analytics and conversion optimization",
+            "Delivery and invoicing integrations",
+          ],
+          popular: true,
+        },
+        {
+          name: "Online Store Premium",
+          price: "from €1,900",
+          description: "For complex ecommerce projects with custom functionality.",
+          features: [
+            "Fully custom experience and design",
+            "CRM, ERP or API integrations",
+            "Advanced automation and logic",
+            "Scaling, security and extended support",
+          ],
+        },
+      ],
+    },
+  },
+  ru: {
+    "creare-website-uri": {
+      eyebrow: "Понятная инвестиция",
+      title: "Пакеты сайтов",
+      description:
+        "Выберите подходящий уровень для целей, сложности проекта и текущего этапа бизнеса.",
+      trustText: "Более 80% наших клиентов выбирают Website Business.",
+      popularLabel: "Самый популярный",
+      additionalServicesTitle: "Дополнительные услуги",
+      ctaLabel: "Запросить предложение",
+      additionalServices: [
+        "Создание интернет-магазина",
+        "Кампании Google Ads",
+        "Кампании Meta Ads",
+        "Персональная AI-автоматизация",
+        "Интеграция CRM",
+        "Копирайтинг",
+        "Ежемесячное обслуживание",
+      ],
+      packages: [
+        {
+          name: "Landing Page",
+          price: "от 150€",
+          delivery: "🚀 Срок: 3-5 дней",
+          description: "Идеально для запусков, услуг и кампаний.",
+          features: [
+            "UI/UX Design",
+            "1 страница",
+            "Responsive Mobile & Desktop",
+            "Контактная форма",
+            "WhatsApp & Telegram",
+            "Базовое SEO",
+            "SSL Security",
+            "Публикация на домене",
+            "Оптимизация скорости",
+          ],
+        },
+        {
+          name: "Website Business",
+          price: "от 499€",
+          delivery: "⭐ Срок: 1-3 недели",
+          description: "Рекомендуем для большинства компаний.",
+          features: [
+            "Всё из Landing Page",
+            "До 7 страниц",
+            "Базовый брендинг включён",
+            "Google Business Profile",
+            "Google Analytics",
+            "Google Search Console",
+            "Локальное SEO",
+            "Расширенные формы",
+          ],
+          popular: true,
+        },
+        {
+          name: "Website Premium",
+          price: "от 999€",
+          delivery: "👑 Срок: 3-6 недель",
+          description: "Для компаний, которым нужны результат и масштабирование.",
+          features: [
+            "Всё из Business",
+            "Индивидуальный дизайн",
+            "Мультиязычность",
+            "AI-чатбот",
+            "Автоматизация",
+            "Продвинутое SEO",
+            "Приоритетная поддержка",
+          ],
+        },
+      ],
+    },
+    "creare-magazin-online": {
+      eyebrow: "Масштабируемый ecommerce",
+      title: "Пакеты интернет-магазина",
+      description:
+        "Три уровня реализации: от первого магазина с оплатой до персональной ecommerce-системы.",
+      popularLabel: "Самый популярный",
+      additionalServicesTitle: "Дополнительные услуги",
+      ctaLabel: "Запросить предложение",
+      packages: [
+        {
+          name: "Интернет-магазин Start",
+          price: "от 800€",
+          description: "Для бизнеса, который запускает первый интернет-магазин.",
+          features: [
+            "Каталог и категории товаров",
+            "Checkout и онлайн-платежи",
+            "Управление заказами и остатками",
+            "Базовое ecommerce SEO",
+          ],
+        },
+        {
+          name: "Интернет-магазин Business",
+          price: "от 1400€",
+          description: "Для магазинов с активными кампаниями и автоматизацией.",
+          features: [
+            "Фильтры, акции и варианты товаров",
+            "Email-автоматизация и уведомления",
+            "Analytics и оптимизация конверсий",
+            "Интеграции доставки и счетов",
+          ],
+          popular: true,
+        },
+        {
+          name: "Интернет-магазин Premium",
+          price: "от 1900€",
+          description: "Для сложных ecommerce-проектов с custom-функционалом.",
+          features: [
+            "Полностью индивидуальный дизайн",
+            "Интеграции CRM, ERP или API",
+            "Продвинутая логика и автоматизация",
+            "Масштабирование, безопасность и поддержка",
+          ],
+        },
+      ],
+    },
+  },
+};
+
 localizedServices.ru = {
   "creare-website-uri": {
     eyebrow: "Web design · SEO · Конверсия",
@@ -77,7 +449,7 @@ localizedServices.ru = {
     heroPoints: ["Понятная структура для услуг, портфолио, предложений и контакта, ориентированная на конверсию.", "Премиальный уникальный дизайн, адаптированный к айдентике бренда — никаких шаблонов.", "Полное техническое SEO: metadata, sitemap, schema, производительность и корректная индексация в Google."],
     benefits: ["Быстрый responsive-сайт, удобный на телефоне, оптимизированный для Core Web Vitals.", "Copy и структура, ориентированные на заявки, не только на внешний вид.", "Интеграция формы, соцсетей, tracking и AI-чатбота по необходимости.", "Полная подготовка к Google Search Console и корректной индексации.", "Уникальный дизайн под бренд — каждый сайт строится с нуля, без шаблонов.", "Локальное SEO, оптимизированное для Молдовы: Кишинёв, Бельцы, Кагул, Оргеев и вся страна.", "Быстрый хостинг на современной инфраструктуре — загрузка менее 2 секунд гарантирована.", "Руководство пользователя и 30 дней технической поддержки включены."],
     process: ["Определяем цель, услуги и целевую аудиторию сайта.", "Исследуем релевантные ключевые слова и локальную конкуренцию в Молдове и Румынии.", "Строим структуру страниц, основные сообщения и call-to-actions.", "Дизайним интерфейс в стиле бренда и адаптируем для всех устройств.", "Внедряем контент, формы, соцсети и AI-чатбот при необходимости.", "Оптимизируем техническое SEO, тестируем performance на Lighthouse и готовим запуск."],
-    faqs: [["Сколько занимает создание сайта?", "Сайт-презентация может быть готов за 2-4 недели. Более сложный сайт с кастомными анимациями, мультиязычностью или интеграциями (AI-чатбот, онлайн-платежи, CMS) занимает 4-8 недель, в зависимости от scope и скорости feedback."], ["Сколько стоит сайт в Vilm Group?", "Цены начинаются от 200€ за landing page-презентацию. Сайт услуг с 5-7 секциями стоит 400-500€, а премиальный проект с комплексными анимациями, мультиязычностью и кастомными интеграциями начинается от 500€. Все цены включают дизайн, разработку, базовое SEO и 30 дней поддержки."], ["Сайт будет оптимизирован для Google?", "Да. Мы внедряем metadata, sitemap.xml, robots.txt, structured data (JSON-LD), семантическую структуру, хорошую производительность (Lighthouse 90+) и контент, ориентированный на релевантные запросы. Также настраиваем Google Search Console."], ["Работаете ли с клиентами вне Кишинёва?", "Да. Работаем с бизнесом по всей Молдове (Бельцы, Кагул, Оргеев, Комрат, Хынчешты, Унгены), Румынии (Бухарест, Яссы, Клуж), России и европейской диаспоре. Коммуникация полностью онлайн через Telegram, WhatsApp или Zoom."], ["Что получаю после запуска сайта?", "Сайт live на твоём домене, доступ к админ-панели (если применимо), настроенная Google Search Console, sitemap.xml, руководство пользователя на твоём языке и 30 дней бесплатной техподдержки для мелких корректировок."], ["Могу ли сам обновлять контент после запуска?", "Да. Для статических сайтов предлагаем простой редактор или manual updates по запросу. Для сайтов с CMS (WordPress, Sanity, Strapi) получаешь видео-training и полный доступ к админке для самостоятельного изменения текстов и изображений."], ["Сколько ревизий включено в цену?", "Все пакеты включают 2 крупные раунда ревизий дизайна и 30 дней мелких корректировок после запуска. Дополнительные изменения тарифицируются почасово или на основе чёткого предложения, в зависимости от сложности."], ["Можно добавить AI-чатбот?", "Да. Мы можем интегрировать AI-ассистента, который отвечает посетителям 24/7, собирает заявки и ведёт пользователей к контакту, Telegram или WhatsApp. Чатбот говорит в тоне твоего бренда."]].map(([question, answer]) => ({ question, answer })),
+    faqs: [["Сколько занимает создание сайта?", "Landing Page может быть готов за 3-5 дней, Website Business — за 1-3 недели, а Website Premium — за 3-6 недель, в зависимости от контента и скорости обратной связи."], ["Сколько стоит сайт в Vilm Group?", "Landing Page начинается от 150€, Website Business — от 499€, а Website Premium — от 999€. Финальная цена зависит от количества страниц, языков и интеграций."], ["Сайт будет оптимизирован для Google?", "Да. Внедряем metadata, sitemap.xml, robots.txt, structured data, семантическую структуру, оптимизацию скорости и необходимую SEO-базу."], ["Работаете ли с клиентами вне Кишинёва?", "Да. Работаем с бизнесом по всей Молдове, Румынии и Европе. Коммуникация полностью онлайн через Telegram, WhatsApp или Zoom."], ["Что получаю после запуска сайта?", "Вы получаете готовый сайт на своём домене, analytics и Search Console в соответствующих пакетах, а также техническую поддержку после запуска."], ["Сколько ревизий включено в цену?", "Все пакеты включают два крупных раунда правок дизайна. Дополнительные изменения оцениваются отдельно в зависимости от сложности."], ["Можно добавить AI-чатбот?", "Да. Website Premium может включать AI-ассистента для ответов 24/7, сбора заявок и направления пользователей в форму, Telegram или WhatsApp."]].map(([question, answer]) => ({ question, answer })),
   },
   "smm-chisinau": {
     eyebrow: "SMM · Контент · Кампании",
@@ -111,6 +483,138 @@ localizedServices.ru = {
   },
 };
 
+localizedServices.en = {
+  ...localizedServices.en,
+  "creare-magazin-online": {
+    eyebrow: "ECOMMERCE · PAYMENTS · AUTOMATION",
+    title: "Online stores built for sales and scalable growth.",
+    shortTitle: "Online store development",
+    description:
+      "We build fast, scalable online stores for businesses in Moldova, Romania and Europe, with product management, categories, checkout, online payments, automation and SEO for commercial searches.",
+    heroPoints: [
+      "Simple management for products, categories, inventory and orders.",
+      "Clear checkout, online payments and a conversion-focused shopping experience.",
+      "Technical SEO for products and categories, analytics and sales automation.",
+    ],
+    benefits: [
+      "Premium responsive design adapted to your brand identity.",
+      "Management for products, categories, prices, stock and promotions.",
+      "Streamlined checkout and integration with suitable payment methods.",
+      "Automated emails and notifications for orders and customers.",
+      "Delivery, invoicing, CRM and other integrations when needed.",
+      "SEO for products, categories and purchase-intent searches.",
+      "Analytics for traffic, conversions, abandoned carts and product performance.",
+      "Team training and technical support after launch.",
+    ],
+    process: [
+      "We clarify the business model, catalog, market and sales goals.",
+      "We define the store structure, categories, filters and purchase journey.",
+      "We design the interface and checkout experience for mobile and desktop.",
+      "We implement products, payments, delivery and required automation.",
+      "We optimize speed, technical SEO, analytics and security.",
+      "We test the complete order flow and prepare launch and team training.",
+    ],
+    faqs: [
+      {
+        question: "How much does an online store cost?",
+        answer:
+          "The Start package begins at €800, Business at €1,400 and a Premium store with custom functionality starts at €1,900. The final quote depends on product count and workflow complexity.",
+      },
+      {
+        question: "Can I manage products and orders myself?",
+        answer:
+          "Yes. You receive access to an admin panel for products, categories, prices, inventory, promotions and orders, plus team training.",
+      },
+      {
+        question: "Can you integrate online payments?",
+        answer:
+          "Yes. We integrate a payment solution suitable for your market and chosen provider, with a secure flow and automated confirmations.",
+      },
+      {
+        question: "Will the store be optimized for mobile?",
+        answer:
+          "Yes. The interface, filters, product pages and checkout are designed mobile-first because most customers shop from their phones.",
+      },
+      {
+        question: "Does it include product SEO?",
+        answer:
+          "Yes. We prepare the technical structure, metadata, product schema, sitemap and category pages for correct Google indexing.",
+      },
+      {
+        question: "Can you connect delivery, CRM or invoicing?",
+        answer:
+          "Yes. We can integrate courier, invoicing, CRM, email marketing, analytics and other systems when suitable APIs are available.",
+      },
+    ],
+  },
+};
+
+localizedServices.ru = {
+  ...localizedServices.ru,
+  "creare-magazin-online": {
+    eyebrow: "ECOMMERCE · ПЛАТЕЖИ · АВТОМАТИЗАЦИЯ",
+    title: "Интернет-магазины для продаж и масштабируемого роста.",
+    shortTitle: "Создание интернет-магазина",
+    description:
+      "Создаём быстрые масштабируемые интернет-магазины для бизнеса в Молдове, Румынии и Европе: товары, категории, checkout, онлайн-платежи, автоматизация и SEO для коммерческих запросов.",
+    heroPoints: [
+      "Простое управление товарами, категориями, остатками и заказами.",
+      "Понятный checkout, онлайн-платежи и путь покупки, оптимизированный для конверсий.",
+      "Техническое SEO товаров и категорий, analytics и автоматизация продаж.",
+    ],
+    benefits: [
+      "Премиальный responsive-дизайн в стиле вашего бренда.",
+      "Управление товарами, категориями, ценами, остатками и акциями.",
+      "Упрощённый checkout и интеграция подходящих способов оплаты.",
+      "Автоматические email и уведомления для заказов и клиентов.",
+      "Интеграции доставки, счетов, CRM и других сервисов.",
+      "SEO для товаров, категорий и запросов с намерением покупки.",
+      "Analytics трафика, конверсий, брошенных корзин и товаров.",
+      "Обучение команды и техническая поддержка после запуска.",
+    ],
+    process: [
+      "Уточняем бизнес-модель, каталог, рынок и цели продаж.",
+      "Определяем структуру магазина, категории, фильтры и путь покупки.",
+      "Проектируем интерфейс и checkout для мобильных и desktop-устройств.",
+      "Внедряем товары, оплату, доставку и нужные автоматизации.",
+      "Оптимизируем скорость, техническое SEO, analytics и безопасность.",
+      "Тестируем полный цикл заказа и готовим запуск и обучение команды.",
+    ],
+    faqs: [
+      {
+        question: "Сколько стоит интернет-магазин?",
+        answer:
+          "Пакет Start начинается от 800€, Business — от 1400€, а Premium-магазин с индивидуальным функционалом — от 1900€. Финальная цена зависит от количества товаров и сложности процессов.",
+      },
+      {
+        question: "Я смогу сам управлять товарами и заказами?",
+        answer:
+          "Да. Вы получите панель управления товарами, категориями, ценами, остатками, акциями и заказами, а также обучение команды.",
+      },
+      {
+        question: "Можно подключить онлайн-платежи?",
+        answer:
+          "Да. Мы интегрируем подходящее для вашего рынка платёжное решение с безопасным процессом и автоматическими подтверждениями.",
+      },
+      {
+        question: "Магазин будет оптимизирован для телефона?",
+        answer:
+          "Да. Интерфейс, фильтры, страницы товаров и checkout проектируются mobile-first, поскольку большинство покупателей используют телефон.",
+      },
+      {
+        question: "Включено SEO для товаров?",
+        answer:
+          "Да. Мы готовим техническую структуру, metadata, schema товаров, sitemap и страницы категорий для корректной индексации Google.",
+      },
+      {
+        question: "Можно подключить доставку, CRM или счета?",
+        answer:
+          "Да. Интегрируем курьерские службы, выставление счетов, CRM, email-маркетинг, analytics и другие системы при наличии API.",
+      },
+    ],
+  },
+};
+
 export default function ServiceLandingPage({ page }: { page: ServicePage }) {
   const { dictionary, locale } = useI18n();
   const localizedPage = localizedServices[locale]?.[page.slug] ?? page;
@@ -122,6 +626,7 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
   const relevantArticleContent = relevantArticle
     ? getLocalizedBlogPost(relevantArticle, locale)
     : null;
+  const pricing = pricingByLocale[locale]?.[page.slug];
   const pageUrl = `${siteUrl}${localePrefix}/${page.slug}`;
   const structuredData = {
     "@context": "https://schema.org",
@@ -238,6 +743,21 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
               </div>
             </div>
           </section>
+
+          {pricing ? (
+            <PricingPackages
+              title={pricing.title}
+              eyebrow={pricing.eyebrow}
+              description={pricing.description}
+              packages={pricing.packages}
+              trustText={pricing.trustText}
+              additionalServices={pricing.additionalServices}
+              popularLabel={pricing.popularLabel}
+              additionalServicesTitle={pricing.additionalServicesTitle}
+              ctaLabel={pricing.ctaLabel}
+              contactHref={`${localePrefix}/#contact`}
+            />
+          ) : null}
 
           <section className="border-y border-border bg-bg-1/45">
             <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-20 md:grid-cols-12 md:px-10 md:py-24">

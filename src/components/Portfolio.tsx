@@ -13,15 +13,64 @@ const categories: { key: CategoryKey }[] = [
   { key: "webapp" },
 ];
 
+const portfolioImageBlur =
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5vcmcvMjAwMC9zdmciIHdpZHRoPScxNicgaGVpZ2h0PScxMCc+PHJlY3Qgd2lkdGg9JzE2JyBoZWlnaHQ9JzEwJyBmaWxsPScjMTQxMjFhJy8+PC9zdmc+";
+
 const projects: {
   title: string;
   category: Exclude<CategoryKey, "all">;
   previewGradient: string;
   previewImages?: string[];
   link?: string;
+  slug?: string;
   featuredGrid?: boolean;
   year?: string;
+  copyIndex: number;
 }[] = [
+  {
+    title: "The Visibility Summit",
+    category: "webapp",
+    previewGradient: "from-[#09090a] via-[#211719] to-[#c67a80]",
+    previewImages: [
+      "/portfolio/visibilitysummit/hero.webp",
+      "/portfolio/visibilitysummit/trainers.webp",
+      "/portfolio/visibilitysummit/tickets.webp",
+      "/portfolio/visibilitysummit/stripe-checkout.webp",
+    ],
+    slug: "the-visibility-summit",
+    featuredGrid: true,
+    year: "LIVE · 2026",
+    copyIndex: 5,
+  },
+  {
+    title: "VILM SEO AI",
+    category: "webapp",
+    previewGradient: "from-[#11131f] via-[#24234f] to-[#6d5cf6]",
+    previewImages: [
+      "/portfolio/vilm-seo-ai/landing-light.png",
+      "/portfolio/vilm-seo-ai/dashboard.png",
+      "/portfolio/vilm-seo-ai/copilot.png",
+      "/portfolio/vilm-seo-ai/keywords.png",
+    ],
+    slug: "vilm-seo-ai",
+    featuredGrid: true,
+    year: "BETA · 2026",
+    copyIndex: 4,
+  },
+  {
+    title: "CaroCakes",
+    category: "webapp",
+    previewGradient: "from-[#3a1d0f] via-[#6a3c24] to-[#e7cdb2]",
+    previewImages: [
+      "/portfolio/carocakes/gallery.png",
+      "/portfolio/carocakes/prices.png",
+      "/portfolio/carocakes/blog.png",
+    ],
+    slug: "carocakes",
+    featuredGrid: true,
+    year: "2026",
+    copyIndex: 3,
+  },
   {
     title: "Femeia în Roșu",
     category: "webapp",
@@ -29,6 +78,7 @@ const projects: {
     previewImages: ["/p4.webp", "/p3.webp", "/p2.webp", "/P1.webp"],
     featuredGrid: true,
     year: "2025",
+    copyIndex: 0,
   },
   {
     title: "Curs SMM",
@@ -37,6 +87,7 @@ const projects: {
     previewImages: ["/p1.1.webp", "/p1.2.webp", "/p1.3.webp", "/p1.4.webp"],
     featuredGrid: true,
     year: "2025",
+    copyIndex: 1,
   },
   {
     title: "Valeria SMM",
@@ -45,11 +96,12 @@ const projects: {
     previewImages: ["/v1.png", "/v2.png", "/v3.png"],
     featuredGrid: true,
     year: "2025",
+    copyIndex: 2,
   },
 ];
 
 export default function Portfolio() {
-  const { dictionary } = useI18n();
+  const { dictionary, locale } = useI18n();
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("all");
 
   const filteredProjects = useMemo(() => {
@@ -107,6 +159,7 @@ export default function Portfolio() {
             <button
               key={category.key}
               type="button"
+              aria-pressed={isActive}
               onClick={() => setActiveCategory(category.key)}
               className={`group flex items-center gap-1.5 px-3 py-1.5 text-sm transition-colors ${
                 isActive ? "text-accent" : "text-muted hover:text-text"
@@ -129,8 +182,10 @@ export default function Portfolio() {
       <motion.div layout className="grid gap-x-8 gap-y-16 md:grid-cols-2 md:gap-y-24">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, index) => {
-            const projectIndex = projects.findIndex((item) => item.title === project.title);
-            const localizedProject = dictionary.portfolio.projects[projectIndex];
+            const localizedProject = dictionary.portfolio.projects[project.copyIndex];
+            const projectHref = project.slug
+              ? `/${locale}/portofoliu/${project.slug}`
+              : project.link ?? "#contact";
 
             return (
             <motion.article
@@ -149,7 +204,7 @@ export default function Portfolio() {
               }`}
             >
               <a
-                href={project.link ?? "#contact"}
+                href={projectHref}
                 target={project.link?.startsWith("http") ? "_blank" : undefined}
                 rel={
                   project.link?.startsWith("http")
@@ -200,9 +255,11 @@ export default function Portfolio() {
                               src={src}
                               alt={`Vilm Group portfoliu — ${project.title}, creare website și design Chișinău Moldova (imagine ${i + 1})`}
                               fill
+                              placeholder="blur"
+                              blurDataURL={portfolioImageBlur}
                               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                              className={`transition-transform duration-700 group-hover:scale-105 ${
-                                project.title === "Valeria SMM"
+                              className={`transform-gpu transition-transform duration-500 group-hover:scale-[1.025] ${
+                              project.title === "Valeria SMM"
                                   ? "object-contain"
                                   : "object-cover"
                               }`}
@@ -230,7 +287,9 @@ export default function Portfolio() {
                         </ul>
                       ) : null}
                       <span className="cta-underline mt-2 text-sm">
-                        {project.link ? "Vezi proiectul" : dictionary.common.similar}
+                        {project.slug || project.link
+                          ? dictionary.common.seeDetails
+                          : dictionary.common.similar}
                         <span aria-hidden className="cta-arrow">
                           →
                         </span>

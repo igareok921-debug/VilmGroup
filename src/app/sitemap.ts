@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blogPosts";
 import { servicePages } from "@/data/servicePages";
+import { portfolioProjects } from "@/data/portfolioProjects";
 import { locales, siteUrl } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -35,6 +36,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: languageAlternates(`/${page.slug}`),
     }))
   );
+  const localizedOnlineStorePages = locales.map((locale) => ({
+    url: `${siteUrl}/${locale}/creare-magazin-online`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    alternates: languageAlternates("/creare-magazin-online"),
+  }));
 
   const localizedBlogIndexPages = locales.map((locale) => ({
     url: `${siteUrl}/${locale}/blog`,
@@ -52,12 +60,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: languageAlternates(`/blog/${post.slug}`),
     }))
   );
+  const localizedPortfolioPages = locales.flatMap((locale) =>
+    portfolioProjects.map((project) => ({
+      url: `${siteUrl}/${locale}/portofoliu/${project.slug}`,
+      lastModified: new Date(`${project.year}-01-01`),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+      alternates: languageAlternates(`/portofoliu/${project.slug}`),
+    }))
+  );
 
   return [
     ...localizedHomePages,
     ...localizedServiceIndexPages,
     ...localizedServicePages,
+    ...localizedOnlineStorePages,
     ...localizedBlogIndexPages,
     ...localizedBlogPostPages,
+    ...localizedPortfolioPages,
   ];
 }

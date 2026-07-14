@@ -7,7 +7,7 @@ import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
 import Image from "next/image";
-import { blogCategoryLabels, getLocalizedBlogPost, getRelatedPosts, type BlogPost } from "@/data/blogPosts";
+import { blogCategoryLabels, blogImageBlurDataURL, getLocalizedBlogPost, getRelatedPosts, type BlogPost } from "@/data/blogPosts";
 import { getServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
 import { siteUrl } from "@/i18n/config";
@@ -147,6 +147,8 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                   src={post.coverImage}
                   alt={t.title}
                   fill
+                  placeholder="blur"
+                  blurDataURL={blogImageBlurDataURL}
                   sizes="(min-width: 768px) 768px, 100vw"
                   className="object-cover"
                   priority

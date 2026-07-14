@@ -9,12 +9,9 @@ const CONTACT_EMAIL = "info@vilmgroup.md";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const interests = [
-  "SMM",
-  "Branding",
-  "Logo",
-  "Graphic Design",
   "Website",
-  "App",
+  "Magazin Online",
+  "SMM",
   "AI",
 ];
 
@@ -22,9 +19,9 @@ export default function Contact() {
   const { dictionary, locale } = useI18n();
   const localizedInterests =
     locale === "ru"
-      ? ["SMM", "Брендинг", "Логотип", "Графический дизайн", "Сайт", "Приложение", "AI"]
+      ? ["Сайт", "Интернет-магазин", "SMM", "AI"]
       : locale === "en"
-      ? ["SMM", "Branding", "Logo", "Graphic Design", "Website", "App", "AI"]
+      ? ["Website", "Online Store", "SMM", "AI"]
       : interests;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -144,10 +141,10 @@ export default function Contact() {
             className="relative space-y-10 rounded-2xl border border-white/15 bg-white/[0.05] p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-sm md:p-10"
           >
             {/* Interests */}
-            <div className="space-y-4">
-              <label className="block font-mono text-[11px] tracking-[0.25em] text-muted">
+            <fieldset className="space-y-4">
+              <legend className="block font-mono text-[11px] tracking-[0.25em] text-muted">
                 {dictionary.contactSection.interests}
-              </label>
+              </legend>
               <div className="flex flex-wrap gap-2">
                 {localizedInterests.map((item) => {
                   const isOn = selected.includes(item);
@@ -156,7 +153,8 @@ export default function Contact() {
                       key={item}
                       type="button"
                       onClick={() => toggleInterest(item)}
-                      className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+                      aria-pressed={isOn}
+                      className={`min-h-11 cursor-pointer rounded-full border px-4 py-2 text-sm font-medium transition ${
                         isOn
                           ? "border-accent bg-accent text-bg-0"
                           : "border-white/25 bg-white/[0.08] text-text hover:border-accent hover:bg-white/[0.14]"
@@ -167,7 +165,7 @@ export default function Contact() {
                   );
                 })}
               </div>
-            </div>
+            </fieldset>
 
             {/* Name + Email */}
             <div className="grid gap-8 md:grid-cols-2">
@@ -184,6 +182,7 @@ export default function Contact() {
                   type="text"
                   required
                   autoComplete="name"
+                  disabled={status === "sending"}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-2 w-full rounded-lg border border-white/25 bg-white/[0.08] px-4 py-3.5 font-display text-lg text-text outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:text-text-soft hover:border-white/40 hover:bg-white/[0.12] focus:border-accent focus:bg-white/[0.14]"
@@ -203,6 +202,8 @@ export default function Contact() {
                   type="email"
                   required
                   autoComplete="email"
+                  inputMode="email"
+                  disabled={status === "sending"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="mt-2 w-full rounded-lg border border-white/25 bg-white/[0.08] px-4 py-3.5 font-display text-lg text-text outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:text-text-soft hover:border-white/40 hover:bg-white/[0.12] focus:border-accent focus:bg-white/[0.14]"
@@ -223,6 +224,7 @@ export default function Contact() {
                 id="contact-message"
                 name="message"
                 required
+                disabled={status === "sending"}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={5}
@@ -250,13 +252,14 @@ export default function Contact() {
             {status === "sent" ? (
               <p
                 role="status"
+                aria-live="polite"
                 className="font-mono text-xs tracking-[0.2em] text-accent"
               >
                 ✓ {dictionary.contactSection.sent}
               </p>
             ) : null}
             {status === "error" ? (
-              <p role="alert" className="font-mono text-xs tracking-[0.2em] text-red-400">
+              <p role="alert" aria-live="assertive" className="font-mono text-xs tracking-[0.2em] text-red-400">
                 ✕ {errorMessage.toUpperCase()}
               </p>
             ) : null}

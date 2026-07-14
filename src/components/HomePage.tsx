@@ -26,29 +26,26 @@ export default function HomePage() {
       ? ["Конверсия", "Эффективность", "Айдентика", "Стратегия", "Реализация", "Креатив"]
       : ["Conversie", "Performanță", "Identitate", "Strategie", "Execuție", "Creativitate"];
   const primaryMarqueeItems =
-    locale === "en"
+    locale === "ro"
       ? [
+          "Website Development & SEO",
+          "Creare Magazine Online",
           "Social Media Marketing",
-          "Branding & Identity",
-          "Logo Design",
-          "Graphic Design",
-          "Website Development",
-          "App Development",
-          "Reels & Content",
-          "AI Integration",
-          "Visual Production",
+          "AI & Automatizări",
+        ]
+      : locale === "en"
+      ? [
+          "Website Development & SEO",
+          "Online Store Development",
+          "Social Media Marketing",
+          "AI & Automation",
         ]
       : locale === "ru"
       ? [
+          "Разработка сайтов & SEO",
+          "Создание интернет-магазинов",
           "Social Media Marketing",
-          "Брендинг & Айдентика",
-          "Дизайн логотипа",
-          "Графический дизайн",
-          "Website Development",
-          "App Development",
-          "Reels & Content",
-          "AI Integration",
-          "Visual Production",
+          "AI & Автоматизация",
         ]
       : undefined;
 
@@ -66,7 +63,7 @@ export default function HomePage() {
       height: 512,
     },
     description:
-      "Studio digital din Chișinău: creare website-uri, SMM, branding, logo design, chatbots AI și automatizări pentru branduri din Moldova, România și diaspora.",
+      "Studio digital din Chișinău: creare website-uri și magazine online, SMM, branding, SEO, chatbots AI și automatizări pentru branduri din Moldova, România și diaspora.",
     email: "info@vilmgroup.md",
     priceRange: "$$",
     currenciesAccepted: "EUR, USD, MDL, RON",
@@ -112,6 +109,13 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-screen bg-bg-0 text-text">
+      <a href="#main-content" className="skip-link">
+        {locale === "ro"
+          ? "Sari la conținut"
+          : locale === "ru"
+          ? "Перейти к содержимому"
+          : "Skip to content"}
+      </a>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -124,7 +128,7 @@ export default function HomePage() {
         className="relative z-10 flex min-h-screen flex-col"
       >
         <Navbar />
-        <main className="flex-1">
+        <main id="main-content" tabIndex={-1} className="flex-1">
           <Hero />
           <MarqueeStrip items={primaryMarqueeItems} />
           <OfferBanner />

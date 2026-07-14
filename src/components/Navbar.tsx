@@ -32,6 +32,23 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const update = () => {
       const now = new Date();
       const hh = String(now.getHours()).padStart(2, "0");
@@ -56,13 +73,14 @@ export default function Navbar() {
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
           <Link
-            href="/"
+            href={localePrefix || "/"}
+            aria-label="Vilm Group"
             className="inline-flex items-center gap-3 transition-opacity duration-300 hover:opacity-80"
           >
             <Logo variant="gold" className="h-7 w-auto md:h-8" />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-5 xl:flex">
             {navItems.map((item) => {
               const isAnchor = item.href.startsWith("/#");
               const href = isAnchor
@@ -78,7 +96,7 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-6 lg:flex">
+          <div className="hidden items-center gap-5 xl:flex">
             <span
               aria-hidden
               className="font-mono text-[10px] tracking-[0.2em] text-muted"
@@ -94,7 +112,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="relative inline-flex h-10 w-10 items-center justify-center lg:hidden"
+            className="relative inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-white/[0.06] xl:hidden"
             aria-label={isOpen ? dictionary.nav.close : dictionary.nav.open}
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
@@ -124,7 +142,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden"
+            className="xl:hidden"
           >
             <motion.div
               initial={{ y: -12 }}
@@ -133,7 +151,7 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="border-b border-border bg-bg-0/95 backdrop-blur-xl"
             >
-              <nav className="flex flex-col px-6 py-6">
+              <nav aria-label="Mobile" className="flex max-h-[calc(100dvh-4.75rem)] flex-col overflow-y-auto px-6 py-6">
                 {navItems.map((item, i) => {
                   const isAnchor = item.href.startsWith("/#");
                   const href = isAnchor

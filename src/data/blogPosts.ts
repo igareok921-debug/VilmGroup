@@ -1,5 +1,8 @@
 import type { Locale } from "@/i18n/config";
 
+export const blogImageBlurDataURL =
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjUiPjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjUiIGZpbGw9IiNlOGUyZDYiLz48L3N2Zz4=";
+
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string; id?: string }
@@ -59,12 +62,12 @@ export const blogPosts: BlogPost[] = [
     category: "website",
     relatedService: "creare-website-uri",
     gradient: "from-[#1a0d18] via-[#2a1a26] to-[#3a1a2a]",
-    coverImage: "/blog/cat-costa-website-moldova.webp",
+    coverImage: "/blog/cat-costa-website-moldova-natural.webp",
     translations: {
       ro: {
         title: "Cât costă un website în Moldova în 2026? Ghid complet de prețuri",
         excerpt:
-          "Cifre reale, fără marketing-speak: ce costă un website în Moldova, ce intră în pachetele de 200, 400, 500€ și ce NU intră niciodată în preț.",
+          "Cifre reale, fără marketing-speak: ce intră într-un Landing Page de 150€, un Website Business de 499€ și un Website Premium de 999€.",
         keywords: [
           "preț website Moldova",
           "cât costă website Chișinău",
@@ -75,7 +78,7 @@ export const blogPosts: BlogPost[] = [
         content: [
           { type: "p", text: 'Săptămâna trecută am primit pentru a 47-a oară aceeași întrebare pe Telegram: "cât costă să-mi faceți un website?"' },
           { type: "p", text: "Răspunsul nu e simplu. Nu fiindcă vrem să fim misterioși cu prețurile (jos vezi exact ce costă fiecare lucru) — ci fiindcă un website nu e un produs standard, ca un pachet de orez la Linella. E mai degrabă ca o haină comandată la croitor: depinde de țesătură, croială, accesorii și cât timp stai la probe." },
-          { type: "p", text: 'Așa că am scris articolul ăsta o dată pentru toți. Fără marketing-speak, fără "contactați-ne pentru ofertă" la fiecare paragraf. Cifre reale, lucruri pe care chiar le facem și diferența dintre un site de 200€ și unul de 2000€.' },
+          { type: "p", text: 'Așa că am scris articolul ăsta o dată pentru toți. Fără marketing-speak și fără "contactați-ne pentru ofertă" la fiecare paragraf. Mai jos vezi diferența clară dintre un Landing Page de la 150€, un Website Business de la 499€ și un Website Premium de la 999€.' },
           { type: "h2", text: "De ce nu există un preț fix pentru un website", id: "pret-fix" },
           { type: "p", text: 'Înainte să-ți zic cifrele, vreau să clarific ceva. Când vezi pe Facebook reclama "Site de 99€ în 3 zile!", primul reflex e să te bucuri. Al doilea — care vine peste 6 luni, când stai într-un Google Meet cu agenția X încercând să afli de ce site-ul tău nu apare în rezultate — e regretul.' },
           { type: "p", text: "Un website are componente costisitoare care nu se văd din afară:" },
@@ -83,19 +86,19 @@ export const blogPosts: BlogPost[] = [
           { type: "p", text: "Toate astea costă timp. Timp = bani. Sună banal, dar e singurul motiv pentru care un site profesional NU poate să coste 99€." },
           { type: "h2", text: "Cele 3 niveluri de preț la Vilm Group", id: "niveluri-pret" },
           { type: "p", text: "Hai să le punem clar pe masă." },
-          { type: "h3", text: "Pachet Budget — de la 200€" },
-          { type: "p", text: "Pentru cine merge: freelancer, antreprenor individual, brand nou care vrea o prezență minimă online dar profesionistă. Buget mic, dar fără să arate ieftin." },
+          { type: "h3", text: "Landing Page — de la 150€" },
+          { type: "p", text: "Pentru cine merge: lansări, servicii, campanii și antreprenori care au nevoie de o singură pagină clară, rapidă și profesionistă." },
           { type: "p", text: "Ce include:" },
-          { type: "ul", items: ["Landing page singular (1 pagină long-form bine structurată)", "Design custom — nu template", "Mobile responsive optimizat", "Formular de contact funcțional", "SEO de bază — metadata, sitemap, indexare corectă", "Lansare în 2-3 săptămâni", "30 de zile suport tehnic gratuit"] },
-          { type: "p", text: "Ce NU include: multilingv, animații complexe, CMS (editor pentru tine), integrări custom." },
-          { type: "h3", text: "Pachet Mediu — 400-500€" },
-          { type: "p", text: "Pentru cine merge: afacere mică-medie (cabinet medical, salon, magazin), companie care vrea un site serios cu mai multe servicii prezentate, brand cu nevoi de SEO local (Chișinău, Bălți, Cahul)." },
+          { type: "ul", items: ["UI/UX design pentru o pagină", "Responsive pentru mobil și desktop", "Formular de contact", "Integrare WhatsApp și Telegram", "SEO Basic și SSL Security", "Publicare pe domeniu și optimizare de viteză", "Livrare estimată în 3-5 zile"] },
+          { type: "p", text: "Ce NU include: mai multe pagini, Google Analytics, Search Console, SEO Local, multilingv sau integrări avansate." },
+          { type: "h3", text: "Website Business — de la 499€" },
+          { type: "p", text: "Pentru cine merge: majoritatea afacerilor care vor să prezinte profesionist mai multe servicii, să fie găsite local și să genereze cereri." },
           { type: "p", text: "Ce include:" },
-          { type: "ul", items: ["5-7 pagini structurate (Acasă, Servicii, Despre, Portfolio, Contact, FAQ)", "Design custom premium adaptat brandului", "Mobile responsive perfect — pixel-perfect pe iPhone, Android, iPad", "SEO tehnic complet — metadata, schema JSON-LD, sitemap, robots.txt", "Formular contact + automation email", "Integrare social media + Google Analytics + Search Console", "30 de zile suport tehnic", "Lansare în 4-6 săptămâni"] },
-          { type: "h3", text: "Pachet Premium — de la 500€" },
-          { type: "p", text: "Pentru cine merge: brand care vrea ceva memorabil, companie cu nevoi specifice (rezervări online, dashboard, multilingv), branduri care țintesc Moldova + România + diaspora simultan." },
-          { type: "p", text: "Ce include — tot din pachetul mediu, plus:" },
-          { type: "ul", items: ["Animații complexe pe scroll (framer-motion sau similar)", "Multilingv (RO/EN/RU sau combinații)", "Chatbot AI integrat dacă e cazul", "CMS personalizat (editor pentru echipa ta)", "Integrări custom — CRM, plăți online, calendar de rezervări", "Lansare în 6-10 săptămâni"] },
+          { type: "ul", items: ["Tot ce este inclus în Landing Page", "Până la 7 pagini", "Branding Basic inclus", "Google Business Profile și SEO Local", "Google Analytics și Google Search Console", "Formulare avansate", "Livrare estimată în 1-3 săptămâni"] },
+          { type: "h3", text: "Website Premium — de la 999€" },
+          { type: "p", text: "Pentru cine merge: companii care vor un website personalizat, pregătit pentru mai multe piețe, automatizări și scalare." },
+          { type: "p", text: "Ce include — tot din Website Business, plus:" },
+          { type: "ul", items: ["Design personalizat", "Versiuni multilingve", "Chatbot AI", "Automatizări și integrări personalizate", "SEO Avansat", "Suport prioritar", "Livrare estimată în 3-6 săptămâni"] },
           { type: "h2", text: "Ce NU intră în prețul website-ului (orice agenție te-ar minți)", id: "ce-nu-intra" },
           { type: "h3", text: "1. Domeniul" },
           { type: "p", text: "Costă 10-30€/an, în funcție de extensie (.md, .com, .ro). Trebuie cumpărat separat — îl plătești tu, pe numele tău, nu pe al agenției." },
@@ -116,14 +119,14 @@ export const blogPosts: BlogPost[] = [
           { type: "ul", items: ["Ai deja brand (logo, culori, ton de voce)? Sau pornim de la zero?", "Câte servicii vrei să prezinți pe site?", "Vrei să primești cereri prin formular? Telefon? Telegram? WhatsApp?", "Te interesează SEO (să vină vizitatori organici din Google)? Sau vrei doar un card de vizită online?", "În câte limbi — doar română, sau și engleză/rusă?", "Ai conținut gata (texte, poze) sau trebuie să-l creăm noi?"] },
           { type: "p", text: "Răspunsurile la astea îmi spun direct în ce pachet te încadrezi și ce poți obține pentru bugetul tău." },
           { type: "h2", text: "În concluzie", id: "concluzie" },
-          { type: "p", text: "200€, 400€ sau 500€ — depinde de ce vrei să facă site-ul pentru afacerea ta. Nu există preț universal, dar există o ofertă onestă bazată pe nevoile tale reale." },
+          { type: "p", text: "150€, 499€ sau 999€ — alegerea depinde de numărul de pagini, obiectivele de promovare, nivelul de SEO și integrările necesare. Nu există un pachet universal, dar diferențele dintre cele trei opțiuni sunt acum clare." },
           { type: "p", text: "Dacă vrei o ofertă concretă (nu un range), scrie-ne prin formularul de contact sau Telegram cu detalii despre proiect. Răspundem în maxim 24h cu o estimare exactă, fără surprize." },
         ],
       },
       en: {
         title: "How much does a website cost in Moldova in 2026? Complete pricing guide",
         excerpt:
-          "Real numbers, no marketing-speak: what a website costs in Moldova, what's included in the 200, 400, 500€ packages and what's NEVER part of the price.",
+          "Real numbers, no marketing-speak: what is included in a €150 Landing Page, €499 Website Business and €999 Website Premium.",
         keywords: [
           "website price Moldova",
           "how much does a website cost Chișinău",
@@ -134,7 +137,7 @@ export const blogPosts: BlogPost[] = [
         content: [
           { type: "p", text: 'Last week I got the same question on Telegram for the 47th time: "how much does it cost to build me a website?"' },
           { type: "p", text: "The answer isn't simple. Not because we want to be mysterious about prices (you'll see exact numbers below) — but because a website isn't a standard product like a pack of rice at the supermarket. It's more like a custom-tailored suit: it depends on fabric, cut, accessories and how many fittings you want." },
-          { type: "p", text: 'So I wrote this article once for everyone. No marketing-speak, no "contact us for an offer" at every paragraph. Real numbers, things we actually do, and the difference between a 200€ site and a 2000€ one.' },
+          { type: "p", text: 'So I wrote this article once for everyone. No marketing-speak and no "contact us for an offer" in every paragraph. Below you can see the clear difference between a Landing Page from €150, Website Business from €499 and Website Premium from €999.' },
           { type: "h2", text: "Why there's no fixed price for a website", id: "fixed-price" },
           { type: "p", text: 'Before I tell you the numbers, I want to clarify something. When you see a Facebook ad "Website for 99€ in 3 days!", the first reflex is to get excited. The second one — which comes 6 months later, when you\'re in a Google Meet with agency X trying to figure out why your site doesn\'t appear in results — is regret.' },
           { type: "p", text: "A website has costly components that aren't visible from outside:" },
@@ -142,19 +145,19 @@ export const blogPosts: BlogPost[] = [
           { type: "p", text: "All of this takes time. Time = money. Sounds trivial, but it's the only reason a professional site CAN'T cost 99€." },
           { type: "h2", text: "The 3 price tiers at Vilm Group", id: "price-tiers" },
           { type: "p", text: "Let's put them clearly on the table." },
-          { type: "h3", text: "Budget Package — from 200€" },
-          { type: "p", text: "Who it's for: freelancer, individual entrepreneur, new brand that wants a minimal but professional online presence. Small budget, but without looking cheap." },
+          { type: "h3", text: "Landing Page — from €150" },
+          { type: "p", text: "Who it's for: launches, services and campaigns that need one clear, fast and professional page." },
           { type: "p", text: "What's included:" },
-          { type: "ul", items: ["Single landing page (1 well-structured long-form page)", "Custom design — not a template", "Optimized mobile responsive", "Functional contact form", "Basic SEO — metadata, sitemap, correct indexing", "Launch in 2-3 weeks", "30 days of free technical support"] },
-          { type: "p", text: "What's NOT included: multi-language, complex animations, CMS (editor for you), custom integrations." },
-          { type: "h3", text: "Mid-Range Package — 400-500€" },
-          { type: "p", text: "Who it's for: small-to-medium business (medical office, salon, store), company that wants a serious site with multiple services presented, brand with local SEO needs (Chișinău, Bălți, Cahul)." },
+          { type: "ul", items: ["UI/UX design for one page", "Responsive mobile and desktop", "Contact form", "WhatsApp and Telegram integration", "Basic SEO and SSL Security", "Domain publishing and speed optimization", "Estimated delivery in 3-5 days"] },
+          { type: "p", text: "Not included: multiple pages, Google Analytics, Search Console, Local SEO, multilingual support or advanced integrations." },
+          { type: "h3", text: "Website Business — from €499" },
+          { type: "p", text: "Who it's for: most businesses that need to present multiple services professionally, rank locally and generate enquiries." },
           { type: "p", text: "What's included:" },
-          { type: "ul", items: ["5-7 structured pages (Home, Services, About, Portfolio, Contact, FAQ)", "Premium custom design adapted to your brand", "Perfect mobile responsive — pixel-perfect on iPhone, Android, iPad", "Complete technical SEO — metadata, JSON-LD schema, sitemap, robots.txt", "Contact form + email automation", "Social media integration + Google Analytics + Search Console", "30 days technical support", "Launch in 4-6 weeks"] },
-          { type: "h3", text: "Premium Package — from 500€" },
-          { type: "p", text: "Who it's for: brand that wants something memorable, company with specific needs (online bookings, dashboard, multi-language), brands targeting Moldova + Romania + diaspora simultaneously." },
-          { type: "p", text: "What's included — everything from the mid-range package, plus:" },
-          { type: "ul", items: ["Complex scroll animations (framer-motion or similar)", "Multi-language (RO/EN/RU or combinations)", "Integrated AI chatbot if needed", "Custom CMS (editor for your team)", "Custom integrations — CRM, online payments, booking calendar", "Launch in 6-10 weeks"] },
+          { type: "ul", items: ["Everything included in Landing Page", "Up to 7 pages", "Basic Branding included", "Google Business Profile and Local SEO", "Google Analytics and Google Search Console", "Advanced forms", "Estimated delivery in 1-3 weeks"] },
+          { type: "h3", text: "Website Premium — from €999" },
+          { type: "p", text: "Who it's for: companies that need a custom website prepared for multiple markets, automation and scaling." },
+          { type: "p", text: "What's included — everything in Website Business, plus:" },
+          { type: "ul", items: ["Custom design", "Multilingual versions", "AI chatbot", "Custom automation and integrations", "Advanced SEO", "Priority support", "Estimated delivery in 3-6 weeks"] },
           { type: "h2", text: "What's NOT in the website price (any agency would lie to you)", id: "not-included" },
           { type: "h3", text: "1. Domain" },
           { type: "p", text: "Costs 10-30€/year, depending on extension (.md, .com, .ro). Must be purchased separately — you pay for it, in your name, not the agency's." },
@@ -175,14 +178,14 @@ export const blogPosts: BlogPost[] = [
           { type: "ul", items: ["Do you already have a brand (logo, colors, tone of voice)? Or do we start from scratch?", "How many services do you want to present on the site?", "Do you want to receive requests through a form? Phone? Telegram? WhatsApp?", "Are you interested in SEO (organic visitors from Google)? Or do you just want an online business card?", "How many languages — just one, or also English/Russian?", "Do you have ready content (text, photos) or do we create it?"] },
           { type: "p", text: "The answers tell me directly which package you fit into and what you can get for your budget." },
           { type: "h2", text: "In conclusion", id: "conclusion" },
-          { type: "p", text: "200€, 400€ or 500€ — depends on what you want the site to do for your business. There's no universal price, but there's an honest offer based on your real needs." },
+          { type: "p", text: "€150, €499 or €999 — the choice depends on page count, promotion goals, SEO level and required integrations. There is no universal package, but the differences between the three options are now clear." },
           { type: "p", text: "If you want a concrete offer (not a range), write to us through the contact form or Telegram with project details. We respond within 24h with an exact estimate, no surprises." },
         ],
       },
       ru: {
         title: "Сколько стоит сайт в Молдове в 2026? Полный гид по ценам",
         excerpt:
-          "Реальные цифры без маркетингового тумана: сколько стоит сайт в Молдове, что входит в пакеты 200, 400, 500€ и что НИКОГДА не включено в цену.",
+          "Реальные цифры: что входит в Landing Page за 150€, Website Business за 499€ и Website Premium за 999€.",
         keywords: [
           "цена сайта Молдова",
           "сколько стоит сайт Кишинев",
@@ -193,7 +196,7 @@ export const blogPosts: BlogPost[] = [
         content: [
           { type: "p", text: 'На прошлой неделе я получил в 47-й раз тот же вопрос в Telegram: "сколько стоит сделать мне сайт?"' },
           { type: "p", text: "Ответ не простой. Не потому, что мы хотим быть загадочными с ценами (ниже увидишь точные цифры) — а потому, что сайт это не стандартный продукт, как пачка риса в супермаркете. Это скорее как костюм на заказ у портного: зависит от ткани, кроя, аксессуаров и сколько раз ты приходишь на примерки." },
-          { type: "p", text: 'Поэтому я написал эту статью один раз для всех. Без маркетинговых фраз, без "свяжитесь с нами для предложения" в каждом параграфе. Реальные цифры, вещи, которые мы действительно делаем, и разница между сайтом за 200€ и сайтом за 2000€.' },
+          { type: "p", text: 'Поэтому я написал эту статью один раз для всех. Без маркетинговых фраз и "свяжитесь с нами" в каждом абзаце. Ниже — понятная разница между Landing Page от 150€, Website Business от 499€ и Website Premium от 999€.' },
           { type: "h2", text: "Почему нет фиксированной цены на сайт", id: "fixed-price" },
           { type: "p", text: 'Прежде чем я скажу тебе цифры, хочу прояснить одну вещь. Когда видишь на Facebook рекламу "Сайт за 99€ за 3 дня!", первый рефлекс — обрадоваться. Второй — который приходит через 6 месяцев, когда сидишь в Google Meet с агентством X пытаясь понять почему твой сайт не появляется в результатах — это сожаление.' },
           { type: "p", text: "У сайта есть дорогие компоненты, которые не видны снаружи:" },
@@ -201,19 +204,19 @@ export const blogPosts: BlogPost[] = [
           { type: "p", text: "Всё это требует времени. Время = деньги. Звучит банально, но это единственная причина, по которой профессиональный сайт НЕ может стоить 99€." },
           { type: "h2", text: "3 уровня цен в Vilm Group", id: "price-tiers" },
           { type: "p", text: "Давай разложим всё чётко на столе." },
-          { type: "h3", text: "Пакет Budget — от 200€" },
-          { type: "p", text: "Для кого подходит: фрилансер, индивидуальный предприниматель, новый бренд, который хочет минимальное, но профессиональное онлайн-присутствие. Маленький бюджет, но без дешёвого вида." },
+          { type: "h3", text: "Landing Page — от 150€" },
+          { type: "p", text: "Для кого подходит: запуски, услуги и кампании, которым нужна одна понятная, быстрая и профессиональная страница." },
           { type: "p", text: "Что входит:" },
-          { type: "ul", items: ["Один landing page (1 хорошо структурированная long-form страница)", "Кастомный дизайн — не шаблон", "Оптимизированный mobile responsive", "Функциональная форма контакта", "Базовое SEO — metadata, sitemap, корректная индексация", "Запуск за 2-3 недели", "30 дней бесплатной технической поддержки"] },
-          { type: "p", text: "Что НЕ входит: мультиязычность, сложные анимации, CMS (редактор для тебя), кастомные интеграции." },
-          { type: "h3", text: "Пакет Mid-Range — 400-500€" },
-          { type: "p", text: "Для кого подходит: малый-средний бизнес (медкабинет, салон, магазин), компания, которая хочет серьёзный сайт с несколькими представленными услугами, бренд с потребностями локального SEO (Кишинёв, Бельцы, Кагул)." },
+          { type: "ul", items: ["UI/UX-дизайн одной страницы", "Responsive для mobile и desktop", "Контактная форма", "Интеграция WhatsApp и Telegram", "Базовое SEO и SSL Security", "Публикация на домене и оптимизация скорости", "Ориентировочный срок 3-5 дней"] },
+          { type: "p", text: "Не включено: несколько страниц, Google Analytics, Search Console, локальное SEO, мультиязычность и сложные интеграции." },
+          { type: "h3", text: "Website Business — от 499€" },
+          { type: "p", text: "Для кого подходит: большинство компаний, которым нужно профессионально представить услуги, продвигаться локально и получать заявки." },
           { type: "p", text: "Что входит:" },
-          { type: "ul", items: ["5-7 структурированных страниц (Главная, Услуги, О нас, Портфолио, Контакты, FAQ)", "Премиальный кастомный дизайн, адаптированный к бренду", "Идеальный mobile responsive — pixel-perfect на iPhone, Android, iPad", "Полное техническое SEO — metadata, JSON-LD schema, sitemap, robots.txt", "Форма контакта + email automation", "Интеграция соцсетей + Google Analytics + Search Console", "30 дней технической поддержки", "Запуск за 4-6 недель"] },
-          { type: "h3", text: "Пакет Premium — от 500€" },
-          { type: "p", text: "Для кого подходит: бренд, который хочет что-то запоминающееся, компания со специфическими потребностями (онлайн-бронирование, dashboard, мультиязычность), бренды, нацеленные на Молдову + Румынию + диаспору одновременно." },
-          { type: "p", text: "Что входит — всё из mid-range пакета, плюс:" },
-          { type: "ul", items: ["Сложные scroll-анимации (framer-motion или подобное)", "Мультиязычность (RO/EN/RU или комбинации)", "Интегрированный AI-чатбот при необходимости", "Кастомная CMS (редактор для твоей команды)", "Кастомные интеграции — CRM, онлайн-платежи, календарь бронирования", "Запуск за 6-10 недель"] },
+          { type: "ul", items: ["Всё из Landing Page", "До 7 страниц", "Базовый брендинг включён", "Google Business Profile и локальное SEO", "Google Analytics и Google Search Console", "Расширенные формы", "Ориентировочный срок 1-3 недели"] },
+          { type: "h3", text: "Website Premium — от 999€" },
+          { type: "p", text: "Для кого подходит: компании, которым нужен индивидуальный сайт для нескольких рынков, автоматизации и масштабирования." },
+          { type: "p", text: "Что входит — всё из Website Business, плюс:" },
+          { type: "ul", items: ["Индивидуальный дизайн", "Мультиязычные версии", "AI-чатбот", "Персональные автоматизации и интеграции", "Продвинутое SEO", "Приоритетная поддержка", "Ориентировочный срок 3-6 недель"] },
           { type: "h2", text: "Что НЕ входит в цену сайта (любое агентство тебе бы солгало)", id: "not-included" },
           { type: "h3", text: "1. Домен" },
           { type: "p", text: "Стоит 10-30€/год, в зависимости от расширения (.md, .com, .ro). Должен быть куплен отдельно — ты платишь за него, на своё имя, не на имя агентства." },
@@ -234,7 +237,7 @@ export const blogPosts: BlogPost[] = [
           { type: "ul", items: ["У тебя уже есть бренд (логотип, цвета, tone of voice)? Или начинаем с нуля?", "Сколько услуг ты хочешь представить на сайте?", "Хочешь получать заявки через форму? Телефон? Telegram? WhatsApp?", "Интересует SEO (органические посетители из Google)? Или хочешь только онлайн-визитку?", "На скольких языках — только русский, или ещё румынский/английский?", "У тебя готов контент (тексты, фото) или нужно его создать?"] },
           { type: "p", text: "Ответы говорят мне напрямую, в какой пакет ты вписываешься и что можешь получить за свой бюджет." },
           { type: "h2", text: "В заключение", id: "conclusion" },
-          { type: "p", text: "200€, 400€ или 500€ — зависит от того, что ты хочешь, чтобы сайт делал для твоего бизнеса. Универсальной цены нет, но есть честное предложение, основанное на твоих реальных потребностях." },
+          { type: "p", text: "150€, 499€ или 999€ — выбор зависит от количества страниц, целей продвижения, уровня SEO и нужных интеграций. Универсального пакета нет, но различия между вариантами теперь понятны." },
           { type: "p", text: "Если хочешь конкретное предложение (не диапазон), напиши нам через форму контакта или Telegram с деталями проекта. Отвечаем в течение 24ч с точной оценкой, без сюрпризов." },
         ],
       },
@@ -247,7 +250,7 @@ export const blogPosts: BlogPost[] = [
     category: "smm",
     relatedService: "smm-chisinau",
     gradient: "from-[#1a1a26] via-[#2a2a3a] to-[#3a3340]",
-    coverImage: "/blog/10-greseli-instagram.webp",
+    coverImage: "/blog/10-greseli-instagram-natural.webp",
     translations: {
       ro: {
         title: "10 greșeli pe care le fac afacerile din Chișinău cu Instagram",
@@ -387,7 +390,7 @@ export const blogPosts: BlogPost[] = [
     category: "branding",
     relatedService: "branding-logo-design",
     gradient: "from-[#0d1424] via-[#1a2540] to-[#2a3560]",
-    coverImage: "/blog/cum-aleg-nume-brand.webp",
+    coverImage: "/blog/cum-aleg-nume-brand-natural.webp",
     translations: {
       ro: {
         title: "Cum să-ți alegi numele de brand: ghid pentru antreprenorii moldoveni",
@@ -527,7 +530,7 @@ export const blogPosts: BlogPost[] = [
     category: "ai",
     relatedService: "chatbots-ai",
     gradient: "from-[#1a1a26] via-[#2a2a3a] to-[#3a3340]",
-    coverImage: "/blog/ai-chatbot-cind-merita.webp",
+    coverImage: "/blog/ai-chatbot-cind-merita-natural.webp",
     translations: {
       ro: {
         title: "Chatbot AI pentru afaceri: când merită investiția în 2026",
@@ -717,7 +720,7 @@ export const blogPosts: BlogPost[] = [
     category: "website",
     relatedService: "creare-website-uri",
     gradient: "from-[#1a0d18] via-[#2a1a26] to-[#3a1a2a]",
-    coverImage: "/blog/wordpress-vs-nextjs-vs-webflow.webp",
+    coverImage: "/blog/wordpress-vs-nextjs-vs-webflow-natural.webp",
     translations: {
       ro: {
         title: "WordPress vs Next.js vs Webflow: ce alegi pentru website-ul tău în 2026?",

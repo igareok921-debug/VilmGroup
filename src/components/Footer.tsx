@@ -42,12 +42,17 @@ export default function Footer() {
       label: locale === "ro" ? "Creare website-uri" : locale === "ru" ? "Создание сайтов" : "Website creation",
     },
     {
-      href: "chatbots-ai",
-      label: locale === "ro" ? "Chatbots AI" : locale === "ru" ? "AI-чатботы" : "AI chatbots",
+      href: "creare-magazin-online",
+      label:
+        locale === "ro"
+          ? "Creare magazin online"
+          : locale === "ru"
+            ? "Создание интернет-магазина"
+            : "Online store development",
     },
     {
-      href: "branding-logo-design",
-      label: locale === "ro" ? "Branding și logo" : locale === "ru" ? "Брендинг и логотип" : "Branding and logo",
+      href: "chatbots-ai",
+      label: locale === "ro" ? "Chatbots AI" : locale === "ru" ? "AI-чатботы" : "AI chatbots",
     },
   ];
 
