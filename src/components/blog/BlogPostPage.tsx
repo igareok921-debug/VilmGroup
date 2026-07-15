@@ -33,10 +33,6 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
       slug: "smm-chisinau",
       label: locale === "ro" ? "SMM Chișinău" : locale === "ru" ? "SMM в Кишинёве" : "SMM Chișinău",
     },
-    {
-      slug: "branding-logo-design",
-      label: locale === "ro" ? "Branding și logo design" : locale === "ru" ? "Брендинг и логотип" : "Branding and logo design",
-    },
   ];
 
   const structuredData = {

@@ -3,6 +3,30 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/ro",
+        permanent: true,
+      },
+      {
+        source: "/ro/branding-logo-design",
+        destination: "/ro/creare-website-uri",
+        permanent: true,
+      },
+      {
+        source: "/en/branding-logo-design",
+        destination: "/en/creare-website-uri",
+        permanent: true,
+      },
+      {
+        source: "/ru/branding-logo-design",
+        destination: "/ru/creare-website-uri",
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {
     root: __dirname,
   },

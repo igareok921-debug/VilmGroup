@@ -47,7 +47,7 @@ export default function Image() {
               fontWeight: 800,
             }}
           >
-            Infrastructură digitală pentru brandul tău.
+            Website-uri care atrag. SMM care crește branduri.
           </div>
           <div
             style={{
@@ -57,7 +57,7 @@ export default function Image() {
               lineHeight: 1.25,
             }}
           >
-            SMM · Branding · Website-uri · Design · AI · Conținut
+            WEBSITE DEVELOPMENT · SEO · SMM · CONTENT · REELS · META ADS
           </div>
         </div>
 

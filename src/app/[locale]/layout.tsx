@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
-import { siteUrl as canonicalSiteUrl } from "@/i18n/config";
-import "./globals.css";
+import { notFound } from "next/navigation";
+import {
+  isLocale,
+  localeLabels,
+  locales,
+  siteUrl as canonicalSiteUrl,
+} from "@/i18n/config";
+import "../globals.css";
 
 const siteUrl = new URL(canonicalSiteUrl);
 
-const title = "Vilm Group — Website-uri, SMM, Branding & AI în Chișinău";
+const title = "Vilm Group — Creare Website-uri și SMM în Chișinău";
 const description =
-  "Creăm website-uri, SMM, branding, logo design, chatbots și automatizări AI pentru branduri din Chișinău, Moldova și România.";
+  "Creăm website-uri rapide și optimizate SEO și oferim servicii SMM cu strategie, content, Reels și Meta Ads pentru afaceri din Chișinău și Moldova.";
 const socialLinks = [
   "https://www.instagram.com/valeria_sirghii93/",
   "https://www.facebook.com/rusnac.valeria",
@@ -54,14 +60,6 @@ export const metadata: Metadata = {
     "servicii SMM",
     "social media marketing Moldova",
     "social media marketing România",
-    "branding Moldova",
-    "branding Chișinău",
-    "branding România",
-    "logo design Chișinău",
-    "logo design Moldova",
-    "creare logo Moldova",
-    "creare logo profesional",
-    "graphic design Moldova",
     "creare website Moldova",
     "creare website Chișinău",
     "creare website România",
@@ -91,7 +89,6 @@ export const metadata: Metadata = {
     "разработка сайтов Молдова",
     "создание сайтов Кишинев",
     "website development Romania",
-    "branding agency Moldova",
   ],
   authors: [{ name: "Vilm Group", url: siteUrl.toString() }],
   creator: "Vilm Group",
@@ -128,7 +125,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Vilm Group — Website-uri, SMM, Branding & AI",
+        alt: "Vilm Group — Creare Website-uri și SMM în Chișinău",
       },
     ],
     locale: "ro_MD",
@@ -153,11 +150,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -189,9 +194,6 @@ export default function RootLayout({
         serviceType: [
           "Social Media Marketing",
           "SMM",
-          "Branding",
-          "Logo Design",
-          "Graphic Design",
           "Web Design",
           "Website Development",
           "Creare website-uri",
@@ -213,7 +215,7 @@ export default function RootLayout({
                 "@type": "Service",
                 name: "Creare website-uri și web design",
                 description:
-                  "Website-uri rapide, optimizate SEO, orientate spre conversie și experiență intuitivă.",
+                  "Website-uri și magazine online rapide, optimizate SEO, cu UI/UX și integrări AI atunci când susțin conversia.",
               },
             },
             {
@@ -225,57 +227,16 @@ export default function RootLayout({
                   "Strategie, conținut, administrare social media și campanii pentru branduri.",
               },
             },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Branding și logo design",
-                description:
-                  "Identitate vizuală, logo, guideline, direcție artistică și sistem vizual coerent.",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "AI, chatbots și automatizări",
-                description:
-                  "Asistenți AI, chatboți personalizați și automatizări pentru suport clienți, vânzări și workflow.",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Graphic design și content creation",
-                description:
-                  "Design pentru social media, campanii, materiale digitale, reels și conținut vizual.",
-              },
-            },
           ],
         },
         sameAs: socialLinks,
-      },
-      {
-        "@type": "WebPage",
-        "@id": `${siteUrl}ro#webpage`,
-        url: new URL("/ro", siteUrl).toString(),
-        name: title,
-        description,
-        inLanguage: "ro-MD",
-        isPartOf: {
-          "@id": `${siteUrl}#website`,
-        },
-        about: {
-          "@id": `${siteUrl}#organization`,
-        },
       },
       {
         "@type": "WebSite",
         "@id": `${siteUrl}#website`,
         name: "Vilm Group",
         url: siteUrl.toString(),
-        inLanguage: "ro-MD",
+        inLanguage: ["ro-MD", "en", "ru"],
         publisher: {
           "@id": `${siteUrl}#organization`,
         },
@@ -284,7 +245,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ro-MD">
+    <html lang={localeLabels[locale]}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

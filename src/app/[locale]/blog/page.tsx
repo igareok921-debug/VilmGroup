@@ -20,39 +20,39 @@ export async function generateMetadata({
 
   const seoByLocale = {
     ro: {
-      title: "Blog Vilm Group — Idei despre website-uri, SMM, branding și AI",
+      title: "Blog Vilm Group — Website-uri, SEO și SMM în Moldova",
       description:
-        "Articole oneste despre creare website-uri, SMM, branding și AI pentru afaceri din Moldova, România și diaspora. Cifre reale, greșeli, sfaturi practice.",
+        "Articole practice despre creare website-uri, SEO, SMM, content și conversii pentru afaceri din Moldova. Cifre reale, greșeli și soluții aplicate.",
       keywords: [
         "blog Vilm Group",
         "blog website Moldova",
         "blog SMM Chișinău",
         "ghid creare website",
-        "blog branding Moldova",
+        "content marketing Moldova",
       ],
     },
     en: {
-      title: "Vilm Group Blog — Ideas about websites, SMM, branding and AI",
+      title: "Vilm Group Blog — Websites, SEO and SMM in Moldova",
       description:
-        "Honest articles about website creation, SMM, branding and AI for businesses in Moldova, Romania and the diaspora. Real numbers, mistakes, practical advice.",
+        "Practical articles about website creation, SEO, SMM, content and conversion for businesses in Moldova. Real numbers, mistakes and applied solutions.",
       keywords: [
         "Vilm Group blog",
         "website blog Moldova",
         "SMM blog Chișinău",
         "website creation guide",
-        "branding blog Moldova",
+        "content marketing Moldova",
       ],
     },
     ru: {
-      title: "Блог Vilm Group — Идеи о сайтах, SMM, брендинге и AI",
+      title: "Блог Vilm Group — Сайты, SEO и SMM в Молдове",
       description:
-        "Честные статьи о создании сайтов, SMM, брендинге и AI для бизнеса в Молдове, Румынии и диаспоре. Реальные цифры, ошибки, практические советы.",
+        "Практические статьи о создании сайтов, SEO, SMM, контенте и конверсиях для бизнеса в Молдове. Реальные цифры, ошибки и решения.",
       keywords: [
         "блог Vilm Group",
         "блог сайты Молдова",
         "блог SMM Кишинев",
         "гид создания сайта",
-        "блог брендинг Молдова",
+        "контент маркетинг Молдова",
       ],
     },
   };

@@ -29,23 +29,23 @@ export default function HomePage() {
     locale === "ro"
       ? [
           "Website Development & SEO",
-          "Creare Magazine Online",
           "Social Media Marketing",
-          "AI & Automatizări",
+          "Content · Reels · Meta Ads",
+          "Magazine Online & AI integrate",
         ]
       : locale === "en"
       ? [
           "Website Development & SEO",
-          "Online Store Development",
           "Social Media Marketing",
-          "AI & Automation",
+          "Content · Reels · Meta Ads",
+          "Ecommerce & AI integrations",
         ]
       : locale === "ru"
       ? [
           "Разработка сайтов & SEO",
-          "Создание интернет-магазинов",
           "Social Media Marketing",
-          "AI & Автоматизация",
+          "Контент · Reels · Meta Ads",
+          "Ecommerce & AI интеграции",
         ]
       : undefined;
 
@@ -54,7 +54,7 @@ export default function HomePage() {
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#business`,
     name: "Vilm Group",
-    url: `${siteUrl}/`,
+    url: `${siteUrl}/${locale}`,
     image: `${siteUrl}/opengraph-image`,
     logo: {
       "@type": "ImageObject",
@@ -63,7 +63,12 @@ export default function HomePage() {
       height: 512,
     },
     description:
-      "Studio digital din Chișinău: creare website-uri și magazine online, SMM, branding, SEO, chatbots AI și automatizări pentru branduri din Moldova, România și diaspora.",
+      locale === "en"
+        ? "Digital studio in Chișinău focused on SEO-ready websites and SMM with strategy, content, Reels and Meta Ads for businesses in Moldova."
+        : locale === "ru"
+          ? "Digital-студия в Кишинёве, сфокусированная на сайтах с SEO и SMM со стратегией, контентом, Reels и Meta Ads для бизнеса в Молдове."
+          : "Studio digital din Chișinău specializat în creare website-uri cu SEO și servicii SMM cu strategie, content, Reels și Meta Ads pentru afaceri din Moldova.",
+    inLanguage: locale === "ro" ? "ro-MD" : locale,
     email: "info@vilmgroup.md",
     priceRange: "$$",
     currenciesAccepted: "EUR, USD, MDL, RON",
@@ -92,13 +97,6 @@ export default function HomePage() {
       ],
       opens: "08:00",
       closes: "21:00",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "10",
-      bestRating: "5",
-      worstRating: "1",
     },
     sameAs: [
       "https://www.instagram.com/valeria_sirghii93/",

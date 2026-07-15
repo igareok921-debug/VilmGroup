@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Vilm Group",
     short_name: "Vilm Group",
     description:
-      "Studio digital din Chișinău pentru SMM, branding, website-uri, design, conținut și automatizări AI.",
+      "Studio digital din Chișinău pentru creare website-uri cu SEO și servicii SMM cu strategie, conținut, Reels și Meta Ads.",
     start_url: "/",
     display: "standalone",
     background_color: "#08070a",

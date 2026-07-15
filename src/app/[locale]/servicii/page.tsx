@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
 import ScrollPathLine from "@/components/ScrollPathLine";
-import { onlineStorePage, servicePages } from "@/data/servicePages";
+import { primaryServicePages } from "@/data/servicePages";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { dictionaries } from "@/i18n/dictionaries";
 import { isLocale, locales, siteUrl, type Locale } from "@/i18n/config";
@@ -13,37 +13,37 @@ import { buildLocalizedMetadata, serviceSeo } from "@/i18n/seo";
 
 const pageCopy = {
   ro: {
-    eyebrow: "Servicii digitale",
-    title: "Servicii pentru branduri care vor vizibilitate, conversii și o imagine clară.",
-    text: "Vilm Group combină creare website-uri, SMM, branding, logo design, chatbots AI și conținut pentru afaceri din Chișinău, Moldova, România și Europa.",
+    eyebrow: "Două direcții. Un singur obiectiv.",
+    title: "Website-uri care atrag clienți. SMM care menține brandul relevant.",
+    text: "Ne concentrăm pe creare website-uri cu SEO și pe servicii SMM cu strategie, content, Reels și Meta Ads pentru afaceri din Chișinău și Moldova.",
     choose: "Alege serviciul potrivit",
     includes: "Ce include",
     cta: "Cere ofertă",
     details: "Vezi detalii",
     local:
-      "Lucrăm cu branduri locale și remote, cu accent pe structură, design, conținut și SEO tehnic pregătit pentru Google.",
+      "Magazinele online și automatizările pot fi integrate atunci când susțin obiectivul principal al website-ului.",
   },
   en: {
-    eyebrow: "Digital services",
-    title: "Services for brands that need visibility, conversions and a clear online image.",
-    text: "Vilm Group combines website creation, SMM, branding, logo design, AI chatbots and content for businesses in Chișinău, Moldova, Romania and Europe.",
+    eyebrow: "Two directions. One objective.",
+    title: "Websites that attract clients. SMM that keeps brands relevant.",
+    text: "We focus on SEO-ready website creation and SMM with strategy, content, Reels and Meta Ads for businesses in Chișinău and Moldova.",
     choose: "Choose the right service",
     includes: "What it includes",
     cta: "Request a quote",
     details: "View details",
     local:
-      "We work with local and remote brands, focusing on structure, design, content and technical SEO prepared for Google.",
+      "Ecommerce and automation can be integrated when they support the website’s main objective.",
   },
   ru: {
-    eyebrow: "Digital-услуги",
-    title: "Услуги для брендов, которым нужны видимость, заявки и понятный онлайн-образ.",
-    text: "Vilm Group объединяет создание сайтов, SMM, брендинг, дизайн логотипа, AI-чатботов и контент для бизнеса в Кишинёве, Молдове, Румынии и Европе.",
+    eyebrow: "Два направления. Одна цель.",
+    title: "Сайты, которые привлекают клиентов. SMM, который развивает бренд.",
+    text: "Мы фокусируемся на создании сайтов с SEO и SMM со стратегией, контентом, Reels и Meta Ads для бизнеса в Кишинёве и Молдове.",
     choose: "Выберите нужную услугу",
     includes: "Что входит",
     cta: "Запросить цену",
     details: "Смотреть детали",
     local:
-      "Мы работаем с локальными и remote-брендами, делая акцент на структуре, дизайне, контенте и техническом SEO для Google.",
+      "Ecommerce и автоматизация подключаются, когда они поддерживают основную цель сайта.",
   },
 } as const;
 
@@ -58,11 +58,6 @@ const localizedNames: Record<Locale, Record<string, { title: string; description
       title: "SMM Chișinău",
       description:
         "Strategie social media, administrare Instagram/Facebook, content plan, design, reels și campanii.",
-    },
-    "branding-logo-design": {
-      title: "Branding și logo design",
-      description:
-        "Identitate vizuală, logo, culori, tipografie și materiale de brand pentru o imagine coerentă.",
     },
     "chatbots-ai": {
       title: "Chatbots AI și automatizări",
@@ -86,11 +81,6 @@ const localizedNames: Record<Locale, Record<string, { title: string; description
       description:
         "Social media strategy, Instagram/Facebook management, content plans, design, reels and campaigns.",
     },
-    "branding-logo-design": {
-      title: "Branding and logo design",
-      description:
-        "Visual identity, logo, colors, typography and brand materials for a consistent image.",
-    },
     "chatbots-ai": {
       title: "AI chatbots and automation",
       description:
@@ -112,11 +102,6 @@ const localizedNames: Record<Locale, Record<string, { title: string; description
       title: "SMM в Кишинёве",
       description:
         "Стратегия social media, ведение Instagram/Facebook, content plan, дизайн, reels и кампании.",
-    },
-    "branding-logo-design": {
-      title: "Брендинг и дизайн логотипа",
-      description:
-        "Айдентика, логотип, цвета, типографика и бренд-материалы для целостного образа.",
     },
     "chatbots-ai": {
       title: "AI-чатботы и автоматизация",
@@ -159,7 +144,7 @@ export default async function LocalizedServicesPage({
   if (!isLocale(locale)) notFound();
 
   const copy = pageCopy[locale];
-  const serviceList = [...servicePages, onlineStorePage].map((page) => ({
+  const serviceList = primaryServicePages.map((page) => ({
     ...page,
     localized: localizedNames[locale as Locale][page.slug],
   }));

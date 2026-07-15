@@ -48,18 +48,18 @@ export const dictionaries = {
     },
     servicesSection: {
       eyebrow: "Servicii",
-      titleBefore: "Tot ce face",
-      titleAccent: "brandul tău",
-      titleAfter: "să fie",
-      titleStrong: "remarcabil",
-      text: "Patru direcții clare pentru o prezență digitală care atrage, convinge și vinde.",
+      titleBefore: "Două servicii",
+      titleAccent: "conectate",
+      titleAfter: "pentru",
+      titleStrong: "creștere",
+      text: "Website-uri cu SEO pentru conversie și SMM cu strategie și conținut pentru vizibilitate constantă.",
       cards: [
         {
           title: "Website Development & SEO",
-          tagline: "Websites · SEO · Branding · AI",
+          tagline: "Websites · SEO · Conversie · AI",
           points: [
             "Website-uri rapide, responsive și orientate spre conversii.",
-            "Branding, logo și graphic design integrate în proiect.",
+            "UI/UX și direcție vizuală adaptate afacerii.",
             "SEO tehnic, analytics și integrare AI la nevoie.",
           ],
         },
@@ -141,7 +141,7 @@ export const dictionaries = {
         {
           desc: "Website premium pentru un workshop educațional din Londra, construit pentru prezentarea trainerilor și vânzarea biletelor online.",
           details: [
-            "Livrare: Strategie · Identitate vizuală · UI/UX · Dezvoltare responsive · SEO tehnic",
+            "Livrare: Strategie · UI/UX · Dezvoltare responsive · SEO tehnic",
             "Conversie: Pachete și prețuri · Stripe Checkout · Pagini de confirmare și anulare",
             "Tehnologii: Next.js · TypeScript · Tailwind CSS · Framer Motion · Stripe · Vercel",
           ],
@@ -168,7 +168,7 @@ export const dictionaries = {
       text: "Răspunsuri rapide despre website-uri, magazine online, SMM, AI și procesul de ofertare.",
       items: [
         ["Cu ce se ocupă Vilm Group?", "Vilm Group dezvoltă website-uri și magazine online, gestionează comunicarea în social media și implementează soluții AI și automatizări pentru afaceri."],
-        ["Ce include serviciul Website Development & SEO?", "Include strategie, structură UX, design responsive, branding, logo și graphic design, dezvoltare, SEO tehnic, analytics și integrare AI la nevoie."],
+        ["Ce include serviciul Website Development & SEO?", "Include strategie, structură UX, design responsive, dezvoltare, SEO tehnic, analytics și integrare AI la nevoie."],
         ["Creați magazine online complete?", "Da. Construim magazine online cu administrare produse, categorii, checkout, plăți online, notificări, automatizări și optimizare pentru conversii."],
         ["Oferiți servicii SMM, reels și reclame?", "Da. Creăm strategia, calendarul editorial, textele, vizualurile, reels-urile și administrăm campanii Meta Ads pentru branduri în creștere."],
         ["Puteți integra AI sau chatbot în procesele afacerii?", "Da. Creăm chatboți AI, asistenți personalizați și automatizări pentru suport, vânzări, colectarea lead-urilor și procese interne repetitive."],
@@ -278,13 +278,13 @@ export const dictionaries = {
     },
     servicesSection: {
       eyebrow: "Services",
-      titleBefore: "Everything that makes",
-      titleAccent: "your brand",
-      titleAfter: "feel",
-      titleStrong: "remarkable",
-      text: "Four clear directions for a digital presence that attracts, convinces and sells.",
+      titleBefore: "Two connected",
+      titleAccent: "services",
+      titleAfter: "built for",
+      titleStrong: "growth",
+      text: "SEO-ready websites for conversion and SMM with strategy and content for consistent visibility.",
       cards: [
-        { title: "Website Development & SEO", tagline: "Websites · SEO · Branding · AI", points: ["Fast, responsive websites focused on conversions.", "Branding, logo and graphic design included.", "Technical SEO, analytics and optional AI integration."] },
+        { title: "Website Development & SEO", tagline: "Websites · SEO · Conversion · AI", points: ["Fast, responsive websites focused on conversions.", "UI/UX and visual direction tailored to the business.", "Technical SEO, analytics and optional AI integration."] },
         { title: "Online Store Development", tagline: "Ecommerce · Payments · Automation", points: ["Product catalog, checkout and order management.", "Online payments and sales automation.", "Design and SEO focused on conversions."] },
         { title: "Social Media Marketing", tagline: "Content · Reels · Ads", points: ["Strategy and social media management.", "Reels, content creation and graphic design.", "Meta Ads campaigns and continuous optimization."] },
         { title: "AI & Automation", tagline: "Chatbots · AI Agents · Workflows", points: ["Custom AI chatbots and assistants.", "Automation for support, leads and sales.", "Integrations with forms, email and CRM."] },
@@ -303,7 +303,7 @@ export const dictionaries = {
         { desc: "Landing page for the Simple CapCut Guide. A page created to promote a free guide about making reels directly from a phone.", details: ["Delivery: Clean design · Step-by-step structure · CTA for free access"] },
         { desc: "A premium website for a custom cake atelier, built for organic visibility, a bilingual experience and real orders.", details: ["Delivery: Web Development · UI/UX · AI Chatbot · Technical and local SEO", "Impact: Google visibility · Website orders · A simpler WhatsApp flow"] },
         { desc: "A SaaS platform for SEO audits, keyword research, AI recommendations, Search Console and automated reporting in one workspace.", details: ["Status: Beta Testing · active multi-user product development", "Features: SEO crawler · technical audit · AI Copilot · SEO page generation · PDF reports", "Stack: Next.js · TypeScript · Supabase · OpenAI · Search Console API · Vercel"] },
-        { desc: "A premium website for a London educational workshop, built to present its trainers and sell tickets online.", details: ["Delivery: Strategy · Visual identity · UI/UX · Responsive development · Technical SEO", "Conversion: Packages and pricing · Stripe Checkout · Confirmation and cancellation pages", "Technologies: Next.js · TypeScript · Tailwind CSS · Framer Motion · Stripe · Vercel"] },
+        { desc: "A premium website for a London educational workshop, built to present its trainers and sell tickets online.", details: ["Delivery: Strategy · UI/UX · Responsive development · Technical SEO", "Conversion: Packages and pricing · Stripe Checkout · Confirmation and cancellation pages", "Technologies: Next.js · TypeScript · Tailwind CSS · Framer Motion · Stripe · Vercel"] },
       ],
     },
     testimonials: {
@@ -326,7 +326,7 @@ export const dictionaries = {
       text: "Quick answers about websites, online stores, SMM, AI and the offer process.",
       items: [
         ["What does Vilm Group do?", "Vilm Group develops websites and online stores, manages social media communication and implements AI solutions and business automation."],
-        ["What does Website Development & SEO include?", "It includes strategy, UX structure, responsive design, branding, logo and graphic design, development, technical SEO, analytics and optional AI integration."],
+        ["What does Website Development & SEO include?", "It includes strategy, UX structure, responsive design, development, technical SEO, analytics and optional AI integration."],
         ["Do you create complete online stores?", "Yes. We build online stores with product management, categories, checkout, online payments, notifications, automation and conversion optimization."],
         ["Do you offer SMM, reels and advertising?", "Yes. We create strategy, editorial calendars, copy, visuals and reels, and manage Meta Ads campaigns for growing brands."],
         ["Can you integrate AI or chatbots into business processes?", "Yes. We create AI chatbots, custom assistants and automation for support, sales, lead collection and repetitive internal processes."],
@@ -436,13 +436,13 @@ export const dictionaries = {
     },
     servicesSection: {
       eyebrow: "Услуги",
-      titleBefore: "Всё, что делает",
-      titleAccent: "ваш бренд",
-      titleAfter: "",
-      titleStrong: "заметным",
-      text: "Четыре понятных направления для digital-присутствия, которое привлекает, убеждает и продаёт.",
+      titleBefore: "Два связанных",
+      titleAccent: "направления",
+      titleAfter: "для",
+      titleStrong: "роста",
+      text: "Сайты с SEO для конверсий и SMM со стратегией и контентом для постоянной видимости.",
       cards: [
-        { title: "Разработка сайтов & SEO", tagline: "Сайты · SEO · Брендинг · AI", points: ["Быстрые responsive-сайты для конверсий.", "Брендинг, логотип и графический дизайн включены.", "Техническое SEO, analytics и AI по необходимости."] },
+        { title: "Разработка сайтов & SEO", tagline: "Сайты · SEO · Конверсии · AI", points: ["Быстрые responsive-сайты для конверсий.", "UI/UX и визуальное направление под задачи бизнеса.", "Техническое SEO, analytics и AI по необходимости."] },
         { title: "Создание интернет-магазинов", tagline: "Ecommerce · Платежи · Автоматизация", points: ["Каталог, checkout и управление заказами.", "Онлайн-платежи и автоматизация продаж.", "Дизайн и SEO для конверсий."] },
         { title: "Social Media Marketing", tagline: "Контент · Reels · Реклама", points: ["Стратегия и ведение соцсетей.", "Reels, создание контента и графический дизайн.", "Кампании Meta Ads и постоянная оптимизация."] },
         { title: "AI & Автоматизация", tagline: "Чатботы · AI-агенты · Workflows", points: ["Персональные AI-чатботы и ассистенты.", "Автоматизация поддержки, лидов и продаж.", "Интеграции с формами, email и CRM."] },
@@ -461,7 +461,7 @@ export const dictionaries = {
         { desc: "Landing page для Ghid Simplu CapCut. Страница создана для продвижения бесплатного гайда по созданию reels прямо с телефона.", details: ["Результат: Чистый дизайн · Пошаговая структура · CTA для бесплатного доступа"] },
         { desc: "Премиальный сайт для мастерской авторских тортов, созданный для органической видимости, двуязычного опыта и реальных заказов.", details: ["Результат: Web Development · UI/UX · AI-чатбот · Техническое и локальное SEO", "Эффект: Видимость в Google · Заказы через сайт · Простой путь через WhatsApp"] },
         { desc: "SaaS-платформа для SEO-аудита, анализа ключевых слов, AI-рекомендаций, Search Console и автоматических отчётов в одном workspace.", details: ["Статус: Бета-тестирование · активная разработка multi-user продукта", "Функции: SEO crawler · технический аудит · AI Copilot · генерация SEO-страниц · PDF-отчёты", "Stack: Next.js · TypeScript · Supabase · OpenAI · Search Console API · Vercel"] },
-        { desc: "Премиальный сайт образовательного воркшопа в Лондоне, созданный для презентации тренеров и продажи билетов онлайн.", details: ["Результат: Стратегия · Визуальная айдентика · UI/UX · Responsive-разработка · Техническое SEO", "Конверсия: Пакеты и цены · Stripe Checkout · Страницы подтверждения и отмены", "Технологии: Next.js · TypeScript · Tailwind CSS · Framer Motion · Stripe · Vercel"] },
+        { desc: "Премиальный сайт образовательного воркшопа в Лондоне, созданный для презентации тренеров и продажи билетов онлайн.", details: ["Результат: Стратегия · UI/UX · Responsive-разработка · Техническое SEO", "Конверсия: Пакеты и цены · Stripe Checkout · Страницы подтверждения и отмены", "Технологии: Next.js · TypeScript · Tailwind CSS · Framer Motion · Stripe · Vercel"] },
       ],
     },
     testimonials: {
@@ -484,7 +484,7 @@ export const dictionaries = {
       text: "Короткие ответы о сайтах, интернет-магазинах, SMM, AI и процессе подготовки предложения.",
       items: [
         ["Чем занимается Vilm Group?", "Vilm Group создаёт сайты и интернет-магазины, ведёт коммуникацию в соцсетях и внедряет AI-решения и автоматизацию для бизнеса."],
-        ["Что включает Разработка сайтов & SEO?", "Стратегию, UX-структуру, responsive-дизайн, брендинг, логотип и графический дизайн, разработку, техническое SEO, analytics и AI по необходимости."],
+        ["Что включает Разработка сайтов & SEO?", "Стратегию, UX-структуру, responsive-дизайн, разработку, техническое SEO, analytics и AI по необходимости."],
         ["Вы создаёте полноценные интернет-магазины?", "Да. Создаём магазины с товарами, категориями, checkout, онлайн-платежами, уведомлениями, автоматизацией и оптимизацией конверсий."],
         ["Вы предлагаете SMM, reels и рекламу?", "Да. Создаём стратегию, контент-план, тексты, визуалы и reels, а также ведём кампании Meta Ads."],
         ["Можно внедрить AI или chatbot в процессы бизнеса?", "Да. Создаём AI-чатботов, персональных ассистентов и автоматизацию поддержки, продаж, сбора лидов и повторяющихся процессов."],

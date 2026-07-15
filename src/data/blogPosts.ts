@@ -12,7 +12,7 @@ export type BlogBlock =
   | { type: "quote"; text: string; author?: string }
   | { type: "callout"; text: string };
 
-export type BlogCategory = "website" | "smm" | "branding" | "ai";
+export type BlogCategory = "website" | "smm" | "ai";
 
 export type LocalizedBlogContent = {
   title: string;
@@ -37,19 +37,16 @@ export const blogCategoryLabels: Record<Locale, Record<BlogCategory, string>> = 
   ro: {
     website: "Website",
     smm: "SMM",
-    branding: "Branding",
     ai: "AI & Chatbots",
   },
   en: {
     website: "Website",
     smm: "SMM",
-    branding: "Branding",
     ai: "AI & Chatbots",
   },
   ru: {
     website: "Сайты",
     smm: "SMM",
-    branding: "Брендинг",
     ai: "AI и чатботы",
   },
 };
@@ -94,7 +91,7 @@ export const blogPosts: BlogPost[] = [
           { type: "h3", text: "Website Business — de la 499€" },
           { type: "p", text: "Pentru cine merge: majoritatea afacerilor care vor să prezinte profesionist mai multe servicii, să fie găsite local și să genereze cereri." },
           { type: "p", text: "Ce include:" },
-          { type: "ul", items: ["Tot ce este inclus în Landing Page", "Până la 7 pagini", "Branding Basic inclus", "Google Business Profile și SEO Local", "Google Analytics și Google Search Console", "Formulare avansate", "Livrare estimată în 1-3 săptămâni"] },
+          { type: "ul", items: ["Tot ce este inclus în Landing Page", "Până la 7 pagini", "Direcție UI inclusă", "Google Business Profile și SEO Local", "Google Analytics și Google Search Console", "Formulare avansate", "Livrare estimată în 1-3 săptămâni"] },
           { type: "h3", text: "Website Premium — de la 999€" },
           { type: "p", text: "Pentru cine merge: companii care vor un website personalizat, pregătit pentru mai multe piețe, automatizări și scalare." },
           { type: "p", text: "Ce include — tot din Website Business, plus:" },
@@ -153,7 +150,7 @@ export const blogPosts: BlogPost[] = [
           { type: "h3", text: "Website Business — from €499" },
           { type: "p", text: "Who it's for: most businesses that need to present multiple services professionally, rank locally and generate enquiries." },
           { type: "p", text: "What's included:" },
-          { type: "ul", items: ["Everything included in Landing Page", "Up to 7 pages", "Basic Branding included", "Google Business Profile and Local SEO", "Google Analytics and Google Search Console", "Advanced forms", "Estimated delivery in 1-3 weeks"] },
+          { type: "ul", items: ["Everything included in Landing Page", "Up to 7 pages", "UI direction included", "Google Business Profile and Local SEO", "Google Analytics and Google Search Console", "Advanced forms", "Estimated delivery in 1-3 weeks"] },
           { type: "h3", text: "Website Premium — from €999" },
           { type: "p", text: "Who it's for: companies that need a custom website prepared for multiple markets, automation and scaling." },
           { type: "p", text: "What's included — everything in Website Business, plus:" },
@@ -212,7 +209,7 @@ export const blogPosts: BlogPost[] = [
           { type: "h3", text: "Website Business — от 499€" },
           { type: "p", text: "Для кого подходит: большинство компаний, которым нужно профессионально представить услуги, продвигаться локально и получать заявки." },
           { type: "p", text: "Что входит:" },
-          { type: "ul", items: ["Всё из Landing Page", "До 7 страниц", "Базовый брендинг включён", "Google Business Profile и локальное SEO", "Google Analytics и Google Search Console", "Расширенные формы", "Ориентировочный срок 1-3 недели"] },
+          { type: "ul", items: ["Всё из Landing Page", "До 7 страниц", "UI-направление включено", "Google Business Profile и локальное SEO", "Google Analytics и Google Search Console", "Расширенные формы", "Ориентировочный срок 1-3 недели"] },
           { type: "h3", text: "Website Premium — от 999€" },
           { type: "p", text: "Для кого подходит: компании, которым нужен индивидуальный сайт для нескольких рынков, автоматизации и масштабирования." },
           { type: "p", text: "Что входит — всё из Website Business, плюс:" },
@@ -387,8 +384,8 @@ export const blogPosts: BlogPost[] = [
     slug: "cum-sa-ti-alegi-numele-de-brand",
     date: "2026-05-05",
     readingTime: 9,
-    category: "branding",
-    relatedService: "branding-logo-design",
+    category: "website",
+    relatedService: "creare-website-uri",
     gradient: "from-[#0d1424] via-[#1a2540] to-[#2a3560]",
     coverImage: "/blog/cum-aleg-nume-brand-natural.webp",
     translations: {
@@ -430,9 +427,9 @@ export const blogPosts: BlogPost[] = [
           { type: "p", text: "Înainte să-l înregistrezi sau să-ți comanzi cărți de vizită, fă aceste 4 teste:" },
           { type: "ol", items: ["Testul telefonic — sună 5 oameni și prezintă-te cu numele nou. Cere-le să-l repete. Dacă nu reușesc, schimbă-l.", "Testul mamei — explică-i mamei ce vinzi folosind doar numele. Dacă nu înțelege, înseamnă că numele nu comunică ce trebuie.", "Testul domeniului — verifică .md, .com și .ro. Dacă toate 3 sunt luate, alege alt nume.", "Testul Google — caută numele tău + locația ta. Dacă apar 10 afaceri similare, e prea generic."] },
           { type: "h2", text: "Cum lucrăm naming la Vilm Group", id: "proces-vilm" },
-          { type: "p", text: "Când un client vine pentru identitate vizuală completă, naming-ul e primul pas (dacă nu are deja un nume validat). Procesul:" },
+          { type: "p", text: "Când pregătim un website nou, validarea numelui este unul dintre primii pași. Procesul:" },
           { type: "ul", items: ["Briefing 30-60 min — înțelegem business-ul, publicul, valorile", "Generăm 30-50 nume potențiale (3-4 direcții stratege diferite)", "Filtrăm la 10 finaliste prin criteriile de mai sus", "Verificăm disponibilitatea (domeniu + AGEPI + social)", "Prezentăm top 5 cu mockup-uri pentru a vizualiza fiecare", "Tu alegi câștigătorul — apoi construim identitatea vizuală în jurul lui"] },
-          { type: "p", text: "Naming-ul singur începe de la 200€. Naming + logo + brand book complet — pachetul branding începe de la 400€. Niciun client n-a regretat banii investiți în un nume bun la pornire." },
+          { type: "p", text: "În proiectele de website putem valida numele și domeniul înainte de dezvoltare, astfel încât structura și comunicarea să pornească de la o bază clară." },
         ],
       },
       en: {
@@ -473,9 +470,9 @@ export const blogPosts: BlogPost[] = [
           { type: "p", text: "Before registering it or ordering business cards, do these 4 tests:" },
           { type: "ol", items: ["Phone test — call 5 people and introduce yourself with the new name. Ask them to repeat it. If they can't, change it.", "Mom test — explain to your mom what you sell using only the name. If she doesn't understand, the name doesn't communicate what it should.", "Domain test — check .md, .com and .ro. If all 3 are taken, choose another name.", "Google test — search your name + your location. If 10 similar businesses appear, it's too generic."] },
           { type: "h2", text: "How we approach naming at Vilm Group", id: "vilm-process" },
-          { type: "p", text: "When a client comes for complete visual identity, naming is the first step (if they don't already have a validated name). The process:" },
-          { type: "ul", items: ["Briefing 30-60 min — we understand the business, audience, values", "We generate 30-50 potential names (3-4 different strategic directions)", "We filter to 10 finalists through the criteria above", "We check availability (domain + AGEPI + social)", "We present top 5 with mockups to visualize each", "You choose the winner — then we build the visual identity around it"] },
-          { type: "p", text: "Naming alone starts at 200€. Naming + logo + complete brand book — the branding package starts at 400€. No client has regretted the money invested in a good name from the start." },
+          { type: "p", text: "When preparing a new website, validating the name is one of the first steps. The process:" },
+          { type: "ul", items: ["Briefing 30-60 min — we understand the business, audience and values", "We generate 30-50 potential names", "We filter to 10 finalists using the criteria above", "We check availability (domain + AGEPI + social)", "We present the top 5 options in context", "You choose the winner and we continue with the website structure"] },
+          { type: "p", text: "In website projects, we can validate the name and domain before development so the structure and communication start from a clear foundation." },
         ],
       },
       ru: {
@@ -517,8 +514,8 @@ export const blogPosts: BlogPost[] = [
           { type: "ol", items: ["Телефонный тест — позвони 5 людям и представься новым названием. Попроси повторить. Если не могут, меняй.", "Мамин тест — объясни маме, что продаёшь, используя только название. Если не понимает, название не передаёт нужное.", "Тест домена — проверь .md, .com и .ro. Если все 3 заняты, выбирай другое название.", "Тест Google — поищи название + локацию. Если появляются 10 похожих бизнесов, слишком generic."] },
           { type: "h2", text: "Как работаем naming в Vilm Group", id: "vilm-process" },
           { type: "p", text: "Когда клиент приходит за полной визуальной айдентикой, naming — первый шаг (если ещё нет валидированного названия). Процесс:" },
-          { type: "ul", items: ["Брифинг 30-60 мин — понимаем бизнес, аудиторию, ценности", "Генерируем 30-50 потенциальных названий (3-4 разных стратегических направления)", "Фильтруем до 10 финалистов через критерии выше", "Проверяем доступность (домен + AGEPI + соцсети)", "Презентуем топ 5 с mockups для визуализации каждого", "Ты выбираешь победителя — затем строим визуальную айдентику вокруг него"] },
-          { type: "p", text: "Naming отдельно начинается от 200€. Naming + логотип + полный brand book — пакет брендинга начинается от 400€. Ни один клиент не пожалел денег, вложенных в хорошее название на старте." },
+          { type: "ul", items: ["Брифинг 30-60 мин — понимаем бизнес, аудиторию и ценности", "Генерируем 30-50 потенциальных названий", "Фильтруем до 10 финалистов по критериям выше", "Проверяем доступность (домен + AGEPI + соцсети)", "Презентуем топ 5 вариантов в контексте", "Выбираем победителя и продолжаем со структурой сайта"] },
+          { type: "p", text: "В проектах по созданию сайта мы можем помочь проверить название и домен до начала разработки, чтобы избежать дорогих изменений после запуска." },
         ],
       },
     },

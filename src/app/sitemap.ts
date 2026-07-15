@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blogPosts";
-import { servicePages } from "@/data/servicePages";
+import { primaryServicePages } from "@/data/servicePages";
 import { portfolioProjects } from "@/data/portfolioProjects";
 import { locales, siteUrl } from "@/i18n/config";
 
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: languageAlternates("/servicii"),
   }));
   const localizedServicePages = locales.flatMap((locale) =>
-    servicePages.map((page) => ({
+    primaryServicePages.map((page) => ({
       url: `${siteUrl}/${locale}/${page.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

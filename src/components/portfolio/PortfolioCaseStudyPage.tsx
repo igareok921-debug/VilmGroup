@@ -24,6 +24,8 @@ export default function PortfolioCaseStudyPage({
   const localePrefix = `/${locale}`;
   const pageUrl = `${siteUrl}${localePrefix}/portofoliu/${project.slug}`;
   const scope = project.scope[locale];
+  const portfolioLabel =
+    locale === "en" ? "Portfolio" : locale === "ru" ? "Портфолио" : "Portofoliu";
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -44,7 +46,7 @@ export default function PortfolioCaseStudyPage({
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Vilm Group", item: `${siteUrl}${localePrefix}` },
-          { "@type": "ListItem", position: 2, name: "Portofoliu", item: `${siteUrl}${localePrefix}/#portofoliu` },
+          { "@type": "ListItem", position: 2, name: portfolioLabel, item: `${siteUrl}${localePrefix}/#portofoliu` },
           { "@type": "ListItem", position: 3, name: project.client, item: pageUrl },
         ],
       },

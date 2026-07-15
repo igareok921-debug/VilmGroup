@@ -32,10 +32,10 @@ type ServiceIconName = "website" | "brand" | "marketing" | "video" | "ai";
 
 const heroCopy: Record<Locale, HeroCopy> = {
   ro: {
-    eyebrow: "Studio digital premium",
-    headlineLines: ["Creăm soluții digitale", "care construiesc"],
-    accent: "branduri puternice.",
-    subtitle: "Design modern. Strategie clară. Rezultate reale.",
+    eyebrow: "Website-uri & SMM în Chișinău",
+    headlineLines: ["Website-uri care atrag.", "SMM care construiește"],
+    accent: "branduri relevante.",
+    subtitle: "SEO, strategie, content și conversii — într-o singură echipă.",
     primaryCta: "Hai să discutăm",
     secondaryCta: "Vezi portofoliul",
     offerEyebrow: "Ofertă specială",
@@ -63,9 +63,9 @@ const heroCopy: Record<Locale, HeroCopy> = {
   },
   en: {
     eyebrow: "Premium digital studio",
-    headlineLines: ["We create digital systems", "that build"],
-    accent: "powerful brands.",
-    subtitle: "Modern design. Clear strategy. Real results.",
+    headlineLines: ["Websites that attract.", "SMM that builds"],
+    accent: "relevant brands.",
+    subtitle: "SEO, strategy, content and conversion — from one team.",
     primaryCta: "Let’s talk",
     secondaryCta: "View portfolio",
     offerEyebrow: "Special offer",
@@ -92,10 +92,10 @@ const heroCopy: Record<Locale, HeroCopy> = {
     ],
   },
   ru: {
-    eyebrow: "Премиальная digital-студия",
-    headlineLines: ["Создаем digital-решения", "для сильных"],
+    eyebrow: "Сайты & SMM в Кишинёве",
+    headlineLines: ["Сайты, которые привлекают.", "SMM, который развивает"],
     accent: "сильные бренды.",
-    subtitle: "Современный дизайн. Четкая стратегия. Реальные результаты.",
+    subtitle: "SEO, стратегия, контент и конверсии — в одной команде.",
     primaryCta: "Обсудить проект",
     secondaryCta: "Портфолио",
     offerEyebrow: "Специальное предложение",

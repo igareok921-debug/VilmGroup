@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Logo from "./Logo";
+import { useI18n } from "@/i18n/I18nProvider";
 
 type Collaboration = {
   name: string;
@@ -24,7 +25,23 @@ const collaborations: Collaboration[] = [
 ];
 
 export default function Collaborations() {
+  const { locale } = useI18n();
   const loop = [...collaborations, ...collaborations];
+  const copy =
+    locale === "en"
+      ? {
+          eyebrow: "COLLABORATIONS",
+          title: "Collaborations that became part of the Vilm Group story.",
+        }
+      : locale === "ru"
+        ? {
+            eyebrow: "СОТРУДНИЧЕСТВО",
+            title: "Проекты, которые стали частью истории Vilm Group.",
+          }
+        : {
+            eyebrow: "COLABORĂRI",
+            title: "Colaborări care au devenit parte din povestea Vilm Group.",
+          };
 
   return (
     <section className="relative w-full py-16 md:py-28">
@@ -40,14 +57,14 @@ export default function Collaborations() {
           <div className="flex items-center gap-3">
             <span className="h-px w-10 bg-accent" />
             <span className="font-mono text-[10px] tracking-[0.3em] text-accent">
-              COLABORĂRI
+              {copy.eyebrow}
             </span>
           </div>
 
           <Logo variant="gold" className="mt-8 h-9 w-auto md:h-11" />
 
           <h2 className="mt-8 font-display text-4xl font-bold leading-[0.98] tracking-[-0.04em] text-text md:text-6xl">
-            Colaborări care au devenit parte din povestea Vilmgroup.
+            {copy.title}
           </h2>
         </motion.div>
       </div>

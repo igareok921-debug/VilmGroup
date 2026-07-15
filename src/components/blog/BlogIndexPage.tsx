@@ -30,15 +30,6 @@ function CategoryIcon({ name, className }: { name: BlogCategory; className?: str
       </svg>
     );
   }
-  if (name === "branding") {
-    return (
-      <svg viewBox="0 0 32 32" className={cls} fill="none" aria-hidden>
-        <path d="M7 25l4.5-1 13-13-3.5-3.5-13 13L7 25Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-        <path d="M19 9l4 4M11.5 24l-3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <circle cx="21.5" cy="8.5" r="2.5" stroke="currentColor" strokeWidth="1.4" />
-      </svg>
-    );
-  }
   return (
     <svg viewBox="0 0 32 32" className={cls} fill="none" aria-hidden>
       <rect x="5" y="8" width="22" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" />
@@ -118,7 +109,7 @@ const indexLabels = {
     eyebrow: "Blog · Vilm Group",
     title: "Idei, lecții și ghiduri despre digital, fără filtru.",
     description:
-      "Articole onest scrise despre cum funcționează cu adevărat un website, SMM, branding și AI în Moldova și România. Cifre reale, greșeli pe care le-am văzut, lucruri pe care le facem.",
+      "Articole scrise onest despre creare website-uri, SEO, SMM, content și conversii în Moldova. Cifre reale, greșeli observate și soluții aplicate.",
     featured: "Featured",
     latest: "Cel mai nou articol",
     readingTime: (n: number) => `${n} min citire`,
@@ -129,7 +120,7 @@ const indexLabels = {
     eyebrow: "Blog · Vilm Group",
     title: "Honest ideas, lessons and guides about digital — no filter.",
     description:
-      "Honest articles about how a website, SMM, branding and AI actually work in Moldova and Romania. Real numbers, mistakes we've seen, things we do.",
+      "Honest articles about website creation, SEO, SMM, content and conversion in Moldova. Real numbers, observed mistakes and applied solutions.",
     featured: "Featured",
     latest: "Latest article",
     readingTime: (n: number) => `${n} min read`,
@@ -140,7 +131,7 @@ const indexLabels = {
     eyebrow: "Блог · Vilm Group",
     title: "Идеи, уроки и гиды о digital, без фильтра.",
     description:
-      "Честные статьи о том, как на самом деле работает сайт, SMM, брендинг и AI в Молдове и Румынии. Реальные цифры, ошибки, которые мы видели, вещи, которые мы делаем.",
+      "Честные статьи о создании сайтов, SEO, SMM, контенте и конверсиях в Молдове. Реальные цифры, ошибки и применённые решения.",
     featured: "Featured",
     latest: "Самая новая статья",
     readingTime: (n: number) => `${n} мин чтения`,

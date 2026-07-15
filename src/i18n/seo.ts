@@ -10,42 +10,41 @@ export const homeSeo: Record<
   }
 > = {
   ro: {
-    title: "Vilm Group — Website-uri, SMM, Branding & AI în Chișinău",
+    title: "Creare Website-uri și SMM în Chișinău",
     description:
-      "Creăm website-uri, SMM, branding, logo design, chatbots și automatizări AI pentru branduri din Chișinău, Moldova și România.",
+      "Creăm website-uri rapide și optimizate SEO și oferim servicii SMM cu strategie, content, Reels și Meta Ads pentru afaceri din Chișinău și Moldova.",
     keywords: [
       "creare website Chișinău",
+      "creare site Moldova",
       "SMM Chișinău",
-      "branding Moldova",
-      "logo design Chișinău",
-      "chatbot AI Moldova",
-      "automatizări AI",
+      "servicii SMM Moldova",
+      "administrare Instagram Chișinău",
+      "social media marketing Moldova",
     ],
   },
   en: {
-    title: "Vilm Group — Websites, SMM, Branding & AI in Chișinău",
+    title: "Website Development and SMM in Chișinău",
     description:
-      "We create websites, SMM, branding, logo design, AI chatbots and automation for brands in Chișinău, Moldova, Romania and Europe.",
+      "SEO-ready website development and SMM with strategy, content, Reels and Meta Ads for businesses in Chișinău and Moldova.",
     keywords: [
       "website development Moldova",
       "web design Chișinău",
       "SMM Moldova",
-      "branding Moldova",
-      "logo design Moldova",
-      "AI chatbot for business",
+      "social media marketing Moldova",
+      "Instagram management Moldova",
+      "SMM services Moldova",
     ],
   },
   ru: {
-    title: "Vilm Group — Сайты, SMM, брендинг и AI в Кишинёве",
+    title: "Создание сайтов и SMM в Кишинёве",
     description:
-      "Создаём сайты, SMM, брендинг, дизайн логотипа, AI-чатботов и автоматизацию для брендов в Кишинёве, Молдове, Румынии и Европе.",
+      "Создаём быстрые сайты с SEO и ведём SMM со стратегией, контентом, Reels и Meta Ads для бизнеса в Кишинёве и Молдове.",
     keywords: [
       "создание сайтов Кишинёв",
       "SMM Кишинёв",
-      "брендинг Молдова",
-      "дизайн логотипа Кишинёв",
-      "AI чатбот для бизнеса",
-      "автоматизация AI",
+      "SMM услуги Молдова",
+      "ведение Instagram Кишинёв",
+      "social media marketing Молдова",
     ],
   },
 };
@@ -56,47 +55,45 @@ export const serviceSeo: Record<
 > = {
   servicii: {
     ro: {
-      title: "Servicii digitale în Chișinău",
+      title: "Creare Website-uri și Servicii SMM în Chișinău",
       description:
-        "Servicii digitale Vilm Group în Chișinău: creare website-uri, SMM, branding, logo design, chatbots AI, automatizări și conținut.",
+        "Două servicii principale pentru creștere: creare website-uri cu SEO și SMM cu strategie, administrare social media, content, Reels și Meta Ads.",
       keywords: [
-        "servicii digitale Chișinău",
-        "agenție digitală Chișinău",
         "creare website Chișinău",
+        "creare site Moldova",
         "SMM Chișinău",
-        "branding Moldova",
+        "servicii SMM Moldova",
+        "administrare Instagram Chișinău",
       ],
     },
     en: {
-      title: "Digital Services in Chișinău",
+      title: "Website Development and SMM Services in Chișinău",
       description:
-        "Vilm Group digital services in Chișinău: website creation, SMM, branding, logo design, AI chatbots, automation and content.",
+        "Two core growth services: SEO-ready website development and SMM with social media management, content, Reels and Meta Ads.",
       keywords: [
-        "digital agency Chișinău",
-        "digital services Moldova",
         "website creation Chișinău",
         "SMM Chișinău",
-        "branding Moldova",
+        "SMM services Moldova",
+        "Instagram management Moldova",
       ],
     },
     ru: {
-      title: "Digital-услуги в Кишинёве",
+      title: "Создание сайтов и SMM-услуги в Кишинёве",
       description:
-        "Digital-услуги Vilm Group в Кишинёве: создание сайтов, SMM, брендинг, дизайн логотипа, AI-чатботы, автоматизация и контент.",
+        "Два главных направления роста: создание сайтов с SEO и SMM со стратегией, ведением соцсетей, контентом, Reels и Meta Ads.",
       keywords: [
-        "digital агентство Кишинёв",
-        "digital услуги Молдова",
         "создание сайтов Кишинёв",
         "SMM Кишинёв",
-        "брендинг Молдова",
+        "SMM услуги Молдова",
+        "ведение Instagram Кишинёв",
       ],
     },
   },
   "creare-website-uri": {
     ro: {
-      title: "Creare Website-uri în Chișinău",
+      title: "Creare website în Chișinău de la 150€",
       description:
-        "Creare website-uri rapide, moderne și optimizate SEO pentru afaceri din Chișinău, Moldova și România.",
+        "Website-uri personalizate pentru afaceri din Moldova. Pachete de la 150€, SEO tehnic, design unic și 30 de zile de suport după lansare.",
       keywords: ["creare website Chișinău", "creare site Moldova", "web design Chișinău"],
     },
     en: {
@@ -114,9 +111,9 @@ export const serviceSeo: Record<
   },
   "smm-chisinau": {
     ro: {
-      title: "SMM Chișinău",
+      title: "Servicii SMM Chișinău: Instagram, Reels și Meta Ads",
       description:
-        "Servicii SMM în Chișinău: strategie social media, administrare Instagram și Facebook, content plan, vizualuri, reels și campanii.",
+        "Strategie, content plan, administrare Instagram și Facebook, reels și campanii Meta Ads pentru branduri din Chișinău. Vezi procesul și exemplele.",
       keywords: ["SMM Chișinău", "servicii SMM Moldova", "administrare Instagram Chișinău"],
     },
     en: {
@@ -130,26 +127,6 @@ export const serviceSeo: Record<
       description:
         "SMM-услуги в Кишинёве: стратегия, ведение Instagram и Facebook, content plan, визуалы, reels и кампании.",
       keywords: ["SMM Кишинёв", "ведение Instagram Молдова", "social media marketing Молдова"],
-    },
-  },
-  "branding-logo-design": {
-    ro: {
-      title: "Branding și Logo Design",
-      description:
-        "Branding și logo design pentru afaceri: identitate vizuală, paletă de culori, tipografie și materiale de brand.",
-      keywords: ["branding Moldova", "logo design Chișinău", "identitate vizuală Moldova"],
-    },
-    en: {
-      title: "Branding and Logo Design",
-      description:
-        "Branding and logo design for businesses: visual identity, color palette, typography and brand materials.",
-      keywords: ["branding Moldova", "logo design Moldova", "visual identity Chișinău"],
-    },
-    ru: {
-      title: "Брендинг и дизайн логотипа",
-      description:
-        "Брендинг и дизайн логотипа для бизнеса: визуальная айдентика, палитра цветов, типографика и бренд-материалы.",
-      keywords: ["брендинг Молдова", "дизайн логотипа Кишинёв", "визуальная айдентика"],
     },
   },
   "chatbots-ai": {

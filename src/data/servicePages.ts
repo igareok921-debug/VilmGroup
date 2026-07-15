@@ -191,97 +191,7 @@ export const servicePages: ServicePage[] = [
           "Da. Configurăm și administrăm campanii Meta Ads (Instagram + Facebook) și TikTok Ads. Bugetul de reclame e separat de fee-ul de administrare, iar noi recomandăm un minim de 100-200€/lună pentru reclame eficiente.",
       },
     ],
-    related: ["branding-logo-design", "creare-website-uri", "chatbots-ai"],
-  },
-  {
-    slug: "branding-logo-design",
-    eyebrow: "LOGO · IDENTITATE · SISTEM VIZUAL",
-    title: "Branding și logo design pentru afaceri care vor o imagine memorabilă.",
-    shortTitle: "Branding & Logo",
-    description:
-      "Creăm logo profesional, identitate vizuală completă, paletă de culori, tipografie, materiale de brand și direcție vizuală pentru afaceri din Chișinău, Moldova, România și diaspora. Branding strategic pentru startup-uri, rebranding pentru companii existente și identități premium pentru branduri personale.",
-    keywords: [
-      "logo design Chișinău",
-      "logo design Moldova",
-      "branding Moldova",
-      "branding Chișinău",
-      "branding România",
-      "identitate vizuală Chișinău",
-      "identitate vizuală Moldova",
-      "creare logo Moldova",
-      "creare logo profesional",
-      "brand design Moldova",
-      "graphic design Chișinău",
-      "rebranding companie Chișinău",
-      "preț logo Moldova",
-      "agenție branding Moldova",
-    ],
-    heroPoints: [
-      "Logo și identitate vizuală construite strategic, nu doar decorativ.",
-      "Sistem coerent pentru social media, website, print și campanii.",
-      "Direcție vizuală care face brandul recognoscibil pe orice canal.",
-    ],
-    benefits: [
-      "Brand mai ușor de recunoscut și memorat de publicul tău.",
-      "Vizualuri coerente pe toate canalele digitale și print.",
-      "Materiale pregătite pentru social media, website și prezentări.",
-      "Bază solidă pentru campanii, conținut și creștere pe termen lung.",
-      "Brand book complet (PDF guideline) cu reguli clare de utilizare.",
-      "Logo în multiple formate: vector (SVG, AI, EPS) + raster (PNG, JPG) pentru orice scenariu.",
-      "Paletă de culori, tipografie și mockup-uri gata de implementat.",
-      "Reviziune și ajustări incluse până la varianta finală aprobată.",
-    ],
-    process: [
-      "Înțelegem poziționarea, publicul și personalitatea brandului tău.",
-      "Analizăm competiția locală și internațională din nișa ta.",
-      "Explorăm 2-3 direcții vizuale și alegem ruta potrivită împreună.",
-      "Construim logo-ul, culorile, fonturile și elementele grafice principale.",
-      "Pregătim mockup-uri pe carte de vizită, social media, website și produse.",
-      "Livrăm brand book PDF, fișierele finale și recomandări de folosire.",
-    ],
-    faqs: [
-      {
-        question: "Primesc doar logo sau identitate completă?",
-        answer:
-          "Putem lucra doar pe logo, dar recomandăm identitate completă (logo + paletă + tipografie + brand book) atunci când brandul are nevoie de consistență pe website, social media și materiale.",
-      },
-      {
-        question: "Cât costă un logo sau un brand complet la Vilm Group?",
-        answer:
-          "Un logo singur începe de la 200€. Un pachet de identitate vizuală (logo + paletă + tipografie + mockup-uri) este între 400-500€. Un proiect de branding complet (cu strategie, brand book extins, materiale colaterale) începe de la 500€.",
-      },
-      {
-        question: "Faceți redesign pentru logo existent?",
-        answer:
-          "Da. Putem moderniza un logo existent păstrând elementele recognoscibile sau reconstrui complet identitatea vizuală, în funcție de obiectivele de rebranding.",
-      },
-      {
-        question: "Ce primesc în fișierele finale de logo?",
-        answer:
-          "Primești logo-ul în formate vectoriale (AI, EPS, SVG, PDF) și raster (PNG transparent, JPG, WEBP) la multiple rezoluții, plus varianta monocrom, varianta inversată și versiunea simplificată pentru favicon/app icon.",
-      },
-      {
-        question: "Cât durează procesul de creare brand?",
-        answer:
-          "Un logo simplu poate fi gata în 1-2 săptămâni. Un proiect complet de identitate vizuală cu brand book durează 3-5 săptămâni, în funcție de complexitate și viteza de feedback.",
-      },
-      {
-        question: "Câte variante de logo primesc inițial?",
-        answer:
-          "Prezentăm 2-3 direcții vizuale diferite la prima iterație. Alegi una preferată, iar pe baza ei facem rafinări până la varianta finală.",
-      },
-      {
-        question: "Brandingul poate fi folosit și pentru SMM?",
-        answer:
-          "Da. Construim sistemul vizual astfel încât să poată fi aplicat ușor în postări, stories, reels, bannere și materiale de campanie. Putem oferi și template-uri editabile pentru echipa ta.",
-      },
-      {
-        question: "Lucrați cu antreprenori individuali sau doar companii?",
-        answer:
-          "Lucrăm cu ambele. Branduri personale (coach, consultanți, antrenori, freelanceri), startup-uri, IMM-uri și companii consacrate care vor rebranding.",
-      },
-    ],
-    related: ["smm-chisinau", "creare-website-uri", "chatbots-ai"],
+    related: ["creare-website-uri", "creare-magazin-online", "chatbots-ai"],
   },
   {
     slug: "chatbots-ai",
@@ -361,7 +271,7 @@ export const servicePages: ServicePage[] = [
           "Un chatbot basic poate fi gata în 1-2 săptămâni. Unul mediu, cu fluxuri custom și integrări, durează 2-4 săptămâni. Un proiect complex poate ajunge la 4-6 săptămâni, cu testare extinsă.",
       },
     ],
-    related: ["creare-website-uri", "smm-chisinau", "branding-logo-design"],
+    related: ["creare-website-uri", "smm-chisinau", "creare-magazin-online"],
   },
 ];
 
@@ -438,6 +348,14 @@ export const onlineStorePage: ServicePage = {
   ],
   related: ["creare-website-uri", "smm-chisinau", "chatbots-ai"],
 };
+
+/**
+ * Public positioning is intentionally built around two core services.
+ * Ecommerce and AI remain available as included capabilities or extensions.
+ */
+export const primaryServicePages = servicePages.filter(
+  ({ slug }) => slug === "creare-website-uri" || slug === "smm-chisinau"
+);
 
 export function getServicePage(slug: string) {
   if (slug === onlineStorePage.slug) return onlineStorePage;

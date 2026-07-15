@@ -545,19 +545,6 @@ export const portfolioProjects: PortfolioProject[] = [
         },
       },
       {
-        src: "/portfolio/visibilitysummit/branding.webp",
-        alt: {
-          ro: "Prezentarea modulului de branding personal cu Diana Buzu",
-          en: "Personal branding module presentation with Diana Buzu",
-          ru: "Презентация модуля личного брендинга с Diana Buzu",
-        },
-        caption: {
-          ro: "Branding personal și structură editorială",
-          en: "Personal branding and editorial structure",
-          ru: "Личный брендинг и редакционная структура",
-        },
-      },
-      {
         src: "/portfolio/visibilitysummit/social-media.webp",
         alt: {
           ro: "Prezentarea modulului Social Media din website-ul Visibility Summit",
@@ -623,13 +610,13 @@ export const portfolioProjects: PortfolioProject[] = [
         eyebrow: "Studiu de caz · Event Website & Stripe",
         title: "O experiență digitală premium care transformă interesul în bilete.",
         intro:
-          "Website premium realizat pentru The Visibility Summit, un workshop educațional din Londra dedicat brandingului personal, social media și public speaking.",
+          "Website premium realizat pentru The Visibility Summit, un workshop educațional din Londra dedicat vizibilității personale, social media și public speaking.",
         challengeTitle: "Provocarea",
         challenge:
           "Evenimentul avea nevoie de o prezență distinctă care să transmită valoarea workshopului, să construiască încredere în traineri și să explice rapid diferențele dintre pachetele de participare.",
         solutionTitle: "Soluția",
         solution:
-          "Am construit o identitate vizuală premium, un layout editorial și un traseu clar de la descoperirea experienței până la cumpărarea biletului. Stripe gestionează plata online pentru pachetele Standard, Duo, Premium Experience și Business Partner, cu pagini dedicate de confirmare și anulare.",
+          "Am construit o interfață premium, un layout editorial și un traseu clar de la descoperirea experienței până la cumpărarea biletului. Stripe gestionează plata online pentru pachetele Standard, Duo, Premium Experience și Business Partner, cu pagini dedicate de confirmare și anulare.",
         resultsTitle: "Ce livrează website-ul",
         resultsIntro:
           "Proiectul conectează prezentarea evenimentului, autoritatea trainerilor și procesul de plată într-o singură experiență responsive.",
@@ -650,7 +637,7 @@ export const portfolioProjects: PortfolioProject[] = [
         ctaEyebrow: "Organizezi un eveniment?",
         ctaTitle: "Construim experiența digitală care îl face memorabil.",
         ctaText:
-          "Strategie, identitate vizuală, website și vânzare de bilete într-un sistem coerent.",
+          "Strategie, UI/UX, website și vânzare de bilete într-un sistem coerent.",
         ctaButton: "Discută proiectul",
         labels: {
           client: "Proiect",
@@ -664,13 +651,13 @@ export const portfolioProjects: PortfolioProject[] = [
         eyebrow: "Case study · Event Website & Stripe",
         title: "A premium digital experience that turns interest into ticket sales.",
         intro:
-          "A premium website created for The Visibility Summit, a London educational workshop focused on personal branding, social media and public speaking.",
+          "A premium website created for The Visibility Summit, a London educational workshop focused on personal visibility, social media and public speaking.",
         challengeTitle: "The challenge",
         challenge:
           "The event needed a distinctive presence that communicated the workshop's value, built trust in its trainers and quickly explained the differences between participation packages.",
         solutionTitle: "The solution",
         solution:
-          "We built a premium visual identity, an editorial layout and a clear journey from discovering the experience to purchasing a ticket. Stripe handles online payments for Standard, Duo, Premium Experience and Business Partner packages, with dedicated confirmation and cancellation pages.",
+          "We built a premium interface, an editorial layout and a clear journey from discovering the experience to purchasing a ticket. Stripe handles online payments for Standard, Duo, Premium Experience and Business Partner packages, with dedicated confirmation and cancellation pages.",
         resultsTitle: "What the website delivers",
         resultsIntro:
           "The project connects event presentation, trainer authority and payment into one responsive experience.",
@@ -691,7 +678,7 @@ export const portfolioProjects: PortfolioProject[] = [
         ctaEyebrow: "Organizing an event?",
         ctaTitle: "We build the digital experience that makes it memorable.",
         ctaText:
-          "Strategy, visual identity, website and ticket sales in one coherent system.",
+          "Strategy, UI/UX, website and ticket sales in one coherent system.",
         ctaButton: "Discuss your project",
         labels: {
           client: "Project",
@@ -705,13 +692,13 @@ export const portfolioProjects: PortfolioProject[] = [
         eyebrow: "Кейс · Сайт события & Stripe",
         title: "Премиальный digital-опыт, который превращает интерес в продажи билетов.",
         intro:
-          "Премиальный сайт для The Visibility Summit — образовательного воркшопа в Лондоне о личном брендинге, social media и public speaking.",
+          "Премиальный сайт для The Visibility Summit — образовательного воркшопа в Лондоне о личной узнаваемости, social media и public speaking.",
         challengeTitle: "Задача",
         challenge:
           "Событию требовался узнаваемый образ, который передаёт ценность воркшопа, формирует доверие к тренерам и быстро объясняет разницу между пакетами участия.",
         solutionTitle: "Решение",
         solution:
-          "Мы создали премиальную визуальную айдентику, редакционный layout и понятный путь от знакомства с событием до покупки билета. Stripe принимает оплату пакетов Standard, Duo, Premium Experience и Business Partner, включая страницы подтверждения и отмены.",
+          "Мы создали премиальный интерфейс, редакционный layout и понятный путь от знакомства с событием до покупки билета. Stripe принимает оплату пакетов Standard, Duo, Premium Experience и Business Partner, включая страницы подтверждения и отмены.",
         resultsTitle: "Что обеспечивает сайт",
         resultsIntro:
           "Проект объединяет презентацию события, авторитет тренеров и оплату в одном responsive-опыте.",
@@ -732,7 +719,7 @@ export const portfolioProjects: PortfolioProject[] = [
         ctaEyebrow: "Организуете событие?",
         ctaTitle: "Создадим digital-опыт, который сделает его запоминающимся.",
         ctaText:
-          "Стратегия, визуальная айдентика, сайт и продажа билетов в единой системе.",
+          "Стратегия, UI/UX, сайт и продажа билетов в единой системе.",
         ctaButton: "Обсудить проект",
         labels: {
           client: "Проект",

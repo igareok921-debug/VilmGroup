@@ -24,15 +24,15 @@ const servicesByLocale: Record<Locale, ServiceCard[]> = {
   ro: [
     {
       title: "Website Development & SEO",
-      tagline: "WEBSITES · SEO · BRANDING · AI",
+      tagline: "WEBSITES · SEO · CONVERSIE · AI",
       description:
-        "Website-uri moderne, rapide și optimizate pentru conversii, cu branding, SEO și integrare AI.",
+        "Website-uri moderne, rapide și optimizate pentru conversii, cu UI/UX, SEO și integrare AI.",
       slug: "creare-website-uri",
       image: websiteImage,
       imageAlt: "Designer lucrând la un website și un dashboard SEO într-un studio luminos",
       benefits: [
         "Strategie, structură UX și dezvoltare responsive",
-        "Branding, logo și graphic design integrate",
+        "UI/UX și direcție vizuală adaptate afacerii",
         "SEO tehnic, conținut și pregătire pentru Google",
         "Formulare, analytics și integrare chatbot AI",
       ],
@@ -86,15 +86,15 @@ const servicesByLocale: Record<Locale, ServiceCard[]> = {
   en: [
     {
       title: "Website Development & SEO",
-      tagline: "WEBSITES · SEO · BRANDING · AI",
+      tagline: "WEBSITES · SEO · CONVERSION · AI",
       description:
-        "Modern, fast, conversion-focused websites with branding, SEO and AI integration.",
+        "Modern, fast, conversion-focused websites with UI/UX, SEO and AI integration.",
       slug: "creare-website-uri",
       image: websiteImage,
       imageAlt: "Designer working on a website and SEO dashboard in a bright studio",
       benefits: [
         "Strategy, UX structure and responsive development",
-        "Branding, logo and graphic design included",
+        "UI/UX and visual direction tailored to the business",
         "Technical SEO, content and Google readiness",
         "Forms, analytics and AI chatbot integration",
       ],
@@ -148,15 +148,15 @@ const servicesByLocale: Record<Locale, ServiceCard[]> = {
   ru: [
     {
       title: "Разработка сайтов & SEO",
-      tagline: "САЙТЫ · SEO · БРЕНДИНГ · AI",
+      tagline: "САЙТЫ · SEO · КОНВЕРСИИ · AI",
       description:
-        "Современные быстрые сайты для конверсий с брендингом, SEO и интеграцией AI.",
+        "Современные быстрые сайты для конверсий с UI/UX, SEO и интеграцией AI.",
       slug: "creare-website-uri",
       image: websiteImage,
       imageAlt: "Дизайнер работает с сайтом и SEO-аналитикой в светлой студии",
       benefits: [
         "Стратегия, UX-структура и responsive-разработка",
-        "Брендинг, логотип и графический дизайн включены",
+        "UI/UX и визуальное направление под задачи бизнеса",
         "Техническое SEO, контент и подготовка для Google",
         "Формы, analytics и интеграция AI-чатбота",
       ],
@@ -214,6 +214,9 @@ export default function Services() {
   const localePrefix = `/${locale}`;
   const viewService =
     locale === "ro" ? "Vezi serviciul" : locale === "ru" ? "Смотреть услугу" : "View service";
+  const primaryServices = servicesByLocale[locale].filter(
+    ({ slug }) => slug === "creare-website-uri" || slug === "smm-chisinau"
+  );
 
   return (
     <section
@@ -256,7 +259,7 @@ export default function Services() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {servicesByLocale[locale].map((service, index) => (
+        {primaryServices.map((service, index) => (
           <motion.article
             key={service.title}
             initial={{ opacity: 0, y: 28 }}

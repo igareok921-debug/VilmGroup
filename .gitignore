@@ -13,6 +13,10 @@
 # testing
 /coverage
 
+# local SEO audit artifacts and cached Google data
+/.seo-cache/
+/output/
+
 # next.js
 /.next/
 /out/
@@ -32,6 +36,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+
+# local Google service-account credential
+/service_account.json
+/sapient-torch-*.json
 
 # vercel
 .vercel

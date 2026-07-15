@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useI18n } from "@/i18n/I18nProvider";
 
 const socialLinks = [
@@ -163,7 +164,7 @@ export default function AssistantRobot() {
         ))}
       </nav>
 
-      <div className="pointer-events-none fixed right-1 bottom-1 z-50 flex flex-col items-end sm:right-4 sm:bottom-4">
+      <div className="pointer-events-none fixed right-2 bottom-2 z-50 flex flex-col items-end sm:right-4 sm:bottom-4">
         <div
           className={`pointer-events-auto mb-3 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-white/15 bg-white/[0.05] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-300 ${
             isChatOpen
@@ -225,24 +226,25 @@ export default function AssistantRobot() {
           <button
             type="button"
             onClick={() => setIsChatOpen(true)}
-            className="pointer-events-auto mb-1 max-w-[11.5rem] rounded-2xl rounded-br-md border border-white/15 bg-white/[0.05] px-3.5 py-2.5 text-left text-xs leading-snug text-text shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl transition hover:border-accent sm:mb-2 sm:max-w-[13rem] sm:px-4 sm:py-3 sm:text-sm"
+            className="pointer-events-auto mb-2 hidden max-w-[13rem] rounded-2xl rounded-br-md border border-white/15 bg-white/[0.05] px-4 py-3 text-left text-sm leading-snug text-text shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl transition hover:border-accent sm:block"
           >
             {dictionary.assistant.bubble}
           </button>
         ) : null}
 
         <div className="group relative">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="pointer-events-none h-32 w-32 object-contain drop-shadow-[0_22px_42px_rgba(0,0,0,0.45)] transition duration-300 group-hover:scale-[1.03] sm:h-52 sm:w-52 md:h-64 md:w-64"
+          <Image
+            className="pointer-events-none h-20 w-20 object-contain drop-shadow-[0_22px_42px_rgba(0,0,0,0.45)] transition duration-300 group-hover:scale-[1.03] sm:h-52 sm:w-52 md:h-64 md:w-64"
             src="/robot-ai-safari.webp"
             alt=""
+            width={256}
+            height={256}
             aria-hidden="true"
           />
           <button
             type="button"
             onClick={() => setIsChatOpen((value) => !value)}
-            className="pointer-events-auto absolute right-6 bottom-1 h-24 w-16 rounded-full sm:right-10 sm:bottom-3 sm:h-36 sm:w-28 md:right-12 md:bottom-4 md:h-44 md:w-36"
+            className="pointer-events-auto absolute right-2 bottom-1 h-16 w-12 rounded-full sm:right-10 sm:bottom-3 sm:h-36 sm:w-28 md:right-12 md:bottom-4 md:h-44 md:w-36"
             aria-label={
               isChatOpen
                 ? dictionary.assistant.closeChat
