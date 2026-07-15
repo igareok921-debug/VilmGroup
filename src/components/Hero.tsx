@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import Magnetic from "./Magnetic";
 import { useI18n } from "@/i18n/I18nProvider";
 import type { Locale } from "@/i18n/config";
 
@@ -177,19 +175,14 @@ function ServiceIcon({ name }: { name: ServiceIconName }) {
 
 function HeroBrand() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.05 }}
-      className="hidden md:block"
-    >
+    <div className="hidden md:block">
       <p className="font-display text-4xl font-light leading-none tracking-[-0.08em] text-accent md:text-5xl">
         vilmgroup
       </p>
       <p className="mt-3 font-mono text-[12px] tracking-[0.58em] text-text">
         Studio Digital
       </p>
-    </motion.div>
+    </div>
   );
 }
 
@@ -237,12 +230,9 @@ function HeroLeadForm({ copy }: { copy: HeroCopy }) {
   };
 
   return (
-    <motion.form
+    <form
       id="hero-form"
       onSubmit={handleSubmit}
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
       className="relative overflow-hidden rounded-[1.75rem] border border-accent/40 bg-[#0c0a10]/92 p-5 shadow-[0_32px_100px_rgba(0,0,0,0.58),0_0_80px_rgba(200,169,106,0.12)] backdrop-blur-xl sm:p-7 lg:p-8"
     >
       <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(200,169,106,0.95),transparent)]" aria-hidden />
@@ -345,7 +335,7 @@ function HeroLeadForm({ copy }: { copy: HeroCopy }) {
           </p>
         ) : null}
       </div>
-    </motion.form>
+    </form>
   );
 }
 
@@ -366,21 +356,11 @@ export default function Hero() {
 
         <div className="relative mt-7 grid gap-8 lg:grid-cols-[0.55fr_0.45fr] lg:items-start xl:mt-8">
         <div className="relative z-10">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-mono text-[10px] uppercase tracking-[0.35em] text-accent md:hidden"
-          >
+          <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-accent md:hidden">
             {copy.eyebrow}
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-[49rem] font-display text-[clamp(2.75rem,7.2vw,4.25rem)] font-bold leading-[0.98] tracking-[-0.04em] text-text md:mt-0 lg:text-[clamp(2.6rem,3vw,3.5rem)] xl:max-w-[53rem] xl:text-[clamp(3.65rem,4.05vw,5.05rem)]"
-          >
+          <h1 className="mt-6 max-w-[49rem] font-display text-[clamp(2.75rem,7.2vw,4.25rem)] font-bold leading-[0.98] tracking-[-0.04em] text-text md:mt-0 lg:text-[clamp(2.6rem,3vw,3.5rem)] xl:max-w-[53rem] xl:text-[clamp(3.65rem,4.05vw,5.05rem)]">
             {copy.headlineLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -389,23 +369,13 @@ export default function Hero() {
             <span className="bg-[linear-gradient(135deg,#fff5c8,#d3af62_46%,#a78038)] bg-clip-text text-transparent">
               {copy.accent}
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.42 }}
-            className="mt-5 max-w-2xl text-lg leading-relaxed text-text-soft md:text-xl xl:text-2xl"
-          >
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-soft md:text-xl xl:text-2xl">
             {copy.subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
-            className="mt-8 hidden gap-y-5 md:grid md:grid-cols-4 md:divide-x md:divide-white/15 xl:mt-9"
-          >
+          <div className="mt-8 hidden gap-y-5 md:grid md:grid-cols-4 md:divide-x md:divide-white/15 xl:mt-9">
             {copy.services.map((service) => (
               <div key={service.label} className="flex flex-col items-start gap-3.5 pr-4 sm:items-center sm:px-4 sm:text-center">
                 <ServiceIcon name={service.icon} />
@@ -414,14 +384,9 @@ export default function Hero() {
                 </span>
               </div>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
-            className="mt-8 rounded-2xl border border-accent/35 bg-white/[0.035] p-4 shadow-[0_26px_90px_rgba(0,0,0,0.38)] backdrop-blur md:max-w-[46rem] xl:mt-9"
-          >
+          <div className="mt-8 rounded-2xl border border-accent/35 bg-white/[0.035] p-4 shadow-[0_26px_90px_rgba(0,0,0,0.38)] backdrop-blur md:max-w-[46rem] xl:mt-9">
             <div className="grid gap-5 md:grid-cols-[1fr_1px_1fr] md:items-center">
               <div className="flex items-center gap-4">
                 <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#fff0b6,#c8a96a)] text-bg-0 shadow-[0_0_35px_rgba(200,169,106,0.28)]">
@@ -441,26 +406,17 @@ export default function Hero() {
                 <strong className="font-semibold text-accent">{copy.nextLevelStrong}</strong>
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.85 }}
-            className="mt-6 flex flex-wrap items-center gap-3"
-          >
-            <Magnetic>
-              <a className="btn-primary" href="#hero-form">
-                {copy.primaryCta}
-                <span aria-hidden>→</span>
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a className="btn-ghost" href="#portofoliu">
-                {copy.secondaryCta}
-              </a>
-            </Magnetic>
-          </motion.div>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <a className="btn-primary" href="#hero-form">
+              {copy.primaryCta}
+              <span aria-hidden>→</span>
+            </a>
+            <a className="btn-ghost" href="#portofoliu">
+              {copy.secondaryCta}
+            </a>
+          </div>
 
         </div>
 
@@ -469,12 +425,7 @@ export default function Hero() {
         </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.05 }}
-          className="mt-10 border-t border-white/[0.07] pt-6 xl:mt-12"
-        >
+        <div className="mt-10 border-t border-white/[0.07] pt-6 xl:mt-12">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
             {copy.trust.map((item) => (
               <div key={item.strong} className="flex items-start gap-3.5">
@@ -490,7 +441,7 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

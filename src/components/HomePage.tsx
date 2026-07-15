@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import HeroCanvas from "@/components/HeroCanvas";
+import DesktopVisualEffects from "@/components/DesktopVisualEffects";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Collaborations from "@/components/Collaborations";
@@ -12,7 +12,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import OfferBanner from "@/components/OfferBanner";
-import ScrollPathLine from "@/components/ScrollPathLine";
 import AssistantRobot from "@/components/AssistantRobot";
 import { useI18n } from "@/i18n/I18nProvider";
 import { siteUrl } from "@/i18n/config";
@@ -68,7 +67,6 @@ export default function HomePage() {
         : locale === "ru"
           ? "Digital-студия в Кишинёве, сфокусированная на сайтах с SEO и SMM со стратегией, контентом, Reels и Meta Ads для бизнеса в Молдове."
           : "Studio digital din Chișinău specializat în creare website-uri cu SEO și servicii SMM cu strategie, content, Reels și Meta Ads pentru afaceri din Moldova.",
-    inLanguage: locale === "ro" ? "ro-MD" : locale,
     email: "info@vilmgroup.md",
     priceRange: "$$",
     currenciesAccepted: "EUR, USD, MDL, RON",
@@ -118,8 +116,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
-      <HeroCanvas />
-      <ScrollPathLine />
+      <DesktopVisualEffects />
       <AssistantRobot />
       <div
         data-page-content

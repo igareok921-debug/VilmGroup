@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import {
@@ -10,6 +11,7 @@ import {
 import "../globals.css";
 
 const siteUrl = new URL(canonicalSiteUrl);
+const googleAnalyticsId = "G-95RJQJBB7H";
 
 const title = "Vilm Group — Creare Website-uri și SMM în Chișinău";
 const description =
@@ -191,20 +193,6 @@ export default async function RootLayout({
           { "@type": "City", name: "București" },
           { "@type": "Place", name: "Europe" },
         ],
-        serviceType: [
-          "Social Media Marketing",
-          "SMM",
-          "Web Design",
-          "Website Development",
-          "Creare website-uri",
-          "App Development",
-          "AI Automation",
-          "AI Assistants",
-          "AI Chatbots",
-          "Chatbots pentru suport clienți",
-          "Content Creation",
-          "Reels Production",
-        ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Servicii Vilm Group",
@@ -247,8 +235,6 @@ export default async function RootLayout({
   return (
     <html lang={localeLabels[locale]}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="geo.region" content="MD-CU" />
         <meta name="geo.placename" content="Chișinău" />
         <meta name="geo.position" content="47.0105;28.8638" />
@@ -263,6 +249,7 @@ export default async function RootLayout({
         />
         {children}
       </body>
+      <GoogleAnalytics gaId={googleAnalyticsId} />
     </html>
   );
 }
