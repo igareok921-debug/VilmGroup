@@ -53,6 +53,279 @@ export const blogCategoryLabels: Record<Locale, Record<BlogCategory, string>> = 
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "cat-costa-smm-chisinau-2026",
+    date: "2026-07-15",
+    readingTime: 7,
+    category: "smm",
+    relatedService: "smm-chisinau",
+    gradient: "from-[#120f1d] via-[#27192d] to-[#4a2538]",
+    translations: {
+      ro: {
+        title: "Preț SMM Chișinău 2026: pachete de la 200€",
+        excerpt:
+          "Prețuri SMM explicate clar: ce primești de la 200€, 400€ și 500€ pe lună, ce se plătește separat și cum alegi pachetul potrivit.",
+        keywords: [
+          "preț SMM Chișinău",
+          "cât costă SMM Moldova",
+          "servicii SMM Chișinău preț",
+          "administrare Instagram Chișinău",
+          "agenție SMM Moldova",
+        ],
+        content: [
+          {
+            type: "p",
+            text: "Prețul serviciilor SMM nu ar trebui să fie un mister. Diferența dintre două oferte vine, de obicei, din volumul de conținut, producția video, numărul de canale, administrarea reclamelor și nivelul de analiză inclus.",
+          },
+          {
+            type: "p",
+            text: "La Vilm Group, pachetele SMM pornesc de la 200€ pe lună. Mai jos explicăm ce poate include fiecare nivel, ce costuri rămân separate și ce întrebări trebuie să pui înainte să alegi o agenție sau un specialist SMM în Chișinău.",
+          },
+          {
+            type: "h2",
+            text: "Ce influențează prețul administrării social media",
+            id: "factori-pret-smm",
+          },
+          {
+            type: "p",
+            text: "O lună de SMM nu înseamnă doar publicarea unor imagini. Înainte de primul post sunt necesare cercetarea brandului, stabilirea obiectivelor, pilonii de conținut și calendarul editorial. După publicare urmează monitorizarea, răspunsurile, analiza și ajustarea direcției.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Numărul de postări, stories și Reels produse lunar",
+              "Necesitatea filmării, fotografiei, modelelor sau locațiilor",
+              "Numărul de platforme administrate: Instagram, Facebook sau TikTok",
+              "Moderarea comentariilor și mesajelor",
+              "Configurarea și optimizarea campaniilor Meta Ads",
+              "Complexitatea raportării și obiectivele de business urmărite",
+            ],
+          },
+          {
+            type: "h2",
+            text: "Pachetele SMM Vilm Group",
+            id: "pachete-smm",
+          },
+          { type: "h3", text: "SMM Start — de la 200€/lună" },
+          {
+            type: "p",
+            text: "Potrivit pentru un brand mic care are deja materiale de bază și vrea să comunice regulat, într-o direcție vizuală și editorială coerentă.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Direcție și piloni de conținut",
+              "Calendar editorial lunar",
+              "Postări săptămânale și stories",
+              "Texte și design pentru postări",
+              "Raport lunar de bază",
+            ],
+          },
+          { type: "h3", text: "SMM Growth — de la 400€/lună" },
+          {
+            type: "p",
+            text: "Recomandat afacerilor care vor un ritm mai activ, Reels și primele campanii plătite. Include analiza lunară și ajustarea continuă a conținutului.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Tot ce este inclus în SMM Start",
+              "Postări și stories regulate",
+              "Concepte, scripturi și editare Reels",
+              "Administrarea campaniilor Meta Ads de bază",
+              "Analiză și recomandări pentru luna următoare",
+            ],
+          },
+          { type: "h3", text: "SMM Premium — de la 500€/lună" },
+          {
+            type: "p",
+            text: "Pentru branduri care au nevoie de producție completă, conținut video constant și campanii active, cu monitorizare și raportare detaliată.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Strategie și content complet",
+              "Reels și conținut video vertical",
+              "Administrarea campaniilor avansate",
+              "Monitorizare și optimizare",
+              "Raportare detaliată pe indicatorii agreați",
+            ],
+          },
+          {
+            type: "h2",
+            text: "Ce se plătește separat",
+            id: "costuri-separate",
+          },
+          {
+            type: "p",
+            text: "Fee-ul lunar acoperă munca descrisă în pachet. Bugetul pe care platformele îl consumă pentru reclame nu intră în acest fee și se achită separat. Același lucru este valabil pentru producții foto-video complexe sau resurse externe.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Bugetul media pentru Meta Ads sau TikTok Ads",
+              "Colaborări cu influenceri și creatori",
+              "Modele, locații, recuzită și deplasări",
+              "Ședințe foto sau video care depășesc volumul agreat",
+              "Landing page-uri, website-uri și automatizări separate",
+            ],
+          },
+          {
+            type: "callout",
+            text: "Cere întotdeauna ca oferta să separe fee-ul agenției de bugetul media. Astfel știi ce plătești pentru strategie și producție și ce sumă ajunge efectiv la platformele de publicitate.",
+          },
+          {
+            type: "h2",
+            text: "Cum alegi pachetul potrivit",
+            id: "alegere-pachet-smm",
+          },
+          {
+            type: "p",
+            text: "Nu alege numai după numărul de postări. Un volum mare de materiale fără obiectiv, ofertă clară și proces de aprobare poate produce activitate, dar nu neapărat rezultate utile pentru afacere.",
+          },
+          {
+            type: "ol",
+            items: [
+              "Stabilește dacă obiectivul principal este vizibilitatea, mesajele, programările, lead-urile sau vânzările.",
+              "Clarifică cine produce pozele și video și câte zile de filmare sunt necesare.",
+              "Alege platformele unde publicul tău este deja activ.",
+              "Stabilește procesul de aprobare și persoana responsabilă din companie.",
+              "Cere un raport care leagă indicatorii social media de obiectivul afacerii.",
+            ],
+          },
+          {
+            type: "h2",
+            text: "La ce rezultate să te aștepți",
+            id: "rezultate-smm",
+          },
+          {
+            type: "p",
+            text: "Prima lună oferă un baseline: vedem ce formate atrag atenția, ce mesaje generează reacții și unde se pierde interesul. Din luna următoare putem compara reach-ul, interacțiunile, clickurile, mesajele și lead-urile cu perioada anterioară.",
+          },
+          {
+            type: "p",
+            text: "Nicio agenție serioasă nu poate garanta un număr fix de urmăritori sau vânzări. Rezultatul depinde de ofertă, preț, reputație, piață, buget și viteza cu care brandul aprobă și livrează materialele necesare.",
+          },
+          {
+            type: "h2",
+            text: "Concluzie",
+            id: "concluzie-smm",
+          },
+          {
+            type: "p",
+            text: "Pentru o prezență de bază, bugetul pornește de la 200€/lună. Pentru Reels și campanii regulate, nivelul Growth începe de la 400€/lună, iar producția și administrarea avansată pornesc de la 500€/lună. Oferta finală se stabilește după obiectiv, volum și resursele de producție.",
+          },
+        ],
+        faqs: [
+          {
+            question: "Bugetul pentru reclame este inclus în prețul SMM?",
+            answer:
+              "Nu. Bugetul media pentru Meta Ads sau TikTok Ads se achită separat de fee-ul lunar de strategie, creație și administrare.",
+          },
+          {
+            question: "Pot începe numai cu administrarea Instagram?",
+            answer:
+              "Da. Alegem canalele în funcție de public și resurse. Nu este obligatoriu să administrăm toate platformele din prima lună.",
+          },
+          {
+            question: "Contractul SMM garantează vânzări?",
+            answer:
+              "Nu. Stabilim obiective și măsurăm indicatorii relevanți, dar vânzările depind și de ofertă, preț, reputație, procesul comercial și bugetul media.",
+          },
+        ],
+      },
+      en: {
+        title: "SMM prices in Chișinău 2026: packages from €200",
+        excerpt:
+          "Clear SMM pricing: what you receive from €200, €400 and €500 per month, which costs are separate and how to choose the right package.",
+        keywords: [
+          "SMM price Chișinău",
+          "social media management cost Moldova",
+          "SMM services Chișinău",
+          "Instagram management Chișinău",
+          "SMM agency Moldova",
+        ],
+        content: [
+          { type: "p", text: "SMM pricing should not be a mystery. The difference between two offers usually comes from content volume, video production, the number of channels, paid campaign management and the level of analysis included." },
+          { type: "p", text: "At Vilm Group, SMM packages start at €200 per month. This guide explains what each level can include, which costs remain separate and what to clarify before choosing an SMM agency in Chișinău." },
+          { type: "h2", text: "What influences social media management cost", id: "smm-price-factors" },
+          { type: "p", text: "Monthly SMM is more than publishing images. It includes brand research, objectives, content pillars and an editorial calendar, followed by monitoring, analysis and adjustments." },
+          { type: "ul", items: ["Monthly posts, stories and Reels volume", "Filming, photography, models or locations", "Platforms managed: Instagram, Facebook or TikTok", "Comment and message moderation", "Meta Ads setup and optimization", "Reporting complexity and business objectives"] },
+          { type: "h2", text: "Vilm Group SMM packages", id: "smm-packages" },
+          { type: "h3", text: "SMM Start — from €200/month" },
+          { type: "p", text: "For a small brand that needs consistent communication, a clear content direction and a monthly editorial rhythm." },
+          { type: "ul", items: ["Content direction and pillars", "Monthly editorial calendar", "Weekly posts and stories", "Copy and post design", "Basic monthly report"] },
+          { type: "h3", text: "SMM Growth — from €400/month" },
+          { type: "p", text: "For businesses that need regular content, Reels and initial paid campaigns, with monthly analysis and continuous adjustments." },
+          { type: "ul", items: ["Everything in SMM Start", "Regular posts and stories", "Reels concepts, scripts and editing", "Basic Meta Ads management", "Monthly analysis and recommendations"] },
+          { type: "h3", text: "SMM Premium — from €500/month" },
+          { type: "p", text: "For brands that require complete production, consistent vertical video and active campaigns with detailed reporting." },
+          { type: "ul", items: ["Complete strategy and content", "Reels and vertical video", "Advanced campaign management", "Monitoring and optimization", "Detailed reporting on agreed indicators"] },
+          { type: "h2", text: "What is paid separately", id: "separate-costs" },
+          { type: "p", text: "The monthly fee covers the work described in the package. The media budget spent by advertising platforms is separate, as are complex productions and external resources." },
+          { type: "ul", items: ["Meta Ads or TikTok Ads media budget", "Influencer collaborations", "Models, locations, props and travel", "Production beyond the agreed scope", "Separate landing pages, websites or automation"] },
+          { type: "callout", text: "Always ask the proposal to separate the agency fee from the media budget. This shows what pays for strategy and production and what goes directly to advertising platforms." },
+          { type: "h2", text: "How to choose the right package", id: "choose-smm-package" },
+          { type: "ol", items: ["Define whether the goal is visibility, messages, bookings, leads or sales.", "Clarify who produces photos and video.", "Choose platforms where the audience is active.", "Set an approval process and responsible person.", "Request reporting connected to the business objective."] },
+          { type: "h2", text: "What results to expect", id: "smm-results" },
+          { type: "p", text: "The first full month creates a baseline. We then compare reach, interactions, clicks, messages and leads with the previous period and adjust the next content cycle." },
+          { type: "p", text: "No serious agency can guarantee a fixed number of followers or sales. Results also depend on the offer, price, reputation, market, media budget and approval speed." },
+          { type: "h2", text: "Conclusion", id: "smm-conclusion" },
+          { type: "p", text: "A basic presence starts at €200/month. Regular Reels and campaigns start at €400/month, while advanced production and management start at €500/month. The final quote depends on objectives, volume and production resources." },
+        ],
+        faqs: [
+          { question: "Is the advertising budget included?", answer: "No. Meta Ads or TikTok Ads media spend is paid separately from the monthly strategy, creation and management fee." },
+          { question: "Can I start with Instagram only?", answer: "Yes. Channels are selected according to your audience and available resources; you do not need to manage every platform from the first month." },
+          { question: "Does an SMM contract guarantee sales?", answer: "No. We set objectives and measure relevant indicators, but sales also depend on the offer, price, reputation, sales process and media budget." },
+        ],
+      },
+      ru: {
+        title: "Цены на SMM в Кишинёве 2026: пакеты от 200€",
+        excerpt:
+          "Понятные цены SMM: что входит в пакеты от 200€, 400€ и 500€ в месяц, какие расходы оплачиваются отдельно и как выбрать пакет.",
+        keywords: [
+          "цена SMM Кишинёв",
+          "стоимость SMM Молдова",
+          "SMM услуги Кишинёв",
+          "ведение Instagram Кишинёв",
+          "SMM агентство Молдова",
+        ],
+        content: [
+          { type: "p", text: "Цена SMM не должна быть загадкой. Разница между предложениями обычно зависит от объёма контента, видеопроизводства, количества каналов, ведения рекламы и глубины аналитики." },
+          { type: "p", text: "В Vilm Group SMM-пакеты начинаются от 200€ в месяц. В этом гиде объясняем каждый уровень, отдельные расходы и вопросы, которые стоит задать перед выбором SMM-агентства в Кишинёве." },
+          { type: "h2", text: "Что влияет на стоимость ведения соцсетей", id: "faktory-ceny-smm" },
+          { type: "p", text: "Ежемесячное SMM — это не только публикация картинок. Работа включает анализ бренда, цели, контент-рубрики и план, а затем мониторинг, аналитику и корректировки." },
+          { type: "ul", items: ["Количество постов, stories и Reels", "Съёмка, фотографии, модели или локации", "Instagram, Facebook или TikTok", "Модерация комментариев и сообщений", "Настройка и оптимизация Meta Ads", "Глубина отчётности и бизнес-цели"] },
+          { type: "h2", text: "SMM-пакеты Vilm Group", id: "pakety-smm" },
+          { type: "h3", text: "SMM Start — от 200€/месяц" },
+          { type: "p", text: "Для небольшого бренда, которому нужны стабильная коммуникация, понятное направление и ежемесячный контент-план." },
+          { type: "ul", items: ["Контент-направление и рубрики", "Ежемесячный контент-план", "Еженедельные посты и stories", "Тексты и дизайн", "Базовый ежемесячный отчёт"] },
+          { type: "h3", text: "SMM Growth — от 400€/месяц" },
+          { type: "p", text: "Для бизнеса, которому нужны регулярный контент, Reels и первые рекламные кампании с ежемесячной оптимизацией." },
+          { type: "ul", items: ["Всё из SMM Start", "Регулярные посты и stories", "Концепции, сценарии и монтаж Reels", "Базовое ведение Meta Ads", "Ежемесячный анализ и рекомендации"] },
+          { type: "h3", text: "SMM Premium — от 500€/месяц" },
+          { type: "p", text: "Для брендов, которым нужны полное производство, регулярное вертикальное видео и активные кампании с подробной отчётностью." },
+          { type: "ul", items: ["Полная стратегия и контент", "Reels и вертикальное видео", "Продвинутое ведение кампаний", "Мониторинг и оптимизация", "Подробный отчёт по согласованным показателям"] },
+          { type: "h2", text: "Что оплачивается отдельно", id: "otdelnye-rashody" },
+          { type: "p", text: "Ежемесячный fee покрывает работу из пакета. Рекламный бюджет платформ оплачивается отдельно, как и сложные съёмки или внешние ресурсы." },
+          { type: "ul", items: ["Бюджет Meta Ads или TikTok Ads", "Сотрудничество с инфлюенсерами", "Модели, локации, реквизит и выезды", "Производство сверх согласованного объёма", "Отдельные landing pages, сайты и автоматизации"] },
+          { type: "callout", text: "Просите разделять fee агентства и рекламный бюджет. Так понятно, что оплачивает стратегию и производство, а какая сумма поступает рекламным платформам." },
+          { type: "h2", text: "Как выбрать пакет", id: "vybor-paketa-smm" },
+          { type: "ol", items: ["Определите цель: охват, сообщения, записи, лиды или продажи.", "Уточните, кто производит фото и видео.", "Выберите платформы, где активна аудитория.", "Согласуйте процесс утверждения материалов.", "Запросите отчёт, связанный с бизнес-целью."] },
+          { type: "h2", text: "Каких результатов ожидать", id: "rezultaty-smm" },
+          { type: "p", text: "Первый полный месяц создаёт baseline. Затем сравниваем охват, взаимодействия, клики, сообщения и лиды с предыдущим периодом и корректируем контент." },
+          { type: "p", text: "Серьёзное агентство не гарантирует фиксированное количество подписчиков или продаж. Результат зависит также от предложения, цены, репутации, рынка, бюджета и скорости согласования." },
+          { type: "h2", text: "Вывод", id: "vyvod-smm" },
+          { type: "p", text: "Базовое присутствие начинается от 200€/месяц. Регулярные Reels и кампании — от 400€/месяц, продвинутое производство и ведение — от 500€/месяц. Финальная цена зависит от целей, объёма и ресурсов." },
+        ],
+        faqs: [
+          { question: "Рекламный бюджет входит в цену?", answer: "Нет. Бюджет Meta Ads или TikTok Ads оплачивается отдельно от ежемесячного fee за стратегию, создание и ведение." },
+          { question: "Можно начать только с Instagram?", answer: "Да. Каналы выбираются по аудитории и ресурсам; не обязательно вести все платформы с первого месяца." },
+          { question: "SMM-контракт гарантирует продажи?", answer: "Нет. Мы определяем цели и измеряем показатели, но продажи зависят также от предложения, цены, репутации, процесса продаж и рекламного бюджета." },
+        ],
+      },
+    },
+  },
+  {
     slug: "cat-costa-un-website-in-moldova-2026",
     date: "2026-05-12",
     readingTime: 7,

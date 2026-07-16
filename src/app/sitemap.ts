@@ -51,6 +51,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
     alternates: languageAlternates("/blog"),
   }));
+  const localizedLegalPages = locales.flatMap((locale) =>
+    ["confidentialitate", "termeni", "cookies"].map((path) => ({
+      url: `${siteUrl}/${locale}/${path}`,
+      lastModified: new Date("2026-07-16"),
+      changeFrequency: "yearly" as const,
+      priority: 0.2,
+      alternates: languageAlternates(`/${path}`),
+    }))
+  );
   const localizedBlogPostPages = locales.flatMap((locale) =>
     blogPosts.map((post) => ({
       url: `${siteUrl}/${locale}/blog/${post.slug}`,
@@ -76,6 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizedServicePages,
     ...localizedOnlineStorePages,
     ...localizedBlogIndexPages,
+    ...localizedLegalPages,
     ...localizedBlogPostPages,
     ...localizedPortfolioPages,
   ];

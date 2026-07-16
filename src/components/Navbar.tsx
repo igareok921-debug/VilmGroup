@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
@@ -19,7 +19,9 @@ const navItems = [
 
 export default function Navbar() {
   const { dictionary, locale } = useI18n();
-  const localePrefix = locale === "ro" ? "" : `/${locale}`;
+  // Keep anchor navigation on the active localized page. Going through `/`
+  // triggers the locale redirect, and browsers drop `#contact` during it.
+  const localePrefix = `/${locale}`;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [time, setTime] = useState("");
@@ -62,6 +64,40 @@ export default function Navbar() {
 
   const closeMenu = () => setIsOpen(false);
 
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+
+    if (currentPath === localePrefix) {
+      event.preventDefault();
+      window.history.replaceState(null, "", localePrefix);
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      });
+    }
+  };
+
+  const handleContactClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsOpen(false);
+
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    if (currentPath !== localePrefix) return;
+
+    const contactSection = document.getElementById("contact");
+    if (!contactSection) return;
+
+    event.preventDefault();
+    window.history.replaceState(null, "", `${localePrefix}/#contact`);
+    contactSection.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div
@@ -73,7 +109,8 @@ export default function Navbar() {
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
           <Link
-            href={localePrefix || "/"}
+            href={localePrefix}
+            onClick={handleLogoClick}
             aria-label="Vilm Group"
             className="inline-flex items-center gap-3 transition-opacity duration-300 hover:opacity-80"
           >
@@ -104,7 +141,11 @@ export default function Navbar() {
               {time}
             </span>
             <LanguageSwitcher />
-            <Link href={`${localePrefix}/#contact`} className="btn-primary text-sm">
+            <Link
+              href={`${localePrefix}/#contact`}
+              onClick={handleContactClick}
+              className="btn-primary text-sm"
+            >
               <span className="h-1.5 w-1.5 rounded-full bg-bg-0" aria-hidden />
               {dictionary.nav.cta}
             </Link>
@@ -186,7 +227,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                   href={`${localePrefix}/#contact`}
-                  onClick={closeMenu}
+                  onClick={handleContactClick}
                   className="btn-primary mt-6 justify-center"
                 >
                   {dictionary.nav.cta}

@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -218,6 +219,24 @@ export default function Services() {
     ({ slug }) => slug === "creare-website-uri" || slug === "smm-chisinau"
   );
 
+  const handleContactClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+
+    if (currentPath !== localePrefix) return;
+
+    const contactSection = document.getElementById("contact");
+    if (!contactSection) return;
+
+    event.preventDefault();
+    window.history.replaceState(null, "", `${localePrefix}/#contact`);
+    contactSection.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <section
       id="servicii"
@@ -278,9 +297,6 @@ export default function Services() {
                 className="scale-[1.001] transform-gpu object-cover transition-transform duration-500 ease-out will-change-transform [backface-visibility:hidden] group-hover:scale-[1.025]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-0 via-transparent to-transparent" />
-              <span className="absolute left-5 top-5 border border-accent/35 bg-bg-0/75 px-3 py-2 font-mono text-[9px] tracking-[0.22em] text-accent backdrop-blur-md">
-                0{index + 1}
-              </span>
             </div>
 
             <div className="flex flex-1 flex-col p-6 md:p-8">
@@ -304,13 +320,18 @@ export default function Services() {
               <div className="mt-auto flex flex-col gap-3 pt-8 sm:flex-row">
                 <Link
                   href={`${localePrefix}/${service.slug}`}
-                  className="btn-primary justify-center"
+                  className="btn-primary justify-center sm:flex-1"
                 >
                   {viewService}
                   <span aria-hidden>→</span>
                 </Link>
-                <Link href={`${localePrefix}/#contact`} className="btn-ghost justify-center">
+                <Link
+                  href={`${localePrefix}/#contact`}
+                  onClick={handleContactClick}
+                  className="btn-ghost justify-center sm:flex-1"
+                >
                   {dictionary.common.requestOffer}
+                  <span aria-hidden>→</span>
                 </Link>
               </div>
             </div>

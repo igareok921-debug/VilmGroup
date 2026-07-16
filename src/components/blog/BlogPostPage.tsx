@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import AssistantRobot from "@/components/AssistantRobot";
+import DesktopVisualEffects from "@/components/DesktopVisualEffects";
 import Footer from "@/components/Footer";
-import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
-import ScrollPathLine from "@/components/ScrollPathLine";
 import Image from "next/image";
 import { blogCategoryLabels, blogImageBlurDataURL, getLocalizedBlogPost, getRelatedPosts, type BlogPost } from "@/data/blogPosts";
 import { getServicePage } from "@/data/servicePages";
@@ -20,6 +19,23 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
   const relatedService = post.relatedService ? getServicePage(post.relatedService) : null;
   const t = getLocalizedBlogPost(post, locale);
   const labels = blogCategoryLabels[locale];
+  const faqTitle = {
+    ro: {
+      website: "Întrebări frecvente despre website-uri",
+      smm: "Întrebări frecvente despre servicii SMM",
+      ai: "Întrebări frecvente despre chatbot-uri AI",
+    },
+    en: {
+      website: "Frequently asked questions about websites",
+      smm: "Frequently asked questions about SMM services",
+      ai: "Frequently asked questions about AI chatbots",
+    },
+    ru: {
+      website: "Частые вопросы о создании сайтов",
+      smm: "Частые вопросы об SMM-услугах",
+      ai: "Частые вопросы об AI-чатботах",
+    },
+  }[locale][post.category];
   const serviceLinks = [
     {
       slug: "chatbots-ai",
@@ -90,8 +106,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <HeroCanvas />
-      <ScrollPathLine />
+      <DesktopVisualEffects />
       <AssistantRobot />
       <div className="relative z-10 flex min-h-screen flex-col">
         <Navbar />
@@ -121,6 +136,14 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
             </h1>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-text-soft">
+              <span>
+                {locale === "ro"
+                  ? "Echipa Vilm Group"
+                  : locale === "ru"
+                    ? "Команда Vilm Group"
+                    : "Vilm Group team"}
+              </span>
+              <span className="text-muted">·</span>
               <time dateTime={post.date}>
                 {new Date(post.date).toLocaleDateString(
                   locale === "ro" ? "ro-RO" : locale === "ru" ? "ru-RU" : "en-US",
@@ -266,11 +289,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                   id="article-faq-title"
                   className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-4xl"
                 >
-                  {locale === "ro"
-                    ? "Întrebări frecvente despre chatbot-uri AI"
-                    : locale === "ru"
-                      ? "Частые вопросы об AI-чатботах"
-                      : "Frequently asked questions about AI chatbots"}
+                  {faqTitle}
                 </h2>
                 <div className="mt-8 space-y-6">
                   {t.faqs.map((faq) => (

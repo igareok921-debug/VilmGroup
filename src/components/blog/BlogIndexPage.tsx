@@ -3,10 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import AssistantRobot from "@/components/AssistantRobot";
+import DesktopVisualEffects from "@/components/DesktopVisualEffects";
 import Footer from "@/components/Footer";
-import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
-import ScrollPathLine from "@/components/ScrollPathLine";
 import { blogCategoryLabels, blogImageBlurDataURL, blogPosts, getLocalizedBlogPost, type BlogCategory, type BlogPost } from "@/data/blogPosts";
 import { useI18n } from "@/i18n/I18nProvider";
 import { siteUrl } from "@/i18n/config";
@@ -180,8 +179,7 @@ export default function BlogIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <HeroCanvas />
-      <ScrollPathLine />
+      <DesktopVisualEffects />
       <AssistantRobot />
       <div className="relative z-10 flex min-h-screen flex-col">
         <Navbar />

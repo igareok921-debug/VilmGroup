@@ -52,7 +52,7 @@ export const servicePages: ServicePage[] = [
       "Pregătire completă pentru Google Search Console și indexare corectă.",
       "Design unic adaptat brandului tău — fiecare website e construit de la zero, fără template-uri.",
       "SEO local optimizat pentru Moldova: Chișinău, Bălți, Cahul, Orhei și restul țării.",
-      "Hosting rapid pe infrastructură modernă — încărcare sub 2 secunde garantată.",
+      "Hosting rapid pe infrastructură modernă și optimizare măsurată în PageSpeed și Core Web Vitals.",
       "Manual de utilizare în limba română și 30 de zile de suport tehnic incluse.",
     ],
     process: [
@@ -105,7 +105,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "smm-chisinau",
     eyebrow: "SMM · CONȚINUT · CAMPANII",
-    title: "SMM în Chișinău pentru branduri care vor prezență constantă și conținut bun.",
+    title: "Servicii SMM în Chișinău: strategie, Instagram, Reels și Meta Ads.",
     shortTitle: "SMM Chișinău",
     description:
       "Servicii SMM în Chișinău și toată Moldova: strategie, administrare Instagram, Facebook și TikTok, content plan, texte, vizualuri, reels și campanii pentru branduri locale și internaționale. Specializare pe restaurante, saloane, clinici, magazine și branduri personale.",
@@ -129,7 +129,7 @@ export const servicePages: ServicePage[] = [
     heroPoints: [
       "Strategie social media adaptată nișei și obiectivelor brandului tău.",
       "Content plan, texte, vizualuri și idei pentru reels — gata de publicat.",
-      "Prezență coerentă pe Instagram, Facebook, TikTok și alte canale relevante.",
+      "Administrare coerentă pentru Instagram și Facebook, plus Reels și campanii Meta Ads la nevoie.",
     ],
     benefits: [
       "Comunicare constantă și profesionistă cu publicul tău.",
@@ -183,12 +183,22 @@ export const servicePages: ServicePage[] = [
       {
         question: "Cât durează să văd rezultate?",
         answer:
-          "Primele rezultate vizibile (engagement, urmăritori noi) apar în 4-6 săptămâni de comunicare constantă. Rezultate de business (cereri, vânzări) depind de produs/serviciu și de bugetul de campanii — de obicei 2-3 luni.",
+          "Evaluăm primele semnale după o lună completă de conținut și raportare. Ritmul rezultatelor depinde de oferta brandului, piață, calitatea materialelor și bugetul media; nu promitem un număr fix de urmăritori, cereri sau vânzări.",
       },
       {
         question: "Putem combina SMM cu reclame plătite?",
         answer:
-          "Da. Configurăm și administrăm campanii Meta Ads (Instagram + Facebook) și TikTok Ads. Bugetul de reclame e separat de fee-ul de administrare, iar noi recomandăm un minim de 100-200€/lună pentru reclame eficiente.",
+          "Da. Putem configura și administra campanii Meta Ads și, în funcție de proiect, TikTok Ads. Bugetul media este separat de fee-ul de administrare și se stabilește după obiectiv, audiență și perioada campaniei.",
+      },
+      {
+        question: "Ce nu este inclus în pachetul lunar SMM?",
+        answer:
+          "Bugetul de publicitate, colaborările cu influenceri, locațiile, modelele, recuzita și producțiile foto-video complexe nu sunt incluse automat. Le stabilim separat înainte de începerea proiectului, astfel încât costurile să fie clare.",
+      },
+      {
+        question: "Cum raportați rezultatele?",
+        answer:
+          "Raportul lunar urmărește indicatorii relevanți pentru obiectiv: reach, interacțiuni, creșterea comunității, clickuri, mesaje, lead-uri și performanța campaniilor. Comparăm rezultatele cu perioada anterioară și stabilim acțiunile pentru luna următoare.",
       },
     ],
     related: ["creare-website-uri", "creare-magazin-online", "chatbots-ai"],

@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { useI18n } from "@/i18n/I18nProvider";
 
 export default function OfferBanner() {
-  const { dictionary } = useI18n();
+  const { dictionary, locale } = useI18n();
+  const localePrefix = `/${locale}`;
 
   return (
     <section className="relative mx-auto w-full max-w-7xl px-6 py-12 md:px-10 md:py-16">
@@ -55,11 +56,11 @@ export default function OfferBanner() {
               {dictionary.offer.text}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <a href="#contact" className="btn-primary justify-center">
+              <a href={`${localePrefix}/#contact`} className="btn-primary justify-center">
                 {dictionary.offer.primary}
                 <span aria-hidden>→</span>
               </a>
-              <a href="#servicii" className="btn-ghost justify-center">
+              <a href={`${localePrefix}/#servicii`} className="btn-ghost justify-center">
                 {dictionary.offer.secondary}
               </a>
             </div>

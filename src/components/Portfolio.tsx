@@ -185,7 +185,7 @@ export default function Portfolio() {
             const localizedProject = dictionary.portfolio.projects[project.copyIndex];
             const projectHref = project.slug
               ? `/${locale}/portofoliu/${project.slug}`
-              : project.link ?? "#contact";
+              : project.link ?? `/${locale}/#contact`;
 
             return (
             <motion.article

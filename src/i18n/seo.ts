@@ -111,7 +111,7 @@ export const serviceSeo: Record<
   },
   "smm-chisinau": {
     ro: {
-      title: "Servicii SMM Chișinău: Instagram, Reels și Meta Ads",
+      title: "SMM Chișinău: Instagram, Reels și Meta Ads",
       description:
         "Strategie, content plan, administrare Instagram și Facebook, reels și campanii Meta Ads pentru branduri din Chișinău. Vezi procesul și exemplele.",
       keywords: ["SMM Chișinău", "servicii SMM Moldova", "administrare Instagram Chișinău"],

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import {
@@ -8,10 +7,10 @@ import {
   locales,
   siteUrl as canonicalSiteUrl,
 } from "@/i18n/config";
+import CookieConsent from "@/components/CookieConsent";
 import "../globals.css";
 
 const siteUrl = new URL(canonicalSiteUrl);
-const googleAnalyticsId = "G-95RJQJBB7H";
 
 const title = "Vilm Group — Creare Website-uri și SMM în Chișinău";
 const description =
@@ -182,6 +181,7 @@ export default async function RootLayout({
         image: new URL("/opengraph-image", siteUrl).toString(),
         description,
         email: "info@vilmgroup.md",
+        telephone: "+37360718756",
         areaServed: [
           { "@type": "Country", name: "Moldova" },
           { "@type": "Country", name: "Romania" },
@@ -248,8 +248,8 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
+        <CookieConsent locale={locale} />
       </body>
-      <GoogleAnalytics gaId={googleAnalyticsId} />
     </html>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useI18n } from "@/i18n/I18nProvider";
 
 const CONTACT_EMAIL = "info@vilmgroup.md";
@@ -74,7 +75,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-32"
+      className="relative mx-auto w-full max-w-7xl scroll-mt-24 px-6 py-16 md:px-10 md:scroll-mt-28 md:py-32"
     >
       <div className="grid gap-10 md:grid-cols-12 md:gap-16">
         {/* Left — pitch */}
@@ -234,9 +235,13 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-6 border-t border-border pt-6 md:flex-row md:items-center md:justify-between">
-              <p className="font-mono text-[11px] tracking-[0.25em] text-muted">
-                {dictionary.contactSection.reply}
-              </p>
+              <div>
+                <p className="font-mono text-[11px] tracking-[0.25em] text-muted">{dictionary.contactSection.reply}</p>
+                <p className="mt-3 max-w-md text-xs leading-relaxed text-muted">
+                  {locale === "ro" ? "Prin trimiterea formularului confirmi că ai citit " : locale === "ru" ? "Отправляя форму, вы подтверждаете, что прочитали " : "By submitting this form, you confirm that you have read the "}
+                  <Link href={`/${locale}/confidentialitate`} className="text-accent underline underline-offset-4">{dictionary.footer.privacy}</Link>.
+                </p>
+              </div>
               <button
                 type="submit"
                 disabled={status === "sending"}

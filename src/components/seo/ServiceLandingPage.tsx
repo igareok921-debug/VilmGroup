@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import AssistantRobot from "@/components/AssistantRobot";
+import DesktopVisualEffects from "@/components/DesktopVisualEffects";
 import Footer from "@/components/Footer";
-import HeroCanvas from "@/components/HeroCanvas";
 import Navbar from "@/components/Navbar";
-import ScrollPathLine from "@/components/ScrollPathLine";
 import PricingPackages, {
   type PricingPackage,
 } from "@/components/seo/PricingPackages";
 import { getBlogPost, getLocalizedBlogPost } from "@/data/blogPosts";
+import { getPortfolioProject } from "@/data/portfolioProjects";
 import { getServicePage, type ServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
 import { siteUrl, type Locale } from "@/i18n/config";
@@ -56,8 +56,16 @@ const localizedServices: Partial<
 
 const relevantArticleByService: Record<string, string> = {
   "creare-website-uri": "cat-costa-un-website-in-moldova-2026",
-  "smm-chisinau": "10-greseli-instagram-afaceri-chisinau",
+  "smm-chisinau": "cat-costa-smm-chisinau-2026",
   "chatbots-ai": "ai-chatbot-cind-merita",
+};
+
+const proofProjectsByService: Record<string, string[]> = {
+  "creare-website-uri": [
+    "carocakes",
+    "the-visibility-summit",
+    "vilm-seo-ai",
+  ],
 };
 
 type PricingSection = {
@@ -143,6 +151,59 @@ const pricingByLocale: Record<Locale, Partial<Record<string, PricingSection>>> =
         ],
       },
     ],
+    },
+    "smm-chisinau": {
+      eyebrow: "Investiție lunară clară",
+      title: "Pachete SMM Chișinău",
+      description:
+        "Alege nivelul de administrare potrivit ritmului de publicare, volumului de video și obiectivelor de promovare.",
+      trustText:
+        "Bugetul pentru Meta Ads sau TikTok Ads se stabilește și se achită separat de administrarea lunară.",
+      popularLabel: "Recomandat",
+      additionalServicesTitle: "Servicii opționale",
+      ctaLabel: "Solicită planul SMM",
+      packages: [
+        {
+          name: "SMM Start",
+          price: "de la 200€/lună",
+          description:
+            "Pentru branduri mici care au nevoie de prezență constantă și o direcție coerentă.",
+          features: [
+            "Direcție și piloni de conținut",
+            "Calendar editorial lunar",
+            "Postări săptămânale și stories",
+            "Texte și design pentru postări",
+            "Raport lunar de bază",
+          ],
+        },
+        {
+          name: "SMM Growth",
+          price: "de la 400€/lună",
+          description:
+            "Pentru afaceri care vor conținut regulat, Reels și optimizare continuă.",
+          features: [
+            "Tot ce include SMM Start",
+            "Postări și stories regulate",
+            "Concepte, scripturi și editare Reels",
+            "Campanii Meta Ads de bază",
+            "Analiză și ajustări lunare",
+          ],
+          popular: true,
+        },
+        {
+          name: "SMM Premium",
+          price: "de la 500€/lună",
+          description:
+            "Pentru branduri care au nevoie de producție completă și campanii active.",
+          features: [
+            "Strategie și content complet",
+            "Reels și conținut video vertical",
+            "Administrarea campaniilor avansate",
+            "Monitorizare și optimizare",
+            "Raportare detaliată",
+          ],
+        },
+      ],
     },
     "creare-magazin-online": {
     eyebrow: "Ecommerce scalabil",
@@ -264,6 +325,59 @@ const pricingByLocale: Record<Locale, Partial<Record<string, PricingSection>>> =
         },
       ],
     },
+    "smm-chisinau": {
+      eyebrow: "Clear monthly investment",
+      title: "SMM Packages in Chișinău",
+      description:
+        "Choose the management level that fits your publishing rhythm, video volume and campaign goals.",
+      trustText:
+        "Meta Ads or TikTok Ads media budgets are agreed and paid separately from the monthly management fee.",
+      popularLabel: "Recommended",
+      additionalServicesTitle: "Optional services",
+      ctaLabel: "Request an SMM plan",
+      packages: [
+        {
+          name: "SMM Start",
+          price: "from €200/month",
+          description:
+            "For small brands that need a consistent presence and a coherent direction.",
+          features: [
+            "Content direction and pillars",
+            "Monthly editorial calendar",
+            "Weekly posts and stories",
+            "Copy and post design",
+            "Basic monthly report",
+          ],
+        },
+        {
+          name: "SMM Growth",
+          price: "from €400/month",
+          description:
+            "For businesses that need regular content, Reels and continuous optimization.",
+          features: [
+            "Everything in SMM Start",
+            "Regular posts and stories",
+            "Reels concepts, scripts and editing",
+            "Basic Meta Ads campaigns",
+            "Monthly analysis and adjustments",
+          ],
+          popular: true,
+        },
+        {
+          name: "SMM Premium",
+          price: "from €500/month",
+          description:
+            "For brands that need complete production and active campaigns.",
+          features: [
+            "Complete strategy and content",
+            "Reels and vertical video",
+            "Advanced campaign management",
+            "Monitoring and optimization",
+            "Detailed reporting",
+          ],
+        },
+      ],
+    },
     "creare-magazin-online": {
       eyebrow: "Scalable ecommerce",
       title: "Online Store Packages",
@@ -377,6 +491,59 @@ const pricingByLocale: Record<Locale, Partial<Record<string, PricingSection>>> =
             "Автоматизация",
             "Продвинутое SEO",
             "Приоритетная поддержка",
+          ],
+        },
+      ],
+    },
+    "smm-chisinau": {
+      eyebrow: "Понятная ежемесячная инвестиция",
+      title: "SMM-пакеты в Кишинёве",
+      description:
+        "Выберите уровень ведения под частоту публикаций, объём видео и цели рекламных кампаний.",
+      trustText:
+        "Бюджет Meta Ads или TikTok Ads согласуется и оплачивается отдельно от ежемесячного ведения.",
+      popularLabel: "Рекомендуем",
+      additionalServicesTitle: "Дополнительные услуги",
+      ctaLabel: "Запросить SMM-план",
+      packages: [
+        {
+          name: "SMM Start",
+          price: "от 200€/месяц",
+          description:
+            "Для небольших брендов, которым нужна стабильная и целостная коммуникация.",
+          features: [
+            "Контент-направление и рубрики",
+            "Ежемесячный контент-план",
+            "Еженедельные посты и stories",
+            "Тексты и дизайн публикаций",
+            "Базовый ежемесячный отчёт",
+          ],
+        },
+        {
+          name: "SMM Growth",
+          price: "от 400€/месяц",
+          description:
+            "Для бизнеса, которому нужны регулярный контент, Reels и оптимизация.",
+          features: [
+            "Всё из SMM Start",
+            "Регулярные посты и stories",
+            "Концепции, сценарии и монтаж Reels",
+            "Базовые кампании Meta Ads",
+            "Ежемесячный анализ и корректировки",
+          ],
+          popular: true,
+        },
+        {
+          name: "SMM Premium",
+          price: "от 500€/месяц",
+          description:
+            "Для брендов, которым нужны полное производство контента и активные кампании.",
+          features: [
+            "Полная стратегия и контент",
+            "Reels и вертикальное видео",
+            "Управление продвинутыми кампаниями",
+            "Мониторинг и оптимизация",
+            "Подробная отчётность",
           ],
         },
       ],
@@ -606,6 +773,9 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
     ? getLocalizedBlogPost(relevantArticle, locale)
     : null;
   const pricing = pricingByLocale[locale]?.[page.slug];
+  const proofProjects = (proofProjectsByService[page.slug] ?? [])
+    .map((slug) => getPortfolioProject(slug))
+    .filter((project): project is NonNullable<typeof project> => Boolean(project));
   const pageUrl = `${siteUrl}${localePrefix}/${page.slug}`;
   const structuredData = {
     "@context": "https://schema.org",
@@ -673,8 +843,7 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <HeroCanvas />
-      <ScrollPathLine />
+      <DesktopVisualEffects />
       <AssistantRobot />
       <div className="relative z-10 flex min-h-screen flex-col">
         <Navbar />
@@ -736,6 +905,66 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
               ctaLabel={pricing.ctaLabel}
               contactHref={`${localePrefix}/#contact`}
             />
+          ) : null}
+
+          {proofProjects.length ? (
+            <section className="mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24">
+              <div className="grid gap-8 md:grid-cols-12 md:items-end">
+                <div className="md:col-span-7">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                    {locale === "ro"
+                      ? "Proiecte relevante"
+                      : locale === "ru"
+                        ? "Релевантные проекты"
+                        : "Relevant projects"}
+                  </p>
+                  <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-5xl">
+                    {locale === "ro"
+                      ? "Website-uri construite pentru obiective reale."
+                      : locale === "ru"
+                        ? "Сайты, созданные под реальные задачи."
+                        : "Websites built around real objectives."}
+                  </h2>
+                </div>
+                <p className="max-w-xl leading-relaxed text-text-soft md:col-span-5 md:justify-self-end">
+                  {locale === "ro"
+                    ? "Vezi problema, soluția, tehnologia și rezultatele confirmate pentru fiecare proiect."
+                    : locale === "ru"
+                      ? "Посмотрите задачу, решение, технологии и подтверждённые результаты каждого проекта."
+                      : "See the problem, solution, technology and confirmed outcomes for each project."}
+                </p>
+              </div>
+              <div className="mt-10 grid gap-5 md:grid-cols-3">
+                {proofProjects.map((project) => {
+                  const content = project.content[locale];
+                  return (
+                    <Link
+                      key={project.slug}
+                      href={`${localePrefix}/portofoliu/${project.slug}`}
+                      className="group flex min-h-full flex-col border border-border bg-bg-1/50 p-6 transition hover:border-accent hover:bg-bg-1/80 md:p-7"
+                    >
+                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+                        {project.scope[locale]}
+                      </p>
+                      <h3 className="mt-5 font-display text-2xl font-bold leading-tight text-text">
+                        {project.client}
+                      </h3>
+                      <p className="mt-4 flex-1 text-sm leading-relaxed text-text-soft">
+                        {content.intro}
+                      </p>
+                      <span className="mt-7 inline-flex font-display text-sm font-semibold text-accent transition group-hover:translate-x-1">
+                        {locale === "ro"
+                          ? "Vezi studiul de caz"
+                          : locale === "ru"
+                            ? "Смотреть кейс"
+                            : "View case study"}{" "}
+                        →
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
           ) : null}
 
           <section className="border-y border-border bg-bg-1/45">

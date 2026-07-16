@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useI18n } from "@/i18n/I18nProvider";
 
 const socialLinks = [
@@ -219,6 +220,12 @@ export default function AssistantRobot() {
                 {dictionary.assistant.send}
               </button>
             </form>
+            <p className="text-[10px] leading-relaxed text-muted">
+              {locale === "ro" ? "Nu trimite date sensibile. Mesajele pot fi procesate de un furnizor AI. " : locale === "ru" ? "Не отправляйте конфиденциальные данные. Сообщения могут обрабатываться AI-провайдером. " : "Do not send sensitive data. Messages may be processed by an AI provider. "}
+              <Link href={`/${locale}/confidentialitate`} className="text-accent underline underline-offset-2">
+                {dictionary.footer.privacy}
+              </Link>
+            </p>
           </div>
         </div>
 

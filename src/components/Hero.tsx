@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useI18n } from "@/i18n/I18nProvider";
 import type { Locale } from "@/i18n/config";
 
@@ -189,7 +190,7 @@ function HeroBrand() {
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
 function HeroLeadForm({ copy }: { copy: HeroCopy }) {
-  const { dictionary } = useI18n();
+  const { dictionary, locale } = useI18n();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -323,6 +324,11 @@ function HeroLeadForm({ copy }: { copy: HeroCopy }) {
         <span aria-hidden>→</span>
       </button>
 
+      <p className="mt-4 text-center text-[11px] leading-relaxed text-muted">
+        {locale === "ro" ? "Prin trimiterea formularului confirmi că ai citit " : locale === "ru" ? "Отправляя форму, вы подтверждаете, что прочитали " : "By submitting this form, you confirm that you have read the "}
+        <Link href={`/${locale}/confidentialitate`} className="text-accent underline underline-offset-4">{dictionary.footer.privacy}</Link>.
+      </p>
+
       <div className="mt-4 min-h-5" aria-live="polite">
         {status === "sent" ? (
           <p role="status" className="text-sm font-medium text-accent">
@@ -344,7 +350,7 @@ export default function Hero() {
   const copy = heroCopy[locale] ?? heroCopy.ro;
 
   return (
-    <section className="relative isolate overflow-hidden px-6 pt-24 pb-10 md:min-h-[100svh] md:px-10 md:pt-28 md:pb-12 xl:pt-30">
+    <section id="top" className="relative isolate scroll-mt-20 overflow-hidden px-6 pt-24 pb-10 md:min-h-[100svh] md:px-10 md:pt-28 md:pb-12 xl:pt-30">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_23%_16%,rgba(200,169,106,0.16),transparent_28%),radial-gradient(circle_at_80%_18%,rgba(225,200,150,0.14),transparent_22%),linear-gradient(180deg,#08070a,#050407_70%,#08070a)]" />
       <div className="grain absolute inset-0 -z-10" />
       <div className="pointer-events-none absolute left-[58%] top-0 -z-10 hidden h-[34rem] w-[34rem] rounded-full border border-accent/10 md:block xl:h-[42rem] xl:w-[42rem]" />

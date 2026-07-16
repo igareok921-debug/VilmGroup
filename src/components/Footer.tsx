@@ -160,6 +160,11 @@ export default function Footer() {
                   info@vilmgroup.md
                 </a>
               </li>
+              <li>
+                <a href="tel:+37360718756" className="link-underline font-display text-base font-medium text-text">
+                  +373 60 718 756
+                </a>
+              </li>
               <li className="font-mono text-[10px] tracking-[0.2em] text-muted">
                 {dictionary.footer.city}
               </li>
@@ -171,13 +176,21 @@ export default function Footer() {
           <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
             {dictionary.footer.rights}
           </p>
-          <div className="flex gap-6 font-mono text-[10px] tracking-[0.25em] text-muted">
-            <a href="#" className="transition hover:text-accent">
+          <div className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-[10px] tracking-[0.2em] text-muted">
+            <Link href={`${localePrefix}/confidentialitate`} className="transition hover:text-accent">
               {dictionary.footer.privacy}
-            </a>
-            <a href="#" className="transition hover:text-accent">
+            </Link>
+            <Link href={`${localePrefix}/termeni`} className="transition hover:text-accent">
               {dictionary.footer.terms}
-            </a>
+            </Link>
+            <Link href={`${localePrefix}/cookies`} className="transition hover:text-accent">Cookies</Link>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("vilm:open-cookie-settings"))}
+              className="cursor-pointer transition hover:text-accent"
+            >
+              {locale === "ro" ? "Setări cookies" : locale === "ru" ? "Настройки cookies" : "Cookie settings"}
+            </button>
           </div>
         </div>
       </div>
