@@ -15,7 +15,7 @@ const siteUrl = new URL(canonicalSiteUrl);
 const title = "Vilm Group — Creare Website-uri și SMM în Chișinău";
 const description =
   "Creăm website-uri rapide și optimizate SEO și oferim servicii SMM cu strategie, content, Reels și Meta Ads pentru afaceri din Chișinău și Moldova.";
-const socialLinks = [
+const valeriaSocialLinks = [
   "https://www.instagram.com/valeria_sirghii93/",
   "https://www.facebook.com/rusnac.valeria",
   "https://t.me/VALERIA_VILMGROUP",
@@ -217,7 +217,27 @@ export default async function RootLayout({
             },
           ],
         },
-        sameAs: socialLinks,
+        employee: {
+          "@id": `${siteUrl}#valeria-sirghii`,
+        },
+      },
+      {
+        "@type": "Person",
+        "@id": `${siteUrl}#valeria-sirghii`,
+        name: "Valeria Sîrghii",
+        jobTitle: "Social Media Strategist și SMM Manager",
+        image: new URL("/team/valeria-sirghii-smm.webp", siteUrl).toString(),
+        worksFor: {
+          "@id": `${siteUrl}#organization`,
+        },
+        knowsAbout: [
+          "Social Media Marketing",
+          "Strategie social media",
+          "Administrare Instagram",
+          "Reels",
+          "Meta Ads",
+        ],
+        sameAs: valeriaSocialLinks,
       },
       {
         "@type": "WebSite",

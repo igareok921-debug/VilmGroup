@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/i18n/I18nProvider";
+import type { GoogleReviewsPayload } from "@/lib/googleBusinessReviews";
 
 const videoTestimonials = [
   {
@@ -26,15 +27,30 @@ const videoTestimonials = [
 ];
 
 export default function Testimonials() {
-  const { dictionary } = useI18n();
+  const { dictionary, locale } = useI18n();
   const [activeVideo, setActiveVideo] = useState<
     (typeof videoTestimonials)[number] | null
   >(null);
+  const [googleReviews, setGoogleReviews] = useState<GoogleReviewsPayload | null>(null);
+  const [showAllGoogleReviews, setShowAllGoogleReviews] = useState(false);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const closeVideo = useCallback(() => {
     setActiveVideo(null);
     window.requestAnimationFrame(() => triggerRef.current?.focus());
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch("/api/google-reviews", { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((payload: GoogleReviewsPayload | null) => setGoogleReviews(payload))
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+      });
+
+    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -145,6 +161,108 @@ export default function Testimonials() {
           </div>
         </div>
       </motion.div>
+
+      {googleReviews && googleReviews.reviews.length > 0 ? (
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 border-t border-border pt-8"
+        >
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.25em] text-accent">
+                {dictionary.testimonials.googleReviews}
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <span className="font-display text-4xl font-bold text-text">
+                  {googleReviews.averageRating.toFixed(1)}
+                </span>
+                <span className="flex text-lg text-accent" aria-label={`${googleReviews.averageRating} / 5`}>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <span key={index} aria-hidden className={index < Math.round(googleReviews.averageRating) ? "" : "opacity-30"}>
+                      ★
+                    </span>
+                  ))}
+                </span>
+                <span className="text-sm text-text-soft">
+                  {dictionary.testimonials.basedOn} {googleReviews.totalReviewCount} {dictionary.testimonials.reviewsLabel}
+                </span>
+              </div>
+            </div>
+            <a
+              href={googleReviews.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 self-start rounded-full border border-border-strong px-5 py-2.5 font-display text-sm font-semibold text-text transition hover:border-accent hover:text-accent md:self-auto"
+            >
+              {dictionary.testimonials.viewOnGoogle}
+              <span aria-hidden>↗</span>
+            </a>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {(showAllGoogleReviews
+              ? googleReviews.reviews
+              : googleReviews.reviews.slice(0, 6)
+            ).map((review) => (
+              <article
+                key={review.id}
+                className="flex min-h-56 flex-col rounded-2xl border border-white/10 bg-white/[0.035] p-6"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/15 font-display font-bold text-accent">
+                      {review.author.charAt(0).toUpperCase()}
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="truncate font-display text-base font-semibold text-text">
+                        {review.author}
+                      </h3>
+                      {review.createdAt ? (
+                        <time className="text-xs text-muted" dateTime={review.createdAt}>
+                          {new Intl.DateTimeFormat(
+                            locale === "ro" ? "ro-MD" : locale === "ru" ? "ru-MD" : "en-GB",
+                            { month: "long", year: "numeric" }
+                          ).format(new Date(review.createdAt))}
+                        </time>
+                      ) : null}
+                    </div>
+                  </div>
+                  <span className="font-display text-sm font-bold text-text" aria-label="Google">
+                    G
+                  </span>
+                </div>
+                <div className="mt-5 flex text-accent" aria-label={`${review.rating} / 5`}>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <span key={index} aria-hidden className={index < review.rating ? "" : "opacity-25"}>
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="mt-4 line-clamp-6 text-sm leading-relaxed text-text-soft">
+                  {review.comment || dictionary.testimonials.ratingOnly}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          {googleReviews.reviews.length > 6 ? (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllGoogleReviews((current) => !current)}
+                className="min-h-11 rounded-full bg-accent px-6 py-3 font-display text-sm font-semibold text-bg-0 transition hover:bg-accent-soft"
+              >
+                {showAllGoogleReviews
+                  ? dictionary.testimonials.showLess
+                  : `${dictionary.testimonials.showAll} (${googleReviews.reviews.length})`}
+              </button>
+            </div>
+          ) : null}
+        </motion.div>
+      ) : null}
 
       <AnimatePresence>
         {activeVideo ? (

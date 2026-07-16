@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useI18n } from "@/i18n/I18nProvider";
 
 const CONTACT_EMAIL = "info@vilmgroup.md";
@@ -18,6 +19,7 @@ const interests = [
 
 export default function Contact() {
   const { dictionary, locale } = useI18n();
+  const router = useRouter();
   const localizedInterests =
     locale === "ru"
       ? ["Сайт", "Интернет-магазин", "SMM", "AI"]
@@ -64,6 +66,7 @@ export default function Contact() {
       setEmail("");
       setMessage("");
       setSelected([]);
+      router.replace(`/${locale}/multumim-oferta`);
     } catch (error) {
       setStatus("error");
       setErrorMessage(

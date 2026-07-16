@@ -17,6 +17,41 @@ const navItems = [
   { href: "/#contact", key: "contact" },
 ] as const;
 
+const serviceNavItems = [
+  {
+    href: "/creare-website-uri",
+    label: {
+      ro: "Creare website-uri & SEO",
+      en: "Website development & SEO",
+      ru: "Создание сайтов & SEO",
+    },
+  },
+  {
+    href: "/smm-chisinau",
+    label: {
+      ro: "Social Media Marketing",
+      en: "Social Media Marketing",
+      ru: "Social Media Marketing",
+    },
+  },
+  {
+    href: "/creare-magazin-online",
+    label: {
+      ro: "Creare magazin online",
+      en: "Online store development",
+      ru: "Создание интернет-магазина",
+    },
+  },
+  {
+    href: "/chatbots-ai",
+    label: {
+      ro: "Chatbots & automatizări AI",
+      en: "AI chatbots & automation",
+      ru: "AI-чатботы и автоматизация",
+    },
+  },
+] as const;
+
 export default function Navbar() {
   const { dictionary, locale } = useI18n();
   // Keep anchor navigation on the active localized page. Going through `/`
@@ -98,6 +133,25 @@ export default function Navbar() {
     });
   };
 
+  const handleServicesClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsOpen(false);
+
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    if (currentPath !== localePrefix) return;
+
+    const servicesSection = document.getElementById("servicii");
+    if (!servicesSection) return;
+
+    event.preventDefault();
+    window.history.replaceState(null, "", `${localePrefix}/#servicii`);
+    servicesSection.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <div
@@ -123,6 +177,56 @@ export default function Navbar() {
               const href = isAnchor
                 ? `${localePrefix}${item.href}`
                 : `/${locale}${item.href}`;
+
+              if (item.key === "services") {
+                return (
+                  <div key={item.href} className="group/services relative">
+                    <Link
+                      href={href}
+                      onClick={handleServicesClick}
+                      className="flex min-h-11 items-center gap-1.5"
+                      aria-haspopup="true"
+                    >
+                      <span className="link-underline font-display text-[15px] font-medium text-text">
+                        {dictionary.nav[item.key]}
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 16 16"
+                        className="h-3.5 w-3.5 text-muted transition-transform duration-200 group-hover/services:rotate-180 group-focus-within/services:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path d="m4 6 4 4 4-4" />
+                      </svg>
+                    </Link>
+
+                    <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover/services:visible group-hover/services:translate-y-0 group-hover/services:opacity-100 group-focus-within/services:visible group-focus-within/services:translate-y-0 group-focus-within/services:opacity-100">
+                      <div className="border border-border bg-bg-0/95 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl">
+                        <div className="py-1">
+                          {serviceNavItems.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={`${localePrefix}${service.href}`}
+                              className="group/item flex min-h-11 items-center justify-between gap-4 px-4 py-3 font-display text-sm font-medium text-text-soft transition-colors hover:bg-white/[0.04] hover:text-text focus-visible:bg-white/[0.04]"
+                            >
+                              {service.label[locale]}
+                              <span
+                                aria-hidden
+                                className="text-accent transition-transform duration-200 group-hover/item:translate-x-1"
+                              >
+                                →
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <a key={item.href} href={href} className="group flex items-baseline">
                   <span className="link-underline font-display text-[15px] font-medium text-text">
@@ -136,7 +240,7 @@ export default function Navbar() {
           <div className="hidden items-center gap-5 xl:flex">
             <span
               aria-hidden
-              className="font-mono text-[10px] tracking-[0.2em] text-muted"
+              className="w-[5.75rem] shrink-0 text-right font-mono text-[10px] tabular-nums tracking-[0.2em] text-muted"
             >
               {time}
             </span>
@@ -198,6 +302,42 @@ export default function Navbar() {
                   const href = isAnchor
                     ? `${localePrefix}${item.href}`
                     : `/${locale}${item.href}`;
+
+                  if (item.key === "services") {
+                    return (
+                      <motion.div
+                        key={item.href}
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.05 + i * 0.05 }}
+                        className="border-b border-border pb-3"
+                      >
+                        <Link
+                          href={href}
+                          onClick={handleServicesClick}
+                          className="flex min-h-14 items-center justify-between py-3"
+                        >
+                          <span className="font-display text-2xl font-semibold text-text">
+                            {dictionary.nav[item.key]}
+                          </span>
+                          <span aria-hidden className="text-accent">→</span>
+                        </Link>
+                        <div className="border-l border-border pl-4">
+                          {serviceNavItems.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={`${localePrefix}${service.href}`}
+                              onClick={closeMenu}
+                              className="flex min-h-11 items-center py-2 text-sm font-medium text-text-soft transition-colors hover:text-accent"
+                            >
+                              {service.label[locale]}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    );
+                  }
+
                   return (
                     <motion.a
                       key={item.href}

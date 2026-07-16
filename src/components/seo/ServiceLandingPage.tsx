@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import AssistantRobot from "@/components/AssistantRobot";
 import DesktopVisualEffects from "@/components/DesktopVisualEffects";
@@ -13,6 +14,116 @@ import { getPortfolioProject } from "@/data/portfolioProjects";
 import { getServicePage, type ServicePage } from "@/data/servicePages";
 import { useI18n } from "@/i18n/I18nProvider";
 import { siteUrl, type Locale } from "@/i18n/config";
+
+const smmSpecialistByLocale: Record<
+  Locale,
+  {
+    eyebrow: string;
+    title: string;
+    role: string;
+    description: string;
+    skills: string[];
+    instagramLabel: string;
+    imageAlt: string;
+  }
+> = {
+  ro: {
+    eyebrow: "Cine se ocupă de proiectul tău",
+    title: "Valeria Sîrghii",
+    role: "Social Media Strategist · SMM Manager",
+    description:
+      "Valeria coordonează direcția de social media, planificarea conținutului și comunicarea brandului, de la strategie și calendar editorial până la Reels și campanii Meta Ads.",
+    skills: [
+      "Strategie și poziționare",
+      "Instagram, Facebook și TikTok",
+      "Content plan, Reels și campanii",
+    ],
+    instagramLabel: "Vezi profilul pe Instagram",
+    imageAlt: "Valeria Sîrghii, Social Media Strategist la Vilm Group",
+  },
+  en: {
+    eyebrow: "Who will manage your project",
+    title: "Valeria Sîrghii",
+    role: "Social Media Strategist · SMM Manager",
+    description:
+      "Valeria coordinates social media direction, content planning and brand communication, from strategy and editorial calendars to Reels and Meta Ads campaigns.",
+    skills: [
+      "Strategy and positioning",
+      "Instagram, Facebook and TikTok",
+      "Content plans, Reels and campaigns",
+    ],
+    instagramLabel: "View Instagram profile",
+    imageAlt: "Valeria Sîrghii, Social Media Strategist at Vilm Group",
+  },
+  ru: {
+    eyebrow: "Кто будет вести ваш проект",
+    title: "Валерия Сыргий",
+    role: "Social Media Strategist · SMM Manager",
+    description:
+      "Валерия координирует стратегию социальных сетей, контент-план и коммуникацию бренда — от editorial calendar и Reels до кампаний Meta Ads.",
+    skills: [
+      "Стратегия и позиционирование",
+      "Instagram, Facebook и TikTok",
+      "Контент-план, Reels и кампании",
+    ],
+    instagramLabel: "Открыть профиль в Instagram",
+    imageAlt: "Валерия Сыргий, Social Media Strategist в Vilm Group",
+  },
+};
+
+const smmPortfolioBrands = [
+  {
+    name: "Dr. Daria Stratan",
+    instagram: "https://www.instagram.com/dr.dariastratan/",
+  },
+  {
+    name: "Farmacia Salutaris",
+    instagram: "https://www.instagram.com/farmacia_salutaris/",
+  },
+  {
+    name: "Alpen Pharma Moldova",
+    instagram: "https://www.instagram.com/alpenpharma.md/",
+  },
+  {
+    name: "Lina Beauty Art Studio",
+    instagram: "https://www.instagram.com/linabeautyart_studio/",
+  },
+  {
+    name: "Alina Nail Art",
+    instagram: "https://www.instagram.com/alinailartt/",
+  },
+  {
+    name: "CaroCakes",
+    instagram: "https://www.instagram.com/carocakescraft/",
+  },
+] as const;
+
+const smmPortfolioCopy: Record<
+  Locale,
+  { eyebrow: string; title: string; description: string; linkLabel: string }
+> = {
+  ro: {
+    eyebrow: "Experiență aplicată",
+    title: "Branduri din portofoliul SMM",
+    description:
+      "O selecție de branduri și proiecte pentru care am contribuit la comunicarea și prezența în social media.",
+    linkLabel: "Vezi pe Instagram",
+  },
+  en: {
+    eyebrow: "Applied experience",
+    title: "Brands in our SMM portfolio",
+    description:
+      "A selection of brands and projects where we contributed to social media communication and presence.",
+    linkLabel: "View on Instagram",
+  },
+  ru: {
+    eyebrow: "Практический опыт",
+    title: "Бренды в нашем SMM-портфолио",
+    description:
+      "Подборка брендов и проектов, для которых мы участвовали в развитии коммуникации и присутствия в социальных сетях.",
+    linkLabel: "Смотреть в Instagram",
+  },
+};
 
 const localizedServices: Partial<
   Record<
@@ -776,6 +887,7 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
   const proofProjects = (proofProjectsByService[page.slug] ?? [])
     .map((slug) => getPortfolioProject(slug))
     .filter((project): project is NonNullable<typeof project> => Boolean(project));
+  const isSmmService = page.slug === "smm-chisinau";
   const pageUrl = `${siteUrl}${localePrefix}/${page.slug}`;
   const structuredData = {
     "@context": "https://schema.org",
@@ -848,19 +960,37 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
       <div className="relative z-10 flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">
-          <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 pb-20 pt-36 md:grid-cols-12 md:px-10 md:pb-28 md:pt-44">
-            <div className="md:col-span-4">
-              <div className="sticky top-28">
+          {isSmmService ? (
+            <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 pb-20 pt-36 md:grid-cols-12 md:items-start md:px-10 md:pb-28 md:pt-44">
+              <div className="md:col-span-8 lg:pr-6">
                 <div className="flex items-center gap-3">
                   <span className="h-px w-10 bg-accent" />
-                  <span className="font-mono text-[10px] tracking-[0.3em] text-accent">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
                     {localizedPage.eyebrow}
                   </span>
                 </div>
-                <p className="mt-8 max-w-sm text-sm leading-relaxed text-text-soft">
+                <h1 className="mt-8 font-display text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-6xl lg:text-7xl">
+                  {localizedPage.title}
+                </h1>
+                <p className="mt-8 max-w-2xl text-base leading-7 text-text-soft md:text-lg md:leading-8">
                   {localizedPage.description}
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
+
+                <div className="mt-9 grid gap-3 sm:grid-cols-3">
+                  {localizedPage.heroPoints.map((point) => (
+                    <div
+                      key={point}
+                      className="border-t border-border pt-4"
+                    >
+                      <span className="mb-4 block h-1.5 w-1.5 rounded-full bg-accent" />
+                      <p className="text-sm leading-relaxed text-text-soft">
+                        {point}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                   <Link href={`${localePrefix}/#contact`} className="btn-primary justify-center">
                     {dictionary.servicePageUi.quote}
                     <span aria-hidden>→</span>
@@ -870,27 +1000,105 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
                   </Link>
                 </div>
               </div>
-            </div>
 
-            <div className="md:col-span-8">
-              <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-7xl">
-                {localizedPage.title}
-              </h1>
-              <div className="mt-10 grid gap-4 md:grid-cols-3">
-                {localizedPage.heroPoints.map((point) => (
+              <div className="overflow-hidden border border-border bg-bg-1/70 md:col-span-4">
+                <div className="relative aspect-square overflow-hidden border-b border-border">
+                  <Image
+                    src="/team/valeria-sirghii-smm.webp"
+                    alt={smmSpecialistByLocale[locale].imageAlt}
+                    fill
+                    preload
+                    sizes="(max-width: 767px) calc(100vw - 3rem), 30vw"
+                    className="object-cover object-top"
+                  />
                   <div
-                    key={point}
-                    className="border border-border bg-bg-1/55 p-5 backdrop-blur-sm"
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-bg-0/35 via-transparent to-transparent"
+                  />
+                </div>
+                <div className="p-6 md:p-7 lg:p-8">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                    {smmSpecialistByLocale[locale].eyebrow}
+                  </p>
+                  <h2 className="mt-4 font-display text-3xl font-bold leading-none text-text lg:text-4xl">
+                    {smmSpecialistByLocale[locale].title}
+                  </h2>
+                  <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-accent-soft">
+                    {smmSpecialistByLocale[locale].role}
+                  </p>
+                  <p className="mt-5 text-sm leading-6 text-text-soft">
+                    {smmSpecialistByLocale[locale].description}
+                  </p>
+                  <a
+                    href="https://www.instagram.com/valeria_sirghii93/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary mt-6 min-h-11 w-full justify-center sm:w-fit"
+                    aria-label={`${smmSpecialistByLocale[locale].instagramLabel} — Valeria Sîrghii`}
                   >
-                    <span className="mb-5 block h-1.5 w-1.5 rounded-full bg-accent" />
-                    <p className="text-sm leading-relaxed text-text-soft">
-                      {point}
-                    </p>
-                  </div>
-                ))}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4.25" />
+                      <circle cx="17.4" cy="6.7" r="0.9" fill="currentColor" stroke="none" />
+                    </svg>
+                    {smmSpecialistByLocale[locale].instagramLabel}
+                    <span aria-hidden>↗</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          ) : (
+            <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 pb-20 pt-36 md:grid-cols-12 md:px-10 md:pb-28 md:pt-44">
+              <div className="md:col-span-4">
+                <div className="sticky top-28">
+                  <div className="flex items-center gap-3">
+                    <span className="h-px w-10 bg-accent" />
+                    <span className="font-mono text-[10px] tracking-[0.3em] text-accent">
+                      {localizedPage.eyebrow}
+                    </span>
+                  </div>
+                  <p className="mt-8 max-w-sm text-sm leading-relaxed text-text-soft">
+                    {localizedPage.description}
+                  </p>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
+                    <Link href={`${localePrefix}/#contact`} className="btn-primary justify-center">
+                      {dictionary.servicePageUi.quote}
+                      <span aria-hidden>→</span>
+                    </Link>
+                    <Link href={`${localePrefix}/servicii`} className="btn-ghost justify-center">
+                      {dictionary.servicePageUi.services}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:col-span-8">
+                <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-[-0.04em] text-text md:text-7xl">
+                  {localizedPage.title}
+                </h1>
+                <div className="mt-10 grid gap-4 md:grid-cols-3">
+                  {localizedPage.heroPoints.map((point) => (
+                    <div
+                      key={point}
+                      className="border border-border bg-bg-1/55 p-5 backdrop-blur-sm"
+                    >
+                      <span className="mb-5 block h-1.5 w-1.5 rounded-full bg-accent" />
+                      <p className="text-sm leading-relaxed text-text-soft">
+                        {point}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
           {pricing ? (
             <PricingPackages
@@ -905,6 +1113,61 @@ export default function ServiceLandingPage({ page }: { page: ServicePage }) {
               ctaLabel={pricing.ctaLabel}
               contactHref={`${localePrefix}/#contact`}
             />
+          ) : null}
+
+          {isSmmService ? (
+            <section className="border-y border-border bg-bg-1/35">
+              <div className="mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24">
+                <div className="grid gap-8 md:grid-cols-12 md:items-end">
+                  <div className="md:col-span-7">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                      {smmPortfolioCopy[locale].eyebrow}
+                    </p>
+                    <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-5xl">
+                      {smmPortfolioCopy[locale].title}
+                    </h2>
+                  </div>
+                  <p className="max-w-xl leading-relaxed text-text-soft md:col-span-5 md:justify-self-end">
+                    {smmPortfolioCopy[locale].description}
+                  </p>
+                </div>
+
+                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {smmPortfolioBrands.map((brand) => (
+                    <a
+                      key={brand.instagram}
+                      href={brand.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex min-h-36 flex-col justify-between border border-border bg-bg-0/60 p-6 transition-colors duration-200 hover:border-accent focus-visible:border-accent"
+                      aria-label={`${brand.name} — ${smmPortfolioCopy[locale].linkLabel}`}
+                    >
+                      <div className="flex items-start justify-between gap-5">
+                        <h3 className="font-display text-xl font-semibold leading-tight text-text md:text-2xl">
+                          {brand.name}
+                        </h3>
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 24 24"
+                          className="h-5 w-5 shrink-0 text-accent"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                        >
+                          <rect x="3" y="3" width="18" height="18" rx="5" />
+                          <circle cx="12" cy="12" r="4.25" />
+                          <circle cx="17.4" cy="6.7" r="0.9" fill="currentColor" stroke="none" />
+                        </svg>
+                      </div>
+                      <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-text-soft transition-colors duration-200 group-hover:text-accent">
+                        {smmPortfolioCopy[locale].linkLabel}
+                        <span aria-hidden>↗</span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </section>
           ) : null}
 
           {proofProjects.length ? (

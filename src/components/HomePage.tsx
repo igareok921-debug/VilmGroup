@@ -96,11 +96,9 @@ export default function HomePage() {
       opens: "08:00",
       closes: "21:00",
     },
-    sameAs: [
-      "https://www.instagram.com/valeria_sirghii93/",
-      "https://www.facebook.com/rusnac.valeria",
-      "https://t.me/VALERIA_VILMGROUP",
-    ],
+    employee: {
+      "@id": `${siteUrl}/#valeria-sirghii`,
+    },
   };
 
   return (

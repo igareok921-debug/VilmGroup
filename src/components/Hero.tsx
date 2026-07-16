@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useI18n } from "@/i18n/I18nProvider";
 import type { Locale } from "@/i18n/config";
 
@@ -191,6 +192,7 @@ type FormStatus = "idle" | "sending" | "sent" | "error";
 
 function HeroLeadForm({ copy }: { copy: HeroCopy }) {
   const { dictionary, locale } = useI18n();
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -222,6 +224,7 @@ function HeroLeadForm({ copy }: { copy: HeroCopy }) {
       setName("");
       setEmail("");
       setMessage("");
+      router.replace(`/${locale}/multumim-oferta`);
     } catch (error) {
       setStatus("error");
       setErrorMessage(
